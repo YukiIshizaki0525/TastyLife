@@ -21,12 +21,23 @@
     <%= f.text_area :description, class: "form-control" %>
   </div>
 
+<h3>材料一覧</h3>
 <div class="form-group">
   <%= f.fields_for :ingredients do |ingredient| %>
     <%= render "ingredient_fields", f: ingredient %>
   <% end %>
   <div id = "links">
     <%= link_to_add_association '材料を追加', f, :ingredients %>
+  </div>
+</div>
+
+<h3>手順一覧</h3>
+<div class="form-group">
+  <%= f.fields_for :steps do |step| %>
+    <%= render "step_fields", f: step %>
+  <% end %>
+  <div id = "links">
+    <%= link_to_add_association '手順を追加', f, :steps %>
   </div>
 </div>
 

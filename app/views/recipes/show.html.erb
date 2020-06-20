@@ -10,12 +10,19 @@
   <%= @recipe.description %>
 </p>
 
-<h3>Ingredients</h3>
+<h3>材料一覧</h3>
+<ul>
   <% for @ingredient in @recipe.ingredients %>
-    <ul>
-      <li><%= @ingredient.content %></li>
-    </ul>
+    <li><%= @ingredient.content %></li>
   <% end %>
+</ul>
+
+<h3>手順</h3>
+<ol>
+  <% for @step in @recipe.steps %>
+    <li><%= @step.direction %></li>
+  <% end %>
+</ol>
 
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <%= link_to 'Back', recipes_path %>
