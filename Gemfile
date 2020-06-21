@@ -14,15 +14,18 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 # ログイン機能
 gem 'devise'
-
 # 日本語化
 gem 'rails-i18n', '~> 6.0'
 gem 'devise-i18n'
-
 # Bootstrap
 gem 'devise-bootstrap-views', '~> 1.0'
-
+# ネストされたフォーム
 gem 'cocoon'
+# ActiveStorageバリデーション用
+gem 'active_storage_validations', '0.8.2'
+# 画像処理用
+gem 'image_processing',           '1.9.3'
+gem 'mini_magick',                '4.9.5'
 
 
 group :development, :test do
