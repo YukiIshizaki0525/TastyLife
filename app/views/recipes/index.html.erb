@@ -1,9 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Recipes</h1>
+<div class="d-flex align-items-center">
+  <h1>レシピ一覧</h1>
+  <div class="ml-auto recipes__linkBox">
+    <%= link_to '新規投稿', new_recipe_path, {class: "btn btn-outline-dark"} %>
+  </div>
+</div>
 
-<table>
-  <thead>
+<table class="table table-hover recipes__table">
+  <thead class="thead-dark">
     <tr>
       <th>Title</th>
       <th>Description</th>
@@ -23,7 +28,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Recipe', new_recipe_path %>
