@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+  <%= image_tag @recipe.display_image if @recipe.image.attached? %>
 <p>
   <strong>Title:</strong>
   <%= @recipe.title %>

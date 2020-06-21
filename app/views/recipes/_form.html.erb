@@ -11,6 +11,10 @@
     </div>
   <% end %>
 
+  <span class="picture form-group">
+    <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %><br>
+  </span>
+
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: "form-control" %>
@@ -42,6 +46,6 @@
 </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary"%>
   </div>
 <% end %>
