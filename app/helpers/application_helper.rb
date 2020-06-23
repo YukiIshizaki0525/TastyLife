@@ -1,10 +1,4 @@
 module ApplicationHelper
-  APP_NAME= 'RecipeApp'.freeze
-  def page_title
-    base_title = APP_NAME
-    return base_title if @title.blank?
-    "#{base_title} | #{@title}"
-  end
   def header_link_item(name, path)
     class_name = 'nav-item'
     # 表示するページと引数のpathが等しい場合、class_nameにactiveを追加
