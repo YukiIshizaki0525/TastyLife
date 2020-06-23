@@ -7,25 +7,21 @@
   </div>
 </div>
 
-<table class="table table-hover recipes__table">
-  <thead class="thead-dark">
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @recipes.each do |recipe| %>
-      <tr>
-        <td><%= image_tag recipe.display_image, class: 'recipe-show' if recipe.image.attached? %></td>
-        <td><%= recipe.title %></td>
-        <td><%= recipe.description %></td>
-        <td><%= link_to 'Show', recipe %></td>
-        <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-        <td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <% @recipes.each do |recipe| %>
+    <div class="col-lg-4 col-sm-6 mb-3 recipe-box">
+      <%= image_tag recipe.display_image, class: 'img-thumbnail recipe-index' if recipe.image.attached? %>
+      <div class="recipe-link">
+        <ul>
+          <li><%= recipe.title %></li>
+          <li><%= recipe.description %></li>
+          <li>
+            <%= link_to 'Show', recipe %> |
+            <%= link_to 'Edit', edit_recipe_path(recipe) %> |
+            <%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?'} %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+</div>
