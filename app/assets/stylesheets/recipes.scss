@@ -9,3 +9,20 @@
     margin: 0 8px;
   }
 }
+.recipe-box {
+  box-shadow: 10px 10px 5px #888888;
+}
+.recipe-index {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+}
+
+.recipe-link ul {
+  list-style-type: none;
+  bottom: 0;
+}
+
+.recipe-link li:first-child {
+  font-size: 24px;
+}
