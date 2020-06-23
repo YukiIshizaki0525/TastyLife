@@ -19,7 +19,7 @@
               <%= header_link_item('アカウント編集', edit_user_registration_path) %>
             </li>
             <li>
-              <%= header_link_item('ログアウト', destroy_user_session_path, method: :delete)%>
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %>
             </li>
           <% else %>
             <li>
