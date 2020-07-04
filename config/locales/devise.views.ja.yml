@@ -2,6 +2,7 @@ ja:
   activerecord:
     attributes:
       user:
+        name: ユーザー名
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻
@@ -40,7 +41,7 @@ ja:
       invalid: "%{authentication_keys}またはパスワードが違います。"
       last_attempt: もう一回誤るとアカウントがロックされます。
       locked: アカウントは凍結されています。
-      not_found_in_database: "%{authentication_keys}またはパスワードが違います。"
+      not_found_in_database: "Eメール・ユーザー名・パスワードのいずれかが違います。"
       timeout: セッションがタイムアウトしました。もう一度ログインしてください。
       unauthenticated: 新規登録もしくはログインしてください。
       unconfirmed: メールアドレスの本人確認が必要です。

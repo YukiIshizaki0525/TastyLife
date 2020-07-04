@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: recipes
+#
+#  id          :bigint           not null, primary key
+#  description :text(65535)
+#  title       :string(255)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
 class Recipe < ApplicationRecord
   has_many :ingredients, dependent: :destroy
   accepts_nested_attributes_for :ingredients, allow_destroy: true
