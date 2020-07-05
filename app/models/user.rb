@@ -40,11 +40,9 @@ class User < ApplicationRecord
                       with: /^[a-zA-Z0-9_¥.]*$/,
                       multiline: true
   validate :validate_name
-  
+
   attr_accessor :login
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable
@@ -73,4 +71,5 @@ class User < ApplicationRecord
   def validate_name
     errors.add(:name, :invalid) if User.where(email: name).exists?
   end
+
 end
