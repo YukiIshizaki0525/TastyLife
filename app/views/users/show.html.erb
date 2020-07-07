@@ -1,10 +1,2 @@
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
-</div>
+ユーザー名：<%= @user.name %><br>
+アイコン画像：<%= image_tag @user.avatar.variant(resize_to_limit: [100, 100]) if @user.avatar.attached? %>

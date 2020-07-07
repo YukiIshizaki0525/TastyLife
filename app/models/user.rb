@@ -36,6 +36,10 @@ class User < ApplicationRecord
   validates :name,
             presence: true,
             uniqueness: { case_sensitive: false }
+  validates :avatar, content_type: { in: %w[image/jpeg image/gif image/png],
+                               message: "は有効な画像形式である必要があります" },
+                    size:         { less_than: 1.megabytes,
+                                      message: "は1MB未満である必要があります" }
   validates_format_of :name,
                       with: /^[a-zA-Z0-9_¥.]*$/,
                       multiline: true
@@ -71,5 +75,8 @@ class User < ApplicationRecord
   def validate_name
     errors.add(:name, :invalid) if User.where(email: name).exists?
   end
+
+  # アイコン画像追加のため
+  has_one_attached :avatar
 
 end

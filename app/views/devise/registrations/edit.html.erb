@@ -40,12 +40,17 @@
   
       <small class="form-text text-muted"><%= t('.we_need_your_current_password_to_confirm_your_changes') %></small>
     </div>
-    
+
+    <div class="form-group">
+      <%= f.label :avatar %><br>
+      <%= f.file_field :avatar, accept: "image/jpeg,image/gif,image/png" %>
+    </div>
+
     <div class="form-group">
       <%= f.submit t('.update'), class: 'btn btn-primary btn-block' %>
     </div>
   <% end %>
-  
+
   <hr class="devise-link my-5">
   <div class="form-group">
     <%= link_to "トップページ", root_path, class: 'btn btn-info btn-block mb-4' %>
