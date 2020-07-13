@@ -1,14 +1,10 @@
 <%= form_with(model: @recipe, local: true) do |f| %>
   <% if recipe.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
-
-      <ul>
-        <% recipe.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+    <ul>
+      <% recipe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
   <% end %>
 
   <span class="picture form-group">
@@ -25,25 +21,25 @@
     <%= f.text_area :description, class: "form-control" %>
   </div>
 
-<h3>材料一覧</h3>
-<div class="form-group">
-  <%= f.fields_for :ingredients do |ingredient| %>
-    <%= render "ingredient_fields", f: ingredient %>
-  <% end %>
-  <div id = "links">
-    <%= link_to_add_association '材料を追加', f, :ingredients %>
+  <h3>材料一覧</h3>
+  <div class="form-group">
+    <%= f.fields_for :ingredients do |ingredient| %>
+      <%= render "ingredient_fields", f: ingredient %>
+    <% end %>
+    <div id = "links">
+      <%= link_to_add_association '材料を追加', f, :ingredients %>
+    </div>
   </div>
-</div>
 
-<h3>手順一覧</h3>
-<div class="form-group">
-  <%= f.fields_for :steps do |step| %>
-    <%= render "step_fields", f: step %>
-  <% end %>
-  <div id = "links">
-    <%= link_to_add_association '手順を追加', f, :steps %>
+  <h3>手順一覧</h3>
+  <div class="form-group">
+    <%= f.fields_for :steps do |step| %>
+      <%= render "step_fields", f: step %>
+    <% end %>
+    <div id = "links">
+      <%= link_to_add_association '手順を追加', f, :steps %>
+    </div>
   </div>
-</div>
 
   <div class="actions">
     <%= f.submit class: "btn btn-primary"%>

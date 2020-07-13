@@ -1,2 +1,18 @@
-ユーザー名：<%= @user.name %><br>
-アイコン画像：<%= image_tag @user.avatar.variant(resize_to_limit: [100, 100]) if @user.avatar.attached? %>
+<div class="col-md-8">
+
+  ユーザー名：<%= @user.name %><br>
+  アイコン画像：<%= image_tag @user.display_avatar if @user.avatar.attached? %>
+  
+  <div class="ml-auto recipes__linkBox">
+    <%= link_to 'レシピ投稿はこちら', new_recipe_path, {class: "btn btn-outline-dark"} %>
+  </div>
+
+  <% if @user.recipes.any? %>
+    <h3>Recipes(<%= @user.recipes.count %>)</h3>
+    <ul class="recipe--micropost">
+      <%= render @recipes %>
+    </ul>
+    <%= paginate @recipes %>
+  <% end %>
+
+</div>
