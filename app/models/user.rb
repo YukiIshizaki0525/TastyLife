@@ -33,6 +33,13 @@
 #  index_users_on_unlock_token          (unlock_token) UNIQUE
 #
 class User < ApplicationRecord
+  attr_accessor :login
+  has_many :recipes, dependent: :destroy
+
+  # アイコン画像追加のため
+  has_one_attached :avatar
+
+
   validates :name,
             presence: true,
             uniqueness: { case_sensitive: false }
@@ -44,8 +51,6 @@ class User < ApplicationRecord
                       with: /^[a-zA-Z0-9_¥.]*$/,
                       multiline: true
   validate :validate_name
-
-  attr_accessor :login
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
@@ -76,7 +81,8 @@ class User < ApplicationRecord
     errors.add(:name, :invalid) if User.where(email: name).exists?
   end
 
-  # アイコン画像追加のため
-  has_one_attached :avatar
+  def display_avatar
+    avatar.variant(resize_to_limit: [100, 100])
+  end
 
 end

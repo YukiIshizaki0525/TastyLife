@@ -24,7 +24,7 @@ class RecipesController < ApplicationController
   # POST /recipes
   # POST /recipes.json
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = current_user.recipes.build(recipe_params)
     @recipe.image.attach(params[:recipe][:image])
 
     respond_to do |format|
@@ -61,7 +61,6 @@ class RecipesController < ApplicationController
       format.json { head :no_content }
     end
   end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_recipe
@@ -74,4 +73,4 @@ class RecipesController < ApplicationController
         ingredients_attributes: [:id, :content, :_destroy],
         steps_attributes: [:id, :direction, :_destroy])
     end
-end
+end 
