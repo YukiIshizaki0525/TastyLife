@@ -8,10 +8,30 @@ Bundler.require(*Rails.groups)
 
 module ShareRecipe
   class Application < Rails::Application
-    # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+
+    # タイムゾーン表示
+    config.time_zone = 'Tokyo'
+
+    # DB保存時間を東京に設定
+    config.active_record.default_timezone = :local
+
+    # i18n
     config.i18n.default_locale = :ja
-    config.time_zone = 'Asia/Tokyo'
+
+    # Zeitwerk $LOAD_PATHにPathを追加しない(Zeitwerk有効時false推奨)
+    config.add_autoload_paths_to_load_path = false
+
+    # autoload path => ActiveSupport::Dependencies.autoload_paths
+    config.autoload_paths += %W(#{config.root}/lib/validator)
+
+    # config/locales/models/ja.ymlを起動時に自動読み込み
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+
+    # バリデーションエラー後にレイアウトが崩れるのを防ぐ
+    config.action_view.field_error_proc = Proc.new do |html_tag, instance|
+      html_tag
+    end
 
     config.generators do |g|
       g.test_framework :rspec,
