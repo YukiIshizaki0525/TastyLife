@@ -2,19 +2,19 @@
   <%= image_tag @recipe.display_image if @recipe.image.attached? %>
 
 <p>
-  <strong>Title:</strong>
+  <strong>レシピのタイトル：</strong>
   <%= @recipe.title %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>レシピの説明：</strong>
   <%= @recipe.description %>
 </p>
 
 <h3>材料一覧</h3>
 <ul>
   <% for @ingredient in @recipe.ingredients %>
-    <li><%= @ingredient.content %></li>
+    <li><%= @ingredient.content %>：<%= @ingredient.quantity %></li>
   <% end %>
 </ul>
 

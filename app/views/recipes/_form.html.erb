@@ -1,11 +1,5 @@
 <%= form_with(model: @recipe, local: true) do |f| %>
-  <% if recipe.errors.any? %>
-    <ul>
-      <% recipe.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
+<%= render 'layouts/error_messages', model: f.object %>
 
   <span class="picture form-group">
     <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %><br>
@@ -21,13 +15,13 @@
     <%= f.text_area :description, class: "form-control" %>
   </div>
 
-  <h3>材料一覧</h3>
+  <h3>材料・分量</h3>
   <div class="form-group">
     <%= f.fields_for :ingredients do |ingredient| %>
       <%= render "ingredient_fields", f: ingredient %>
     <% end %>
     <div id = "links">
-      <%= link_to_add_association '材料を追加', f, :ingredients %>
+      <%= link_to_add_association '材料・分量を追加', f, :ingredients %>
     </div>
   </div>
 

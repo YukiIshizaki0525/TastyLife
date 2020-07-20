@@ -3,7 +3,8 @@
 # Table name: ingredients
 #
 #  id         :bigint           not null, primary key
-#  content    :text(65535)      not null
+#  content    :string(255)      not null
+#  quantity   :string(255)      not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  recipe_id  :bigint           not null
@@ -18,4 +19,8 @@
 #
 class Ingredient < ApplicationRecord
   belongs_to :recipe
+
+    # 材料・分量指定のバリデーション
+  validates :content, presence: true
+  validates :quantity, presence: true
 end

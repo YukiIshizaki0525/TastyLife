@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    attributes:
+      recipe:
+        id: ID
+        description: レシピの説明
+        title: レシピのタイトル
+        created_at: 登録日時
+        updated_at: 更新日時
+        user_id: ユーザーID
+      recipe/ingredients:
+        content: 材料名
+        quantity: 分量
+      recipe/steps:
+        direction: 手順
