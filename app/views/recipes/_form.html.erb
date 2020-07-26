@@ -1,7 +1,7 @@
 <%= form_with(model: @recipe, local: true) do |f| %>
 <%= render 'layouts/error_messages', model: f.object %>
 
-  <span class="picture form-group">
+  <span class="form-group">
     <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %><br>
   </span>
 

@@ -19,4 +19,12 @@
 class Step < ApplicationRecord
   belongs_to :recipe
   validates :direction, presence: true
+  # 画像投稿に関するバリデーション
+  validates :step_image, content_type: { in: %w[image/jpeg image/gif image/png],
+                                    message: "must be a valid image format" },
+                    size:         { less_than: 1.megabytes,
+                                    message: "1MBの画像を添付してください" }
+
+  # レシピ手順の画像
+  has_one_attached :step_image
 end

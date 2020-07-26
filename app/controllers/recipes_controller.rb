@@ -26,6 +26,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = current_user.recipes.build(recipe_params)
     @recipe.image.attach(params[:recipe][:image])
+    @recipe.step_image.attach(params[:recipe][:steps][:step_image])
 
     respond_to do |format|
       if @recipe.save
@@ -71,6 +72,6 @@ class RecipesController < ApplicationController
     def recipe_params
       params.require(:recipe).permit(:image, :title, :description,
         ingredients_attributes: [:id, :content, :quantity, :_destroy],
-        steps_attributes: [:id, :direction, :_destroy])
+        steps_attributes: [:id, :direction, :_destroy, :step_image])
     end
 end 

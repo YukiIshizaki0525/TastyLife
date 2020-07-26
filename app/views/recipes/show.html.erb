@@ -1,5 +1,7 @@
 
-  <%= image_tag @recipe.display_image if @recipe.image.attached? %>
+<div>
+  <%= image_tag @recipe.image.variant(resize: '300x300') if @recipe.image.attached? %>
+</div>
 
 <p>
   <strong>レシピのタイトル：</strong>
@@ -13,17 +15,20 @@
 
 <h3>材料一覧</h3>
 <ul>
-  <% for @ingredient in @recipe.ingredients %>
-    <li><%= @ingredient.content %>：<%= @ingredient.quantity %></li>
+  <% @recipe.ingredients.each do |ingredient| %>
+    <li>
+      <%= ingredient.content %>：<%= ingredient.quantity %>
+    </li>
   <% end %>
 </ul>
 
 <h3>手順</h3>
-<ol>
-  <% for @step in @recipe.steps %>
-    <li><%= @step.direction %></li>
+  <% @recipe.steps.each_with_index do |step, i| %>
+    <%= "#{i+1}" %><br>
+    <%= image_tag step.step_image.variant(resize: '200x200') if step.step_image.attached? %><br>
+    <%= step.direction %>
+    <br>
   <% end %>
-</ol>
-
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <%= link_to 'Back', recipes_path %>
+
