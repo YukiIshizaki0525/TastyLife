@@ -1,4 +1,8 @@
 <div class="nested-fields">
-  <%= f.text_field :direction %>
+  <span class="form-group">
+    <%= f.file_field :step_image, accept: "image/jpeg,image/gif,image/png" %><br>
+  </span>
+
+  <%= f.text_area :direction %>
   <%= link_to_remove_association "削除", f, class: "btn btn-danger" %>
 </div>
