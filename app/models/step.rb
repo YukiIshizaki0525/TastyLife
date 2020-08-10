@@ -24,7 +24,6 @@ class Step < ApplicationRecord
                                     message: "must be a valid image format" },
                     size:         { less_than: 1.megabytes,
                                     message: "1MBの画像を添付してください" }
-
   # レシピ手順の画像
   has_one_attached :step_image
 end

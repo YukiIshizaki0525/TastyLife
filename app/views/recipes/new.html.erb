@@ -1,5 +1,9 @@
-<h1>New Recipe</h1>
+<div id="new_recipe_wrapper">
+  <!-- ページタイトルここから -->
+  <h2 id="heading">
+    新しくレシピを投稿
+  </h2>
+  <!-- ページタイトルここまで -->
 
-<%= render 'form', recipe: @recipe %>
-
-<%= link_to 'Back', recipes_path %>
+  <%= render 'form', recipe: @recipe %>
+</div><!-- new_recipe_wrapper-->

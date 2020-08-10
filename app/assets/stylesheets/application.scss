@@ -14,12 +14,13 @@
  *= require_self
  */
 
- @import "bootstrap/scss/bootstrap";
- @import "base";
- @import "recipes";
+@import "bootstrap/scss/bootstrap";
+@import "reset";
+@import "base";
+@import "recipes";
+@import "recipe_form";
 
 // ログイン画面
-
 .container-login {
   @extend .container-fluid;
   max-width: 576px;
@@ -35,4 +36,3 @@
 .alert-alert {
   @extend .alert-danger;
 }
-
