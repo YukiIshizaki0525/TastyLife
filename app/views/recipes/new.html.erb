@@ -1,9 +1,11 @@
-<div id="new_recipe_wrapper">
+<% @title = "レシピ投稿" %>
+
+<div class="wrapper">
   <!-- ページタイトルここから -->
-  <h2 id="heading">
+  <h2 class="page_title">
     新しくレシピを投稿
   </h2>
   <!-- ページタイトルここまで -->
 
   <%= render 'form', recipe: @recipe %>
-</div><!-- new_recipe_wrapper-->
+</div>

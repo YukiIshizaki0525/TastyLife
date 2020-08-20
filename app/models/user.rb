@@ -82,7 +82,7 @@ class User < ApplicationRecord
   end
 
   def display_avatar
-    avatar.variant(resize_to_limit: [100, 100])
+    avatar.variant(combine_options: {resize_to_fill: [200, 200], border:5})
   end
 
 end

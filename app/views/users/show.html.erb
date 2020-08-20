@@ -1,7 +1,9 @@
 <div class="col-md-8">
 
   ユーザー名：<%= @user.name %><br>
-  アイコン画像：<%= image_tag @user.display_avatar if @user.avatar.attached? %>
+  アイコン画像：<%= image_tag @user.display_avatar if @user.avatar.attached? %><br>
+
+  <%= link_to 'ユーザー削除', user_path, method: :delete, data: {confirm: "ユーザー「#{@user.name}」を削除します。よろしいですか？"}, class: "btn btn-danger " %>
   
   <div class="ml-auto recipes__linkBox">
     <%= link_to 'レシピ投稿はこちら', new_recipe_path, {class: "btn btn-outline-dark"} %>

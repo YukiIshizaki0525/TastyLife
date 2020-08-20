@@ -1,8 +1,32 @@
-html,
-body {
-  height: 100%;
+/* ========================================
+    ページ全体
+========================================= */
+.wrapper {
+  width: 960px;
+  position: relative;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+/* ========================================
+    ページタイトル
+========================================= */
+.page_title {
+  width: 100%;
+  height: 50px;
+  margin: 30px 0 10px;
+  font-size: 27px;
+  font-weight: bold;
+  padding-left: 23px;
+  color: #2f5734;
 }
 
 h1 {
   margin: 30px 0;
+}
+
+/* ========================================
+    ページネーション
+========================================= */
+.pagination {
+  justify-content: center;
 }

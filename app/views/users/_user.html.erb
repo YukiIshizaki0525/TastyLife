@@ -1,0 +1,4 @@
+<div class="users_list">
+  <%= link_to image_tag(user.display_avatar), user_path(id: user.id) if user.avatar.attached? %><br>
+  <%= user.name %>
+</div>
