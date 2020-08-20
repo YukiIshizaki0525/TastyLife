@@ -1,0 +1,23 @@
+inderit_from: .rubocop_todo.yml
+
+AllCops:
+  Exclude:
+    - db/**/*
+
+# classやmoduleの先頭コメント
+Documentation:
+  Enabled: false
+
+# 日本語でのコメント
+Style/AsciiComments:
+  Enabled: false
+
+# 行長
+Metrics/LineLength:
+  Max: 120
+
+# ブロック内の行数
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+    - config/**/*
