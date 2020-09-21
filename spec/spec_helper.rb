@@ -93,4 +93,9 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
+# spring-commands-rspecを追加したため以下のコードを追加
+  config.before(:all) do
+    FactoryBot.reload
+  end
 end
