@@ -1,0 +1,6 @@
+<h3><%= @title %></h3>
+<% if @users.any? %>
+  <ul>
+    <%= render @users %>
+  </ul>
+<% end %>

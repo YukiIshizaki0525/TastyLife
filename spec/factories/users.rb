@@ -32,8 +32,42 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_users_on_unlock_token          (unlock_token) UNIQUE
 #
+
 FactoryBot.define do
-  factory :user do
-    
+  # spec/support/shared_context.rbに他人を30人DB保存できるコードあり
+
+  # factory :user, class: User do
+  #   name { "alice" }
+  #   sequence(:email) { |n| "test#{n}@example.com" }
+  #   password { "v4xqUvAXhK" }
+  #   password_confirmation { "v4xqUvAXhK" }
+  #   confirmed_at { Date.today }
+  # end
+
+  # factory :other_user, class: User do
+  #   name { "bob" }
+  #   email { "bobtester@example.com" }
+  #   password { "C2e6aNEY" }
+  #   password_confirmation { "C2e6aNEY" }
+  #   confirmed_at { Date.today }
+  # end
+  factory :user, class: User do
+    name {"Alice"}
+    sequence(:email) { |n| "test#{n}@example.com" }
+    password {"v4xqUvAXhK"}
+    password_confirmation {"v4xqUvAXhK"}
+    confirmed_at { Date.today }
+    # after(:build) do |u|
+    #   u.avatar.attach(io: File.open("spec/fixtures/avatar.jpg"), filename: "avatar.jpg")
+    # end
+
+  # 他人
+    factory :other_user do
+      email { Faker::Internet.email }
+      name { Faker::Internet.username }
+      password { "C2e6aNEY" }
+      password_confirmation { "C2e6aNEY" }
+      confirmed_at { Date.today }
+    end
   end
 end

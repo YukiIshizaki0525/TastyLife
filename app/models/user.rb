@@ -35,10 +35,25 @@
 class User < ApplicationRecord
   attr_accessor :login
   has_many :recipes, dependent: :destroy
+  has_many :active_relationships,
+              class_name:  "Relationship",
+              foreign_key: "follower_id",
+              dependent:   :destroy
 
+  has_many :passive_relationships,
+              class_name:  "Relationship",
+              foreign_key: "followed_id",
+              dependent:   :destroy
+
+  has_many :following,
+              through: :active_relationships,
+              source: :followed
+
+  has_many :followers,
+              through: :passive_relationships,
+              source: :follower
   # アイコン画像追加のため
   has_one_attached :avatar
-
 
   validates :name,
             presence: true,
@@ -83,6 +98,20 @@ class User < ApplicationRecord
 
   def display_avatar
     avatar.variant(combine_options: {resize_to_fill: [200, 200], border:5})
+  end
+  
+  def follow(other_user)
+    self.following << other_user
+  end
+
+  # ユーザーをフォロー解除する
+  def unfollow(other_user)
+    self.active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  # 現在のユーザーがフォローしてたらtrueを返す
+  def following?(other_user)
+    self.following.include?(other_user)
   end
 
 end

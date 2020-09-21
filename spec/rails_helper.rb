@@ -5,6 +5,9 @@ require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+
+# shoulda-matchersの読み込み
+require 'shoulda/matchers'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -61,4 +64,35 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  #sign_inヘルパーを利用できるようにする
+  config.include Devise::Test::IntegrationHelpers, type: :system
+  config.include Devise::Test::IntegrationHelpers, type: :request
+
+  #FactoryBotもinclude
+  config.include FactoryBot::Syntax::Methods
+
+  # supportディレクトリを利用
+  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+  config.include RequestSpecHelper, type: :request
+end
+
+# /spec/rails_helper.rb  
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    # 今回はRspecを使うのでこのように設定
+    with.test_framework :rspec
+
+    # shoulda-matchersを使いたいテストライブラリを指定
+    with.library :active_record
+    with.library :active_model
+    with.library :action_controller
+    # Or, choose the following (which implies all of the above):
+    with.library :rails
+  end
+end
+
+# ファクトリで添付ファイルを扱えるようにする
+FactoryBot::SyntaxRunner.class_eval do
+  include ActionDispatch::TestProcess
 end

@@ -36,6 +36,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'pry-byebug'
+  gem 'pry-rails'
+  gem 'awesome_print'
+  gem 'spring-commands-rspec'
+  gem 'faker'
 end
 
 group :development do
@@ -43,7 +47,6 @@ group :development do
   gem 'listen', '~> 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'faker'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'rubocop'
@@ -51,8 +54,11 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'launchy'
+  gem 'shoulda-matchers',
+    git: 'https://github.com/thoughtbot/shoulda-matchers.git',
+    branch: 'rails-5'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
