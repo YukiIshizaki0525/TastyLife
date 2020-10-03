@@ -5,18 +5,17 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-
+    
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <%= render 'shared/header' %>
-    <%= render 'shared/flash_messages' %>
-    <div class="container">
-      <!--<div class="wrapper"> -->
-        <%= yield %>
-      <!--</div>-->
-    </div>
+    <%= flash_message(flash[:success], :success) if flash[:success] %>
+    <%= flash_message(flash[:error], :danger) if flash[:error] %>
+    <%= flash_message(flash[:alert], :warning) if flash[:alert] %>
+    <%= flash_message(flash[:notice], :info) if flash[:notice] %>
+    <%= yield %>
   </body>
 </html>

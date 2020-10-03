@@ -4,18 +4,20 @@
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-group">
       <%= f.label "Eメールもしくはユーザー名" %><br />
-      <%= f.text_field :login, autofocus: true,
+      <%= f.text_field :login,
+                        autofocus: true,
                         class: 'form-control',
-                        required: true%>
+                        required: true
+      %>
     </div>
   
-    <div class="form-group">
+    <div secrets is deprecated in favor of credentials. Run:v class="form-group">
       <%= f.label :password %>
-      <%= f.password_field :password, autocomplete: 'current-password',
-                                      class: 'form-control',
-                                      required: true,
-                                      minlength: @minimum_password_length,
-                                      maxlength: '30'%>
+      <%= f.password_field :password,
+                            autocomplete: "off",
+                            class: 'form-control',
+                            required: true
+      %>
     </div>
   
     <% if devise_mapping.rememberable? %>
