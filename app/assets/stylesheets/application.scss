@@ -15,24 +15,24 @@
  */
 
 @import "bootstrap/scss/bootstrap";
-@import "reset";
-@import "base";
-@import "recipes";
-@import "recipe_form";
+
+@media (min-width: 960px) {
+  @import "breakpoints/960up";
+}
 
 // ログイン画面
-.container-login {
-  @extend .container-fluid;
-  max-width: 576px;
-  padding: 2rem;
-}
+// .container-login {
+//   @extend .container-fluid;
+//   max-width: 576px;
+//   padding: 2rem;
+// }
 
 // 「ログインしました」などのフラッシュ用スタイル
 
-.alert-notice {
-  @extend .alert-info;
-}
+// .alert-notice {
+//   @extend .alert-info;
+// }
 
-.alert-alert {
-  @extend .alert-danger;
-}
+// .alert-alert {
+//   @extend .alert-danger;
+// }
