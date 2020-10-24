@@ -1,5 +1,12 @@
 @import "modules/valiables.scss";
 
+/******************************************************************
+
+Stylesheet: ベーススタイル
+トップページのレイアウト
+
+******************************************************************/
+
 body {
   // ①英語のみのフォント、②日本語のフォントの順に記載
   font-family: "Kameron", "Noto Sans JP", sans-serif;
@@ -49,6 +56,11 @@ img {
   max-width: $contentMaxWidth;
 }
 
+.timestamp {
+  @extend .font-sm;
+  color: $Black;
+}
+
 .main-title {
   @extend .font-lg;
   font-weight: 600;
@@ -57,5 +69,183 @@ img {
 
 .sub-title {
   @extend .font-sm;
-  color: $cSubTitle;
+  color: $SubTitle;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.subheader {
+  @extend .content-width;
+  @extend .mb-sm;
+}
+
+.introduction {
+  @extend .content-width;
+  @extend .mb-lg;
+
+  &__inner {
+    @extend .flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: $BgGray;
+    position: relative;
+    z-index: 0;
+  }
+
+  &__img {
+    @extend .mb-sm;
+    height: 300px;
+    box-shadow: inset 0 0 30px $Black;
+
+    & > img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      z-index: -1;
+    }
+  }
+
+  &__texts {
+    @extend .pb-sm;
+  }
+
+  &__title {
+    position: relative;
+  }
+
+  &__sub {
+    @extend .mb-sm;
+  }
+}
+
+.newarrival {
+  &__container {
+    @extend .flex;
+    @extend .content-width;
+    @extend .mb-lg;
+  }
+
+  &__item {
+    @extend .mb-sm;
+    border: 1px solid $ItemBorderColor;
+    border-radius: 4px;
+    text-decoration: none !important;
+
+    &:hover {
+      background-color: $ItemHoverColor;
+      opacity: 0.75;
+    }
+  }
+
+  &__recipetitle {
+    @extend .font-md;
+    font-weight: bold;
+    display: inline-block;
+    color: $RecipeTitleColor;
+    text-decoration: none !important;
+  }
+
+  &__description {
+    @extend .font-sm;
+    color: $SubTitle;
+  }
+
+  &__img {
+    height: 150px;
+    overflow: hidden;
+    margin-bottom: 5px;
+    border-radius: 4px;
+
+    & > img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+.recipe {
+  &__item {
+    @extend .content-width;
+    @extend .mb-sm;
+    display: flex;
+    border-bottom: 1px solid $ItemBorderColor;
+    border-radius: 4px;
+    text-decoration: none !important;
+  }
+  &__img {
+    height: 100px;
+    width: 100px;
+    overflow: hidden;
+    margin-bottom: 5px;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: $ItemHoverColor;
+      opacity: 0.75;
+    }
+
+    & > img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__detail {
+    margin-left: 10.5px;
+    position: relative;
+  }
+
+  &__title {
+    @extend .font-md;
+    display: inline-block;
+    font-weight: bold;
+    color: $RecipeTitleColor;
+    text-decoration: none !important;
+    outline: none;
+
+    &:hover {
+      border-bottom: 1px solid $RecipeTitleColor;
+      color: $RecipeTitleColor;
+    }
+  }
+
+  &__description {
+    @extend .font-sm;
+    display: none;
+  }
+
+  &__userinfo {
+    display: flex;
+    text-decoration: none !important;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  &__useravatar {
+    height: 25px;
+    width: 25px;
+    overflow: hidden;
+    margin-right: 10px;
+
+    & > img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__username {
+    color: $UserNameColor;
+
+    &:hover {
+      border-bottom: 1px solid $UserNameColor;
+    }
+  }
 }

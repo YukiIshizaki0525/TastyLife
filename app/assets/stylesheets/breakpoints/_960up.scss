@@ -22,3 +22,29 @@
 .pb-lg {
   padding-bottom: 150px !important;
 }
+
+.flex {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.newarrival {
+  &__container {
+    justify-content: space-between;
+  }
+  &__item {
+    flex-basis: 24%;
+  }
+
+  &__img {
+    height: 290px;
+  }
+}
+
+.recipe {
+  &__img {
+    height: 150px;
+    width: 150px;
+    overflow: hidden;
+  }
+}
