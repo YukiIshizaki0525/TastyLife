@@ -37,8 +37,7 @@ class Recipe < ApplicationRecord
                     size:         { less_than: 2.megabytes,
                                     message: "should be less than 2zMB" }
 
-  # リサイズ済みの画像を表示（縦横500pxを超えないようにする）
   def display_image
-    image.variant(resize_to_limit: [500, 500])
+    image.variant(gravity: :center, resize:"200x290^", crop:"200x290+0+0").processed
   end
 end

@@ -15,24 +15,12 @@
  */
 
 @import "bootstrap/scss/bootstrap";
+@import "breakpoints/base";
+
+@media (min-width: 600px) {
+  @import "breakpoints/600up";
+}
 
 @media (min-width: 960px) {
   @import "breakpoints/960up";
 }
-
-// ログイン画面
-// .container-login {
-//   @extend .container-fluid;
-//   max-width: 576px;
-//   padding: 2rem;
-// }
-
-// 「ログインしました」などのフラッシュ用スタイル
-
-// .alert-notice {
-//   @extend .alert-info;
-// }
-
-// .alert-alert {
-//   @extend .alert-danger;
-// }

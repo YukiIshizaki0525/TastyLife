@@ -1,0 +1,48 @@
+@import "modules/valiables.scss";
+
+.flex {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.introduction {
+  &__inner {
+    padding: 50px;
+  }
+  &__texts,
+  &__img {
+    flex-basis: 47%;
+  }
+
+  &__texts {
+    display: flex;
+    align-items: flex-end;
+  }
+}
+
+.newarrival {
+  &__container {
+    // 1行の要素を左右に寄せる。flexの親要素に指定。
+    justify-content: space-between;
+  }
+  &__item {
+    flex-basis: 32%;
+  }
+
+  &__img {
+    height: 200px;
+  }
+}
+
+.recipe {
+  &__img {
+    height: 125px;
+    width: 125px;
+    overflow: hidden;
+  }
+
+  &__description {
+    display: block;
+    color: $SubTitle;
+  }
+}
