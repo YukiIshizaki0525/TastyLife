@@ -1,5 +1,9 @@
 @import "modules/valiables.scss";
 
+.font-lr {
+  font-size: 24px;
+}
+
 .flex {
   flex-direction: row;
   flex-wrap: wrap;
@@ -20,6 +24,7 @@
   }
 }
 
+// トップページここから
 .newarrival {
   &__container {
     // 1行の要素を左右に寄せる。flexの親要素に指定。
@@ -46,3 +51,46 @@
     color: $SubTitle;
   }
 }
+// トップページここまで
+
+// レシピ詳細ここから
+.description {
+  padding-top: 40px;
+
+  &__texts,
+  &__img {
+    flex-basis: 47%;
+  }
+}
+
+.step {
+  &__inner {
+    padding: 18px 0;
+  }
+
+  &__number {
+    margin-bottom: 0;
+  }
+
+  &__img {
+    display: block;
+    height: 150px;
+    width: 150px;
+    overflow: hidden;
+
+    & > img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__description {
+    padding-left: 18px;
+  }
+}
+// レシピ詳細ここまで

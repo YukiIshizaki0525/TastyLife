@@ -1,35 +1,47 @@
+<main>
+  <section class="description">
+    <div class="description__inner">
+      <div class="description__img">
+        <%= image_tag @recipe.image if @recipe.image.attached? %>
+      </div>
+      <div class="description__texts">
+        <div class="description__title">
+          <%= @recipe.title %>
+          <div class="description__detail">
+            <%= @recipe.description %>
+          </div>
+        </div>
 
-<div>
-  <%= image_tag @recipe.image.variant(resize: '300x300') if @recipe.image.attached? %>
-</div>
+        <div class="recipeuser">
+          <div class="recipeuser__title">ユーザープロフィール</div>
+          <%= link_to(user_path(id: @recipe.user_id), class:'recipeuser__inner') do %>
+            <div class="recipeuser__img"><%= image_tag @recipe.user.avatar %></div>
+            <div class="recipeuser__name"><%= @recipe.user.name %></div>
+          <% end %>
+        </div>
 
-<p>
-  <strong>レシピのタイトル：</strong>
-  <%= @recipe.title %>
-</p>
-
-<p>
-  <strong>レシピの説明：</strong>
-  <%= @recipe.description %>
-</p>
-
-<h3>材料一覧</h3>
-<ul>
-  <% @recipe.ingredients.each do |ingredient| %>
-    <li>
-      <%= ingredient.content %>：<%= ingredient.quantity %>
-    </li>
-  <% end %>
-</ul>
-
-<h3>手順</h3>
-  <% @recipe.steps.each_with_index do |step, i| %>
-    <%= "#{i+1}" %><br>
-    <%= image_tag step.step_image.variant(resize: '200x200') if step.step_image.attached? %><br>
-    <%= step.direction %>
-    <br>
-  <% end %>
-  
-<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
-<%= link_to 'Back', recipes_path %>
-
+        <section class="ingredient">
+          <div class="ingredient__title">材料</div>
+          <% @recipe.ingredients.each do |ingredient| %>
+            <div class="ingredient__ul">
+              <div><%= ingredient.content %></div>
+              <div><%= ingredient.quantity %></div>
+            </div>
+          <% end %>
+        </section>
+      </div>
+    </div>
+  </section>
+  <section class="step">
+    <div class="step__title">作り方</div>
+    <% @recipe.steps.each_with_index do |step, i| %>
+      <div class="step__item">
+        <div class="step__inner">
+          <p class="step__number"><%= "#{i+1}" %></p>
+          <p class="step__description"><%= step.direction %></p>
+          <div class="step__img"><%= image_tag step.step_image if step.step_image.attached? %></div>
+          </div>
+      </div>
+    <% end %>
+  </section>
+</main>

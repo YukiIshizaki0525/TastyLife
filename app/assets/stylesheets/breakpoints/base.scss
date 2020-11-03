@@ -81,7 +81,7 @@ img {
   @extend .content-width;
   @extend .mb-sm;
 }
-
+// トップページ一覧ここから
 .introduction {
   @extend .content-width;
   @extend .mb-lg;
@@ -249,3 +249,144 @@ img {
     }
   }
 }
+// トップページ一覧ここまで
+
+// レシピ詳細ページここから
+.description {
+  @extend .content-width;
+  @extend .mb-lg;
+
+  &__inner {
+    @extend .flex;
+    justify-content: space-between;
+  }
+  &__img {
+    @extend .mb-sm;
+    height: 320px;
+    width: 100%;
+    overflow: hidden;
+
+    & > img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__title {
+    @extend .font-lr;
+    font-weight: bold;
+    color: $RecipeTitleColor;
+  }
+
+  &__detail {
+    @extend .font-sm;
+    margin: 14px 0;
+    font-weight: normal;
+    color: $SubTitle;
+  }
+}
+
+.recipeuser {
+  @extend .mb-sm;
+
+  &__title {
+    @extend .font-md;
+    @extend .mb-sm;
+    font-weight: bold;
+    color: $DetailTitle;
+    border-bottom: 1px solid $DetailTitle;
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    text-decoration: none !important;
+  }
+
+  &__img {
+    height: 40px;
+    width: 40px;
+    overflow: hidden;
+
+    & > img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__name {
+    margin-left: 10px;
+    color: $UserNameColor;
+
+    &:hover {
+      border-bottom: 1px solid $UserNameColor;
+    }
+  }
+}
+
+.ingredient {
+  &__title {
+    @extend .font-md;
+    @extend .mb-sm;
+    font-weight: bold;
+    color: $DetailTitle;
+    border-bottom: 1px solid $DetailTitle;
+  }
+
+  &__ul {
+    @extend .font-sm;
+    display: flex;
+    justify-content: space-between;
+    color: $IngredientAndStepColor;
+    border-bottom: 1px solid $ItemBorderColor;
+    padding: 7px;
+  }
+}
+
+.step {
+  @extend .content-width;
+
+  &__item {
+    border-bottom: 1px dotted $ItemBorderColor;
+  }
+
+  &__inner {
+    @extend .flex;
+    padding: 10px 0;
+  }
+
+  &__title {
+    @extend .font-md;
+    font-weight: bold;
+    color: $DetailTitle;
+    border-bottom: 1px solid $DetailTitle;
+  }
+
+  &__number {
+    @extend .font-sm;
+    color: $White;
+    background-color: $RecipeTitleColor;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    width: 35px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+  }
+
+  &__img {
+    display: none;
+  }
+
+  &__description {
+    @extend .font-sm;
+    padding-left: 0;
+    margin-bottom: 0;
+    flex-grow: 2;
+    color: $IngredientAndStepColor;
+  }
+}
+
+// レシピ詳細ページここまで
