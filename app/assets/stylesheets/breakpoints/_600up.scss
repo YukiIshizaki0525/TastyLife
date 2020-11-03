@@ -25,7 +25,7 @@
 }
 
 // トップページここから
-.newarrival {
+.list {
   &__container {
     // 1行の要素を左右に寄せる。flexの親要素に指定。
     justify-content: space-between;
@@ -39,11 +39,10 @@
   }
 }
 
-.recipe {
+.tweet {
   &__img {
     height: 125px;
     width: 125px;
-    overflow: hidden;
   }
 
   &__description {

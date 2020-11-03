@@ -1,0 +1,14 @@
+<div class="list__container">
+  <% @list.each do |recipe| %>
+    <%= link_to(recipe_path(id: recipe.id), class:'list__item') do %>
+      <div class="list__img">
+        <%= image_tag(recipe.image) if recipe.image.attached? %>
+      </div>
+      <div class="list__detail">
+        <span class="timestamp"><%= recipe.created_at.strftime('%Y年%m月%d日') %></span><br>
+        <p class="list__recipetitle"><%= recipe.title %></p><br>
+        <p class="list__description"><%= recipe.description %></p>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,18 @@
+<div class="tweet__container">
+  <% @tweet.each do |recipe| %>
+    <div class="tweet__item">
+      <%= link_to(recipe_path(id: recipe.id), class:'tweet__img') do %>
+        <%= image_tag(recipe.image) if recipe.image.attached? %>
+      <% end %>
+      <div class="tweet__detail">
+        <span class="timestamp"><%= recipe.created_at.strftime('%Y年%m月%d日') %></span><br>
+        <%= link_to recipe.title, recipe_path(id: recipe.id), class: 'tweet__title' %>
+        <div class="tweet__description"><%= recipe.description %></div>
+        <%= link_to(user_path(id: recipe.user_id), class:'tweet__userinfo') do %>
+          <div class="tweet__useravatar"><%= image_tag(recipe.user.avatar) %></div>
+          <p class="tweet__username"><%= recipe.user.name %></p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
