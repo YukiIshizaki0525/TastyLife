@@ -122,7 +122,7 @@ img {
   }
 }
 
-.newarrival {
+.list {
   &__container {
     @extend .flex;
     @extend .content-width;
@@ -168,7 +168,7 @@ img {
   }
 }
 
-.recipe {
+.tweet {
   &__item {
     @extend .content-width;
     @extend .mb-sm;
