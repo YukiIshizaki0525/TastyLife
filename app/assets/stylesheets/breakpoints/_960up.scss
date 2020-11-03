@@ -8,7 +8,7 @@
 }
 
 .font-lr {
-  font-size: 23px;
+  font-size: 28px;
 }
 
 .font-lg {
@@ -28,6 +28,7 @@
   flex-wrap: wrap;
 }
 
+// トップページここから
 .newarrival {
   &__container {
     justify-content: space-between;
@@ -48,3 +49,19 @@
     overflow: hidden;
   }
 }
+// トップページここまで
+
+// レシピ詳細ここから
+.description {
+  &__img {
+    height: 400px;
+  }
+}
+
+.step {
+  &__img {
+    height: 180px;
+    width: 180px;
+  }
+}
+// レシピ詳細ここまで
