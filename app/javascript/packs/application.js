@@ -11,6 +11,8 @@ require('jquery')
 require("bootstrap/dist/js/bootstrap")
 import "cocoon";
 
+require('user/tab')
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
