@@ -19,6 +19,10 @@
   margin-bottom: 150px !important;
 }
 
+.mr-sm {
+  margin-right: 30px !important;
+}
+
 .pb-lg {
   padding-bottom: 150px !important;
 }
@@ -64,3 +68,21 @@
   }
 }
 // レシピ詳細ここまで
+
+// ユーザー詳細ページここから
+.user {
+  &__img {
+    height: 200px;
+    width: 200px;
+  }
+}
+
+// ユーザー詳細ページここまで
+
+// 投稿・一覧ボタンここから
+.following,
+.followed,
+.submenu {
+  width: 150px;
+}
+// 投稿・一覧ボタンここまで

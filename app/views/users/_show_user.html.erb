@@ -1,0 +1,14 @@
+<div class="user__inner">
+  <div class="user__img">
+    <%= image_tag(@user.avatar) if @user.avatar.attached? %>
+  </div>
+  <div class="user__name"><%= @user.name %></div>
+  <div class="user__submenu">
+    <%= render 'shared/user_submenu' if @user == current_user %>
+    <div id="follow_form"><%= render 'follow_form' if user_signed_in? %></div>
+  </div>
+</div>
+
+<div class="user__stats">
+  <%= render 'shared/stats' %>
+</div>

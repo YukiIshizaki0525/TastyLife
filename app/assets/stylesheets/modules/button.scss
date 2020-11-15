@@ -1,0 +1,36 @@
+@import "modules/valiables.scss";
+
+.btn {
+  position: relative;
+  display: inline-block;
+  background-color: $White;
+  border: 1px solid $RecipeTitleColor;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: $RecipeTitleColor;
+  text-decoration: none !important;
+
+  &.following {
+    &:hover {
+      border: 1px solid $FollowBtnHoverColor;
+      color: $FollowBtnHoverColor;
+    }
+  }
+
+  &.followed {
+    background-color: $RecipeTitleColor;
+    color: $White;
+
+    &:hover {
+      background-color: $White;
+      color: $RecipeTitleColor;
+    }
+  }
+
+  &.submenu {
+    &:hover {
+      border: 1px solid $SubmenuBtnHoverColor;
+      color: $SubmenuBtnHoverColor;
+    }
+  }
+}

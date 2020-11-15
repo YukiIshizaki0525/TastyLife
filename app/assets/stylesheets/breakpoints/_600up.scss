@@ -4,6 +4,10 @@
   font-size: 24px;
 }
 
+.mr-sm {
+  margin-right: 16px !important;
+}
+
 .flex {
   flex-direction: row;
   flex-wrap: wrap;
@@ -93,3 +97,32 @@
   }
 }
 // レシピ詳細ここまで
+
+// ユーザー詳細ページここから
+.user {
+  &__img {
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
+  }
+}
+
+// ユーザー詳細ページここまで
+
+// 投稿・一覧ボタンここから
+.following,
+.followed,
+.submenu {
+  width: 130px;
+}
+
+// 投稿・一覧ボタンここまで
+
+// フォロー・フォロワー詳細ページここから
+.follow {
+  &__img {
+    height: 75px;
+    width: 75px;
+  }
+}
+// フォロー・フォロワー詳細ページここまで

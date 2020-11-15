@@ -1,11 +1,5 @@
 @import "modules/valiables.scss";
-
-/******************************************************************
-
-Stylesheet: ベーススタイル
-トップページのレイアウト
-
-******************************************************************/
+@import "modules/button.scss";
 
 body {
   // ①英語のみのフォント、②日本語のフォントの順に記載
@@ -40,6 +34,10 @@ img {
 
 .mb-lg {
   margin-bottom: 80px !important;
+}
+
+.mr-sm {
+  margin-right: 10px !important;
 }
 
 .pb-sm {
@@ -166,6 +164,12 @@ img {
       width: 100%;
     }
   }
+
+  &__notthing {
+    @extend .content-width;
+    @extend .font-md;
+    color: $UserNameColor;
+  }
 }
 
 .tweet {
@@ -206,12 +210,12 @@ img {
     display: inline-block;
     font-weight: bold;
     color: $RecipeTitleColor;
-    text-decoration: none !important;
+    text-decoration: none;
     outline: none;
 
     &:hover {
-      border-bottom: 1px solid $RecipeTitleColor;
-      color: $RecipeTitleColor;
+      color: $NameHoverColor;
+      text-decoration: underline;
     }
   }
 
@@ -245,7 +249,8 @@ img {
     color: $UserNameColor;
 
     &:hover {
-      border-bottom: 1px solid $UserNameColor;
+      color: $NameHoverColor;
+      text-decoration: underline;
     }
   }
 }
@@ -390,3 +395,151 @@ img {
 }
 
 // レシピ詳細ページここまで
+
+// ユーザー詳細ページここから
+.user {
+  @extend .content-width;
+
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-top: 10px;
+    @extend .mb-sm;
+  }
+
+  &__img {
+    @extend .mr-sm;
+    height: 75px;
+    width: 75px;
+    overflow: hidden;
+    border-radius: 100%;
+
+    & > img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__name {
+    @extend .font-lr;
+    @extend .mb-sm;
+    flex-grow: 2;
+    color: $UserNameColor;
+    font-weight: bold;
+  }
+
+  &__submenu {
+    align-self: flex-start;
+  }
+
+  &__stats {
+    @extend .mb-sm;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid $ItemBorderColor;
+
+    & > div {
+      &:nth-child(3) {
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &__tab {
+    position: relative;
+    display: block;
+    flex-basis: 32%;
+    text-decoration: none !important;
+
+    &::after {
+      content: "";
+      position: absolute;
+      background-color: $ItemSeparateColor;
+      right: 0;
+      top: 10px;
+      width: 1px;
+      height: 28px;
+    }
+
+    & > p {
+      @extend .font-sm;
+      color: $UserNameColor;
+      margin-bottom: 5px;
+      text-align: center;
+    }
+
+    &.active {
+      & > p {
+        color: $SubmenuBtnHoverColor;
+      }
+    }
+
+    &:not(.active):hover {
+      opacity: 0.5;
+      transition: opacity 0.3s;
+    }
+  }
+
+  &__count {
+    font-weight: bold;
+  }
+}
+
+// ユーザー詳細ページここまで
+
+// 投稿・一覧ボタンここから
+.following,
+.followed,
+.submenu {
+  @extend .font-md;
+  width: auto;
+}
+
+// 投稿・一覧ボタンここまで
+
+// フォロー・フォロワー詳細ページここから
+.follow {
+  &__item {
+    @extend .content-width;
+    @extend .mb-sm;
+    @extend .pb-sm;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $ItemBorderColor;
+  }
+
+  &__img {
+    @extend .mr-sm;
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: $ItemHoverColor;
+      opacity: 0.75;
+    }
+
+    & > img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__name {
+    @extend .font-md;
+    text-decoration: none;
+    color: $UserNameColor;
+
+    &:hover {
+      color: $NameHoverColor;
+      text-decoration: underline;
+    }
+  }
+}
+// フォロー・フォロワー詳細ページここまで
