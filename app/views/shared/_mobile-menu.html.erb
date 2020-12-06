@@ -1,0 +1,19 @@
+<nav class="mobile-menu">
+  <%= link_to root_path do %>
+    <div class="logo">
+      <%= image_tag 'logo1.png' %>
+    </div>
+  <% end %>
+  <ul class="mobile-menu__main">
+    <li class="mobile-menu__item"><%= link_to 'トップページ', root_path %></li>
+    <li class="mobile-menu__item"><%= link_to 'レシピ一覧', recipes_path %></li>
+    <li class="mobile-menu__item"><%= link_to 'ユーザー一覧', users_path %></li>
+    <% if user_signed_in? %>
+      <li class="mobile-menu__item"><%= link_to 'マイページ', user_path(id: current_user.id) %></li>
+      <li class="mobile-menu__item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+    <% else %>
+      <li class="mobile-menu__item"><%= link_to '新規登録', new_user_registration_path %></li>
+      <li class="mobile-menu__item"><%= link_to 'ログイン', new_user_session_path %></li>
+    <% end %>
+  </ul>
+</nav>

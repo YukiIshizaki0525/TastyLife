@@ -48,10 +48,21 @@ img {
   padding-bottom: 80px !important;
 }
 
+.main-top {
+  padding-top: $navHeight;
+}
+
 .content-width {
   width: 90%;
   margin: 0 auto;
   max-width: $contentMaxWidth;
+}
+
+#container {
+  position: relative;
+  z-index: 5;
+  transition: all 0.5s;
+  background-color: $White;
 }
 
 .timestamp {
@@ -79,6 +90,74 @@ img {
   @extend .content-width;
   @extend .mb-sm;
 }
+
+.logo {
+  display: block;
+  height: $LogoHeight;
+  width: $LogoWidth;
+
+  & > img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+}
+// ヘッダーここから
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $navHeight;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+
+  &.triggered {
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 10px 0 25px -10px rgba(0, 0, 0, 0.5);
+  }
+
+  &__inner {
+    @extend .content-width;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__nav {
+    display: none;
+  }
+
+  &__ul {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__li {
+    @extend .font-md;
+    font-weight: bold;
+    margin-left: 20px;
+
+    & > a {
+      color: $RecipeTitleColor;
+      text-decoration: none !important;
+    }
+  }
+}
+// ヘッダーここまで
+
+// モバイルメニューここから
+.mobile-menu {
+  &__btn {
+    display: block;
+  }
+}
+// モバイルメニューここまで
+
 // トップページ一覧ここから
 .introduction {
   @extend .content-width;
