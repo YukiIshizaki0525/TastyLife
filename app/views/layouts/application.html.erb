@@ -6,16 +6,25 @@
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application', defer: true %>
   </head>
 
   <body>
-    <%= render 'shared/header' %>
-    <%= flash_message(flash[:success], :success) if flash[:success] %>
-    <%= flash_message(flash[:error], :danger) if flash[:error] %>
-    <%= flash_message(flash[:alert], :warning) if flash[:alert] %>
-    <%= flash_message(flash[:notice], :info) if flash[:notice] %>
-    <%= yield %>
+    <div id="global-container">
+      <div id="container">
+        <div class="mobile-menu__cover"></div>
+        <div class="nav-trigger"></div>
+        <%= render 'shared/header' %>
+        <%= flash_message(flash[:success], :success) if flash[:success] %>
+        <%= flash_message(flash[:error], :danger) if flash[:error] %>
+        <%= flash_message(flash[:alert], :warning) if flash[:alert] %>
+        <%= flash_message(flash[:notice], :info) if flash[:notice] %>
+        <div class="main-top">
+          <%= yield %>
+        </div>
+      </div>
+      <%= render 'shared/mobile-menu' %>
+    </div>
   </body>
 </html>

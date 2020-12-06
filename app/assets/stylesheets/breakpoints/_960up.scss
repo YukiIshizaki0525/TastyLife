@@ -32,6 +32,22 @@
   flex-wrap: wrap;
 }
 
+// ヘッダーここから
+.header {
+  &__nav {
+    display: block;
+  }
+}
+// ヘッダーここまで
+
+// モバイルメニューここから
+.mobile-menu {
+  &__btn {
+    display: none;
+  }
+}
+// モバイルメニューここまで
+
 // トップページここから
 .list {
   &__container {
