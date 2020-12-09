@@ -4,6 +4,7 @@
   </div>
   <div class="login__contentBx">
     <div class="login__formBx">
+      <%= render 'layouts/notifications' %>
       <div class="login__title">ログイン</div>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="login__inputBx">

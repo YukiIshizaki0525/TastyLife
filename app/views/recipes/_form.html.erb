@@ -1,6 +1,6 @@
-<%= form_with(model: @recipe, local: true) do |f| %>
-<%= render 'layouts/error_messages', model: f.object %>
+<%= render 'shared/error_messages' %>
 
+<%= form_with(model: @recipe, local: true) do |f| %>
   <!-- 中見出しここから -->
   <%= f.text_field :title,  :placeholder =>"レシピのタイトルを入力", id: "recipe-title"%>
   <!-- 中見出しここまで -->

@@ -109,6 +109,7 @@ img {
   left: 0;
   width: 100%;
   height: $navHeight;
+  background-color: transparent;
   display: flex;
   align-items: center;
   z-index: 10;
@@ -355,6 +356,10 @@ img {
       height: 100%;
       width: 100%;
     }
+  }
+
+  &__flash {
+    color: $Black;
   }
 
   &__title {

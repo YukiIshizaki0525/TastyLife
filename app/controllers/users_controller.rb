@@ -1,22 +1,20 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show , :destroy, :following, :followers]
   def index
     @users = User.page(params[:page]).per(10)
   end
 
   def show
-    @user = User.find(params[:id])
     @list = @user.recipes.page(params[:page])
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = "User deleted"
-    redirect_to users_url
+    @user.destroy
+    redirect_to users_url, flash: { success: "「#{@user.name}を削除しました」"}
   end
 
   def following
     @title = "Following"
-    @user  = User.find(params[:id])
     @users = @user.following.page(params[:page])
     render 'show_follow'
   end
@@ -24,8 +22,13 @@ class UsersController < ApplicationController
 
   def followers
     @title = "Followers"
-    @user  = User.find(params[:id])
     @users = @user.followers.page(params[:page])
     render 'show_follow'
   end
+
+    private
+
+    def set_user
+      @user  = User.find(params[:id])
+    end
 end
