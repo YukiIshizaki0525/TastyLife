@@ -8,45 +8,41 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @recipe = Recipe.new
+    @recipe = Recipe.new(flash[:recipe])
   end
 
   def edit
   end
 
   def create
-    @recipe = current_user.recipes.build(recipe_params)
-    @recipe.image.attach(params[:recipe][:image])
+    recipe = current_user.recipes.new(recipe_params)
+    recipe.image.attach(params[:recipe][:image])
 
-    respond_to do |format|
-      if @recipe.save
-        format.html { redirect_to @recipe, notice: 'レシピを投稿しました。' }
-        format.json { render :show, status: :created, location: @recipe }
-      else
-        format.html { render :new }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
+    if recipe.save
+      redirect_to recipe, flash: { notice: "「#{recipe.title}」のレシピを投稿しました。" }
+    else
+      redirect_to new_recipe_path, flash: {
+        recipe: recipe,
+        error_messages: recipe.errors.full_messages
+      }
     end
   end
 
   def update
-    respond_to do |format|
-      if @recipe.update(recipe_params)
-        format.html { redirect_to @recipe, notice: 'レシピを更新しました。' }
-        format.json { render :show, status: :ok, location: @recipe }
-      else
-        format.html { render :edit }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
+    @recipe.update(recipe_params)
+    if @recipe.save
+      redirect_to @recipe, flash: { notice: "「#{@recipe.title}」のレシピを更新しました。" }
+    else
+      redirect_to :back, flash: {
+        recipe: @recipe,
+        error_messages: @recipe.errors.full_messages
+      }
     end
   end
 
   def destroy
     @recipe.destroy
-    respond_to do |format|
-      format.html { redirect_to recipes_url, notice: 'レシピを削除しました。' }
-      format.json { head :no_content }
-    end
+    redirect_to recipes_path, flash: { notice: "「#{@recipe.title}」のレシピを削除しました。" }
   end
   
   private

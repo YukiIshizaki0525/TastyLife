@@ -1,0 +1,35 @@
+@import "modules/valiables.scss";
+@import "breakpoints/base.scss";
+
+// ログイン時のフラッシュメッセージここから
+.notice,
+.success {
+  @extend .content-width;
+  @extend .mb-sm;
+  @extend .font-sm;
+  font-weight: bold;
+  color: $White;
+  padding: 15px;
+  background-color: rgba(173, 216, 230, 0.9);
+  border-bottom: 2px solid rgb(0, 191, 255);
+  border-radius: 5px;
+}
+
+// deviseはalert属性を返す
+.alert {
+  @extend .content-width;
+  @extend .mb-sm;
+  @extend .font-sm;
+  font-weight: bold;
+  color: $White;
+  padding: 15px 0;
+  background-color: rgba(250, 128, 114, 0.9);
+  border-bottom: 2px solid rgb(255, 99, 71);
+  border-radius: 5px;
+
+  & ul > li {
+    @extend .mb-sm;
+    list-style: none !important;
+  }
+}
+// ログイン時のフラッシュメッセージここまで

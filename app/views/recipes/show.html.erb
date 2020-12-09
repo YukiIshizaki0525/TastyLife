@@ -5,6 +5,9 @@
         <%= image_tag @recipe.image if @recipe.image.attached? %>
       </div>
       <div class="description__texts">
+        <!-- 投稿完了後のフラッシュメッセージ -->
+        <%= render 'layouts/notifications' %>
+
         <div class="description__title">
           <%= @recipe.title %>
           <div class="description__detail">
