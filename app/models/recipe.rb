@@ -23,6 +23,8 @@ class Recipe < ApplicationRecord
   has_many :steps, dependent: :destroy
   accepts_nested_attributes_for :steps, allow_destroy: true
 
+  has_many :comments
+
   # レシピ完成イメージの画像
   has_one_attached :image
 

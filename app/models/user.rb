@@ -35,6 +35,8 @@
 class User < ApplicationRecord
   attr_accessor :login
   has_many :recipes, dependent: :destroy
+  has_many :comments
+
   has_many :active_relationships,
               class_name:  "Relationship",
               foreign_key: "follower_id",
@@ -52,6 +54,8 @@ class User < ApplicationRecord
   has_many :followers,
               through: :passive_relationships,
               source: :follower
+
+  
   # アイコン画像追加のため
   has_one_attached :avatar
 

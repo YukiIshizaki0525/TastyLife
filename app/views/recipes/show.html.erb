@@ -6,7 +6,9 @@
       </div>
       <div class="description__texts">
         <!-- 投稿完了後のフラッシュメッセージ -->
-        <%= render 'layouts/notifications' %>
+        <% unless flash[:error_messages] %>
+          <%= render 'layouts/notifications' %>
+        <% end %>
 
         <div class="description__title">
           <%= @recipe.title %>
@@ -46,5 +48,16 @@
           </div>
       </div>
     <% end %>
+  </section>
+  <section class="comment">
+    <div class="comment__inner">
+      <div class="comment__texts">
+        <div class="comment__count">コメント<%= @comments.count %>件</div>
+        <%= render @comments %>
+      </div>
+      <div class="comment__form">
+        <%= render 'comments/form' %>
+      </div>
+    </div>
   </section>
 </main>

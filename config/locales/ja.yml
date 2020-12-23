@@ -13,6 +13,9 @@ ja:
         quantity: 分量
       recipe/steps:
         direction: 手順
+      comment:
+        name: 名前
+        comment: コメント
   views:
     pagination:
       first: "&laquo; 最初"

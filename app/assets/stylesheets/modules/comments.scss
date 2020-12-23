@@ -1,0 +1,98 @@
+@import "breakpoints/base.scss";
+@import "modules/valiables.scss";
+@import "modules/button.scss";
+
+.comment {
+  @extend .content-width;
+
+  &__inner {
+    @extend .flex;
+  }
+
+  &__form,
+  &__texts {
+    @extend .mb-sm;
+    padding: 30px 20px;
+    background: $White;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    width: 100%;
+  }
+
+  &__count {
+    @extend .font-md;
+    @extend .mb-sm;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: $IngredientAndStepColor;
+    border-bottom: 1px solid $ItemBorderColor;
+  }
+
+  &__item {
+    @extend .mb-sm;
+    padding: 5px 0;
+    border-bottom: 1px solid $ItemBorderColor;
+  }
+
+  &__content {
+    @extend .mb-sm;
+    @extend .font-md;
+    color: $IngredientAndStepColor;
+    word-break: break-all;
+  }
+
+  &__info {
+    @extend .font-sm;
+    display: flex;
+    align-items: center;
+  }
+
+  &__img {
+    height: 25px;
+    width: 25px;
+    overflow: hidden;
+    border-radius: 100%;
+    object-fit: cover;
+  }
+
+  &__name {
+    color: $UserNameColor;
+    text-decoration: none !important;
+    flex-grow: 2;
+    padding-left: 5px;
+  }
+
+  &__date {
+    color: $DateColor;
+  }
+
+  &__delete {
+    color: red !important;
+    font-weight: 400;
+    float: right;
+    padding-left: 5px;
+  }
+
+  &__inputBx {
+    position: relative;
+    width: 100%;
+  }
+
+  &__label {
+    @extend .font-md;
+    color: $IngredientAndStepColor;
+    font-weight: bold;
+  }
+
+  &__area {
+    @extend .font-sm;
+    @extend .mb-sm;
+    width: 100%;
+    border: 1px solid $ItemBorderColor;
+    padding: 10px;
+    color: #111;
+    outline: none;
+    resize: none;
+    font-weight: 300;
+  }
+}

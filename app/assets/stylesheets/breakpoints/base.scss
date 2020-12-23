@@ -436,6 +436,7 @@ img {
 
 .step {
   @extend .content-width;
+  @extend .mb-lg;
 
   &__item {
     border-bottom: 1px dotted $ItemBorderColor;
