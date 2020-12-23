@@ -33,4 +33,10 @@
       color: $SubmenuBtnHoverColor;
     }
   }
+
+  &.comment_btn {
+    background-color: $RecipeTitleColor;
+    color: $White;
+    letter-spacing: 3px;
+  }
 }

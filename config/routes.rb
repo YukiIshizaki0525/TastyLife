@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  root 'homes#index'
   
   # devise_for :users
   devise_for :users, controllers: {
@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     end
   end
   
-  root 'homes#index'
-  
+  resources :recipes do
+    resources :comments, only: [:create, :destroy]
+  end
+
 end

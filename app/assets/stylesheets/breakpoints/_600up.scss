@@ -159,3 +159,16 @@
   }
 }
 // ログインページここまで
+
+// コメント表示・フォームここから
+.comment {
+  &__inner {
+    justify-content: space-between;
+  }
+
+  &__texts,
+  &__form {
+    flex-basis: 47%;
+  }
+}
+// コメント表示・フォームここから

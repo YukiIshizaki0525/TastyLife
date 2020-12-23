@@ -102,3 +102,16 @@
   width: 150px;
 }
 // 投稿・一覧ボタンここまで
+
+// コメント表示・フォームここから
+.comment {
+  &__texts,
+  &__form {
+    padding: 45px 30px;
+  }
+
+  &__name {
+    padding-left: 15px;
+  }
+}
+// コメント表示・フォームここまで

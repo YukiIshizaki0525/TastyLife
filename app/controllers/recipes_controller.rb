@@ -1,14 +1,18 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+
   def index
     @recipes = Recipe.all
   end
 
   def show
+    @comments = @recipe.comments
+    @comment = current_user.comments.new #=> formのパラメータ用にCommentオブジェクトを取得
   end
 
   def new
     @recipe = Recipe.new(flash[:recipe])
+    @comment = current_user.comments.new
   end
 
   def edit
@@ -33,10 +37,9 @@ class RecipesController < ApplicationController
     if @recipe.save
       redirect_to @recipe, flash: { notice: "「#{@recipe.title}」のレシピを更新しました。" }
     else
-      redirect_to :back, flash: {
-        recipe: @recipe,
-        error_messages: @recipe.errors.full_messages
-      }
+      flash[:recipe] = @recipe
+      flash[:error_messages] = @recipe.errors.full_messages
+      redirect_back fallback_location: @recipe
     end
   end
 
