@@ -39,4 +39,95 @@
     color: $White;
     letter-spacing: 3px;
   }
+
+  &.slide-bg {
+    color: $NameHoverColor;
+    background-color: $White;
+    border: 1px solid $NameHoverColor;
+    letter-spacing: 2px;
+    font-weight: 600;
+    padding: 10px 40px;
+    margin: 10px auto;
+    overflow: hidden;
+    z-index: 1;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      background-color: $NameHoverColor;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      transition: transform 0.3s;
+      z-index: -1;
+    }
+
+    &:hover {
+      color: $White;
+
+      &::before {
+        transform: none;
+      }
+    }
+  }
+
+  &.edit-btn {
+    text-decoration: none !important;
+
+    &:hover {
+      background-color: $RecipeTitleColor;
+      color: $White;
+    }
+  }
+
+  &.edit-cancel {
+    text-decoration: none !important;
+    letter-spacing: 2px;
+    font-weight: 600;
+    padding: 10px 40px;
+    margin: 10px auto;
+
+    &:hover {
+      background-color: $RecipeTitleColor;
+      color: $White;
+    }
+  }
+}
+
+.add-field-btn {
+  display: block;
+  font-size: 16px;
+  padding: 10px;
+  margin: 0 auto;
+  width: 50%;
+  text-align: center;
+  outline: none;
+  text-decoration: none !important;
+  border: 1px solid $PageTitleColor;
+  letter-spacing: 1px;
+  border-radius: 30px;
+  background: $NameHoverColor;
+  color: $White !important;
+  border: none;
+  cursor: pointer;
+}
+
+.remove-field-btn,
+.add-photo-btn {
+  height: 40px;
+  width: 40px;
+  overflow: hidden;
+
+  & > img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.submit-btn {
+  text-align: center;
 }

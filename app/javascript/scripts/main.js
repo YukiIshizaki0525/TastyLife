@@ -1,10 +1,12 @@
 import { ScrollObserver } from './libs/scroll'
 
-document.addEventListener("DOMContentLoaded", function () {
+window.addEventListener('turbolinks:load', function () {
 	new Main();
-  new MobileMenu();
+	new MobileMenu();
+	new addFields();
+	new removeFields();
+	new imgPreView();
 });
-
 class Main {
 	constructor() {
 		this.header = document.querySelector(".header");
@@ -49,4 +51,104 @@ class MobileMenu {
 		this.DOM.btn.addEventListener(this.eventType, this._toggle.bind(this));
 		this.DOM.cover.addEventListener(this.eventType, this._toggle.bind(this));
 	}
+}
+
+class addFields {
+	constructor(){
+    this.links = document.querySelectorAll('.js-add_fields');
+    this.iterateLinks();
+  }
+
+  iterateLinks() {
+    if(this.links.length === 0) return;
+    this.links.forEach((link)=>{
+        link.addEventListener('click', (e) => {
+            this.handleClick(link, e);
+        });
+    });
+  }
+
+  handleClick(link, e) {
+    if (!link || !e) return;
+    e.preventDefault();
+    let time = new Date().getTime();
+    let linkId = link.dataset.id;
+    let regexp = linkId ? new RegExp(linkId, 'g') : null ;
+    let newFields = regexp ? link.dataset.fields.replace(regexp, time) : null ;
+    newFields ? link.insertAdjacentHTML('beforebegin', newFields) : null ;
+  }
+
+}
+class removeFields {
+  constructor(){
+    this.iterateLinks();
+  }
+
+  iterateLinks() {
+		document.addEventListener('click', e => {
+			if (e.target && e.target.className == 'js-remove_fields') {
+				this.handleClick(e.target, e)
+			}
+		})
+  }
+
+  handleClick(link, e) {
+    if (!link || !e) return
+    e.preventDefault()
+    let fieldParent = link.closest('.nested-fields')
+    let deleteField = fieldParent
+      ? fieldParent.querySelector('input[type="hidden"]')
+      : null
+    if (deleteField) {
+      deleteField.value = 1
+      fieldParent.style.display = 'none'
+    }
+  }
+}
+
+class imgPreView{
+	constructor() {
+		this.element = document.querySelector('.image')
+		this.preview = document.querySelector('.preview')
+		this._preview();
+
+		// this._mutation();
+	}
+
+	_preview() {
+		this.element.addEventListener('input', (event) => {
+			const target = event.target
+			const files = target.files
+			const file = files[0]
+
+			const reader = new FileReader()
+			reader.onload = () => {
+				const img = new Image()
+				img.src = reader.result
+				this.preview.appendChild(img)
+			}
+			reader.readAsDataURL(file)
+		})
+	}
+
+	// 追加されたnested-fieldsにもプレビュー機能をつけるため記載
+	// _mutation() {
+	// 	const target = document.querySelector('.nested-fields');
+	// 	const mutationObserver = new MutationObserver(callback);
+
+	// 	function callback(mutations) {
+	// 		mutations.forEach(mutation => {
+	// 			mutation.addedNodes.forEach( node => {
+	// 				node._preview();
+	// 			});
+	// 		})
+	// 	}
+
+	// 	const option = {
+	// 		childList: true,
+	// 		subtree: true
+	// 	}
+
+	// 	mutationObserver.observe(target, option);
+	// }
 }

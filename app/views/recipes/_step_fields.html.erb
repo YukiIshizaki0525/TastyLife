@@ -1,5 +1,14 @@
 <div class="nested-fields">
-  <%= f.file_field :step_image, accept: "image/jpeg,image/gif,image/png" %><br>
-  <%= f.text_area :direction %>
-  <%= link_to_remove_association "削除", f, class: "btn btn-outline-danger" %>
+  <%= f.hidden_field :_destroy %>
+  <div class="step__inputBx">
+    <p class="step__number"></p>
+    <%= f.text_area :direction, class:"step__input"%>
+    <label class="step__img-file">
+      <%= image_tag 'add_a_photo', class:"add-photo-btn"%>
+      <%= f.file_field :step_image, accept: "image/jpeg,image/gif,image/png" , class: "image"%>
+    </label>
+    <%= link_to '#' , class: "remove-field-btn" do %>
+      <%= image_tag 'delete', class: "js-remove_fields" %>
+    <% end %>
+  </div>
 </div>

@@ -18,15 +18,20 @@
         </div>
 
         <div class="recipeuser">
-          <div class="recipeuser__title">ユーザープロフィール</div>
-          <%= link_to(user_path(id: @recipe.user_id), class:'recipeuser__inner') do %>
-            <div class="recipeuser__img"><%= image_tag @recipe.user.avatar %></div>
-            <div class="recipeuser__name"><%= @recipe.user.name %></div>
-          <% end %>
+          <div class="cooking-title">ユーザープロフィール</div>
+          <div class="recipeuser__inner">
+            <div class="recipeuser__img">
+              <%= link_to image_tag(@recipe.user.avatar), user_path(id: @recipe.user_id) %>
+            </div>
+            <%= link_to @recipe.user.name, user_path(id: @recipe.user_id), class:"recipeuser__name" %>
+            <% if user_signed_in? && @recipe.user == current_user %>
+              <%= link_to 'レシピ編集', edit_recipe_path, class:"btn edit-btn" %>
+            <% end %>
+          </div>
         </div>
 
         <section class="ingredient">
-          <div class="ingredient__title">材料</div>
+          <div class="cooking-title">材料</div>
           <% @recipe.ingredients.each do |ingredient| %>
             <div class="ingredient__ul">
               <div><%= ingredient.content %></div>
@@ -38,14 +43,14 @@
     </div>
   </section>
   <section class="step">
-    <div class="step__title">作り方</div>
-    <% @recipe.steps.each_with_index do |step, i| %>
+    <div class="cooking-title">作り方</div>
+    <% @recipe.steps.each do |step| %>
       <div class="step__item">
         <div class="step__inner">
-          <p class="step__number"><%= "#{i+1}" %></p>
+          <p class="step__number"></p>
           <p class="step__description"><%= step.direction %></p>
           <div class="step__img"><%= image_tag step.step_image if step.step_image.attached? %></div>
-          </div>
+        </div>
       </div>
     <% end %>
   </section>
