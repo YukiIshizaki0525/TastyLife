@@ -1,44 +1,48 @@
 <%= render 'shared/error_messages' %>
 
-<%= form_with(model: @recipe, local: true) do |f| %>
-  <!-- 中見出しここから -->
-  <%= f.text_field :title,  :placeholder =>"レシピのタイトルを入力", id: "recipe-title"%>
-  <!-- 中見出しここまで -->
-
-  <!-- 投稿ボタンここから -->
-  <%= f.submit class: "btn btn-primary w-150px"%>
-  <!-- 投稿ボタンここまで -->
-
-  <!-- 左ここから -->
-  <div class="left">
-    <div class="form-recipe-image">
-      <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %><br>
+<main>
+  <%= form_with(model: @recipe, local: true) do |f| %>
+  <section class="description">
+    <div class="description__inner">
+      <div class="description__img">
+        <div class="cooking-title">写真</div>
+        <label class="description__img-file">
+          <%= image_tag 'add_a_photo', class:"add-photo-btn"%>
+          <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "image" %>
+          <div class="preview description__preview"></div>
+          <div class="description__img">
+            <%= image_tag @recipe.image if @recipe.image.attached? %>
+          </div>
+        </label>
+      </div>
+      <div class="description__texts">
+        <div class="cooking-title">レシピについて</div>
+        <div class="description__inputBx">
+          <%= f.text_field :title, placeholder: "タイトル" %>
+          <%= f.text_area :description, placeholder: "サブタイトル" %>
+        </div>
+        <section class="ingredient">
+          <div class="cooking-title">材料</div>
+            <%= f.fields_for :ingredients do |ingredient| %>
+              <%= render "ingredient_fields", f: ingredient %>
+            <% end %>
+            <%= link_to_add_fields "材料の追加", f, :ingredients %>
+        </section>
+      </div>
     </div>
-    <h3>手順一覧</h3>
-
-    <div class="form-steps">
+  </section>
+  <section class="step">
+    <div class="cooking-title">作り方</div>
+    <div class="field">
       <%= f.fields_for :steps do |step| %>
         <%= render "step_fields", f: step %>
       <% end %>
-      <%= link_to_add_association '手順を追加', f, :steps %>
+      <%= link_to_add_fields "作り方の追加", f, :steps %>
     </div>
-  </div>
-  <!-- 左ここまで -->
+  </section>
 
-  <!-- 右ここから -->
-  <div class="right">
-    <h3>レシピの説明</h3>
-    <%= f.text_area :description, id: "form-recipe-description" %>
+  <div class="submit-btn"><%= f.button "送信する" , class:"btn slide-bg"%></div>
+  
+  <% end %>
+</main>
 
-    <h3>材料・分量</h3>
-
-    <div class="form-ingredient">
-      <%= f.fields_for :ingredients do |ingredient| %>
-        <%= render "ingredient_fields", f: ingredient %>
-      <% end %>
-      <%= link_to_add_association '材料・分量を追加', f, :ingredients %>
-    </div>
- </div>
-  <!-- 右ここまで -->
-
-<% end %>

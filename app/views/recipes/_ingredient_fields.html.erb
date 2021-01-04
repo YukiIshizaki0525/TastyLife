@@ -1,5 +1,10 @@
-<div class="nested-fields ">
-  <%= f.text_field :content %>
-  <%= f.text_field :quantity %>
-  <%= link_to_remove_association "削除", f, class: "btn btn-outline-danger" %>
+<div class="nested-fields">
+  <%= f.hidden_field :_destroy %>
+  <div class="ingredient__inputBx">
+    <%= f.text_field :content, placeholder: "材料", class:"ingredient__content"%>
+    <%= f.text_field :quantity, placeholder: "分量", class:"ingredient__quantity" %>
+    <%= link_to '#' , class: "remove-field-btn" do %>
+      <%= image_tag 'delete', class: "js-remove_fields" %>
+    <% end %>
+  </div>
 </div>

@@ -102,6 +102,29 @@ img {
     width: 100%;
   }
 }
+
+.cooking-title {
+  @extend .font-md;
+  @extend .mb-sm;
+  font-weight: bold;
+  color: $DetailTitle;
+  border-bottom: 1px solid $DetailTitle;
+}
+
+.recipe-input {
+  @extend .font-md;
+  border: none;
+  border-bottom: 2px solid $InputBorderColor;
+  outline: none;
+  resize: none;
+  transition: border-color 0.3s;
+  height: 40px;
+
+  &:focus {
+    border-bottom: 2px solid $RecipeTitleColor;
+  }
+}
+
 // ヘッダーここから
 .header {
   position: fixed;
@@ -337,6 +360,7 @@ img {
 // トップページ一覧ここまで
 
 // レシピ詳細ページここから
+// ※ レシピ投稿フォームでも.descriptionクラスを使用
 .description {
   @extend .content-width;
   @extend .mb-lg;
@@ -345,9 +369,9 @@ img {
     @extend .flex;
     justify-content: space-between;
   }
-  &__img {
+  &__img,
+  &__preview {
     @extend .mb-sm;
-    height: 320px;
     width: 100%;
     overflow: hidden;
 
@@ -356,10 +380,6 @@ img {
       height: 100%;
       width: 100%;
     }
-  }
-
-  &__flash {
-    color: $Black;
   }
 
   &__title {
@@ -374,28 +394,136 @@ img {
     font-weight: normal;
     color: $SubTitle;
   }
+
+  &__img-file {
+    input[type="file"] {
+      display: none;
+    }
+  }
+
+  &__inputBx {
+    @extend .mb-sm;
+
+    & > input[type="text"],
+    & > textarea {
+      @extend .mb-sm;
+      @extend .recipe-input;
+      width: 100%;
+      color: $RecipeTitleColor;
+    }
+  }
 }
 
 .recipeuser {
   @extend .mb-sm;
 
-  &__title {
-    @extend .font-md;
-    @extend .mb-sm;
-    font-weight: bold;
-    color: $DetailTitle;
-    border-bottom: 1px solid $DetailTitle;
-  }
-
   &__inner {
     display: flex;
     align-items: center;
-    text-decoration: none !important;
+
+    & > :last-child {
+      margin-left: auto;
+    }
   }
 
   &__img {
     height: 40px;
     width: 40px;
+    overflow: hidden;
+
+    & a > img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__name {
+    @extend .font-md;
+    margin-left: 10px;
+
+    &:hover {
+      color: $UserNameColor;
+      text-decoration: underline;
+    }
+  }
+}
+
+.ingredient {
+  &__ul {
+    @extend .font-sm;
+    display: flex;
+    justify-content: space-between;
+    color: $IngredientAndStepColor;
+    border-bottom: 1px solid $ItemBorderColor;
+    padding: 7px;
+  }
+
+  &__inputBx {
+    @extend .mb-sm;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__content,
+  &__quantity {
+    @extend .recipe-input;
+    color: $IngredientAndStepColor;
+  }
+
+  &__content {
+    width: 50%;
+  }
+
+  &__quantity {
+    width: 30%;
+  }
+}
+
+.step {
+  @extend .content-width;
+  @extend .mb-lg;
+  counter-reset: number;
+
+  &__item {
+    border-bottom: 1px dotted $ItemBorderColor;
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: row;
+    padding: 20px 0;
+  }
+
+  &__inputBx {
+    @extend .mb-sm;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  &__number {
+    @extend .font-sm;
+    color: $White;
+    background-color: $RecipeTitleColor;
+    border-radius: 3px;
+    margin-bottom: 0;
+    width: 35px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    counter-increment: number;
+
+    &::before {
+      content: counter(number);
+    }
+  }
+
+  &__img {
+    display: block;
+    height: 75px;
+    width: 110px;
+    border-radius: 4px;
     overflow: hidden;
 
     & > img {
@@ -405,77 +533,24 @@ img {
     }
   }
 
-  &__name {
-    margin-left: 10px;
-    color: $UserNameColor;
-
-    &:hover {
-      border-bottom: 1px solid $UserNameColor;
+  &__img-file {
+    input[type="file"] {
+      display: none;
     }
-  }
-}
-
-.ingredient {
-  &__title {
-    @extend .font-md;
-    @extend .mb-sm;
-    font-weight: bold;
-    color: $DetailTitle;
-    border-bottom: 1px solid $DetailTitle;
-  }
-
-  &__ul {
-    @extend .font-sm;
-    display: flex;
-    justify-content: space-between;
-    color: $IngredientAndStepColor;
-    border-bottom: 1px solid $ItemBorderColor;
-    padding: 7px;
-  }
-}
-
-.step {
-  @extend .content-width;
-  @extend .mb-lg;
-
-  &__item {
-    border-bottom: 1px dotted $ItemBorderColor;
-  }
-
-  &__inner {
-    @extend .flex;
-    padding: 10px 0;
-  }
-
-  &__title {
-    @extend .font-md;
-    font-weight: bold;
-    color: $DetailTitle;
-    border-bottom: 1px solid $DetailTitle;
-  }
-
-  &__number {
-    @extend .font-sm;
-    color: $White;
-    background-color: $RecipeTitleColor;
-    margin-bottom: 10px;
-    border-radius: 3px;
-    width: 35px;
-    height: 20px;
-    line-height: 20px;
-    text-align: center;
-  }
-
-  &__img {
-    display: none;
   }
 
   &__description {
     @extend .font-sm;
-    padding-left: 0;
-    margin-bottom: 0;
-    flex-grow: 2;
+    width: 50%;
+    padding: 0 10px;
     color: $IngredientAndStepColor;
+  }
+
+  &__input {
+    @extend .recipe-input;
+    margin: 10px 0;
+    color: $IngredientAndStepColor;
+    width: 100%;
   }
 }
 
@@ -573,7 +648,6 @@ img {
     font-weight: bold;
   }
 }
-
 // ユーザー詳細ページここまで
 
 // 投稿・一覧ボタンここから
@@ -693,11 +767,8 @@ img {
     & > input[type="submit"] {
       background: $NameHoverColor;
       color: $White;
-      border: none;
-      font-size: 16px;
       font-weight: 500;
       cursor: pointer;
-      border-radius: 30px;
     }
 
     & > a {

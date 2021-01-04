@@ -5,5 +5,5 @@
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.label :comment, "コメント投稿はこちら", class: 'comment__label'%>
   <%= f.text_area :comment, placeholder: "100文字まで入力可能です", class: 'comment__area' %>
-  <%= f.submit '送信', class: "btn comment_btn" %>
+  <div class="submit-btn"><%= f.button "送信する" , class:"btn slide-bg"%></div>
 <% end %>

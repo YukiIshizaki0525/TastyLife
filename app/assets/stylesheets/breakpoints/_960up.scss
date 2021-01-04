@@ -77,6 +77,13 @@
   }
 }
 
+.recipeuser {
+  &__img {
+    height: 60px;
+    width: 60px;
+  }
+}
+
 .step {
   &__img {
     height: 180px;

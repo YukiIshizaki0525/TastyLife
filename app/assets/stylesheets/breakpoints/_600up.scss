@@ -1,4 +1,5 @@
 @import "modules/valiables.scss";
+@import "modules/button.scss";
 
 .font-lr {
   font-size: 24px;
@@ -69,21 +70,10 @@
     padding: 18px 0;
   }
 
-  &__number {
-    margin-bottom: 0;
-  }
-
   &__img {
-    display: block;
     height: 150px;
     width: 150px;
     overflow: hidden;
-
-    & > img {
-      object-fit: cover;
-      height: 100%;
-      width: 100%;
-    }
 
     &:empty {
       display: none;
@@ -92,6 +82,16 @@
 
   &__description {
     padding-left: 18px;
+  }
+
+  &__inputBx {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__input {
+    width: 70%;
+    margin: 0;
   }
 }
 // レシピ詳細ここまで
