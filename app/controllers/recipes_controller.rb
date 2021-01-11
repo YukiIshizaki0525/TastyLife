@@ -3,6 +3,7 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
+    @list = Recipe.page(params[:page])
   end
 
   def show

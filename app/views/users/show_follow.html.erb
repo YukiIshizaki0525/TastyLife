@@ -2,18 +2,9 @@
   <%= render 'show_user' %>
 </section>
 
-<section class="follow">
+<section class="user-list">
   <div class="subheader">
     <div class="main-title"><%= @title %></div>
   </div>
-  <div class="follow__container">
-    <% @users.each do |user| %>
-      <div class="follow__item">
-        <%= link_to(user_path(id: user.id), class:'follow__img') do %>
-          <%= image_tag(user.avatar) if user.avatar.attached? %>
-        <% end %>
-        <%= link_to user.name, user_path(id: user.id), class:'follow__name' %>
-      </div>
-    <% end %>
-  </div>
+  <%= render 'shared/user-list' %>
 </section>

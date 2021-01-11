@@ -97,6 +97,10 @@
   }
 }
 
+.btn-center {
+  text-align: center;
+}
+
 .add-field-btn {
   display: block;
   font-size: 16px;
@@ -116,7 +120,8 @@
 }
 
 .remove-field-btn,
-.add-photo-btn {
+.add-photo-btn,
+.read_more-btn {
   height: 40px;
   width: 40px;
   overflow: hidden;
@@ -126,8 +131,4 @@
     height: 100%;
     width: 100%;
   }
-}
-
-.submit-btn {
-  text-align: center;
 }

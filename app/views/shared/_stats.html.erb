@@ -1,3 +1,7 @@
+<%= link_to(user_path(@user), class:'user__tab') do %>
+  <p>レシピ数</p>
+  <p class="user__count"><%= @user.recipes.count %></p>
+<% end %>
 <%= link_to(following_user_path(@user), class:'user__tab') do %>
   <p>フォロー</p>
   <p class="user__count" id="following"><%= @user.following.count %></p>
@@ -5,8 +9,4 @@
 <%= link_to(followers_user_path(@user), class:'user__tab') do %>
   <p>フォロワー</p>
   <p class="user__count" id="followers"><%= @user.followers.count %></p>
-<% end %>
-<%= link_to(user_path(@user), class:'user__tab') do %>
-  <p>レシピ数</p>
-  <p class="user__count"><%= @user.recipes.count %></p>
 <% end %>

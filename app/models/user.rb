@@ -99,10 +99,6 @@ class User < ApplicationRecord
   def validate_name
     errors.add(:name, :invalid) if User.where(email: name).exists?
   end
-
-  def display_avatar
-    avatar.variant(combine_options: {resize_to_fill: [200, 200], border:5})
-  end
   
   def follow(other_user)
     self.following << other_user

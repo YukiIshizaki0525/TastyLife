@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'homes#index'
+  get 'recipes/tweet', to: 'homes#tweet_index'
   
   # devise_for :users
   devise_for :users, controllers: {

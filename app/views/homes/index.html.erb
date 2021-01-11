@@ -24,18 +24,24 @@
   </section>
 
   <section class="list">
-      <div class="subheader">
-        <div class="main-title">New Arrival</div>
-        <div class="sub-title">新しいレシピを見つけよう</div>
+    <div class="subheader">
+      <div>
+        <p class="main-title">New Arrival</p>
+        <p class="sub-title">新しいレシピを見つけよう</p>
       </div>
-      <%= render 'shared/recipe_list' %>
+      <%= link_to image_tag('read_more', class: "read_more-btn"), recipes_path %>
+    </div>
+    <%= render 'shared/recipe_list' %>
   </section>
   
   <section class="tweet">
-      <div class="subheader">
-        <div class="main-title">Follow Recipe</div>
-        <div class="sub-title">フォロー中のレシピ</div>
+    <div class="subheader">
+      <div>
+        <p class="main-title">Follow Recipe</p>
+        <p class="sub-title">フォロー中のレシピ</p>
       </div>
-      <%= render 'shared/recipe_tweet' %>
+      <%= link_to image_tag('read_more', class: "read_more-btn"), recipes_tweet_path %>
+    </div>
+    <%= render 'shared/recipe_tweet' %>
   </section>
 </main>
