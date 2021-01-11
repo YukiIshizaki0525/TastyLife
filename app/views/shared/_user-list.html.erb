@@ -1,0 +1,18 @@
+<div class="user-list__container">
+  <% @users.each do |user| %>
+    <%= link_to(user_path(id: user.id), class: "user-list__item") do %>
+    <div class="user-list__img">
+      <% if user.avatar.attached? %>
+        <%= image_tag(user.avatar) %>
+      <% else %>
+        <%= image_tag('default_user.png') %>
+      <% end %>
+    </div>
+    <div class="user-list__detail">
+      <p class="user-list__name"><%= user.name %></p>
+      <p class="user-list__count">レシピ投稿数: <%= user.recipes.size %></p>
+    </div>
+    <% end %>
+  <% end %>
+</div>
+

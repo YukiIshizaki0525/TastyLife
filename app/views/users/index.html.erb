@@ -1,9 +1,7 @@
 <% @title = "ユーザー一覧" %>
 
-<h2 class="page_title">All Users</h2>
-
-<%= render 'path' %>
-
-<%= render @users %>
-
-<%= paginate @users %>
+<section class="user-list">
+  <p class="cooking-title">ユーザー一覧</p>
+  <%= render 'shared/user-list' %>
+  <%= paginate @users %>
+</section>

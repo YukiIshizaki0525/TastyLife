@@ -89,6 +89,9 @@ img {
 .subheader {
   @extend .content-width;
   @extend .mb-sm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
@@ -272,6 +275,10 @@ img {
     @extend .content-width;
     @extend .font-md;
     color: $UserNameColor;
+  }
+
+  & > .cooking-title {
+    @extend .content-width;
   }
 }
 
@@ -555,6 +562,63 @@ img {
 }
 
 // レシピ詳細ページここまで
+//ユーザー一覧ページここから
+.user-list {
+  &__container {
+    @extend .content-width;
+    @extend .mb-lg;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__item {
+    @extend .mb-sm;
+    flex-basis: 47%;
+    border: 1px solid $ItemBorderColor;
+    border-radius: 4px;
+    text-decoration: none !important;
+
+    &:hover {
+      background-color: $ItemHoverColor;
+      opacity: 0.75;
+    }
+  }
+
+  &__img {
+    @extend .mb-sm;
+    height: 130px;
+    overflow: hidden;
+
+    & > img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__detail {
+    padding-left: 10px;
+  }
+
+  &__name {
+    @extend .font-sm;
+    font-weight: 600;
+    display: inline-block;
+    color: $RecipeTitleColor;
+    text-decoration: none !important;
+  }
+
+  &__count {
+    @extend .font-sm;
+    color: $SubTitle;
+  }
+
+  & > .cooking-title {
+    @extend .content-width;
+  }
+}
+//ユーザー一覧ページここまで
 
 // ユーザー詳細ページここから
 .user {
@@ -599,14 +663,6 @@ img {
     display: flex;
     justify-content: space-between;
     border-bottom: 2px solid $ItemBorderColor;
-
-    & > div {
-      &:nth-child(3) {
-        &::after {
-          display: none;
-        }
-      }
-    }
   }
 
   &__tab {
@@ -623,6 +679,10 @@ img {
       top: 10px;
       width: 1px;
       height: 28px;
+    }
+
+    &:last-child::after {
+      display: none;
     }
 
     & > p {
@@ -660,48 +720,6 @@ img {
 
 // 投稿・一覧ボタンここまで
 
-// フォロー・フォロワー詳細ページここから
-.follow {
-  &__item {
-    @extend .content-width;
-    @extend .mb-sm;
-    @extend .pb-sm;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid $ItemBorderColor;
-  }
-
-  &__img {
-    @extend .mr-sm;
-    height: 50px;
-    width: 50px;
-    overflow: hidden;
-    border-radius: 4px;
-
-    &:hover {
-      background-color: $ItemHoverColor;
-      opacity: 0.75;
-    }
-
-    & > img {
-      object-fit: cover;
-      height: 100%;
-      width: 100%;
-    }
-  }
-
-  &__name {
-    @extend .font-md;
-    text-decoration: none;
-    color: $UserNameColor;
-
-    &:hover {
-      color: $NameHoverColor;
-      text-decoration: underline;
-    }
-  }
-}
-// フォロー・フォロワー詳細ページここまで
 // ログインページここから
 .login {
   position: relative;
