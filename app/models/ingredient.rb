@@ -13,10 +13,6 @@
 #
 #  index_ingredients_on_recipe_id  (recipe_id)
 #
-# Foreign Keys
-#
-#  fk_rails_...  (recipe_id => recipes.id)
-#
 class Ingredient < ApplicationRecord
   belongs_to :recipe
 

@@ -9,7 +9,7 @@
         <%= link_to recipe.title, recipe_path(id: recipe.id), class: 'tweet__title' %>
         <div class="tweet__description"><%= recipe.description %></div>
         <%= link_to(user_path(id: recipe.user_id), class:'tweet__userinfo') do %>
-          <div class="tweet__useravatar"><%= image_tag(recipe.user.avatar) %></div>
+          <div class="tweet__useravatar"><%= image_tag(recipe.user.avatar) if recipe.user.avatar.attached? %></div>
           <p class="tweet__username"><%= recipe.user.name %></p>
         <% end %>
       </div>
