@@ -35,5 +35,27 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'ユーザー登録' do
+    context '正しく登録できる' do
+      it "name、email、passwordとpassword_confirmationが存在すれば登録できること" do
+        user = build(:user)
+        expect(user).to be_valid  # user.valid? が true になればパスする
+      end
+    end
+
+    context '条件を満たしていないので登録できない' do
+      it 'パスワードに英小文字が含まれない場合無効な状態であること' do
+        user = User.new(password: '1'+'A' * 5, password_confirmation: '1A'+'a' * 3)
+        user.valid?
+        expect(user.errors[:password]).to include('は半角6~12文字英大文字・小文字・数字それぞれ１文字以上含む必要があります')
+      end
+
+      it 'パスワードが5文字以下なら無効な状態であること' do
+        user = User.new(password: '1A'+'a' * 3, password_confirmation: '1A'+'a' * 3)
+        user.valid?
+        expect(user.errors[:password]).to include('は半角6~12文字英大文字・小文字・数字それぞれ１文字以上含む必要があります')
+      end
+    end
+  end
+
 end

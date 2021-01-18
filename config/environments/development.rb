@@ -30,7 +30,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   if Rails.application.credentials.gmail.present?
     mail_address = Rails.application.credentials.gmail[:address]

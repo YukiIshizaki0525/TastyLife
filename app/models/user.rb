@@ -62,6 +62,23 @@ class User < ApplicationRecord
   validates :name,
             presence: true,
             uniqueness: { case_sensitive: false }
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email,
+            presence: true,
+            format: { with: VALID_EMAIL_REGEX },
+            uniqueness: { case_sensitive: false }
+  
+  VALID_PASSWORD_REGEX =/\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])\w{6,12}\z/
+  validates :password, 
+            presence: true,
+            format: { with: VALID_PASSWORD_REGEX,
+                      message: "は半角6~12文字英大文字・小文字・数字それぞれ１文字以上含む必要があります"}
+  validates :password_confirmation,
+            presence: true,
+            format: { with: VALID_PASSWORD_REGEX,
+                      message: "は半角6~12文字英大文字・小文字・数字それぞれ１文字以上含む必要があります"}
+
   validates :avatar, content_type: { in: %w[image/jpeg image/gif image/png],
                                message: "は有効な画像形式である必要があります" },
                     size:         { less_than: 1.megabytes,

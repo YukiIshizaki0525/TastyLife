@@ -51,15 +51,12 @@ FactoryBot.define do
   #   password_confirmation { "C2e6aNEY" }
   #   confirmed_at { Date.today }
   # end
-  factory :user, class: User do
+  factory :user do
     name {"Alice"}
-    sequence(:email) { |n| "test#{n}@example.com" }
+    # sequence(:email) { |n| "test#{n}@example.com" }
+    email { "alicetester@example.com"}
     password {"v4xqUvAXhK"}
     password_confirmation {"v4xqUvAXhK"}
-    confirmed_at { Date.today }
-    # after(:build) do |u|
-    #   u.avatar.attach(io: File.open("spec/fixtures/avatar.jpg"), filename: "avatar.jpg")
-    # end
 
   # 他人
     factory :other_user do

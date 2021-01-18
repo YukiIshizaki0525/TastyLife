@@ -108,9 +108,5 @@ ActiveRecord::Schema.define(version: 2020_12_19_042929) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "comments", "recipes"
-  add_foreign_key "comments", "users"
-  add_foreign_key "ingredients", "recipes"
   add_foreign_key "steps", "recipes"
 end

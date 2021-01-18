@@ -815,5 +815,11 @@ img {
       font-size: 14px;
     }
   }
+
+  &__form-error {
+    @extend .font-sm;
+    color: $FormErrorColor;
+    text-align: right;
+  }
 }
 // ログインページここまで
