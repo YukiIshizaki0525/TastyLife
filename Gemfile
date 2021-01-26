@@ -29,6 +29,7 @@ gem 'mini_magick',                '4.9.5'
 
 gem 'annotate'
 gem 'kaminari'
+gem 'ransack'
 
 
 group :development, :test do

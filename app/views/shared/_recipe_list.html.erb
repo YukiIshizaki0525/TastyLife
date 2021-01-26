@@ -1,5 +1,5 @@
 <div class="list__container">
-  <% @list.each do |recipe| %>
+  <% @recipes.each do |recipe| %>
     <%= link_to(recipe_path(id: recipe.id), class:'list__item') do %>
       <div class="list__img">
         <%= image_tag(recipe.image) if recipe.image.attached? %>

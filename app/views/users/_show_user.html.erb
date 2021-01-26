@@ -1,6 +1,10 @@
 <div class="user__inner">
   <div class="user__img">
-    <%= image_tag(@user.avatar) if @user.avatar.attached? %>
+  <% if @user.avatar.attached? %>
+    <%= image_tag(@user.avatar) %>
+  <% else %>
+    <%= image_tag 'default_user' %>
+  <% end %>
   </div>
   <div class="user__name"><%= @user.name %></div>
   <div class="user__submenu">

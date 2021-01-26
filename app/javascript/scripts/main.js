@@ -5,8 +5,13 @@ window.addEventListener('turbolinks:load', function () {
 	new MobileMenu();
 	new addFields();
 	new removeFields();
-	new imgPreView();
+
+	if (location.pathname.match("recipes/new")) {
+		new imgPreView();
+	}
 });
+
+
 class Main {
 	constructor() {
 		this.header = document.querySelector(".header");
@@ -130,25 +135,4 @@ class imgPreView{
 			reader.readAsDataURL(file)
 		})
 	}
-
-	// 追加されたnested-fieldsにもプレビュー機能をつけるため記載
-	// _mutation() {
-	// 	const target = document.querySelector('.nested-fields');
-	// 	const mutationObserver = new MutationObserver(callback);
-
-	// 	function callback(mutations) {
-	// 		mutations.forEach(mutation => {
-	// 			mutation.addedNodes.forEach( node => {
-	// 				node._preview();
-	// 			});
-	// 		})
-	// 	}
-
-	// 	const option = {
-	// 		childList: true,
-	// 		subtree: true
-	// 	}
-
-	// 	mutationObserver.observe(target, option);
-	// }
 }
