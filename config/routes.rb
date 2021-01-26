@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'homes#index'
   get 'recipes/tweet', to: 'homes#tweet_index'
+  get 'recipes/tag/:name', to: "recipes#tag_search"
   
   # devise_for :users
   devise_for :users, controllers: {
@@ -21,5 +22,4 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :comments, only: [:create, :destroy]
   end
-
 end

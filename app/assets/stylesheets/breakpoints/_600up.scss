@@ -187,3 +187,19 @@
   }
 }
 // コメント表示・フォームここから
+
+// タグについてはここから
+.tag {
+  &__container {
+    &::after {
+      display: block;
+      content: "";
+      width: 30%;
+    }
+  }
+  &__item {
+    flex-basis: 30%;
+  }
+}
+
+// タグについてはここまで

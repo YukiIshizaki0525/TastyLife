@@ -119,3 +119,18 @@
   }
 }
 // コメント表示・フォームここまで
+
+// タグについてはここから
+.tag {
+  &__container {
+    &::after {
+      display: block;
+      content: "";
+      width: 21%;
+    }
+  }
+  &__item {
+    flex-basis: 21%;
+  }
+}
+// タグについてはここまで

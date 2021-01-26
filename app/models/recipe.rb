@@ -25,6 +25,10 @@ class Recipe < ApplicationRecord
 
   has_many :comments
 
+  # タグ付け関連
+  has_many :recipe_tag_relations, dependent: :delete_all
+  has_many :tags, through: :recipe_tag_relations
+
   # レシピ完成イメージの画像
   has_one_attached :image
 
@@ -42,4 +46,5 @@ class Recipe < ApplicationRecord
   def display_image
     image.variant(gravity: :center, resize:"200x290^", crop:"200x290+0+0").processed
   end
+
 end

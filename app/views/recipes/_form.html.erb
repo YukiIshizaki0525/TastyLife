@@ -23,14 +23,38 @@
         </div>
         <section class="ingredient">
           <div class="cooking-title">材料</div>
-            <%= f.fields_for :ingredients do |ingredient| %>
-              <%= render "ingredient_fields", f: ingredient %>
-            <% end %>
-            <%= link_to_add_fields "材料の追加", f, :ingredients %>
+          <%= f.fields_for :ingredients do |ingredient| %>
+            <%= render "ingredient_fields", f: ingredient %>
+          <% end %>
+          <%= link_to_add_fields "材料の追加", f, :ingredients %>
         </section>
       </div>
     </div>
   </section>
+
+  <section class="tag">
+    <div class="cooking-title">関連タグ</div>
+    <%# 存在するタグの数だけチェックボックスを追加するメソッドを使用 %>
+    <div class="tag__container">
+      <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+        <%= tag.label class: 'tag__item' do %>
+          <%= tag.check_box class: 'tag__checkbox' %>
+          <%= tag.text %>
+        <% end %>
+      <% end %>
+    </div>
+  </section>
+
+  <%# <div class="cp_ipselect cp_sl01">
+  <select required>
+    <option value="" hidden>Choose</option>
+    <option value="1">cat</option>
+    <option value="2">dog</option>
+    <option value="3">rabbit</option>
+    <option value="4">squirrel</option>
+  </select>
+  </div> %>
+
   <section class="step">
     <div class="cooking-title">作り方</div>
     <div class="field">
@@ -42,7 +66,8 @@
   </section>
 
   <div class="btn-center"><%= f.button "送信する" , class:"btn slide-bg"%></div>
-  
   <% end %>
 </main>
+
+
 

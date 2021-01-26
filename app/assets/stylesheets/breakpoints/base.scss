@@ -280,6 +280,53 @@ img {
   & > .cooking-title {
     @extend .content-width;
   }
+
+  &__tag-select {
+    @extend .content-width;
+    @extend .mb-sm;
+    text-align: center;
+
+    & > select {
+      width: 100%;
+      padding: 10px;
+      cursor: pointer;
+      text-indent: 0.01px;
+      text-overflow: ellipsis;
+      border: none;
+      outline: none;
+      background: transparent;
+      background-image: none;
+      box-shadow: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+  }
+
+  &__tag-arrow {
+    position: relative;
+    border: 1px solid #bbbbbb;
+    border-radius: 2px;
+    background: #ffffff;
+
+    &::before {
+      position: absolute;
+      top: 16px;
+      right: 10px;
+      width: 0;
+      height: 0;
+      padding: 0;
+      content: "";
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid $TagSelectColor;
+      pointer-events: none;
+    }
+
+    & > select {
+      padding: 8px 38px 8px 8px;
+      color: $TagSelectColor;
+    }
+  }
 }
 
 .tweet {
@@ -426,11 +473,8 @@ img {
 
   &__inner {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-
-    & > :last-child {
-      margin-left: auto;
-    }
   }
 
   &__img {
@@ -486,6 +530,68 @@ img {
     width: 30%;
   }
 }
+
+// 関連タグについてここから
+.tag {
+  @extend .content-width;
+  @extend .mb-sm;
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__none {
+    @extend .font-sm;
+    color: $IngredientAndStepColor;
+  }
+
+  &__item {
+    @extend .font-sm;
+    flex-basis: 45%;
+    display: block;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-decoration: none !important;
+    color: $TagSelectColor !important;
+    border: 1px solid $ItemBorderColor;
+    border-radius: 5px;
+    padding: 8px;
+    margin-bottom: 10px;
+
+    &:hover {
+      background-color: $ItemHoverColor;
+    }
+  }
+
+  &__checkbox {
+    margin-right: 5px;
+  }
+
+  &__img {
+    height: 25px;
+    width: 25px;
+    color: $DetailTitle;
+    overflow: hidden;
+    margin-right: 8px;
+
+    & > img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__name {
+    @extend .font-sm;
+    color: $IngredientAndStepColor;
+    font-weight: 400;
+  }
+}
+// 関連タグについてここまで
 
 .step {
   @extend .content-width;

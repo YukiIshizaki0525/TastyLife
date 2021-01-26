@@ -1,15 +1,14 @@
 <main>
   <section class="description">
+  <!-- 投稿完了後のフラッシュメッセージ -->
+    <% unless flash[:error_messages] %>
+      <%= render 'layouts/notifications' %>
+    <% end %>
     <div class="description__inner">
       <div class="description__img">
         <%= image_tag @recipe.image if @recipe.image.attached? %>
       </div>
       <div class="description__texts">
-        <!-- 投稿完了後のフラッシュメッセージ -->
-        <% unless flash[:error_messages] %>
-          <%= render 'layouts/notifications' %>
-        <% end %>
-
         <div class="description__title">
           <%= @recipe.title %>
           <div class="description__detail">
@@ -44,6 +43,20 @@
       </div>
     </div>
   </section>
+
+  <section class="tag">
+    <div class="cooking-title">関連タグ</div>
+    <div class="tag__container">
+      <% if @recipe.tags.empty? %>
+        <p class="tag__none">関連タグが設定されていません</p>
+      <% else %>
+        <% @recipe.tags.each do |tag| %>
+          <%= render_with_tags(tag.name, tag.id) %>
+        <% end %>
+      <% end %>
+    </div>
+  </section>
+
   <section class="step">
     <div class="cooking-title">作り方</div>
     <% @recipe.steps.each do |step| %>

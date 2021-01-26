@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @list = @user.recipes.page(params[:page])
+    @recipes = @user.recipes.page(params[:page])
   end
 
   def destroy

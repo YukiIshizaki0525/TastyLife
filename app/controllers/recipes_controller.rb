@@ -2,8 +2,8 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
   def index
-    @recipes = Recipe.all
-    @list = Recipe.page(params[:page])
+    @recipes = params[:tag_id].present? ? Tag.find(params[:tag_id]).recipes : Recipe.all
+    @recipes = @recipes.page(params[:page])
   end
 
   def show
@@ -48,7 +48,12 @@ class RecipesController < ApplicationController
     @recipe.destroy
     redirect_to recipes_path, flash: { notice: "「#{@recipe.title}」のレシピを削除しました。" }
   end
-  
+
+  def tag_search
+    @tag = Tag.find(params[:tag_id])
+    @recipes = @tag.recipes
+  end
+
   private
     def set_recipe
       @recipe = Recipe.find(params[:id])
@@ -57,6 +62,7 @@ class RecipesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def recipe_params
       params.require(:recipe).permit(:image, :title, :description, :user_id,
+        tag_ids: [],
         ingredients_attributes: [:id, :content, :quantity, :_destroy],
         steps_attributes: [:id, :direction, :step_image, :_destroy])
     end
