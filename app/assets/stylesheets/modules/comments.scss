@@ -36,13 +36,14 @@
 
   &__content {
     @extend .mb-sm;
-    @extend .font-md;
+    @extend .font-sm;
     color: $IngredientAndStepColor;
     word-break: break-all;
   }
 
   &__info {
     @extend .font-sm;
+    @extend .mb-sm;
     display: flex;
     align-items: center;
   }
@@ -64,10 +65,6 @@
       color: $NameHoverColor;
       text-decoration: underline;
     }
-  }
-
-  &__date {
-    color: $DateColor;
   }
 
   &__delete {
@@ -92,9 +89,65 @@
     width: 100%;
     border: 1px solid $ItemBorderColor;
     padding: 10px;
-    color: #111;
+    color: $IngredientAndStepColor;
     outline: none;
     resize: none;
     font-weight: 300;
+  }
+
+  // 相談詳細ページのコメント返信についてここから
+  // 相談詳細ページのコメント返信についてここまで
+
+  &__replyBx {
+    display: flex;
+    align-items: center;
+    @extend .mb-sm;
+
+    & > input {
+      width: 100%;
+      font-size: 16px;
+      padding: 10px;
+      outline: none;
+      font-weight: 400;
+      border: 1px solid $ItemBorderColor;
+      letter-spacing: 1px;
+      color: $IngredientAndStepColor;
+      background: transparent;
+      border-radius: 30px;
+    }
+  }
+
+  &__reply-submit {
+    & > button {
+      background: none;
+      border: none;
+      outline: none;
+      padding: 0;
+      appearance: none;
+      margin-left: 10px;
+
+      height: 30px;
+      width: 30px;
+      overflow: hidden;
+
+      & > img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+
+  &__reply-item {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+  }
+
+  &__reply-content {
+    @extend .mb-sm;
+    @extend .font-sm;
+    color: $IngredientAndStepColor;
+    word-break: break-all;
   }
 }

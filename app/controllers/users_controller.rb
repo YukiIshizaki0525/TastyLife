@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show , :destroy, :following, :followers]
+  before_action :set_user, only: [:show , :destroy, :following, :followers, :consultations]
   def index
     @users = User.page(params[:page]).per(6)
   end
@@ -24,6 +24,12 @@ class UsersController < ApplicationController
     @title = "Followers"
     @users = @user.followers.page(params[:page])
     render 'show_follow'
+  end
+
+  def consultations
+    @title = "Consultation"
+    @consultations = @user.consultations.page(params[:page])
+    render 'show_consultation'
   end
 
     private

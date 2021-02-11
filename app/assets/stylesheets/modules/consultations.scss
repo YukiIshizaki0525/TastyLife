@@ -1,0 +1,173 @@
+@import "breakpoints/base.scss";
+@import "modules/valiables.scss";
+@import "modules/button.scss";
+
+.consultation {
+  @extend .content-width;
+  @extend .mb-lg;
+
+  // 相談ページ(共通)ここから
+  &__inner {
+    display: flex;
+    align-items: center;
+    @extend .mb-lg;
+  }
+
+  &__title {
+    display: block;
+    @extend .font-md;
+    @extend .mb-sm;
+    color: $RecipeTitleColor !important;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+
+  &__content {
+    @extend .font-sm;
+    color: $IngredientAndStepColor;
+  }
+
+  &__user-name {
+    align-self: center;
+    color: $UserNameColor !important;
+  }
+
+  &__main {
+    width: 100%;
+    margin-left: 20px;
+  }
+  // 相談ページ(共通)ここから
+
+  // 相談ページ(一覧のみ)はここから
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid $ItemBorderColor;
+    @extend .mb-sm;
+  }
+
+  &__status {
+    @extend .flex;
+    align-items: center;
+    color: $IngredientAndStepColor;
+    flex-basis: 20%;
+  }
+
+  &__userinfo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    @extend .font-sm;
+    @extend .mb-sm;
+  }
+
+  &__user-index-img {
+    overflow: hidden;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin-right: 8px;
+
+    & > img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__detail-status {
+    @extend .font-sm;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  // 相談ページ(一覧のみ)はここまで
+
+  // 相談ページ(詳細のみ)はここから
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+  }
+
+  &__user-show-img {
+    overflow: hidden;
+    height: 75px;
+    width: 75px;
+    margin-bottom: 5px;
+
+    & > img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+      border: solid 3px #fff0c6;
+      border-radius: 50%;
+    }
+  }
+
+  &__says {
+    display: inline-block;
+    position: relative;
+    padding: 20px;
+    border-radius: 12px;
+    background: $UserSayColor;
+
+    & .consultation__content {
+      @extend .mb-sm;
+    }
+
+    &::after {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      top: 10%;
+      left: -22px;
+      border: 12px solid transparent;
+      border-right: 12px solid $UserSayColor;
+    }
+  }
+
+  &__detail-info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__pv {
+    @extend .post-date;
+    font-weight: 600;
+  }
+
+  // 相談ページ(詳細のみ)はここまで
+
+  &__inputBx {
+    @extend .mb-sm;
+
+    & > input[type="text"] {
+      @extend .mb-sm;
+      @extend .recipe-input;
+      width: 100%;
+      color: $RecipeTitleColor;
+    }
+
+    & > textarea {
+      @extend .mb-sm;
+      border: none;
+      border: 2px solid $InputBorderColor;
+      outline: none;
+      resize: none;
+      padding: 10px;
+      transition: border-color 0.3s;
+      width: 100%;
+      height: 100px;
+      color: $RecipeTitleColor;
+
+      &:focus {
+        border: 2px solid $RecipeTitleColor;
+      }
+    }
+  }
+}

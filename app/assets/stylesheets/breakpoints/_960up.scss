@@ -123,6 +123,13 @@
 // タグについてはここから
 .tag {
   &__container {
+    &::before {
+      display: block;
+      content: "";
+      width: 21%;
+      order: 1;
+    }
+
     &::after {
       display: block;
       content: "";

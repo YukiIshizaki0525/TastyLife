@@ -1,9 +1,8 @@
 class HomesController < ApplicationController
   def index
-    if user_signed_in?
-      @recipes = Recipe.page(params[:page]).limit(3)
-      @tweet = current_user.feed.limit(3)
-    end
+    @recipes = Recipe.page(params[:page]).limit(3)
+    @tweet = current_user.feed.limit(3)
+    @consultations = Consultation.page(params[:page]).order(impressions_count: 'DESC')
   end
 
   def tweet_index

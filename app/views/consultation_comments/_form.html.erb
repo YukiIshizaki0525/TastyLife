@@ -1,0 +1,9 @@
+<%= render 'shared/error_messages' %>
+
+<%= form_with(model:[@consultation, @comment], method: :post, class: "comment__inputBx") do |f| %>
+  <%= f.hidden_field :consultation_id, value: @consultation.id %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.label :content, "コメント投稿はこちら", class: 'comment__label'%>
+  <%= f.text_area :content, placeholder: "100文字まで入力可能です", class: 'comment__area' %>
+  <div class="submit-btn"><%= f.button "送信する" , class:"btn slide-bg"%></div>
+<% end %>
