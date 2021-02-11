@@ -1,0 +1,27 @@
+<div class="cooking-title">相談詳細</div>
+<section class="consultation">
+    <!-- 投稿完了後のフラッシュメッセージ -->
+    <% unless flash[:error_messages] %>
+      <%= render 'layouts/notifications' %>
+    <% end %>
+  <div class="consultation__inner">
+    <div class="consultation__info">
+        <%= link_to(user_path(id: @consultation.user_id), class:'consultation__user-show-img') do %>
+          <%= image_tag(@consultation.user.avatar) %>
+        <% end %>
+        <%= link_to @consultation.user.name, user_path(id: @consultation.user_id), class: "consultation__user-name" %>
+    </div>
+    <div class="consultation__main">
+      <div class="consultation__says">
+        <div class="consultation__title"><%= @consultation.title %></div>
+        <div class="consultation__content"><%= @consultation.content %></div>
+        <div class="consultation__detail-info">
+          <p class="consultation__pv">閲覧数：<%= @consultation.impressions_count %></p>
+          <p class="post-date"><%= @consultation.created_at.to_s(:datetime_jp) %>に投稿</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= render 'shared/consultation_comment' %>

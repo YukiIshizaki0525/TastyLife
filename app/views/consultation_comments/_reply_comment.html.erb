@@ -1,0 +1,14 @@
+<% comment_reply.replies.order(:created_at).each do |reply| %>
+  <div class="comment__reply-item">
+    <div class="comment__info">
+      <%= link_to image_tag(reply.user.avatar, class: "comment__img"), user_path(id: reply.user_id) %>
+      <%= link_to reply.user.name, user_path(id: reply.user_id), class: "comment__name"%>
+    </div>
+    <div class="comment__reply-content">
+      <%= reply.content %>
+      <% if user_signed_in? && reply.user == current_user %>
+        <%= link_to image_tag("delete"), consultation_consultation_comment_path(reply.consultation.id, reply.id), class: 'comment__delete', method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

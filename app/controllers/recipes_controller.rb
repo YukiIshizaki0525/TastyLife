@@ -57,6 +57,7 @@ class RecipesController < ApplicationController
   private
     def set_recipe
       @recipe = Recipe.find(params[:id])
+      # redirect_to(root_url) unless current_user.id == @consultation.user_id
     end
 
     # Only allow a list of trusted parameters through.

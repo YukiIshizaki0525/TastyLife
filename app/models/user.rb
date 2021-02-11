@@ -55,6 +55,10 @@ class User < ApplicationRecord
               through: :passive_relationships,
               source: :follower
 
+  # 相談機能について
+  has_many :consultations, dependent: :destroy
+  has_many :consultation_comments, dependent: :destroy
+  has_many :consultations_comment_reply, dependent: :destroy
   
   # アイコン画像追加のため
   has_one_attached :avatar

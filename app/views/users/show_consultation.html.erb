@@ -1,0 +1,17 @@
+<section class="user">
+  <%= render 'show_user' %>
+</section>
+
+<section class="user-list">
+  <div class="subheader">
+    <div class="main-title"><%= @title %></div>
+  </div>
+
+  <% if @consultations.any? %>
+    <%= render 'shared/recipe_consultation' %>
+  <% else %>
+    <p class="list__notthing"><%= "#{@user.name}さんの相談はありません。" %></p>
+  <% end %>
+  
+</section>
+

@@ -28,6 +28,7 @@
   }
 
   &.submenu {
+    margin-bottom: 5px;
     &:hover {
       border: 1px solid $SubmenuBtnHoverColor;
       color: $SubmenuBtnHoverColor;

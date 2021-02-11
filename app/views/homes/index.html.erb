@@ -23,6 +23,7 @@
       </div>
   </section>
 
+
   <section class="list">
     <div class="subheader">
       <div>
@@ -33,6 +34,15 @@
     </div>
     <%= render 'shared/recipe_list' %>
   </section>
+
+  <div class="subheader">
+    <div>
+      <p class="main-title">Consultation</p>
+      <p class="sub-title">レシピについての相談</p>
+    </div>
+    <%= link_to image_tag('read_more', class: "read_more-btn"), consultations_path %>
+  </div>
+  <%= render 'shared/recipe_consultation' %>
   
   <section class="tweet">
     <div class="subheader">

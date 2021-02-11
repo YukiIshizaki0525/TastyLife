@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      consultation: 相談
+    attributes:
+      consultation:
+        title: "相談タイトル"
+        content: "相談内容"
+      consultation_comment:
+        content: "コメント"

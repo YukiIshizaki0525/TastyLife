@@ -8,8 +8,9 @@
     
     <%= link_to comment.user.name, user_path(id: comment.user_id), class: "comment__name"%>
   
-    <div class="comment__date"><%= comment.created_at.to_s(:datetime_jp) %></div>
+    <div class="post-date"><%= comment.created_at.to_s(:datetime_jp) %></div>
   </div>
+
 </div>
 
 

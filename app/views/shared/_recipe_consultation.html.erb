@@ -1,0 +1,30 @@
+<section class="consultation">
+  <div class="consultation__container">
+    <% @consultations.each do |consultation| %>
+      <div class="consultation__item">
+        <div class="consultation__status">
+          <div class="consultation__detail-status">
+            <%= consultation.consultation_comments.count %>
+            <p>回答</p>
+          </div>
+          <div class="consultation__detail-status">
+            <%= consultation.impressions_count %>
+            <p>閲覧数</p>
+          </div>
+        </div>
+        <div class="consultation__main">
+          <%= link_to consultation.title, consultation_path(id: consultation.id), class: 'consultation__title'%>
+          <div class="consultation__content"><%= consultation.content %></div>
+          <div class="consultation__userinfo">
+            <%= link_to(user_path(id: consultation.user_id), class:'consultation__user-index-img') do %>
+              <%= image_tag( consultation.user.avatar ) %>
+            <% end %>
+            <%= link_to consultation.user.name, user_path(id: consultation.user_id), class: "consultation__user-name" %>
+            <div class="consultation__user-name"><%=  %></div>
+          </div>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+</section>

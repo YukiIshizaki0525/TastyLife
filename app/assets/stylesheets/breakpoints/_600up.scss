@@ -203,3 +203,21 @@
 }
 
 // タグについてはここまで
+
+.consultation {
+  &__user-show-img {
+    width: 100px;
+    height: 100px;
+  }
+
+  &__status {
+    flex-basis: 15%;
+    justify-content: space-between;
+  }
+
+  &__says {
+    &::after {
+      top: 20%;
+    }
+  }
+}
