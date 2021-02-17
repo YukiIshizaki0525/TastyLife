@@ -1,0 +1,15 @@
+<section class="user">
+  <%= render 'show_user' %>
+</section>
+
+<%= render 'layouts/notifications' %>
+<section class="user-list">
+  <div class="subheader">
+    <div class="main-title"><%= @title %></div>
+  </div>
+
+  <%= render 'shared/food_inventory' %>
+
+  <div class="btn-center"><%= link_to '保存中の食材を登録', new_inventory_path, class:"btn slide-bg" %></div>
+
+</section>

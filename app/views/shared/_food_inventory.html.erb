@@ -1,0 +1,29 @@
+<section class="inventory">
+  <div class="inventory__container">
+    <% @inventories.each do |inventory| %>
+      <div class="inventory__item">
+        <div class="inventory__photo">
+          <% if inventory.photo.attached? %>
+            <%= image_tag inventory.photo %>
+          <% else %>
+            <%= image_tag 'no_image' %>
+          <% end %>
+        </div>
+        <div class="inventory__info">
+          <div class="inventory__name">
+            <%= link_to inventory.name, inventory_path(id: inventory.id) %>
+          </div>
+          <div class="inventory__content">
+            <div class="inventory__expiration-date">
+              <span class="inventory__count"><%= inventory.days_left %></span>
+            </div>
+            <div class="inventory__quantity">
+              <span class="inventory__count"><%= inventory.quantity %></span>
+            </div>
+            <%= link_to image_tag('delete'), inventory_path(id: inventory.id), method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>

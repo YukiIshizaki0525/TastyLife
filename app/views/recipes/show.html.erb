@@ -62,8 +62,10 @@
     <% @recipe.steps.each do |step| %>
       <div class="step__item">
         <div class="step__inner">
-          <p class="step__number"></p>
-          <p class="step__description"><%= step.direction %></p>
+          <div class="step__content">
+            <p class="step__number"></p>
+            <p class="step__description"><%= step.direction %></p>
+          </div>
           <div class="step__img"><%= image_tag step.step_image if step.step_image.attached? %></div>
         </div>
       </div>

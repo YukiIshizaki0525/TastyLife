@@ -1,0 +1,78 @@
+.step {
+  @extend .content-width;
+  @extend .mb-lg;
+  counter-reset: number;
+
+  &__item {
+    border-bottom: 1px dotted $ItemBorderColor;
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+  }
+
+  &__inputBx {
+    @extend .mb-sm;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  &__number {
+    @extend .font-sm;
+    color: $White;
+    background-color: $RecipeTitleColor;
+    border-radius: 3px;
+    margin-bottom: 0;
+    width: 35px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    counter-increment: number;
+
+    &::before {
+      content: counter(number);
+    }
+  }
+
+  &__img {
+    display: block;
+    height: 75px;
+    width: 110px;
+    border-radius: 4px;
+    overflow: hidden;
+
+    & > img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__img-file {
+    input[type="file"] {
+      display: none;
+    }
+  }
+
+  &__description {
+    @extend .font-sm;
+    padding: 0 10px;
+    color: $IngredientAndStepColor;
+  }
+
+  &__input {
+    @extend .recipe-input;
+    margin: 10px 0;
+    color: $IngredientAndStepColor;
+    width: 100%;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+  }
+}

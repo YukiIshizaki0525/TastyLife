@@ -1,0 +1,34 @@
+<%= render 'shared/error_messages' %>
+<div class="cooking-title">保存中の食材登録フォーム</div>
+
+<%= form_with model: @inventory do |f| %>
+  <section class="inventory">
+    <div class="inventory__field">
+      <%= f.label :photo, class: "inventory__label" %>
+      <div class="inventory__input-photo">
+        <label class="img-file">
+          <%= image_tag 'add_a_photo', class:"add-photo-btn"%>
+          <%= f.file_field :photo, accept: "image/jpeg,image/gif,image/png", class: "image" %>
+        </label>
+        <div class="preview inventory__photo"></div>
+      </div>
+    </div>
+    <div class="inventory__field">
+      <%= f.label :name, class: "inventory__label" %>
+      <%= f.text_field :name, class: "inventory__input" %>
+    </div>
+    <div class="inventory__field">
+      <%= f.label :quantity, class: "inventory__label" %>
+      <%= f.text_field :quantity, class: "inventory__input" %>
+    </div>
+    <div class="inventory__field inventory__date-select">
+      <%= f.label :expiration_date, class: "inventory__label" %>
+      <%= f.date_field :expiration_date %>
+    </div>
+    <div class="inventory__field">
+      <%= f.label :memo, class: "inventory__label" %>
+      <%= f.text_area :memo, class: "inventory__input-memo" %>
+    </div>
+    <div class="btn-center"><%= f.button "送信する" , class:"btn slide-bg"%></div>
+  </section>
+<% end %>

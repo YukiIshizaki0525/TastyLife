@@ -1,0 +1,88 @@
+// レシピ詳細ページここから
+// ※ レシピ投稿フォームでも.descriptionクラスを使用
+.description {
+  @extend .content-width;
+  @extend .mb-lg;
+
+  &__inner {
+    @extend .flex;
+    justify-content: space-between;
+  }
+  &__img,
+  &__preview {
+    @extend .mb-sm;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+
+    & > img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__title {
+    @extend .font-lr;
+    font-weight: bold;
+    color: $RecipeTitleColor;
+  }
+
+  &__detail {
+    @extend .font-sm;
+    margin: 14px 0;
+    font-weight: normal;
+    color: $SubTitle;
+  }
+
+  &__inputBx {
+    @extend .mb-sm;
+
+    & > input[type="text"],
+    & > textarea {
+      @extend .mb-sm;
+      @extend .recipe-input;
+      width: 100%;
+      color: $RecipeTitleColor;
+    }
+  }
+
+  &__texts {
+    & > .cooking-title {
+      width: 100%;
+    }
+  }
+}
+
+.recipeuser {
+  @extend .mb-sm;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+  }
+
+  &__img {
+    height: 40px;
+    width: 40px;
+    overflow: hidden;
+
+    & a > img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__name {
+    @extend .font-md;
+    margin-left: 10px;
+
+    &:hover {
+      color: $UserNameColor;
+      text-decoration: underline;
+    }
+  }
+}
+
+// レシピ詳細ページここまで

@@ -2,11 +2,11 @@
 
 <main>
   <%= form_with(model: @recipe, local: true) do |f| %>
+  <div class="cooking-title">写真</div>
   <section class="description">
     <div class="description__inner">
       <div class="description__img">
-        <div class="cooking-title">写真</div>
-        <label class="description__img-file">
+        <label class="img-file">
           <%= image_tag 'add_a_photo', class:"add-photo-btn"%>
           <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "image" %>
           <div class="preview description__preview"></div>
@@ -21,8 +21,8 @@
           <%= f.text_field :title, placeholder: "タイトル" %>
           <%= f.text_area :description, placeholder: "サブタイトル" %>
         </div>
+        <div class="cooking-title">材料</div>
         <section class="ingredient">
-          <div class="cooking-title">材料</div>
           <%= f.fields_for :ingredients do |ingredient| %>
             <%= render "ingredient_fields", f: ingredient %>
           <% end %>
@@ -32,8 +32,8 @@
     </div>
   </section>
 
+  <div class="cooking-title">関連タグ</div>
   <section class="tag">
-    <div class="cooking-title">関連タグ</div>
     <%# 存在するタグの数だけチェックボックスを追加するメソッドを使用 %>
     <div class="tag__container">
       <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
@@ -55,8 +55,8 @@
   </select>
   </div> %>
 
+  <div class="cooking-title">作り方</div>
   <section class="step">
-    <div class="cooking-title">作り方</div>
     <div class="field">
       <%= f.fields_for :steps do |step| %>
         <%= render "step_fields", f: step %>

@@ -2,9 +2,16 @@ ja:
   activerecord:
     models:
       consultation: 相談
+      inventory: 食材の在庫
     attributes:
       consultation:
         title: "相談タイトル"
         content: "相談内容"
       consultation_comment:
         content: "コメント"
+      inventory:
+        photo: 食材画像
+        name: 食材名
+        quantity: 数量
+        expiration_date: 賞味期限
+        memo: メモ

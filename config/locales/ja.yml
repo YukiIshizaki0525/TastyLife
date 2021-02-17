@@ -1,4 +1,11 @@
 ja:
+  date:
+    formats:
+      dafault: "%Y/%m/%d"
+      short: ! "%-m/%-d" #=> ex) 8/4
+      middle: ! "%-m月%-d日(%a)" #=> ex) 8月4日(水)
+      long: ! "%Y年%-m月%-d日(%a)" #=> ex) 2016年8月4日(水)
+
   activerecord:
     attributes:
       recipe:
