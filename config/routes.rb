@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      get :following, :followers, :consultations
+      get :following, :followers, :consultations, :inventories
     end
   end
   
@@ -30,4 +30,7 @@ Rails.application.routes.draw do
   resources :consultations do
     resources :consultation_comments
   end
+
+  # 食材管理についてのルート
+  resources :inventories
 end

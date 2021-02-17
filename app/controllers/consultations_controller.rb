@@ -29,7 +29,6 @@ class ConsultationsController < ApplicationController
         consultation: consultation,
         error_messages: consultation.errors.full_messages
       }
-
     end
   end
 

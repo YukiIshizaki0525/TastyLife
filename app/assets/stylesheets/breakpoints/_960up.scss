@@ -92,8 +92,8 @@
 // ユーザー詳細ページここから
 .user {
   &__img {
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
   }
 }
 
@@ -141,3 +141,18 @@
   }
 }
 // タグについてはここまで
+
+// 保存中の食材についてここから
+.inventory {
+  &__container {
+    &::after {
+      display: block;
+      content: "";
+      width: 30%;
+    }
+  }
+  &__item {
+    flex-basis: 30%;
+  }
+}
+// 保存中の食材についてここまで

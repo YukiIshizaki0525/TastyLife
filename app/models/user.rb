@@ -59,6 +59,9 @@ class User < ApplicationRecord
   has_many :consultations, dependent: :destroy
   has_many :consultation_comments, dependent: :destroy
   has_many :consultations_comment_reply, dependent: :destroy
+
+  # 食材管理について
+  has_many :inventories, dependent: :destroy
   
   # アイコン画像追加のため
   has_one_attached :avatar

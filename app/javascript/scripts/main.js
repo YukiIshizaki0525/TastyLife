@@ -5,10 +5,10 @@ window.addEventListener('turbolinks:load', function () {
 	new MobileMenu();
 	new addFields();
 	new removeFields();
+	new imgPreView();
 
-	if (location.pathname.match("recipes/new")) {
-		new imgPreView();
-	}
+	// if (location.pathname.match("recipes/new", "inventory/_form")) {
+	// }
 });
 
 

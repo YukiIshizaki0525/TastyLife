@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_08_160251) do
+ActiveRecord::Schema.define(version: 2021_02_13_133847) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -99,6 +99,17 @@ ActiveRecord::Schema.define(version: 2021_02_08_160251) do
     t.index ["recipe_id"], name: "index_ingredients_on_recipe_id"
   end
 
+  create_table "inventories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "quantity", null: false
+    t.date "expiration_date", null: false
+    t.text "memo"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_inventories_on_user_id"
+  end
+
   create_table "recipe_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "recipe_id", null: false
     t.bigint "tag_id", null: false
@@ -173,6 +184,7 @@ ActiveRecord::Schema.define(version: 2021_02_08_160251) do
   add_foreign_key "consultation_comments", "consultations"
   add_foreign_key "consultation_comments", "users"
   add_foreign_key "consultations", "users"
+  add_foreign_key "inventories", "users"
   add_foreign_key "recipe_tag_relations", "recipes"
   add_foreign_key "recipe_tag_relations", "tags"
   add_foreign_key "steps", "recipes"

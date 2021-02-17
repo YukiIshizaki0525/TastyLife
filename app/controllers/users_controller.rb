@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show , :destroy, :following, :followers, :consultations]
+  before_action :set_user, only: [:show , :destroy, :following, :followers, :consultations, :inventories]
   def index
     @users = User.page(params[:page]).per(6)
   end
@@ -32,9 +32,15 @@ class UsersController < ApplicationController
     render 'show_consultation'
   end
 
+  def inventories
+    @title = "Inventory"
+    @inventories = @user.inventories.page(params[:page]).order(expiration_date: 'ASC')
+    render 'show_inventory'
+  end
+
     private
 
     def set_user
-      @user  = User.find(params[:id])
+      @user = User.find(params[:id])
     end
 end

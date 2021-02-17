@@ -1,6 +1,3 @@
-@import "modules/valiables.scss";
-@import "modules/button.scss";
-
 .font-lr {
   font-size: 24px;
 }
@@ -122,10 +119,24 @@
 
 // ユーザー詳細ページここから
 .user {
+  flex-basis: 20%;
+
   &__img {
-    height: 150px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
     border-radius: 100%;
+  }
+
+  &__inner {
+    justify-content: space-between;
+  }
+
+  &__info {
+    flex-basis: 45%;
+  }
+
+  &__submenu {
+    flex-basis: 45%;
   }
 }
 
@@ -221,3 +232,11 @@
     }
   }
 }
+
+// 保存中の食材についてここから
+.inventory {
+  &__item {
+    flex-basis: 47%;
+  }
+}
+// 保存中の食材についてここまで

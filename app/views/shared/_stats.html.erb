@@ -6,6 +6,12 @@
   <p>相談</p>
   <p class="user__count"><%= @user.consultations.count %></p>
 <% end %>
+<% if @user == current_user %>
+  <%= link_to(inventories_user_path(@user), class:'user__tab') do %>
+  <p>食材</p>
+  <p class="user__count"><%= @user.inventories.count %></p>
+  <% end %>
+<% end %>
 <%= link_to(following_user_path(@user), class:'user__tab') do %>
   <p>フォロー</p>
   <p class="user__count" id="following"><%= @user.following.count %></p>

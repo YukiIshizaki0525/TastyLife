@@ -1,0 +1,30 @@
+.ingredient {
+  &__ul {
+    @extend .font-sm;
+    display: flex;
+    justify-content: space-between;
+    color: $IngredientAndStepColor;
+    border-bottom: 1px solid $ItemBorderColor;
+    padding: 7px;
+  }
+
+  &__inputBx {
+    @extend .mb-sm;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__content,
+  &__quantity {
+    @extend .recipe-input;
+    color: $IngredientAndStepColor;
+  }
+
+  &__content {
+    width: 50%;
+  }
+
+  &__quantity {
+    width: 30%;
+  }
+}
