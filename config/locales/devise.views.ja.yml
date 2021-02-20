@@ -39,10 +39,10 @@ ja:
     failure:
       already_authenticated: すでにログインしています。
       inactive: アカウントが有効化されていません。メールに記載された手順にしたがって、アカウントを有効化してください。
-      invalid: "%{authentication_keys}またはパスワードが違います。"
+      invalid: "Eメールまたはパスワードが違います。"
       last_attempt: もう一回誤るとアカウントがロックされます。
       locked: アカウントは凍結されています。
-      not_found_in_database: "Eメール・ユーザー名・パスワードのいずれかが違います。"
+      not_found_in_database: "Eメールまたはパスワードが違います。"
       timeout: セッションがタイムアウトしました。もう一度ログインしてください。
       unauthenticated: 新規登録もしくはログインしてください。
       unconfirmed: メールアドレスの本人確認が必要です。
@@ -51,7 +51,7 @@ ja:
         action: メールアドレスの確認
         greeting: "%{recipient}様"
         instruction: 以下のリンクをクリックし、メールアドレスの確認手続を完了させてください。
-        subject: メールアドレス確認メール
+        subject: "アカウントの有効化のご案内"
       email_changed:
         greeting: こんにちは、%{recipient}様。
         message: あなたのメール変更（%{email}）のお知らせいたします。
@@ -63,10 +63,10 @@ ja:
       reset_password_instructions:
         action: パスワード変更
         greeting: "%{recipient}様"
+        subject: パスワードの再設定のご案内
         instruction: パスワード再設定の依頼を受けたため、メールを送信しています。下のリンクからパスワードの再設定ができます。
         instruction_2: パスワード再設定の依頼をしていない場合、このメールを無視してください。
         instruction_3: パスワードの再設定は、上のリンクから新しいパスワードを登録するまで完了しません。
-        subject: パスワードの再設定について
       unlock_instructions:
         action: アカウントのロック解除
         greeting: "%{recipient}様"

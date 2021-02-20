@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "user新規登録", type: :system do
+RSpec.describe "ユーザー新規登録", type: :system do
   let(:user) { build(:user) }
   describe 'ユーザー新規登録' do
     context 'フォームの入力値が正常' do
@@ -12,6 +12,9 @@ RSpec.describe "user新規登録", type: :system do
         fill_in 'user_password', with: user.password
         fill_in 'user_password_confirmation', with: user.password_confirmation
         expect { click_button '新規登録' }.to change { User.count }.by(1)
+        # 認証メール数をカウント
+        expect(ActionMailer::Base.deliveries.size).to eq 1
+
         expect(current_path).to eq root_path
         expect(page).to have_content('新規登録が完了しました。')
       end
@@ -26,6 +29,8 @@ RSpec.describe "user新規登録", type: :system do
         fill_in 'user_password_confirmation', with: user.password_confirmation
 
         expect { click_button '新規登録' }.to change { User.count }.by(0)
+        expect(ActionMailer::Base.deliveries.size).to eq 0
+
         expect(current_path).to eq users_path
         expect(page).to have_content('Eメールを入力してください')
       end
@@ -39,6 +44,8 @@ RSpec.describe "user新規登録", type: :system do
         fill_in 'user_password_confirmation', with: "password"
 
         expect { click_button '新規登録' }.to change { User.count }.by(0)
+        expect(ActionMailer::Base.deliveries.size).to eq 0
+        
         expect(current_path).to eq users_path
         expect(page).to have_content('は半角6~12文字英大文字・小文字・数字それぞれ１文字以上含む必要があります')
       end

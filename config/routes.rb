@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   root 'homes#index'
   get 'recipes/tweet', to: 'homes#tweet_index'
   get 'recipes/tag/:name', to: "recipes#tag_search"
+
+  # letter_opner_webの設定
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   
   # devise_for :users
   devise_for :users, controllers: {
