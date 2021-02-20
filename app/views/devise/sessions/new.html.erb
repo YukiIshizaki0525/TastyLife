@@ -4,23 +4,31 @@
   </div>
   <div class="login__contentBx">
     <div class="login__formBx">
-      <%= render 'layouts/notifications' %>
+      
       <div class="login__title">ログイン</div>
+      <%= render 'layouts/notifications' %>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="login__inputBx">
-          <span class="login__label">ユーザー名</span>
-          <%= f.text_field :login,
+          <%= f.label :email, {class: 'login__label'} %>
+          <%= f.email_field :email,
                             autofocus: true,
-                            required: true
+                            maxlength: '100'
           %>
+
         </div>
 
         <div secrets is deprecated in favor of credentials. Run:v class="login__inputBx">
           <%= f.label :password, {class: 'login__label'} %>
           <%= f.password_field :password,
                                 autocomplete: "off",
-                                required: true
+                                minlength: @minimum_password_length,
+                                maxlength: '12'
           %>
+
+          <% if @minimum_password_length %>
+            <small class="form-text text-muted"><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></small>
+          <% end %>
+
         </div>
 
         <% if devise_mapping.rememberable? %>
@@ -33,7 +41,15 @@
         <% end %>
 
         <div class="login__inputBx">
-          <%= f.submit  t('.sign_in') %>
+          <%= f.submit "ログイン" %>
+        </div>
+      <% end %>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="login__inputBx">
+          <%= f.hidden_field :email, value: 'testuser@example.com' %>
+          <%= f.hidden_field :password, value: 'Testuser123' %>
+          <%= f.submit  "テストユーザーログイン", class: "login__inputBx-testuser" %>
         </div>
       <% end %>
 

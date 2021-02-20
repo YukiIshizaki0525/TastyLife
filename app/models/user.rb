@@ -33,7 +33,6 @@
 #  index_users_on_unlock_token          (unlock_token) UNIQUE
 #
 class User < ApplicationRecord
-  attr_accessor :login
   has_many :recipes, dependent: :destroy
   has_many :comments
 
@@ -98,27 +97,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable
-
-  def login=(login)
-    @login = login
-  end
-
-  # username,emailでの認証が可能
-  def login
-    @login || self.name || self.email
-  end
-
-  # ログイン時にusernameかemailで認証させるためオーバーライド
-  def self.find_for_database_authentication(warden_conditions)
-    conditions = warden_conditions.dup
-    conditions[:email].downcase! if conditions[:email]
-    login = conditions.delete(:login)
-
-    where(conditions.to_hash).where(
-      ["lower(name) = :value OR lower(email) = :value",
-        { value: login.downcase }]
-      ).first
-  end
 
   def validate_name
     errors.add(:name, :invalid) if User.where(email: name).exists?

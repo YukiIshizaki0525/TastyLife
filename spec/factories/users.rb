@@ -53,8 +53,8 @@ FactoryBot.define do
   # end
   factory :user do
     name {"Alice"}
-    # sequence(:email) { |n| "test#{n}@example.com" }
-    email { "alicetester@example.com"}
+    sequence(:email) { |n| "test#{n}@example.com" }
+    # email { "alicetester@example.com"}
     password {"v4xqUvAXhK"}
     password_confirmation {"v4xqUvAXhK"}
 
