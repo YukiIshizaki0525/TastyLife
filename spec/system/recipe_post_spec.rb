@@ -47,6 +47,15 @@ RSpec.describe "レシピ機能", type: :system do
         expect(page).to have_content("レシピの説明を入力してください")
       end
 
+      it '材料と作り方はそれぞれ1つ以上入っていないと登録不可' do
+        visit new_recipe_path
+        fill_in 'recipe_title', with: recipe.title
+        fill_in 'recipe_description', with: recipe.description
+        click_button '送信する'
+        expect(page).to have_content("材料は1つ以上登録してください。")
+        expect(page).to have_content("作り方は1つ以上登録してください。")
+      end
+
       it '材料・分量に値が入っていないため登録不可' do
         visit new_recipe_path
         fill_in 'recipe_title', with: recipe.title
