@@ -15,6 +15,7 @@ ja:
         created_at: 登録日時
         updated_at: 更新日時
         user_id: ユーザーID
+        remove_recipe_image: 画像を削除
       recipe/ingredients:
         content: 材料名
         quantity: 分量

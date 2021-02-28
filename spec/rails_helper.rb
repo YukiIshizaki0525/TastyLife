@@ -1,15 +1,14 @@
-# This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
+
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
-# Prevent database truncation if the environment is production
+
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 
 # shoulda-matchersの読み込み
 require 'shoulda/matchers'
 
-#
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
 begin
@@ -34,6 +33,14 @@ RSpec.configure do |config|
   # supportディレクトリを利用
   Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
   config.include RequestSpecHelper, type: :request
+
+  # ヘッドレスモードのChromeで実行する
+  config.before(:each) do |example|
+    if example.metadata[:type] == :system
+      driven_by :selenium, using: :headless_chrome, screen_size: [768, 654]
+    end
+  end
+
 end
 
 # /spec/rails_helper.rb  

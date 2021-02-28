@@ -2,8 +2,6 @@ require 'rails_helper'
 
 RSpec.describe "ユーザーログイン", type: :system do
   let(:user) { create(:user) }
-  
-
 
   describe 'ユーザーログイン' do
     context 'フォームの入力値が正常' do

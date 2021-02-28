@@ -6,6 +6,7 @@
   <div class="subheader">
     <div class="main-title">Recipe</div>
   </div>
+  <%= render 'layouts/notifications' %>
   <% if @recipes.any? %>
     <%= render 'shared/recipe_list' %>
   <% else %>

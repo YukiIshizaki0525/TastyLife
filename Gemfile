@@ -19,8 +19,7 @@ gem 'rails-i18n', '~> 6.0'
 gem 'devise-i18n'
 # Bootstrap
 gem 'devise-bootstrap-views', '~> 1.0'
-# ネストされたフォーム
-gem 'cocoon'
+
 # ActiveStorageバリデーション用
 gem 'active_storage_validations', '0.8.2'
 # 画像処理用
@@ -45,6 +44,7 @@ group :development, :test do
   gem 'awesome_print'
   gem 'spring-commands-rspec'
   gem 'faker'
+  gem 'database_cleaner'
 end
 
 group :development do

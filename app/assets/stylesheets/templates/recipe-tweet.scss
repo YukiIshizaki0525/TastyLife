@@ -1,0 +1,82 @@
+.tweet {
+  &__item {
+    @extend .content-width;
+    @extend .mb-sm;
+    display: flex;
+    border-bottom: 1px solid $ItemBorderColor;
+    border-radius: 4px;
+    text-decoration: none !important;
+  }
+  &__img {
+    height: 100px;
+    width: 100px;
+    overflow: hidden;
+    margin-bottom: 5px;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: $ItemHoverColor;
+      opacity: 0.75;
+    }
+
+    & > img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__detail {
+    margin-left: 10.5px;
+    position: relative;
+  }
+
+  &__title {
+    @extend .font-md;
+    display: inline-block;
+    font-weight: bold;
+    color: $RecipeTitleColor;
+    text-decoration: none;
+    outline: none;
+
+    &:hover {
+      color: $NameHoverColor;
+      text-decoration: underline;
+    }
+  }
+
+  &__description {
+    @extend .font-sm;
+    display: none;
+  }
+
+  &__userinfo {
+    display: flex;
+    text-decoration: none !important;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  &__useravatar {
+    height: 25px;
+    width: 25px;
+    overflow: hidden;
+    margin-right: 10px;
+
+    & > img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__username {
+    color: $UserNameColor;
+
+    &:hover {
+      color: $NameHoverColor;
+      text-decoration: underline;
+    }
+  }
+}

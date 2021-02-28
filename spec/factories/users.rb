@@ -57,11 +57,12 @@ FactoryBot.define do
     # email { "alicetester@example.com"}
     password {"v4xqUvAXhK"}
     password_confirmation {"v4xqUvAXhK"}
+    confirmed_at { Time.zone.now }
 
   # 他人
     factory :other_user do
-      email { Faker::Internet.email }
       name { Faker::Internet.username }
+      email { Faker::Internet.email }
       password { "C2e6aNEY" }
       password_confirmation { "C2e6aNEY" }
       confirmed_at { Date.today }

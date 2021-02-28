@@ -2,18 +2,22 @@
 
 <main>
   <%= form_with(model: @recipe, local: true) do |f| %>
-  <div class="cooking-title">写真</div>
   <section class="description">
     <div class="description__inner">
-      <div class="description__img">
-        <label class="img-file">
-          <%= image_tag 'add_a_photo', class:"add-photo-btn"%>
-          <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "image" %>
-          <div class="preview description__preview"></div>
+      <div class="description__img-field">
+        <div class="cooking-title">写真</div>
+          <label class="img-file">
+            <%= image_tag 'add_a_photo', class:"add-photo-btn"%>
+            <%= f.file_field :recipe_image, accept: "image/jpeg,image/gif,image/png", class: "image" %>
+          </label>
+        <div class="preview description__preview"></div>
+        <% if @recipe.image.attached? %>
           <div class="description__img">
-            <%= image_tag @recipe.image if @recipe.image.attached? %>
+            <%= image_tag @recipe.image %>
           </div>
-        </label>
+          <%= f.check_box :remove_recipe_image %>
+          <%= f.label :remove_recipe_image %>
+        <% end %>
       </div>
       <div class="description__texts">
         <div class="cooking-title">レシピについて</div>

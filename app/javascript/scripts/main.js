@@ -5,10 +5,17 @@ window.addEventListener('turbolinks:load', function () {
 	new MobileMenu();
 	new addFields();
 	new removeFields();
+	
 	new imgPreView();
-
-	// if (location.pathname.match("recipes/new", "inventory/_form")) {
+	// if (location.pathname.match("recipes/new")) {
+	// 	new imgPreView();
 	// }
+
+	// if (location.pathname.match("inventory/_form")) {
+	// 	new imgPreView();
+	// }
+
+
 });
 
 
@@ -115,13 +122,13 @@ class imgPreView{
 	constructor() {
 		this.element = document.querySelector('.image')
 		this.preview = document.querySelector('.preview')
+		this.preview.style.display ="none";
 		this._preview();
 
-		// this._mutation();
 	}
 
 	_preview() {
-		this.element.addEventListener('input', (event) => {
+			this.element.addEventListener('input', (event) => {
 			const target = event.target
 			const files = target.files
 			const file = files[0]
@@ -131,6 +138,7 @@ class imgPreView{
 				const img = new Image()
 				img.src = reader.result
 				this.preview.appendChild(img)
+				this.preview.style.display ="block";
 			}
 			reader.readAsDataURL(file)
 		})
