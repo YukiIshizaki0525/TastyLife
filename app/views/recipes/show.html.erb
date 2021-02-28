@@ -5,8 +5,14 @@
       <%= render 'layouts/notifications' %>
     <% end %>
     <div class="description__inner">
-      <div class="description__img">
-        <%= image_tag @recipe.image if @recipe.image.attached? %>
+      <div class="description__img-field">
+        <div class="description__img">
+        <% if @recipe.image.attached? %>
+          <%= image_tag @recipe.image %>
+        <% else %>
+          <%= image_tag 'no_image' %>
+        <% end %>
+        </div>
       </div>
       <div class="description__texts">
         <div class="description__title">

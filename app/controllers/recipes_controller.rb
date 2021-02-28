@@ -17,11 +17,15 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    if @recipe.user == current_user
+      render "edit"
+    else
+      redirect_back fallback_location: root_path, flash: { alert: "他人のレシピは編集できません" }
+    end
   end
 
   def create
     recipe = current_user.recipes.new(recipe_params)
-    recipe.image.attach(params[:recipe][:image])
 
     if recipe.save
       redirect_to recipe, flash: { notice: "「#{recipe.title}」のレシピを投稿しました。" }
@@ -46,7 +50,7 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe.destroy
-    redirect_to recipes_path, flash: { notice: "「#{@recipe.title}」のレシピを削除しました。" }
+    redirect_to user_path(current_user.id), flash: { notice: "「#{@recipe.title}」のレシピを削除しました。" }
   end
 
   def tag_search
@@ -62,9 +66,14 @@ class RecipesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recipe_params
-      params.require(:recipe).permit(:image, :title, :description, :user_id,
+      params.require(:recipe).permit(
+        :recipe_image,
+        :remove_recipe_image,
+        :title,
+        :description,
+        :user_id,
         tag_ids: [],
         ingredients_attributes: [:id, :content, :quantity, :_destroy],
         steps_attributes: [:id, :direction, :step_image, :_destroy])
     end
-end 
+end

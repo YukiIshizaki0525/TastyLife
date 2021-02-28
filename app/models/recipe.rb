@@ -16,7 +16,7 @@
 #
 class Recipe < ApplicationRecord
   belongs_to :user
-  default_scope -> { self.order(created_at: :desc)}
+  default_scope -> { self.order(created_at: :desc) }
 
   has_many :ingredients, dependent: :destroy
   accepts_nested_attributes_for :ingredients, allow_destroy: true
@@ -31,6 +31,8 @@ class Recipe < ApplicationRecord
 
   # レシピ完成イメージの画像
   has_one_attached :image
+  attribute :recipe_image
+  attribute :remove_recipe_image, :boolean
 
   # レシピ投稿に関するバリデーション
   validates :user_id, presence: true
@@ -42,6 +44,26 @@ class Recipe < ApplicationRecord
                                     message: "must be a valid image format" },
                     size:         { less_than: 2.megabytes,
                                     message: "should be less than 2zMB" }
+
+  # 材料・分量・手順についてのバリデーション
+  validate :require_any_ingredients
+  validate :require_any_steps
+
+  def require_any_ingredients
+    errors.add(:base, "材料は1つ以上登録してください。") if self.ingredients.blank?
+  end
+
+  def require_any_steps
+    errors.add(:base, "作り方は1つ以上登録してください。") if self.steps.blank?
+  end
+
+  before_save do
+    if recipe_image
+      self.image = recipe_image
+    elsif remove_recipe_image
+      self.image.purge
+    end
+  end
 
   def display_image
     image.variant(gravity: :center, resize:"200x290^", crop:"200x290+0+0").processed

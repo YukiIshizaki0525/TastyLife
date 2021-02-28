@@ -2,7 +2,11 @@
   <% @recipes.each do |recipe| %>
     <%= link_to(recipe_path(id: recipe.id), class:'list__item') do %>
       <div class="list__img">
-        <%= image_tag(recipe.image) if recipe.image.attached? %>
+        <%  if recipe.image.attached? %>
+          <%= image_tag(recipe.image) %>
+        <% else %>
+          <%= image_tag 'no_image' %>
+        <% end %>
       </div>
       <div class="list__detail">
         <span class="timestamp"><%= recipe.created_at.to_s(:datetime_jp) %></span><br>

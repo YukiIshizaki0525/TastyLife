@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "ユーザー新規登録", type: :system do
   let(:user) { build(:user) }
-  describe 'ユーザー新規登録' do
+  describe '正常' do
     context 'フォームの入力値が正常' do
       it '正確な情報を入力したら登録可能。そしてトップへ' do
         visit new_user_registration_path
@@ -19,6 +19,9 @@ RSpec.describe "ユーザー新規登録", type: :system do
         expect(page).to have_content('新規登録が完了しました。')
       end
     end
+  end
+
+  describe '異常' do
     context 'フォームの入力値が異常のため登録不可' do
       it 'メールアドレスが入っていないため再度登録ページへ' do
         visit new_user_registration_path
