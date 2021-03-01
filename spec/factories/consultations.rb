@@ -17,8 +17,9 @@
 #
 #  fk_rails_...  (user_id => users.id)
 #
-require 'rails_helper'
-
-RSpec.describe Consulation, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+FactoryBot.define do
+  factory :consultation do
+    title { "相談タイトル" }
+    content { "相談内容" }
+  end
 end

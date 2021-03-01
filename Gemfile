@@ -44,7 +44,6 @@ group :development, :test do
   gem 'awesome_print'
   gem 'spring-commands-rspec'
   gem 'faker'
-  gem 'database_cleaner'
 end
 
 group :development do

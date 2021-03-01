@@ -100,7 +100,7 @@
       object-fit: cover;
       height: 100%;
       width: 100%;
-      border: solid 3px #fff0c6;
+      border: solid 3px $UserSayColor;
       border-radius: 50%;
     }
   }
@@ -135,6 +135,13 @@
   &__pv {
     @extend .post-date;
     font-weight: 600;
+  }
+
+  &__edit-link {
+    @extend .font-sm;
+    font-weight: 600;
+    color: $RecipeTitleColor !important;
+    float: right;
   }
 
   // 相談ページ(詳細のみ)はここまで

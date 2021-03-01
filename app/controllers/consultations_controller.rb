@@ -1,5 +1,5 @@
 class ConsultationsController < ApplicationController
-  before_action :set_consultation, only: [:show]
+  before_action :set_consultation, only: [:show, :edit, :update, :destroy]
 
   def index
     @consultations = Consultation.page(params[:page]).order(impressions_count: 'DESC')
@@ -18,6 +18,14 @@ class ConsultationsController < ApplicationController
 
   def new
     @consultation = Consultation.new(flash[:consultation])
+  end
+
+  def edit
+    if @consultation.user == current_user
+      render "edit"
+    else
+      redirect_back fallback_location: root_path, flash: { alert: "他人の相談は編集できません" }
+    end
   end
 
   def create
@@ -41,6 +49,11 @@ class ConsultationsController < ApplicationController
       flash[:error_messages] = @consultation.errors.full_messages
       redirect_back fallback_location: @consultation
     end
+  end
+
+  def destroy
+    @consultation.destroy
+    redirect_to consultations_user_path(current_user.id), flash: { notice: "「#{@consultation.title}」の相談を削除しました。" }
   end
 
   private

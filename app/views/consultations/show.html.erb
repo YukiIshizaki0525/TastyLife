@@ -14,11 +14,17 @@
     <div class="consultation__main">
       <div class="consultation__says">
         <div class="consultation__title"><%= @consultation.title %></div>
-        <div class="consultation__content"><%= @consultation.content %></div>
+        <div class="consultation__content">
+          <%= @consultation.content %>
+          <% if user_signed_in? && @consultation.user == current_user %>
+            <%= link_to '編集', edit_consultation_path, class: "consultation__edit-link" %>
+          <% end %>
+        </div>
         <div class="consultation__detail-info">
           <p class="consultation__pv">閲覧数：<%= @consultation.impressions_count %></p>
           <p class="post-date"><%= @consultation.created_at.to_s(:datetime_jp) %>に投稿</p>
         </div>
+        
       </div>
     </div>
   </div>

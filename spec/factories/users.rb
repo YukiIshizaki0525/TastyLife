@@ -59,6 +59,10 @@ FactoryBot.define do
     password_confirmation {"v4xqUvAXhK"}
     confirmed_at { Time.zone.now }
 
+    after(:build) do |user|
+      user.avatar.attach(io: File.open('spec/fixtures/avatar.jpg'), filename: 'avatar.jpg', content_type: 'image/jpg')
+    end
+
   # 他人
     factory :other_user do
       name { Faker::Internet.username }
