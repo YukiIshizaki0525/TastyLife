@@ -47,6 +47,20 @@ RSpec.describe "レシピ機能", type: :system do
         expect(page).to have_content("レシピの説明を入力してください")
       end
 
+      it 'レシピのタイトルは50文字・説明は140文字を超える場合は登録不可' do
+        visit new_recipe_path
+        fill_in 'recipe_title', with:  "a" * 51
+        fill_in 'recipe_description', with:  "a" * 141
+        click_link "材料の追加"
+        find(".ingredient__content").set("材料1")
+        find(".ingredient__quantity").set("分量1")
+        click_link "作り方の追加"
+        find(".step__input").set("ステップ1")
+        click_button '送信する'
+        expect(page).to have_content("レシピのタイトルは50文字以内で入力してください")
+        expect(page).to have_content("レシピの説明は140文字以内で入力してください")
+      end
+
       it '材料と作り方はそれぞれ1つ以上入っていないと登録不可' do
         visit new_recipe_path
         fill_in 'recipe_title', with: recipe.title
@@ -86,7 +100,7 @@ RSpec.describe "レシピ機能", type: :system do
   end
 
   describe '詳細表示機能' do
-    it '誰でも詳細レシピを確認可能' do
+    it '誰でもレシピ詳細を閲覧可能' do
       visit recipe_path(posted_recipe)
       expect(page).to have_content(posted_recipe.title)
       expect(page).to have_content(posted_recipe.description)
@@ -94,7 +108,7 @@ RSpec.describe "レシピ機能", type: :system do
       expect(page).to have_content("分量1")
       expect(page).to have_content("ステップ1")
     end
-    it '他ユーザーの場合は別の方のレシピにレシピ編集リンクが表示されない' do
+    it '別の方の相談はレシピ編集リンクが表示されない' do
       sign_in other_user
       visit recipe_path(posted_recipe)
       expect(page).to_not have_content("レシピ編集")

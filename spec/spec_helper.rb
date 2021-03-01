@@ -1,4 +1,3 @@
-require 'database_cleaner'
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -86,15 +85,4 @@ RSpec.configure do |config|
     FactoryBot.reload
   end
 
-  DatabaseCleaner.strategy = :truncation
-
-  # RSpecの実行前に1度、実行
-  config.before(:suite) do
-    DatabaseCleaner.clean
-  end
-
-  # # 最後に1度、実行
-  # config.after(:suite) do
-  #   DatabaseCleaner.clean
-  # end
 end
