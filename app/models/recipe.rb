@@ -23,7 +23,7 @@ class Recipe < ApplicationRecord
   has_many :steps, dependent: :destroy
   accepts_nested_attributes_for :steps, allow_destroy: true
 
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   # タグ付け関連
   has_many :recipe_tag_relations, dependent: :delete_all

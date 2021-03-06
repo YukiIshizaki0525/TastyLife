@@ -70,6 +70,11 @@ FactoryBot.define do
       password { "C2e6aNEY" }
       password_confirmation { "C2e6aNEY" }
       confirmed_at { Date.today }
+
+      #プロフィール画像を設定
+      after(:build) do |other_user|
+        other_user.avatar.attach(io: File.open('spec/fixtures/other_user_avatar.jpg'), filename: 'other_user_avatar.jpg', content_type: 'image/jpg')
+      end
     end
   end
 end

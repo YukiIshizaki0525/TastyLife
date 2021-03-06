@@ -15,9 +15,7 @@
 #  index_comments_on_user_id    (user_id)
 #
 FactoryBot.define do
-  factory :comment do
-    recipe { nil }
-    name { "MyString" }
-    comment { "MyText" }
+  factory :comment, class: Comment do
+    comment { 'このコメントはテストです。' }
   end
 end

@@ -12,7 +12,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    comment = Comment.find_by(id: params[:id], recipe_id: params[:recipe_id]).destroy
+    comment = Comment.find_by(id: params[:id], recipe_id: params[:recipe_id])
+    if comment.user_id == current_user.id
+      comment.destroy
+    end
     # redirect_to comment.boardで掲示板詳細画面に遷移
     redirect_to comment.recipe, flash: { notice: 'コメントが削除されました' }
   end
