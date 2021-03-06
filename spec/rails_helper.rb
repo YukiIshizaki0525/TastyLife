@@ -32,7 +32,6 @@ RSpec.configure do |config|
 
   # supportディレクトリを利用
   Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
-  config.include RequestSpecHelper, type: :request
 
   # ヘッドレスモードのChromeで実行する
   config.before(:each) do |example|
