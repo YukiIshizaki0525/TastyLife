@@ -181,11 +181,5 @@ ActiveRecord::Schema.define(version: 2021_02_13_133847) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  add_foreign_key "consultation_comments", "consultations"
-  add_foreign_key "consultation_comments", "users"
-  add_foreign_key "consultations", "users"
-  add_foreign_key "inventories", "users"
-  add_foreign_key "recipe_tag_relations", "recipes"
-  add_foreign_key "recipe_tag_relations", "tags"
   add_foreign_key "steps", "recipes"
 end

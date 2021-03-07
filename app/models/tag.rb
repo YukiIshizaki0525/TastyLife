@@ -11,7 +11,7 @@ class Tag < ApplicationRecord
   has_many :recipe_tag_relations, dependent: :delete_all
   has_many :recipes, through: :recipe_tag_relations
 
-  validates :name, presence: true, uniqueness: true, length: { maximum: 30 }
+  validates :name, presence: true, uniqueness: true
 
 
 end

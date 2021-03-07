@@ -1,23 +1,19 @@
 # == Schema Information
 #
-# Table name: consulation_comments
+# Table name: consultation_comments
 #
-#  id             :bigint           not null, primary key
-#  content        :text(65535)
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  consulation_id :bigint           not null
-#  user_id        :bigint           not null
+#  id              :bigint           not null, primary key
+#  content         :text(65535)
+#  reply_comment   :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  consultation_id :bigint           not null
+#  user_id         :bigint           not null
 #
 # Indexes
 #
-#  index_consulation_comments_on_consulation_id  (consulation_id)
-#  index_consulation_comments_on_user_id         (user_id)
-#
-# Foreign Keys
-#
-#  fk_rails_...  (consulation_id => consultations.id)
-#  fk_rails_...  (user_id => users.id)
+#  index_consultation_comments_on_consultation_id  (consultation_id)
+#  index_consultation_comments_on_user_id          (user_id)
 #
 FactoryBot.define do
   factory :consulation_comment do

@@ -9,8 +9,7 @@
 
       <div class="login__inputBx">
         <%= f.label :name, {class: 'login__label'} %>
-        <%= f.text_field :name,
-                        maxlength: '50'%>
+        <%= f.text_field :name, maxlength: '50' %>
         <% if @user.errors.include?(:name) %>
           <p class="login__form-error"><%= @user.errors.full_messages_for(:name).first %>
         <% end %>
@@ -18,9 +17,7 @@
 
       <div class="login__inputBx">
         <%= f.label :email, {class: 'login__label'} %>
-        <%= f.email_field :email, 
-                          autofocus: true,
-                          maxlength: '100'%>
+        <%= f.email_field :email, maxlength: '100 '%>
         <% if @user.errors.include?(:email) %>
           <p class="login__form-error"><%= @user.errors.full_messages_for(:email).first %>
         <% end %>

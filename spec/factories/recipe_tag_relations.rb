@@ -13,11 +13,6 @@
 #  index_recipe_tag_relations_on_recipe_id  (recipe_id)
 #  index_recipe_tag_relations_on_tag_id     (tag_id)
 #
-# Foreign Keys
-#
-#  fk_rails_...  (recipe_id => recipes.id)
-#  fk_rails_...  (tag_id => tags.id)
-#
 FactoryBot.define do
   factory :recipe_tag_relation do
     recipe { nil }
