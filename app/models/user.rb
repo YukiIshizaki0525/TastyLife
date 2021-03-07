@@ -76,7 +76,7 @@ class User < ApplicationRecord
             uniqueness: { case_sensitive: false }
   
   VALID_PASSWORD_REGEX =/\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])\w{6,12}\z/
-  validates :password, 
+  validates :password,
             presence: true,
             format: { with: VALID_PASSWORD_REGEX,
                       message: "は半角6~12文字英大文字・小文字・数字それぞれ１文字以上含む必要があります"}
@@ -85,12 +85,12 @@ class User < ApplicationRecord
             format: { with: VALID_PASSWORD_REGEX,
                       message: "は半角6~12文字英大文字・小文字・数字それぞれ１文字以上含む必要があります"}
 
-  validates :avatar,
-            presence: true,
-            content_type: { in: %w[image/jpeg image/gif image/png],
-                            message: "は有効な画像形式である必要があります" },
-                            size: { less_than: 1.megabytes,
-                                    message: "は1MB未満である必要があります" }
+  # validates :avatar,
+  #           presence: true,
+  #           content_type: { in: %w[image/jpeg image/gif image/png],
+  #                           message: "は有効な画像形式である必要があります" },
+  #                           size: { less_than: 1.megabytes,
+  #                                   message: "は1MB未満である必要があります" }
   validates_format_of :name,
                       with: /^[a-zA-Z0-9_¥.]*$/,
                       multiline: true
@@ -124,4 +124,5 @@ class User < ApplicationRecord
     Recipe.where("user_id IN (#{following_ids}) OR user_id = :user_id",
                                    user_id: self.id)
   end
+
 end

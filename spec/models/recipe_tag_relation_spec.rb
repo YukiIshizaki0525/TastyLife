@@ -13,11 +13,6 @@
 #  index_recipe_tag_relations_on_recipe_id  (recipe_id)
 #  index_recipe_tag_relations_on_tag_id     (tag_id)
 #
-# Foreign Keys
-#
-#  fk_rails_...  (recipe_id => recipes.id)
-#  fk_rails_...  (tag_id => tags.id)
-#
 require 'rails_helper'
 
 RSpec.describe RecipeTagRelation, type: :model do

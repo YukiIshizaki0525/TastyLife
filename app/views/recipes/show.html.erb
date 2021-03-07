@@ -28,6 +28,8 @@
             <div class="recipeuser__img">
               <% if @recipe.user.avatar.attached? %>
                 <%= link_to image_tag(@recipe.user.avatar), user_path(id: @recipe.user_id) %>
+              <% else %>
+                <%= image_tag 'default_user' %>
               <% end %>
             </div>
             <%= link_to @recipe.user.name, user_path(id: @recipe.user_id), class:"recipeuser__name" %>

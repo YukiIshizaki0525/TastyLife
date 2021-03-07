@@ -5,10 +5,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     super do
-      resource.update(confirmed_at: Time .now.utc)
+      # resource.update(confirmed_at: Time .now.utc)
       #↓と同じ意味になります。
-      # resource.skip_confirmation!
-      # resource.save
+      resource.skip_confirmation!
+      resource.save
     end
   end
 

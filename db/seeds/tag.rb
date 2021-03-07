@@ -1,9 +1,10 @@
 if Rails.env == 'development'
   Tag.create([
-    { name: '肉料理' },
-    { name: '魚介料理' },
-    { name: '野菜料理' },
-    { name: 'ご飯もの' },
-    { name: '麺類' }
+    { name: '栄養満点' },
+    { name: '簡単' },
+    { name: '時短' },
+    { name: 'コスパ◎' },
+    { name: '日持ち◎' },
+    { name: 'おもてなし' }
   ])
 end
