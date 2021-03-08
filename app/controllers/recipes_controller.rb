@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show, :tag_search]
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -8,7 +9,9 @@ class RecipesController < ApplicationController
 
   def show
     @comments = @recipe.comments
-    @comment = current_user.comments.new #=> formのパラメータ用にCommentオブジェクトを取得
+    if user_signed_in?
+      @comment = current_user.comments.new #=> formのパラメータ用にCommentオブジェクトを取得
+    end
   end
 
   def new

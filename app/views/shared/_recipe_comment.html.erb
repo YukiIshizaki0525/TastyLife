@@ -4,8 +4,10 @@
       <div class="comment__count">コメント<%= @comments.count %>件</div>
       <%= render @comments %>
     </div>
-    <div class="comment__form">
-      <%= render 'comments/form' %>
-    </div>
+    <% if user_signed_in? %>
+      <div class="comment__form">
+        <%= render 'comments/form' %>
+      </div>
+    <% end %>
   </div>
 </section>
