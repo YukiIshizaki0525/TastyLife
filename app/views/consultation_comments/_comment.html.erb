@@ -16,8 +16,10 @@
         <%= link_to image_tag("delete"), consultation_consultation_comment_path(comment.consultation.id, comment.id), class: 'comment__delete', method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
       <% end %>
     </div>
-    
-    <%= render 'consultation_comments/reply_form', comment_reply: comment %>
+    <% if user_signed_in? %>
+      <%= render 'consultation_comments/reply_form', comment_reply: comment %>
+    <% end %>
+
     <%= render 'consultation_comments/reply_comment', comment_reply: comment %>
   </div>
 <% end %>

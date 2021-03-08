@@ -14,6 +14,8 @@
     <% else %>
       <li class="mobile-menu__item"><%= link_to '新規登録', new_user_registration_path %></li>
       <li class="mobile-menu__item"><%= link_to 'ログイン', new_user_session_path %></li>
+      <li class="mobile-menu__item"><%= link_to 'レシピ一覧', recipes_path %></li>
+      <li class="mobile-menu__item"><%= link_to '相談一覧', consultations_path %></li>
     <% end %>
   </ul>
 </nav>
