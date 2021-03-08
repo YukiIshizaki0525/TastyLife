@@ -17,12 +17,12 @@
 
         </div>
 
-        <div secrets is deprecated in favor of credentials. Run:v class="login__inputBx">
+        <div class="login__inputBx">
           <%= f.label :password, {class: 'login__label'} %>
           <%= f.password_field :password,
                                 autocomplete: "off",
                                 minlength: @minimum_password_length,
-                                maxlength: '12'
+                                maxlength: '20'
           %>
 
           <% if @minimum_password_length %>
@@ -48,7 +48,7 @@
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="login__inputBx">
           <%= f.hidden_field :email, value: 'testuser@example.com' %>
-          <%= f.hidden_field :password, value: 'Testuser123' %>
+          <%= f.hidden_field :password, value: 'Testuser203' %>
           <%= f.submit  "テストユーザーログイン", class: "login__inputBx-testuser" %>
         </div>
       <% end %>
