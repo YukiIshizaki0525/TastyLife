@@ -1,0 +1,14 @@
+.favorite {
+  &__link {
+    text-decoration: none !important;
+  }
+  &__btn {
+    @extend .font-md;
+    color: $FaboriteColor !important;
+  }
+
+  &__count {
+    @extend .font-md;
+    color: $SubTitle;
+  }
+}

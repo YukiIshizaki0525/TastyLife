@@ -10,27 +10,23 @@
     border: 1px solid $ItemBorderColor;
     border-radius: 4px;
     text-decoration: none !important;
-
-    &:hover {
-      background-color: $ItemHoverColor;
-      opacity: 0.75;
-    }
   }
 
   &__recipetitle {
     @extend .font-md;
     font-weight: bold;
     display: inline-block;
-    color: $RecipeTitleColor;
-    text-decoration: none !important;
+    color: $RecipeTitleColor !important;
   }
 
   &__description {
     @extend .font-sm;
+    @extend .mb-sm;
     color: $SubTitle;
   }
 
   &__img {
+    display: block;
     height: 150px;
     overflow: hidden;
     margin-bottom: 5px;
@@ -40,6 +36,11 @@
       object-fit: cover;
       height: 100%;
       width: 100%;
+    }
+
+    &:hover {
+      background-color: $ItemHoverColor;
+      opacity: 0.75;
     }
   }
 

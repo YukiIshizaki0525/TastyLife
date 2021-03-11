@@ -1,18 +1,22 @@
 <div class="list__container">
   <% @recipes.each do |recipe| %>
-    <%= link_to(recipe_path(id: recipe.id), class:'list__item') do %>
-      <div class="list__img">
+    <div class="list__item">
+      <%= link_to recipe_path(recipe), class: "list__img" do %>
         <%  if recipe.image.attached? %>
           <%= image_tag(recipe.image) %>
         <% else %>
           <%= image_tag 'no_image' %>
         <% end %>
-      </div>
+      <% end %>
       <div class="list__detail">
         <span class="timestamp"><%= recipe.created_at.to_s(:datetime_jp) %></span><br>
-        <p class="list__recipetitle"><%= recipe.title %></p><br>
-        <p class="list__description"><%= recipe.description %></p>
+        <%= link_to recipe.title, recipe_path(recipe), class: 'list__recipetitle' %>
+        <div class="list__description"><%= recipe.description %></div>
+        
+        <div id="recipe_<%= recipe.id %>">
+          <%= render partial: "recipes/favorite", locals: { recipe: recipe } %>
+        </div>
       </div>
-    <% end %>
+    </div>
   <% end %>
 </div>

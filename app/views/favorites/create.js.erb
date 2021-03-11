@@ -1,0 +1,1 @@
+document.querySelector('#recipe_<%= @recipe.id %>').innerHTML = '<%= j(render partial: "recipes/favorite", locals: { recipe: @recipe }) %>'

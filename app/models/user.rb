@@ -61,7 +61,10 @@ class User < ApplicationRecord
 
   # 食材管理について
   has_many :inventories, dependent: :destroy
-  
+
+  # いいね機能関連
+  has_many :favorites, dependent: :destroy
+
   # アイコン画像追加のため
   has_one_attached :avatar
 
@@ -85,12 +88,11 @@ class User < ApplicationRecord
             format: { with: VALID_PASSWORD_REGEX,
                       message: "は半角6~20文字英大文字・小文字・数字それぞれ1文字以上含む必要があります"}
 
-  # validates :avatar,
-  #           presence: true,
-  #           content_type: { in: %w[image/jpeg image/gif image/png],
-  #                           message: "は有効な画像形式である必要があります" },
-  #                           size: { less_than: 1.megabytes,
-  #                                   message: "は1MB未満である必要があります" }
+  validates :avatar,
+            content_type: { in: %w[image/jpeg image/gif image/png],
+                            message: "は有効な画像形式である必要があります" },
+                            size: { less_than: 1.megabytes,
+                                    message: "は1MB未満である必要があります" }
   validates_format_of :name,
                       with: /^[a-zA-Z0-9_¥.]*$/,
                       multiline: true
@@ -123,6 +125,10 @@ class User < ApplicationRecord
                      WHERE follower_id = :user_id"
     Recipe.where("user_id IN (#{following_ids}) OR user_id = :user_id",
                                    user_id: self.id)
+  end
+
+  def already_favorited?(recipe)
+    self.favorites.exists?(recipe_id: recipe.id)
   end
 
 end
