@@ -33,6 +33,8 @@ gem 'ransack'
 # 閲覧数カウント
 gem 'impressionist'
 
+gem 'font-awesome-sass'
+
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

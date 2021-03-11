@@ -18,16 +18,21 @@ class Recipe < ApplicationRecord
   belongs_to :user
   default_scope -> { self.order(created_at: :desc) }
 
+  # 材料・作り方関連
   has_many :ingredients, dependent: :destroy
   accepts_nested_attributes_for :ingredients, allow_destroy: true
   has_many :steps, dependent: :destroy
   accepts_nested_attributes_for :steps, allow_destroy: true
 
-  has_many :comments
+  # コメント関連
+  has_many :comments, dependent: :destroy
 
   # タグ付け関連
   has_many :recipe_tag_relations, dependent: :delete_all
   has_many :tags, through: :recipe_tag_relations
+
+  # いいね機能関連
+  has_many :favorites, dependent: :destroy
 
   # レシピ完成イメージの画像
   has_one_attached :image

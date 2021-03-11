@@ -21,6 +21,9 @@
             <%= @recipe.description %>
           </div>
         </div>
+        <div id="recipe_<%= @recipe.id %>">
+          <%= render partial: "favorite", locals: { recipe: @recipe } %>
+        </div>
 
         <div class="recipeuser">
           <div class="cooking-title">ユーザープロフィール</div>
