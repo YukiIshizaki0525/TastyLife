@@ -1,0 +1,1 @@
+document.querySelector('#consultation_<%= @consultation.id %>').innerHTML = '<%= j(render partial: "consultations/interest", locals: { consultation: @consultation }) %>'

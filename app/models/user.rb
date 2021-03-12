@@ -65,6 +65,8 @@ class User < ApplicationRecord
   # いいね機能関連
   has_many :favorites, dependent: :destroy
 
+  # 相談気になる機能関連
+  has_many :interests, dependent: :destroy
   # アイコン画像追加のため
   has_one_attached :avatar
 
@@ -129,6 +131,10 @@ class User < ApplicationRecord
 
   def already_favorited?(recipe)
     self.favorites.exists?(recipe_id: recipe.id)
+  end
+
+  def already_interested?(consultation)
+    self.interests.exists?(consultation_id: consultation.id)
   end
 
 end

@@ -1,0 +1,31 @@
+.interest {
+  @extend .font-sm;
+
+  &__link,
+  &__delete-link {
+    color: #fff !important;
+    border-radius: 100vh;
+    padding: 10px;
+    text-decoration: none !important;
+  }
+
+  &__link {
+    background-color: $InterestColor;
+    &:hover {
+      background: $InterestHoverColor;
+    }
+  }
+
+  &__delete-link {
+    background-color: $InterestedColor;
+    &:hover {
+      background: $InterestedHoverColor;
+    }
+  }
+
+  &__count {
+    font-weight: 600;
+    color: $DateColor;
+    padding-left: 10px;
+  }
+}

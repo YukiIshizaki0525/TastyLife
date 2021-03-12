@@ -23,8 +23,10 @@
         <div class="consultation__detail-info">
           <p class="consultation__pv">閲覧数：<%= @consultation.impressions_count %></p>
           <p class="post-date"><%= @consultation.created_at.to_s(:datetime_jp) %>に投稿</p>
+        </div><br>
+        <div class="consultation__interest" id="consultation_<%= @consultation.id %>">
+          <%= render partial: "interest", locals: { consultation: @consultation } %>
         </div>
-        
       </div>
     </div>
   </div>

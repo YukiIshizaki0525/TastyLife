@@ -1,0 +1,14 @@
+<section class="interest">
+  <% if current_user.already_interested?(consultation) %>
+    <%= link_to consultation_interests_path(consultation), method: :delete, remote: true, class: "interest__delete-link" do %>
+      <i class="fas fa-star"></i>
+      <span>気になる</span>
+    <% end %>
+  <% else %>
+    <%= link_to consultation_interests_path(consultation), method: :post, remote: true, class: "interest__link" do %>
+      <i class="fas fa-star"></i>
+      <span>気になる</span>
+    <% end %>
+  <% end %>
+  <span class="interest__count"><%= consultation.interests.count %></span>
+</section>

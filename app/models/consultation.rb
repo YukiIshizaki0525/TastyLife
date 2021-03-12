@@ -21,6 +21,9 @@ class Consultation < ApplicationRecord
   # 閲覧数カウント
   is_impressionable counter_cache: true
 
+  # いいね機能関連
+  has_many :interests, dependent: :destroy
+
   validates :title, presence: true, length: { maximum: 50 }
   validates :content, presence: true, length: { maximum: 200 }
 end
