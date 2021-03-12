@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_08_133825) do
+ActiveRecord::Schema.define(version: 2021_03_11_150146) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -106,6 +106,15 @@ ActiveRecord::Schema.define(version: 2021_03_08_133825) do
     t.index ["recipe_id"], name: "index_ingredients_on_recipe_id"
   end
 
+  create_table "interests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "consultation_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["consultation_id"], name: "index_interests_on_consultation_id"
+    t.index ["user_id"], name: "index_interests_on_user_id"
+  end
+
   create_table "inventories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.string "quantity", null: false
@@ -188,5 +197,7 @@ ActiveRecord::Schema.define(version: 2021_03_08_133825) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "interests", "consultations"
+  add_foreign_key "interests", "users"
   add_foreign_key "steps", "recipes"
 end

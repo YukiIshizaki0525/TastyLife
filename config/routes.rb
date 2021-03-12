@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'consultation_interests/create'
+  get 'consultation_interests/destroy'
   root 'homes#index'
   get 'recipes/tweet', to: 'homes#tweet_index'
   get 'recipes/tag/:name', to: "recipes#tag_search"
@@ -33,6 +35,7 @@ Rails.application.routes.draw do
 
   resources :consultations do
     resources :consultation_comments
+    resource :interests, only: [:create, :destroy]
   end
 
   # 食材管理についてのルート
