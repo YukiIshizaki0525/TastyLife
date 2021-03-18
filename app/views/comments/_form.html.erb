@@ -1,5 +1,3 @@
-<%= render 'shared/error_messages' %>
-
 <%= form_with(model:[@recipe, @comment], method: :post, class: "comment__inputBx") do |f| %>
   <%= f.hidden_field :recipe_id, value: @recipe.id %>
   <%= f.hidden_field :user_id, value: current_user.id %>

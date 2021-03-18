@@ -137,4 +137,5 @@ class User < ApplicationRecord
     self.interests.exists?(consultation_id: consultation.id)
   end
 
+  
 end
