@@ -5,11 +5,11 @@
   @extend .mb-sm;
   @extend .font-sm;
   font-weight: bold;
-  color: $White;
-  padding: 15px;
-  background-color: rgba(173, 216, 230, 0.9);
-  border-bottom: 2px solid rgb(0, 191, 255);
-  border-radius: 5px;
+  text-align: center;
+  background-color: $NoticeBgColor;
+  border-color: $NoticeBgColor;
+  color: $NoticeColor;
+  padding: 12px 20px;
 }
 
 // deviseはalert属性を返す
@@ -18,14 +18,13 @@
   @extend .mb-sm;
   @extend .font-sm;
   font-weight: bold;
-  color: $White;
-  padding: 15px 0;
-  background-color: rgba(250, 128, 114, 0.9);
-  border-bottom: 2px solid rgb(255, 99, 71);
-  border-radius: 5px;
+  text-align: center;
+  background-color: $AlertBgColor;
+  border-color: $AlertBgColor;
+  color: $AlertColor;
+  padding: 12px 20px;
 
   & ul > li {
-    @extend .mb-sm;
     list-style: none !important;
   }
 }
