@@ -12,6 +12,7 @@
 
   <body>
     <div id="global-container">
+      <%= render 'shared/mobile-menu' %>
       <div id="container">
         <div class="mobile-menu__cover"></div>
         <div class="nav-trigger"></div>
@@ -20,7 +21,6 @@
           <%= yield %>
         </div>
       </div>
-      <%= render 'shared/mobile-menu' %>
     </div>
   </body>
 </html>
