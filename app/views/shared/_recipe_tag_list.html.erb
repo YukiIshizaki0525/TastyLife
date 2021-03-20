@@ -1,0 +1,14 @@
+<section class="tag">
+  <%= form_tag recipes_path, method: :get do %>
+    <div class="tag__select tag__arrow">
+      <%= select_tag :tag_id,
+                      options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                      {
+                        prompt: 'タグで絞り込み',
+                        class: 'tag__item',
+                        onchange: 'submit(this.form);'
+                      }
+      %>
+    </div>
+  <% end %>
+</section>

@@ -10,22 +10,22 @@
   }
 
   &__link {
-    background-color: $InterestColor;
+    background-color: $--c-before-interest;
     &:hover {
-      background: $InterestHoverColor;
+      background: $--c-before-interest-hover;
     }
   }
 
   &__delete-link {
-    background-color: $InterestedColor;
+    background-color: $--c-after-interest;
     &:hover {
-      background: $InterestedHoverColor;
+      background: $--c-after-interest-hover;
     }
   }
 
   &__count {
     font-weight: 600;
-    color: $DateColor;
+    color: $--c-gray;
     padding-left: 10px;
   }
 }

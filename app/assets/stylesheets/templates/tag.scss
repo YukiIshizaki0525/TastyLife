@@ -11,7 +11,7 @@
 
   &__none {
     @extend .font-sm;
-    color: $IngredientAndStepColor;
+    color: $--c-dark-gray;
   }
 
   &__item {
@@ -23,14 +23,14 @@
     letter-spacing: 1px;
     cursor: pointer;
     text-decoration: none !important;
-    color: $TagSelectColor !important;
-    border: 1px solid $ItemBorderColor;
+    color: $--c-gray !important;
+    border: 1px solid $--c-light-gray;
     border-radius: 5px;
     padding: 8px;
     margin-bottom: 10px;
 
     &:hover {
-      background-color: $ItemHoverColor;
+      background-color: $--bg-light-gray;
     }
   }
 
@@ -41,7 +41,7 @@
   &__img {
     height: 25px;
     width: 25px;
-    color: $DetailTitle;
+    color: $--c-ocher;
     overflow: hidden;
     margin-right: 8px;
 
@@ -54,8 +54,56 @@
 
   &__name {
     @extend .font-sm;
-    color: $IngredientAndStepColor;
+    color: $--c-dark-gray;
     font-weight: 400;
+  }
+
+  &__select {
+    @extend .content-width;
+    @extend .mb-sm;
+    text-align: center;
+
+    &>select {
+      width: 100%;
+      padding: 10px;
+      cursor: pointer;
+      text-indent: 0.01px;
+      text-overflow: ellipsis;
+      margin-bottom: 0;
+      border: none;
+      outline: none;
+      background: transparent;
+      background-image: none;
+      box-shadow: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+  }
+
+  &__arrow {
+    position: relative;
+    border: 1px solid #bbbbbb;
+    border-radius: 2px;
+    background: #ffffff;
+
+    &::before {
+      position: absolute;
+      top: 16px;
+      right: 10px;
+      width: 0;
+      height: 0;
+      padding: 0;
+      content: "";
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid $--c-gray;
+      pointer-events: none;
+    }
+
+    & > select {
+      padding: 8px 38px 8px 8px;
+      color: $--c-gray;
+    }
   }
 }
 // 関連タグについてここまで

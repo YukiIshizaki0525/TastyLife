@@ -3,8 +3,8 @@
     @extend .font-sm;
     display: flex;
     justify-content: space-between;
-    color: $IngredientAndStepColor;
-    border-bottom: 1px solid $ItemBorderColor;
+    color: $--c-dark-gray;
+    border-bottom: 1px solid $--c-light-gray;
     padding: 7px;
   }
 
@@ -17,7 +17,7 @@
   &__content,
   &__quantity {
     @extend .recipe-input;
-    color: $IngredientAndStepColor;
+    color: $--c-dark-gray;
   }
 
   &__content {

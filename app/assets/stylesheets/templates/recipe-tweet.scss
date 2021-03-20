@@ -3,7 +3,7 @@
     @extend .content-width;
     @extend .mb-sm;
     display: flex;
-    border-bottom: 1px solid $ItemBorderColor;
+    border-bottom: 1px solid $--c-light-gray;
     border-radius: 4px;
     text-decoration: none !important;
   }
@@ -15,7 +15,7 @@
     border-radius: 4px;
 
     &:hover {
-      background-color: $ItemHoverColor;
+      background-color: $--bg-light-gray;
       opacity: 0.75;
     }
 
@@ -35,14 +35,7 @@
     @extend .font-md;
     display: inline-block;
     font-weight: bold;
-    color: $RecipeTitleColor;
-    text-decoration: none;
-    outline: none;
-
-    &:hover {
-      color: $NameHoverColor;
-      text-decoration: underline;
-    }
+    color: $--c-brown !important;
   }
 
   &__description {
@@ -72,10 +65,9 @@
   }
 
   &__username {
-    color: $UserNameColor;
+    color: $--c-brown !important;
 
     &:hover {
-      color: $NameHoverColor;
       text-decoration: underline;
     }
   }

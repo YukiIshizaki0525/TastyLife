@@ -3,27 +3,27 @@
 .btn {
   position: relative;
   display: inline-block;
-  background-color: $White;
-  border: 1px solid $RecipeTitleColor;
+  background-color: $--c-white;
+  border: 1px solid $--c-btn;
   cursor: pointer;
   transition: all 0.3s;
-  color: $RecipeTitleColor;
+  color: $--c-btn;
   text-decoration: none !important;
 
   &.following {
     &:hover {
-      border: 1px solid $FollowBtnHoverColor;
-      color: $FollowBtnHoverColor;
+      border: 1px solid $--c-follow-btn-hover;
+      color: $--c-follow-btn-hover;
     }
   }
 
   &.followed {
-    background-color: $RecipeTitleColor;
-    color: $White;
+    background-color: $--c-btn;
+    color: $--c-white;
 
     &:hover {
-      background-color: $White;
-      color: $RecipeTitleColor;
+      background-color: $--c-white;
+      color: $--c-btn;
     }
   }
 
@@ -31,21 +31,21 @@
     width: 100%;
     margin-bottom: 5px;
     &:hover {
-      border: 1px solid $SubmenuBtnHoverColor;
-      color: $SubmenuBtnHoverColor;
+      border: 1px solid $--c-user-submenu-btn-hover;
+      color: $--c-user-submenu-btn-hover;
     }
   }
 
   &.comment_btn {
-    background-color: $RecipeTitleColor;
-    color: $White;
+    background-color: $--c-btn;
+    color: $--c-white;
     letter-spacing: 3px;
   }
 
   &.slide-bg {
-    color: $NameHoverColor;
-    background-color: $White;
-    border: 1px solid $NameHoverColor;
+    color: $--c-btn;
+    background-color: $--c-white;
+    border: 1px solid $--c-btn;
     letter-spacing: 2px;
     font-weight: 600;
     padding: 10px 40px;
@@ -58,7 +58,7 @@
       display: inline-block;
       width: 100%;
       height: 100%;
-      background-color: $NameHoverColor;
+      background-color: $--c-btn;
       position: absolute;
       top: 0;
       left: 0;
@@ -68,7 +68,7 @@
     }
 
     &:hover {
-      color: $White;
+      color: $--c-white;
 
       &::before {
         transform: none;
@@ -80,8 +80,8 @@
     text-decoration: none !important;
 
     &:hover {
-      background-color: $RecipeTitleColor;
-      color: $White;
+      background-color: $--c-btn;
+      color: $--c-white;
     }
   }
 
@@ -93,8 +93,8 @@
     margin: 10px auto;
 
     &:hover {
-      background-color: $RecipeTitleColor;
-      color: $White;
+      background-color: $--c-btn;
+      color: $--c-white;
     }
   }
 }
@@ -112,11 +112,10 @@
   text-align: center;
   outline: none;
   text-decoration: none !important;
-  border: 1px solid $PageTitleColor;
   letter-spacing: 1px;
   border-radius: 30px;
-  background: $NameHoverColor;
-  color: $White !important;
+  background: $--c-btn;
+  color: $--c-white !important;
   border: none;
   cursor: pointer;
 }

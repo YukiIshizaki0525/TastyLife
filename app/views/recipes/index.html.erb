@@ -2,17 +2,6 @@
 
 <section class="list">
   <div class="cooking-title">レシピ一覧</div>
-  <%= form_tag recipes_path, method: :get do %>
-    <div class="list__tag-select list__tag-arrow">
-      <%= select_tag :tag_id,
-                      options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
-                      {
-                        prompt: 'タグで絞り込み',
-                        class: 'tag__item',
-                        onchange: 'submit(this.form);'
-                      }
-      %>
-    </div>
-  <% end %>
+  <%= render 'shared/recipe_tag_list' %>
   <%= render 'shared/recipe_list' %>
 </section>

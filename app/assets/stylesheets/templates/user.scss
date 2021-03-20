@@ -11,12 +11,12 @@
   &__item {
     @extend .mb-sm;
     flex-basis: 47%;
-    border: 1px solid $ItemBorderColor;
+    border: 1px solid $--c-light-gray;
     border-radius: 4px;
     text-decoration: none !important;
 
     &:hover {
-      background-color: $ItemHoverColor;
+      background-color: $--bg-light-gray;
       opacity: 0.75;
     }
   }
@@ -41,13 +41,13 @@
     @extend .font-sm;
     font-weight: 600;
     display: inline-block;
-    color: $RecipeTitleColor;
+    color: $--c-brown;
     text-decoration: none !important;
   }
 
   &__count {
     @extend .font-sm;
-    color: $SubTitle;
+    color: $--c-dark-gray;
   }
 }
 //ユーザー一覧ページここまで
@@ -68,7 +68,7 @@
     @extend .mb-sm;
     display: flex;
     justify-content: space-between;
-    border-bottom: 2px solid $ItemBorderColor;
+    border-bottom: 2px solid $--c-light-gray;
   }
 
   &__tab {
@@ -80,7 +80,7 @@
     &::after {
       content: "";
       position: absolute;
-      background-color: $ItemSeparateColor;
+      background-color: $--c-input-border;
       right: 0;
       top: 10px;
       width: 1px;
@@ -93,14 +93,14 @@
 
     & > p {
       @extend .font-sm;
-      color: $UserNameColor;
+      color: $--c-brown;
       margin-bottom: 5px;
       text-align: center;
     }
 
     &.active {
       & > p {
-        color: $SubmenuBtnHoverColor;
+        color: $--c-user-submenu-btn-hover;
       }
     }
 
@@ -133,7 +133,7 @@
   &__name {
     @extend .font-lr;
     @extend .mb-sm;
-    color: $UserNameColor;
+    color: $--c-brown;
     font-weight: bold;
   }
 

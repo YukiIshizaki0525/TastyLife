@@ -4,11 +4,11 @@
   }
   &__btn {
     @extend .font-md;
-    color: $FaboriteColor !important;
+    color: $--c-pink !important;
   }
 
   &__count {
     @extend .font-md;
-    color: $SubTitle;
+    color: $--c-dark-gray;
   }
 }

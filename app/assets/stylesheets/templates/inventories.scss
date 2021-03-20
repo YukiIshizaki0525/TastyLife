@@ -12,7 +12,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid $ItemBorderColor;
+    border: 1px solid $--c-light-gray;
     border-radius: 4px;
     padding: 10px 15px;
     text-decoration: none !important;
@@ -53,19 +53,19 @@
   &__label {
     @extend .font-md;
     font-weight: bold;
-    color: $RecipeTitleColor !important;
+    color: $--c-brown !important;
     flex-basis: 30%;
   }
 
   &__name {
     padding-bottom: 5px;
     margin-bottom: 10px;
-    border-bottom: 1px solid $ItemBorderColor;
+    border-bottom: 1px solid $--c-light-gray;
 
     & > a {
       @extend .font-md;
       font-weight: 600;
-      color: $RecipeTitleColor !important;
+      color: $--c-brown !important;
     }
   }
 
@@ -81,12 +81,12 @@
   }
 
   &__count {
-    color: $IngredientAndStepColor;
+    color: $--c-dark-gray;
   }
 
   &__detail {
     @extend .font-md;
-    color: $IngredientAndStepColor;
+    color: $--c-dark-gray;
     flex-basis: 50%;
   }
 

@@ -4,7 +4,7 @@
   counter-reset: number;
 
   &__item {
-    border-bottom: 1px dotted $ItemBorderColor;
+    border-bottom: 1px dotted $--c-light-gray;
   }
 
   &__inner {
@@ -22,8 +22,8 @@
 
   &__number {
     @extend .font-sm;
-    color: $White;
-    background-color: $RecipeTitleColor;
+    color: $--c-white;
+    background-color: $--c-brown;
     border-radius: 3px;
     margin-bottom: 0;
     width: 35px;
@@ -60,13 +60,13 @@
   &__description {
     @extend .font-sm;
     padding: 0 10px;
-    color: $IngredientAndStepColor;
+    color: $--c-dark-gray;
   }
 
   &__input {
     @extend .recipe-input;
     margin: 10px 0;
-    color: $IngredientAndStepColor;
+    color: $--c-dark-gray;
     width: 100%;
   }
 
