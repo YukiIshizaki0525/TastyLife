@@ -1,4 +1,8 @@
 .list {
+  & .tag {
+    width: 100%
+  }
+
   &__container {
     @extend .flex;
     @extend .content-width;
@@ -7,7 +11,7 @@
 
   &__item {
     @extend .mb-sm;
-    border: 1px solid $ItemBorderColor;
+    border: 1px solid $--c-light-gray;
     border-radius: 4px;
     text-decoration: none !important;
   }
@@ -16,13 +20,13 @@
     @extend .font-md;
     font-weight: bold;
     display: inline-block;
-    color: $RecipeTitleColor !important;
+    color: $--c-brown !important;
   }
 
   &__description {
     @extend .font-sm;
     @extend .mb-sm;
-    color: $SubTitle;
+    color: $--c-dark-gray;
   }
 
   &__img {
@@ -39,7 +43,7 @@
     }
 
     &:hover {
-      background-color: $ItemHoverColor;
+      background-color: $--bg-light-gray;
       opacity: 0.75;
     }
   }
@@ -47,53 +51,6 @@
   &__notthing {
     @extend .content-width;
     @extend .font-md;
-    color: $UserNameColor;
-  }
-
-  &__tag-select {
-    @extend .content-width;
-    @extend .mb-sm;
-    text-align: center;
-
-    & > select {
-      width: 100%;
-      padding: 10px;
-      cursor: pointer;
-      text-indent: 0.01px;
-      text-overflow: ellipsis;
-      border: none;
-      outline: none;
-      background: transparent;
-      background-image: none;
-      box-shadow: none;
-      -webkit-appearance: none;
-      appearance: none;
-    }
-  }
-
-  &__tag-arrow {
-    position: relative;
-    border: 1px solid #bbbbbb;
-    border-radius: 2px;
-    background: #ffffff;
-
-    &::before {
-      position: absolute;
-      top: 16px;
-      right: 10px;
-      width: 0;
-      height: 0;
-      padding: 0;
-      content: "";
-      border-left: 6px solid transparent;
-      border-right: 6px solid transparent;
-      border-top: 6px solid $TagSelectColor;
-      pointer-events: none;
-    }
-
-    & > select {
-      padding: 8px 38px 8px 8px;
-      color: $TagSelectColor;
-    }
+    color: $--c-brown;
   }
 }

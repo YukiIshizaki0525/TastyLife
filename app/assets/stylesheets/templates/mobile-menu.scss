@@ -45,7 +45,7 @@
 
     & > a {
       @extend .font-md;
-      color: $RecipeTitleColor;
+      color: $--c-brown;
       font-weight: bold;
     }
   }
@@ -57,7 +57,7 @@
     cursor: pointer;
 
     & > span {
-      background-color: $Black;
+      background-color: $--c-black;
       width: 35px;
       height: 2px;
       display: block;

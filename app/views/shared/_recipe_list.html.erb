@@ -12,7 +12,6 @@
         <span class="timestamp"><%= recipe.created_at.to_s(:datetime_jp) %></span><br>
         <%= link_to recipe.title, recipe_path(recipe), class: 'list__recipetitle' %>
         <div class="list__description"><%= recipe.description %></div>
-        
         <div id="recipe_<%= recipe.id %>">
           <%= render partial: "recipes/favorite", locals: { recipe: recipe } %>
         </div>

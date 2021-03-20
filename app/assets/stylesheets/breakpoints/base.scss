@@ -59,17 +59,17 @@ img {
   position: relative;
   z-index: 5;
   transition: all 0.5s;
-  background-color: $White;
+  background-color: $--c-white;
 }
 
 .timestamp {
   @extend .font-sm;
-  color: $Black;
+  color: $--c-black;
 }
 
 .post-date {
   @extend .font-sm;
-  color: $DateColor;
+  color: $--c-gray;
   margin-bottom: 0;
 }
 
@@ -81,7 +81,7 @@ img {
 
 .sub-title {
   @extend .font-sm;
-  color: $SubTitle;
+  color: $--c-dark-gray;
 }
 
 .flex {
@@ -114,22 +114,22 @@ img {
   @extend .font-md;
   @extend .mb-sm;
   font-weight: bold;
-  color: $DetailTitle;
-  border-bottom: 1px solid $DetailTitle;
+  color: $--c-ocher;
+  border-bottom: 1px solid $--c-ocher;
 }
 
 .recipe-input {
   @extend .font-md;
   border: none;
-  border-bottom: 2px solid $InputBorderColor;
-  color: $IngredientAndStepColor;
+  border-bottom: 2px solid $--c-input-border;
+  color: $--c-dark-gray;
   outline: none;
   resize: none;
   transition: border-color 0.3s;
   height: 40px;
 
   &:focus {
-    border-bottom: 2px solid $RecipeTitleColor;
+    border-bottom: 2px solid $--c-brown;
   }
 }
 
@@ -139,14 +139,14 @@ img {
   display: inline-block;
   background: transparent;
   box-sizing: border-box;
-  border: 2px solid $InputBorderColor;
-  color: $IngredientAndStepColor;
+  border: 2px solid $--c-input-border;
+  color: $--c-dark-gray;
   transition: border-color 0.3s;
   outline: none;
   resize: none;
 
   &:focus {
-    border: 2px solid $RecipeTitleColor;
+    border: 2px solid $--c-brown;
   }
 }
 

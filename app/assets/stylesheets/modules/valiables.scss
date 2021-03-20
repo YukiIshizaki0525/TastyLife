@@ -1,36 +1,32 @@
-$White: white;
-$Black: black;
-$PageTitleColor: #607d8b;
-$DateColor: #99958a;
-$SubTitle: #535353;
-$BgGray: #eaebe6;
-$ItemHoverColor: #f3f3f3;
-$ItemBorderColor: #c7c7cc;
-$RecipeTitleColor: #59340a;
-$UserNameColor: #583407;
-$NameHoverColor: #71411a;
-$DetailTitle: #af8728;
-$IngredientAndStepColor: #4a4a4a;
-$ItemSeparateColor: #eae8e3;
-$FollowBtnHoverColor: #ffc300;
-$SubmenuBtnHoverColor: #ff9d00;
-$InputBorderColor: #e9e9e9;
-$FormErrorColor: #c23934;
-$TagSelectColor: #666666;
-$UserSayColor: #fff0c6;
-$FaboriteColor: #e0245e;
-$InterestColor: #eb6100;
-$InterestHoverColor: #f56500;
-$InterestedColor: #586170;
-$InterestedHoverColor: #3f4551;
-$NoticeBgColor: #bde9ff;
-$NoticeColor: #4c6977;
-$AlertBgColor: #f3c0c0;
-$AlertColor: #3e3a3a;
+$--c-white: white;
+$--c-black: black;
 
+$--c-light-gray: #c7c7cc;
+$--c-gray: #99958a;
+$--c-dark-gray: #4a4a4a;
 
+$--bg-light-gray: #f3f3f3;
+$--bg-gray: #eaebe6;
 
+$--c-ocher: #af8728;
+$--c-cream: #fff0c6;
+$--c-pink: #e0245e;
+$--c-brown: #59340a;
+$--c-btn: #71411a;
 
+$--c-login: #607d8b;
+$--c-login-form-error: #c23934;
+$--c-input-border: #eae8e3;
+$--c-follow-btn-hover: #ffc300;
+$--c-user-submenu-btn-hover: #ff9d00;
+$--c-before-interest: #eb6100;
+$--c-before-interest-hover: #f56500;
+$--c-after-interest: #586170;
+$--c-after-interest-hover: #3f4551;
+$--bg-notice: #bde9ff;
+$--c-notice: #4c6977;
+$--bg-alert: #f3c0c0;
+$--c-alert: #3e3a3a;
 
 $contentMaxWidth: 1070px;
 $navHeight: 100px;

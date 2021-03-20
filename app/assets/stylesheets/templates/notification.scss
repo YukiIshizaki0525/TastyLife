@@ -6,9 +6,9 @@
   @extend .font-sm;
   font-weight: bold;
   text-align: center;
-  background-color: $NoticeBgColor;
-  border-color: $NoticeBgColor;
-  color: $NoticeColor;
+  background-color: $--bg-notice;
+  border-color: $--bg-notice;
+  color: $--c-notice;
   padding: 12px 20px;
 }
 
@@ -19,9 +19,9 @@
   @extend .font-sm;
   font-weight: bold;
   text-align: center;
-  background-color: $AlertBgColor;
-  border-color: $AlertBgColor;
-  color: $AlertColor;
+  background-color: $--bg-alert;
+  border-color: $--bg-alert;
+  color: $--c-alert;
   padding: 12px 20px;
 
   & ul > li {
