@@ -6,6 +6,6 @@ class HomesController < ApplicationController
   end
 
   def tweet_index
-    @tweet = current_user.feed
+    @tweet = current_user.feed.page(params[:page]).per(6)
   end
 end

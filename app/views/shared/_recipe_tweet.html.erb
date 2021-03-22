@@ -2,7 +2,11 @@
   <% @tweet.each do |recipe| %>
     <div class="tweet__item">
       <%= link_to(recipe_path(id: recipe.id), class:'tweet__img') do %>
-        <%= image_tag(recipe.image) if recipe.image.attached? %>
+        <%  if recipe.image.attached? %>
+          <%= image_tag(recipe.image) %>
+        <% else %>
+          <%= image_tag 'no_image' %>
+        <% end %>
       <% end %>
       <div class="tweet__detail">
         <span class="timestamp"><%= recipe.created_at.to_s(:datetime_jp) %></span><br>

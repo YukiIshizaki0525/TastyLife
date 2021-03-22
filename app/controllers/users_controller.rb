@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @recipes = @user.recipes.page(params[:page])
+    @recipes = @user.recipes.page(params[:page]).per(6)
   end
 
   def destroy

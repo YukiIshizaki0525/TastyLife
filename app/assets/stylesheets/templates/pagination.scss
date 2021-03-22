@@ -1,0 +1,32 @@
+.pagination {
+  @extend .content-width;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+
+  &>.page,
+  .first,
+  .prev,
+  .next,
+  .last {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @extend .font-md;
+    margin: 0 5px;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+
+    & > a {
+      color: $--c-brown;
+    }
+  }
+
+  & > .active {
+    background-color: $--c-brown;
+    border-radius: 100%;
+    color: $--c-white;
+  }
+}
