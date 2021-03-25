@@ -3,7 +3,7 @@ class ConsultationsController < ApplicationController
   before_action :set_consultation, only: [:show, :edit, :update, :destroy]
 
   def index
-    @consultations = Consultation.page(params[:page])
+    @consultations = Consultation.page(params[:page]).per(6)
   end
 
   def show
