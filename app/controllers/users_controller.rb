@@ -29,13 +29,13 @@ class UsersController < ApplicationController
 
   def consultations
     @title = "Consultation"
-    @consultations = @user.consultations.page(params[:page])
+    @consultations = @user.consultations.page(params[:page]).per(3)
     render 'show_consultation'
   end
 
   def inventories
     @title = "Inventory"
-    @inventories = @user.inventories.page(params[:page]).order(expiration_date: 'ASC')
+    @inventories = @user.inventories.page(params[:page]).order(expiration_date: 'ASC').per(6)
     render 'show_inventory'
   end
 
