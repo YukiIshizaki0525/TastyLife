@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @recipes = @user.recipes.page(params[:page])
+    @recipes = @user.recipes.page(params[:page]).per(6)
   end
 
   def destroy
@@ -16,26 +16,26 @@ class UsersController < ApplicationController
 
   def following
     @title = "Following"
-    @users = @user.following.page(params[:page])
+    @users = @user.following.page(params[:page]).per(6)
     render 'show_follow'
   end
 
 
   def followers
     @title = "Followers"
-    @users = @user.followers.page(params[:page])
+    @users = @user.followers.page(params[:page]).per(6)
     render 'show_follow'
   end
 
   def consultations
     @title = "Consultation"
-    @consultations = @user.consultations.page(params[:page])
+    @consultations = @user.consultations.page(params[:page]).per(3)
     render 'show_consultation'
   end
 
   def inventories
     @title = "Inventory"
-    @inventories = @user.inventories.page(params[:page]).order(expiration_date: 'ASC')
+    @inventories = @user.inventories.page(params[:page]).order(expiration_date: 'ASC').per(6)
     render 'show_inventory'
   end
 

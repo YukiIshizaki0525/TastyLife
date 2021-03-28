@@ -1,8 +1,9 @@
 //ユーザー一覧ページここから
 .user-list {
+  @extend .mb-lg;
+
   &__container {
     @extend .content-width;
-    @extend .mb-lg;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -48,6 +49,10 @@
   &__count {
     @extend .font-sm;
     color: $--c-dark-gray;
+  }
+
+  & > .consultation {
+    margin-bottom: 0 !important;
   }
 }
 //ユーザー一覧ページここまで

@@ -9,6 +9,8 @@
   </div>
 
   <%= render 'shared/food_inventory' %>
+  
+  <%= paginate @inventories %>
 
   <div class="btn-center"><%= link_to '保存中の食材を登録', new_inventory_path, class:"btn slide-bg" %></div>
 

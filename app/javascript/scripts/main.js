@@ -6,15 +6,10 @@ window.addEventListener('turbolinks:load', function () {
 	new addFields();
 	new removeFields();
 	
-	new imgPreView();
-	// if (location.pathname.match("recipes/new")) {
-	// 	new imgPreView();
-	// }
-
-	// if (location.pathname.match("inventory/_form")) {
-	// 	new imgPreView();
-	// }
-
+	// new imgPreView();
+	if (document.URL.match(/new|edit/)) {
+		new imgPreView();
+	}
 
 });
 

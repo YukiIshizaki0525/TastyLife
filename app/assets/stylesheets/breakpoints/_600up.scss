@@ -239,3 +239,18 @@
   }
 }
 // 保存中の食材についてここまで
+
+// ページネーションここから
+.pagination {
+  &>.page,
+  .first,
+  .prev,
+  .next,
+  .last {
+    margin: 0 10px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+  }
+}
+// ページネーションここまで

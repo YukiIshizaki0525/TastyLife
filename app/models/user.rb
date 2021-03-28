@@ -46,6 +46,7 @@ class User < ApplicationRecord
               foreign_key: "followed_id",
               dependent:   :destroy
 
+  # フォロー機能について
   has_many :following,
               through: :active_relationships,
               source: :followed

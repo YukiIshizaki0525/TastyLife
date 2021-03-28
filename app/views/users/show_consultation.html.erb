@@ -13,6 +13,6 @@
   <% else %>
     <p class="list__notthing"><%= "#{@user.name}さんの相談はありません。" %></p>
   <% end %>
-  
+  <%= paginate @consultations %>
 </section>
 
