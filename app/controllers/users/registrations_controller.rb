@@ -2,7 +2,6 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :forbid_test_user, {only: [:edit,:update,:destroy]}
-  before_action :ensure_normal_user, only: :destroy
 
   def create
     super do
@@ -25,17 +24,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
 
   private
+    # ゲストユーザーの更新・削除不可
     def forbid_test_user
-      if @user.email == "tguest@example.com"
-        flash[:alert] = "テストユーザーのため変更できません"
+      if resouce.email == "guest@example.com"
+        flash[:alert] = "ゲストユーザーの更新・削除はできません。"
         redirect_to root_path
-      end
-    end
-
-    # ゲストユーザー削除不可
-    def ensure_normal_user
-      if resource.email == 'guest@example.com'
-        flash[:alert] = 'ゲストユーザーは削除できません。'
       end
     end
 end
