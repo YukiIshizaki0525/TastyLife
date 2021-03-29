@@ -45,13 +45,7 @@
         </div>
       <% end %>
 
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="login__inputBx">
-          <%= f.hidden_field :email, value: 'testuser@example.com' %>
-          <%= f.hidden_field :password, value: 'Testuser203' %>
-          <%= f.submit  "テストユーザーログイン", class: "login__inputBx-testuser" %>
-        </div>
-      <% end %>
+      <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "login__guest-user" %>
 
       <%= render 'devise/shared/links' %>
     </div>
