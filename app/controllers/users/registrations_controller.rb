@@ -24,9 +24,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
 
   private
+    # ゲストユーザーの更新・削除不可
     def forbid_test_user
-      if @user.email == "testuser@example.com"
-        flash[:notice] = "テストユーザーのため変更できません"
+      if resource.email == "guest@example.com"
+        flash[:alert] = "ゲストユーザーの更新・削除はできません。"
         redirect_to root_path
       end
     end

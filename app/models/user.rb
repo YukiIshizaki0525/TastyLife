@@ -96,10 +96,10 @@ class User < ApplicationRecord
                             message: "は有効な画像形式である必要があります" },
                             size: { less_than: 1.megabytes,
                                     message: "は1MB未満である必要があります" }
-  validates_format_of :name,
-                      with: /^[a-zA-Z0-9_¥.]*$/,
-                      multiline: true
-  validate :validate_name
+  # validates_format_of :name,
+  #                     with: /^[a-zA-Z0-9_¥.]*$/,
+  #                     multiline: true
+  # validate :validate_name
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
@@ -138,5 +138,11 @@ class User < ApplicationRecord
     self.interests.exists?(consultation_id: consultation.id)
   end
 
-  
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.name = "ゲストユーザー"
+      user.password = "Guestuser123"
+      user.password_confirmation = user.password
+    end
+  end
 end
