@@ -43,9 +43,9 @@
         <div class="login__inputBx">
           <%= f.submit "ログイン" %>
         </div>
-      <% end %>
 
-      <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "login__guest-user" %>
+        <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "login__guest-user" %>
+      <% end %>
 
       <%= render 'devise/shared/links' %>
     </div>

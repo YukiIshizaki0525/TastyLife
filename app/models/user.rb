@@ -96,10 +96,10 @@ class User < ApplicationRecord
                             message: "は有効な画像形式である必要があります" },
                             size: { less_than: 1.megabytes,
                                     message: "は1MB未満である必要があります" }
-  validates_format_of :name,
-                      with: /^[a-zA-Z0-9_¥.]*$/,
-                      multiline: true
-  validate :validate_name
+  # validates_format_of :name,
+  #                     with: /^[a-zA-Z0-9_¥.]*$/,
+  #                     multiline: true
+  # validate :validate_name
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
@@ -140,9 +140,9 @@ class User < ApplicationRecord
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
-      user.password = SecureRandom.urlsafe_base64
-      # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
-      # 例えば name を入力必須としているならば， user.name = "ゲスト" なども必要
+      user.name = "ゲストユーザー"
+      user.password = "Guestuser123"
+      user.password_confirmation = user.password
     end
   end
 end
