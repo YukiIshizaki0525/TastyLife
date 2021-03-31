@@ -49,6 +49,34 @@
     }
   }
 
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    @extend .font-sm;
+    @extend .mb-sm;
+  }
+
+  &__user-img {
+    overflow: hidden;
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    margin-right: 8px;
+
+    &>img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+
+  &__user-name {
+    align-items: flex-end;
+    color: $--c-brown !important;
+  }
+
   &__notthing {
     @extend .content-width;
     @extend .font-md;

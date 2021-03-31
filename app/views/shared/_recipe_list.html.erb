@@ -12,9 +12,16 @@
         <span class="timestamp"><%= recipe.created_at.to_s(:datetime_jp) %></span><br>
         <%= link_to recipe.title, recipe_path(recipe), class: 'list__recipetitle' %>
         <div class="list__description"><%= recipe.description %></div>
+      </div>
+      
+      <div class="list__info">
         <div id="recipe_<%= recipe.id %>">
           <%= render partial: "recipes/favorite", locals: { recipe: recipe } %>
         </div>
+        <%= link_to user_path(id: recipe.user_id), class:'list__user-img' do %>
+          <%= image_tag( recipe.user.avatar ) %>
+        <% end %>
+        <%= link_to recipe.user.name, user_path(id: recipe.user_id), class: "list__user-name" %>
       </div>
     </div>
   <% end %>
