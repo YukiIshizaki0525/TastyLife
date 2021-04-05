@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :following, :followers, :consultations]
   before_action :set_user, only: [:show , :destroy, :following, :followers, :consultations, :inventories]
   def index
-    @users = User.page(params[:page]).per(6)
+    @users = User.eager_load([avatar_attachment: :blob], :recipes).page(params[:page]).per(6).order(id: :ASC)
   end
 
   def show
