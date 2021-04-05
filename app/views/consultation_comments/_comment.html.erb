@@ -1,4 +1,4 @@
-<% comments.each do |comment| %>
+<% @comments.each do |comment| %>
   <% if comment.reply_comment.present? || comment.id.blank? %>
     <% next %>
   <% end %>
@@ -26,7 +26,7 @@
       <%= render 'consultation_comments/reply_form', comment_reply: comment %>
     <% end %>
 
-    <%= render 'consultation_comments/reply_comment', comment_reply: comment %>
+      <%= render 'consultation_comments/reply_comment', comment_reply: comment %>
   </div>
 <% end %>
 

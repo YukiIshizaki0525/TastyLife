@@ -1,7 +1,15 @@
 <% comment_reply.replies.order(:created_at).each do |reply| %>
   <div class="comment__reply-item">
     <div class="comment__info">
-      <%= link_to image_tag(reply.user.avatar, class: "comment__img"), user_path(id: reply.user_id) %>
+
+      <%= link_to user_path(id: reply.user_id), class: "comment__img" do %>
+        <% if reply.user.avatar.attached? %>
+          <%= image_tag(reply.user.avatar) %>
+        <% else %>
+          <%= image_tag 'default_user' %>
+        <% end %>
+      <% end %>
+
       <%= link_to reply.user.name, user_path(id: reply.user_id), class: "comment__name"%>
     </div>
     <div class="comment__reply-content">

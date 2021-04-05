@@ -9,6 +9,7 @@ class RecipesController < ApplicationController
 
   def show
     @comments = @recipe.comments
+
     if user_signed_in?
       @comment = current_user.comments.new #=> formのパラメータ用にCommentオブジェクトを取得
     end
@@ -16,7 +17,6 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new(flash[:recipe])
-    @comment = current_user.comments.new
   end
 
   def edit

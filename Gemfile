@@ -35,6 +35,8 @@ gem 'impressionist'
 
 gem 'font-awesome-sass'
 
+# N+1問題
+gem 'bullet'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

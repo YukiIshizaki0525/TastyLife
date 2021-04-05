@@ -3,17 +3,19 @@ class ConsultationsController < ApplicationController
   before_action :set_consultation, only: [:show, :edit, :update, :destroy]
 
   def index
-    @consultations = Consultation.page(params[:page]).per(6)
+    @consultations = Consultation.eager_load(user: { avatar_attachment: :blob }).page(params[:page]).per(6)
   end
 
   def show
-    @comments = ConsultationComment.includes(:user).where(consultation_id: @consultation.id)
-  
-    @comment = @consultation.consultation_comments.new
-    @comment_reply = @consultation.consultation_comments.new
+    @comments = ConsultationComment.eager_load([user: { avatar_attachment: :blob }], :consultation).where(consultation_id: @consultation.id)
+
+    if user_signed_in?
+      @new_comment = ConsultationComment.new
+      @comment_reply = ConsultationComment.new
+    end
 
     # 閲覧数カウント
-    impressionist(@consultation, nil, unique: [:ip_address])
+    # impressionist(@consultation, nil, unique: [:ip_address])
   end
 
   def new
@@ -58,7 +60,7 @@ class ConsultationsController < ApplicationController
 
   private
     def set_consultation
-      @consultation = Consultation.find(params[:id])
+      @consultation = Consultation.find_by(params[:id])
     end
 
     def consultation_params
