@@ -2,13 +2,12 @@
 #
 # Table name: recipes
 #
-#  id              :bigint           not null, primary key
-#  description     :text(65535)
-#  favorites_count :integer          default(0), not null
-#  title           :string(255)
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  user_id         :bigint
+#  id          :bigint           not null, primary key
+#  description :text(65535)
+#  title       :string(255)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  user_id     :bigint
 #
 # Indexes
 #

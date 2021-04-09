@@ -3,11 +3,11 @@ class ConsultationsController < ApplicationController
   before_action :set_consultation, only: [:show, :edit, :update, :destroy]
 
   def index
-    @consultations = Consultation.eager_load(user: { avatar_attachment: :blob }).page(params[:page]).per(6)
+    @consultations = Consultation.includes([:consultation_comments], [:interests], [user: { avatar_attachment: :blob }]).page(params[:page]).per(6)
   end
 
   def show
-    @comments = ConsultationComment.eager_load([user: { avatar_attachment: :blob }], :consultation).where(consultation_id: @consultation.id)
+    @comments = ConsultationComment.includes([:consultation], [user: { avatar_attachment: :blob }])
 
     if user_signed_in?
       @new_comment = ConsultationComment.new

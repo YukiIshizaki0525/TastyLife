@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_09_040339) do
+ActiveRecord::Schema.define(version: 2021_03_11_150146) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -141,7 +141,6 @@ ActiveRecord::Schema.define(version: 2021_04_09_040339) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
-    t.integer "favorites_count", default: 0, null: false
     t.index ["user_id", "created_at"], name: "index_recipes_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end

@@ -18,6 +18,7 @@
 class ConsultationComment < ApplicationRecord
   belongs_to :user
   belongs_to :consultation
+
   has_many :replies, class_name: :ConsultationComment, foreign_key: :reply_comment, dependent: :destroy
 
   validates :content, presence: true, length: { maximum: 100 }

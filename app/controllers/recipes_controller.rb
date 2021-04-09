@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = params[:tag_id].present? ? Tag.find(params[:tag_id]).recipes : Recipe
-    @recipes = @recipes.includes([user: { avatar_attachment: :blob }], [image_attachment: :blob]).page(params[:page]).per(6)
+    @recipes = @recipes.includes([:favorites], [user: { avatar_attachment: :blob }], [image_attachment: :blob]).page(params[:page]).per(6)
   end
 
   def show
