@@ -3,8 +3,8 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
   def index
-    @recipes = params[:tag_id].present? ? Tag.find(params[:tag_id]).recipes : Recipe.all
-    @recipes = @recipes.page(params[:page]).per(6)
+    @recipes = params[:tag_id].present? ? Tag.find(params[:tag_id]).recipes : Recipe
+    @recipes = @recipes.includes([user: { avatar_attachment: :blob }], [image_attachment: :blob]).page(params[:page]).per(6)
   end
 
   def show
