@@ -44,5 +44,5 @@ Rails.application.routes.draw do
   end
 
   # 食材管理についてのルート
-  resources :inventories
+  resources :inventories, only: [:show, :new, :create, :edit, :update, :destroy]
 end
