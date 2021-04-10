@@ -1,13 +1,13 @@
 class CommentsController < ApplicationController
   def create
-    @comment = Comment.new(comment_params)
-    if @comment.save
+    comment = Comment.new(comment_params)
+    if comment.save
       flash[:notice] = 'コメントを投稿しました'
-      redirect_to @comment.recipe
+      redirect_to comment.recipe
     else
-      flash[:comment] = @comment
-      flash[:error_messages] = @comment.errors.full_messages
-      redirect_back fallback_location: @comment.recipe
+      flash[:comment] = comment
+      flash[:error_messages] = comment.errors.full_messages
+      redirect_back fallback_location: comment.recipe
     end
   end
 

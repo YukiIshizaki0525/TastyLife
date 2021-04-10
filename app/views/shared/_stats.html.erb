@@ -1,22 +1,22 @@
 <%= link_to(user_path(@user), class:'user__tab') do %>
   <p>レシピ</p>
-  <p class="user__count"><%= @user.recipes.count %></p>
+  <p class="user__count"><%= @user.recipes.length %></p>
 <% end %>
 <%= link_to(consultations_user_path(@user), class:'user__tab') do %>
   <p>相談</p>
-  <p class="user__count"><%= @user.consultations.count %></p>
+  <p class="user__count"><%= @user.consultations.length %></p>
 <% end %>
 <% if @user == current_user %>
   <%= link_to(inventories_user_path(@user), class:'user__tab') do %>
   <p>食材</p>
-  <p class="user__count"><%= @user.inventories.count %></p>
+  <p class="user__count"><%= @user.inventories.length %></p>
   <% end %>
 <% end %>
 <%= link_to(following_user_path(@user), class:'user__tab') do %>
   <p>フォロー</p>
-  <p class="user__count" id="following"><%= @user.following.count %></p>
+  <p class="user__count" id="following"><%= @user.following.length %></p>
 <% end %>
 <%= link_to(followers_user_path(@user), class:'user__tab') do %>
   <p>フォロワー</p>
-  <p class="user__count" id="followers"><%= @user.followers.count %></p>
+  <p class="user__count" id="followers"><%= @user.followers.length %></p>
 <% end %>

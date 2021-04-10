@@ -1,10 +1,6 @@
 class InventoriesController < ApplicationController
   before_action :set_inventory, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @inventories = current_user.inventories.page(params[:page]).order(expiration_date: 'ASC')
-  end
-
   def new
     @inventory = Inventory.new(flash[:inventory])
     

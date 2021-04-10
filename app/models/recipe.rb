@@ -73,5 +73,4 @@ class Recipe < ApplicationRecord
   def display_image
     image.variant(gravity: :center, resize:"200x290^", crop:"200x290+0+0").processed
   end
-
 end

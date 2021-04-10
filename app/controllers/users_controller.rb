@@ -2,11 +2,11 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :following, :followers, :consultations]
   before_action :set_user, only: [:show , :destroy, :following, :followers, :consultations, :inventories]
   def index
-    @users = User.page(params[:page]).per(6)
+    @users = User.includes([:recipes], [avatar_attachment: :blob]).page(params[:page]).per(6).order(id: :ASC)
   end
 
   def show
-    @recipes = @user.recipes.page(params[:page]).per(6)
+    @recipes = @user.recipes.includes([:favorites], [image_attachment: :blob]).page(params[:page]).per(6)
   end
 
   def destroy
@@ -16,26 +16,26 @@ class UsersController < ApplicationController
 
   def following
     @title = "Following"
-    @users = @user.following.page(params[:page]).per(6)
+    @users = @user.following.includes([:recipes], [avatar_attachment: :blob]).page(params[:page]).per(6)
     render 'show_follow'
   end
 
 
   def followers
     @title = "Followers"
-    @users = @user.followers.page(params[:page]).per(6)
+    @users = @user.followers.includes([:recipes], [avatar_attachment: :blob]).page(params[:page]).per(6)
     render 'show_follow'
   end
 
   def consultations
     @title = "Consultation"
-    @consultations = @user.consultations.page(params[:page]).per(3)
+    @consultations = @user.consultations.includes([:consultation_comments], [:interests]).page(params[:page]).per(3)
     render 'show_consultation'
   end
 
   def inventories
     @title = "Inventory"
-    @inventories = @user.inventories.page(params[:page]).order(expiration_date: 'ASC').per(6)
+    @inventories = @user.inventories.includes([photo_attachment: :blob]).page(params[:page]).order(expiration_date: 'ASC').per(6)
     render 'show_inventory'
   end
 

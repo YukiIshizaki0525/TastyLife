@@ -84,5 +84,5 @@
       </div>
     <% end %>
   </section>
-  <%= render 'shared/recipe_comment' %>
+  <%= render partial: 'shared/recipe_comment', locals:{ comments: @comments } %>
 </main>

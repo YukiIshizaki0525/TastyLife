@@ -1,10 +1,16 @@
-<% comments.each do |comment| %>
+<% @comments.each do |comment| %>
   <% if comment.reply_comment.present? || comment.id.blank? %>
     <% next %>
   <% end %>
   <div class="comment__item">
     <div class="comment__info">
-      <%= link_to image_tag(comment.user.avatar, class: "comment__img"), user_path(id: comment.user_id) %>
+      <%= link_to user_path(id: comment.user_id), class: "comment__img" do %>
+        <% if comment.user.avatar.attached? %>
+          <%= image_tag(comment.user.avatar) %>
+        <% else %>
+          <%= image_tag 'default_user' %>
+        <% end %>
+      <% end %>
       
       <%= link_to comment.user.name, user_path(id: comment.user_id), class: "comment__name"%>
     
@@ -20,7 +26,7 @@
       <%= render 'consultation_comments/reply_form', comment_reply: comment %>
     <% end %>
 
-    <%= render 'consultation_comments/reply_comment', comment_reply: comment %>
+      <%= render 'consultation_comments/reply_comment', comment_reply: comment %>
   </div>
 <% end %>
 

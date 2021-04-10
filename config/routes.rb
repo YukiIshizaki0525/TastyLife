@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
-
+  
 
   # 相談機能についてのルート
   resources :consultations
@@ -44,5 +44,5 @@ Rails.application.routes.draw do
   end
 
   # 食材管理についてのルート
-  resources :inventories
+  resources :inventories, only: [:show, :new, :create, :edit, :update, :destroy]
 end

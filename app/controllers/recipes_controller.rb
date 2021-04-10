@@ -3,12 +3,13 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
   def index
-    @recipes = params[:tag_id].present? ? Tag.find(params[:tag_id]).recipes : Recipe.all
-    @recipes = @recipes.page(params[:page]).per(6)
+    @recipes = params[:tag_id].present? ? Tag.find(params[:tag_id]).recipes : Recipe
+    @recipes = @recipes.includes([:favorites], [user: { avatar_attachment: :blob }], [image_attachment: :blob]).page(params[:page]).per(6)
   end
 
   def show
     @comments = @recipe.comments
+
     if user_signed_in?
       @comment = current_user.comments.new #=> formのパラメータ用にCommentオブジェクトを取得
     end
@@ -16,7 +17,6 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new(flash[:recipe])
-    @comment = current_user.comments.new
   end
 
   def edit

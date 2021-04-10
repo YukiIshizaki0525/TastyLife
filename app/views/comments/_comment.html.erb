@@ -1,10 +1,17 @@
 <div class="comment__item">
   <div class="comment__content"><%= comment.comment %></div>
   <% if user_signed_in? && comment.user == current_user %>
-    <%= link_to image_tag("delete", alt: "delete"), recipe_comment_path(comment.recipe.id, comment.id), class: 'comment__delete', method: :delete, data: { confirm: '削除してよろしいですか？' } %>
+    <%= link_to image_tag("delete", alt: "delete"), recipe_comment_path(comment.recipe.id, comment.id),
+    class: 'comment__delete', method: :delete, data: { confirm: '削除してよろしいですか？' } %>
   <% end %>
   <div class="comment__info">
-    <%= link_to image_tag(comment.user.avatar, class: "comment__img"), user_path(id: comment.user_id) %>
+    <%= link_to user_path(id: comment.user_id), class: "comment__img" do %>
+      <% if comment.user.avatar.attached? %>
+        <%= image_tag(comment.user.avatar) %>
+      <% else %>
+        <%= image_tag 'default_user' %>
+      <% end %>
+    <% end %>
     
     <%= link_to comment.user.name, user_path(id: comment.user_id), class: "comment__name"%>
   

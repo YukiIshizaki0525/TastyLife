@@ -1,12 +1,12 @@
 <section class="comment">
   <div class="comment__inner">
     <div class="comment__texts">
-      <div class="comment__count">コメント<%= @comments.count %>件</div>
-      <%= render @comments %>
+      <div class="comment__count">コメント<%= comments.count %>件</div>
+      <%= render comments %>
     </div>
     <% if user_signed_in? %>
       <div class="comment__form">
-        <%= render 'comments/form' %>
+        <%= render partial: 'comments/form', locals:{ recipe: @recipe } %>
       </div>
     <% end %>
   </div>

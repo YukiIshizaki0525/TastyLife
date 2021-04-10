@@ -17,11 +17,11 @@
 class Consultation < ApplicationRecord
   belongs_to :user
   has_many :consultation_comments, dependent: :destroy
-
+  
   # 閲覧数カウント
   is_impressionable counter_cache: true
 
-  # いいね機能関連
+  # 気になる機能関連
   has_many :interests, dependent: :destroy
 
   validates :title, presence: true, length: { maximum: 50 }

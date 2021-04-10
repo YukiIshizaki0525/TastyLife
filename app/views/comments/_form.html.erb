@@ -1,4 +1,4 @@
-<%= form_with(model:[@recipe, @comment], method: :post, class: "comment__inputBx") do |f| %>
+<%= form_with(model:[recipe, @comment], method: :post, class: "comment__inputBx") do |f| %>
   <%= f.hidden_field :recipe_id, value: @recipe.id %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.label :comment, "コメント投稿はこちら", class: 'comment__label'%>
