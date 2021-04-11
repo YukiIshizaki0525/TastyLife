@@ -1,7 +1,7 @@
 <section class="comment">
   <div class="comment__inner">
     <div class="comment__texts">
-      <div class="comment__count">コメント<%= comments.count %>件</div>
+      <div class="comment__count">コメント<%= comments.length %>件</div>
       <%= render comments %>
     </div>
     <% if user_signed_in? %>

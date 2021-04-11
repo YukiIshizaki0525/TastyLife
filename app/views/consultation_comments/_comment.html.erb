@@ -23,10 +23,10 @@
       <% end %>
     </div>
     <% if user_signed_in? %>
-      <%= render 'consultation_comments/reply_form', comment_reply: comment %>
+      <%= render 'consultation_comments/reply_form', comment: comment %>
     <% end %>
 
-      <%= render 'consultation_comments/reply_comment', comment_reply: comment %>
+      <%= render 'consultation_comments/reply_comment', comment: comment %>
   </div>
 <% end %>
 
