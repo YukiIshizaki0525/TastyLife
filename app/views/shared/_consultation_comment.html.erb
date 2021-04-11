@@ -1,7 +1,7 @@
 <section class="comment">
   <div class="comment__inner">
     <div class="comment__texts">
-      <div class="comment__count">コメント<%= @comments.length %>件</div>
+      <div class="comment__count">コメント<%= @comments.where(reply_comment: nil).length %>件</div>
       <%# consultation_comments/_consultation_comment.html.erbにレンダリング %>
       <%= render 'consultation_comments/comment' %>
     </div>

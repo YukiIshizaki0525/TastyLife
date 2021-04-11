@@ -4,7 +4,7 @@
       <div class="consultation__item">
         <div class="consultation__status">
           <div class="consultation__detail-status">
-            <%= consultation.consultation_comments.length %>
+            <%= consultation.consultation_comments.where(reply_comment: nil).length %>
             <p>回答</p>
           </div>
           <div class="consultation__detail-status">

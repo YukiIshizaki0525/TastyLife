@@ -8,7 +8,8 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @comments = @recipe.comments
+    @recipe = Recipe.includes([steps: { step_image_attachment: :blob }]).find(params[:id])
+    @comments = Comment.includes([:recipe], [user: { avatar_attachment: :blob }]).where(recipe_id: @recipe.id)
 
     if user_signed_in?
       @comment = current_user.comments.new #=> formのパラメータ用にCommentオブジェクトを取得

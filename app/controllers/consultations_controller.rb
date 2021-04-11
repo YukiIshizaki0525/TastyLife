@@ -3,11 +3,11 @@ class ConsultationsController < ApplicationController
   before_action :set_consultation, only: [:show, :edit, :update, :destroy]
 
   def index
-    @consultations = Consultation.includes([:consultation_comments], [:interests], [user: { avatar_attachment: :blob }]).page(params[:page]).per(6)
+    @consultations = Consultation.includes([:interests], [user: { avatar_attachment: :blob }]).page(params[:page]).per(6)
   end
 
   def show
-    @comments = ConsultationComment.includes([:consultation], [user: { avatar_attachment: :blob }])
+    @comments = ConsultationComment.includes([:consultation], [user: { avatar_attachment: :blob }]).where(consultation_id: @consultation.id)
 
     if user_signed_in?
       @new_comment = ConsultationComment.new
@@ -60,7 +60,7 @@ class ConsultationsController < ApplicationController
 
   private
     def set_consultation
-      @consultation = Consultation.find_by(params[:id])
+      @consultation = Consultation.find(params[:id])
     end
 
     def consultation_params
