@@ -7,6 +7,7 @@
   <ul class="mobile-menu__main">
     <% if user_signed_in? %>
       <li class="mobile-menu__item"><%= link_to 'マイページ', user_path(id: current_user.id) %></li>
+      <li class="mobile-menu__item"><%= link_to 'タイムライン', recipes_tweet_path %></li>
       <li class="mobile-menu__item"><%= link_to 'レシピ一覧', recipes_path %></li>
       <li class="mobile-menu__item"><%= link_to '相談一覧', consultations_path %></li>
       <li class="mobile-menu__item"><%= link_to 'ユーザー一覧', users_path %></li>
