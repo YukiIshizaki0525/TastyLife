@@ -2,6 +2,34 @@
 
 <section class="list">
   <div class="cooking-title">タイムライン</div>
-  <%= render 'shared/recipe_tweet' %>
+  <div class="tweet__container">
+    <% @tweet.each do |recipe| %>
+      <div class="tweet__item">
+        <%= link_to(recipe_path(id: recipe.id), class:'tweet__img') do %>
+          <%  if recipe.image.attached? %>
+            <%= image_tag(recipe.image) %>
+          <% else %>
+            <%= image_tag 'no_image' %>
+          <% end %>
+        <% end %>
+        <div class="tweet__detail">
+          <span class="timestamp"><%= recipe.created_at.to_s(:datetime_jp) %></span><br>
+          <%= link_to recipe.title, recipe_path(id: recipe.id), class: 'tweet__title' %>
+          <div class="tweet__description"><%= recipe.description %></div>
+          <div class="tweet__info">
+            <div class="tweet__userinfo">
+              <%= link_to(user_path(id: recipe.user_id)) do %>
+                <div class="tweet__useravatar"><%= image_tag(recipe.user.avatar) if recipe.user.avatar.attached? %></div>
+              <% end %>
+              <%= link_to recipe.user.name ,user_path(id: recipe.user_id), class:"tweet__username" %>
+            </div>
+            <div id="recipe_<%= recipe.id %>">
+              <%= render partial: "recipes/favorite", locals: { recipe: recipe } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
   <%= paginate @tweet %>
 </section>

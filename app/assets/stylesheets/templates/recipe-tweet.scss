@@ -29,6 +29,10 @@
   &__detail {
     margin-left: 10.5px;
     position: relative;
+
+    & div > .favorite {
+      display: inline-block
+    }
   }
 
   &__title {
@@ -40,15 +44,16 @@
 
   &__description {
     @extend .font-sm;
-    display: none;
+    @extend .mb-sm;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
   }
 
   &__userinfo {
     display: flex;
-    text-decoration: none !important;
-    position: absolute;
-    bottom: 0;
-    left: 0;
   }
 
   &__useravatar {
@@ -65,6 +70,7 @@
   }
 
   &__username {
+    margin-right: 30px;
     color: $--c-brown !important;
 
     &:hover {
