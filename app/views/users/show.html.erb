@@ -10,7 +10,7 @@
   <% if @recipes.any? %>
     <%= render 'shared/recipe_list' %>
   <% else %>
-    <p class="list__notthing"><%= "#{@user.name}さんの投稿はありません。" %></p>
+    <p class="notthing"><%= "#{@user.name}さんの投稿はありません。" %></p>
   <% end %>
   <%= paginate @recipes %>
 </section>

@@ -1,11 +1,12 @@
-<section class="user">
-  <%= render 'show_user' %>
-</section>
-
 <section class="user-list">
-  <div class="subheader">
-    <div class="main-title"><%= @title %></div>
-  </div>
-  <%= render 'shared/user-list' %>
+  <div class="cooking-title"><%= @user.name %><%= @title %></div>
+
+  <% if @users.any? %>
+    <%= render 'shared/user-list' %>
+  <% else %>
+    <p class="notthing"><%= @message %></p>
+  <% end %>
   <%= paginate @users %>
+
+  <div class="btn-center"><%= link_to 'マイページに戻る', @user, class:"btn edit-cancel"%></div>
 </section>

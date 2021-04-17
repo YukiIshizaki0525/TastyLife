@@ -8,6 +8,16 @@
       <% end %>
     </div>
     <div class="user__name"><%= @user.name %></div>
+    <div class="user__follow_stats">
+      <%= link_to(following_user_path(@user), class:'user__follow') do %>
+        <p>フォロー</p>
+        <p class="user__count" id="following"><%= @user.following.length %></p>
+      <% end %>
+      <%= link_to(followers_user_path(@user), class:'user__follow') do %>
+        <p>フォロワー</p>
+        <div class="user__count" id="followers"><%= @user.followers.length %></div>
+      <% end %>
+    </div>
   </div>
   <div class="user__submenu">
     <%= render 'shared/user_submenu' if @user == current_user %>

@@ -15,14 +15,16 @@ class UsersController < ApplicationController
   end
 
   def following
-    @title = "Following"
+    @title = "さんがフォロー中"
+    @message = "まだ誰もフォローしていません。"
     @users = @user.following.includes([:recipes], [avatar_attachment: :blob]).page(params[:page]).per(6)
     render 'show_follow'
   end
 
 
   def followers
-    @title = "Followers"
+    @title = "さんのフォロワー"
+    @message = "まだ誰からもフォローされていません。"
     @users = @user.followers.includes([:recipes], [avatar_attachment: :blob]).page(params[:page]).per(6)
     render 'show_follow'
   end
