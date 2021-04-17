@@ -2,6 +2,10 @@
   <p>レシピ</p>
   <p class="user__count"><%= @user.recipes.length %></p>
 <% end %>
+<%= link_to(favorites_user_path(@user), class:'user__tab') do %>
+  <p>いいね</p>
+  <p class="user__count" id="following"><%= @user.favorites.length %></p>
+<% end %>
 <%= link_to(consultations_user_path(@user), class:'user__tab') do %>
   <p>相談</p>
   <p class="user__count"><%= @user.consultations.length %></p>
@@ -12,11 +16,5 @@
   <p class="user__count"><%= @user.inventories.length %></p>
   <% end %>
 <% end %>
-<%= link_to(following_user_path(@user), class:'user__tab') do %>
-  <p>フォロー</p>
-  <p class="user__count" id="following"><%= @user.following.length %></p>
-<% end %>
-<%= link_to(followers_user_path(@user), class:'user__tab') do %>
-  <p>フォロワー</p>
-  <p class="user__count" id="followers"><%= @user.followers.length %></p>
-<% end %>
+
+

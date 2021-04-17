@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :following, :followers, :consultations]
-  before_action :set_user, only: [:show , :destroy, :following, :followers, :consultations, :inventories]
+  before_action :set_user, only: [:show , :destroy, :following, :followers, :consultations, :favorites, :inventories]
   def index
     @users = User.includes([:recipes], [avatar_attachment: :blob]).page(params[:page]).per(6).order(id: :ASC)
   end
@@ -15,14 +15,16 @@ class UsersController < ApplicationController
   end
 
   def following
-    @title = "Following"
+    @title = "さんがフォロー中"
+    @message = "まだ誰もフォローしていません。"
     @users = @user.following.includes([:recipes], [avatar_attachment: :blob]).page(params[:page]).per(6)
     render 'show_follow'
   end
 
 
   def followers
-    @title = "Followers"
+    @title = "さんのフォロワー"
+    @message = "まだ誰からもフォローされていません。"
     @users = @user.followers.includes([:recipes], [avatar_attachment: :blob]).page(params[:page]).per(6)
     render 'show_follow'
   end
@@ -31,6 +33,12 @@ class UsersController < ApplicationController
     @title = "Consultation"
     @consultations = @user.consultations.includes([:consultation_comments], [:interests]).page(params[:page]).per(3)
     render 'show_consultation'
+  end
+
+  def favorites
+    @title = "Favorite"
+    @recipes = @user.favorite_recipes.includes([user: { avatar_attachment: :blob }], [:favorites], [image_attachment: :blob]).page(params[:page]).per(6)
+    render 'show_favorite'
   end
 
   def inventories

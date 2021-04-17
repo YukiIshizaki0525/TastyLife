@@ -66,6 +66,8 @@ class User < ApplicationRecord
   # いいね機能関連
   has_many :favorites, dependent: :destroy
 
+  has_many :favorite_recipes, through: :favorites, source: :recipe
+
   # 相談気になる機能関連
   has_many :interests, dependent: :destroy
   # アイコン画像追加のため

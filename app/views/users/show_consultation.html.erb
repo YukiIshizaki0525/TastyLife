@@ -11,7 +11,7 @@
   <% if @consultations.any? %>
     <%= render 'shared/recipe_consultation' %>
   <% else %>
-    <p class="list__notthing"><%= "#{@user.name}さんの相談はありません。" %></p>
+    <p class="notthing"><%= "#{@user.name}さんの相談はありません。" %></p>
   <% end %>
   <%= paginate @consultations %>
 </section>

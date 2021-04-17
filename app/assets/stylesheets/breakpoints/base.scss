@@ -155,3 +155,9 @@ img {
     display: none;
   }
 }
+
+.notthing {
+  @extend .content-width;
+  @extend .font-md;
+  color: $--c-brown;
+}

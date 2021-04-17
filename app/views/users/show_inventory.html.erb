@@ -8,8 +8,11 @@
     <div class="main-title"><%= @title %></div>
   </div>
 
-  <%= render 'shared/food_inventory' %>
-  
+  <% if @inventories.any? %>
+    <%= render 'shared/food_inventory' %>
+  <% else %>
+    <p class="notthing"><%= "保存中の食材はありません。" %></p>
+  <% end %>
   <%= paginate @inventories %>
 
   <div class="btn-center"><%= link_to '保存中の食材を登録', new_inventory_path, class:"btn slide-bg" %></div>

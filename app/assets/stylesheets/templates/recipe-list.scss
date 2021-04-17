@@ -76,10 +76,4 @@
     align-items: flex-end;
     color: $--c-brown !important;
   }
-
-  &__notthing {
-    @extend .content-width;
-    @extend .font-md;
-    color: $--c-brown;
-  }
 }
