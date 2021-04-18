@@ -7,11 +7,11 @@ class ConsultationsController < ApplicationController
   end
 
   def show
-    @comments = ConsultationComment.includes([:consultation], [user: { avatar_attachment: :blob }]).where(consultation_id: @consultation.id)
+    @comments = ConsultationComment.includes([user: { avatar_attachment: :blob }]).where(consultation_id: @consultation.id)
 
     if user_signed_in?
-      @new_comment = ConsultationComment.new
-      @comment_reply = ConsultationComment.new
+      @new_comment = current_user.consultation_comments.new
+      @comment_reply = current_user.consultation_comments.new
     end
 
     # 閲覧数カウント
@@ -60,7 +60,7 @@ class ConsultationsController < ApplicationController
 
   private
     def set_consultation
-      @consultation = Consultation.find(params[:id])
+      @consultation = Consultation.find_by(params[:consultation_id])
     end
 
     def consultation_params

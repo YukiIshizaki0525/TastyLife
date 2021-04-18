@@ -70,6 +70,10 @@ class User < ApplicationRecord
 
   # 相談気になる機能関連
   has_many :interests, dependent: :destroy
+
+  has_many :interest_consultations, through: :interests, source: :consultation
+
+  
   # アイコン画像追加のため
   has_one_attached :avatar
 

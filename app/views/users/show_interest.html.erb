@@ -1,0 +1,20 @@
+<section class="user">
+  <%= render 'show_user' %>
+</section>
+
+<%= render 'layouts/notifications' %>
+<section class="user-list">
+  <div class="subheader">
+    <div class="main-title"><%= @title %></div>
+  </div>
+
+  <% if @consultations.any? %>
+    <%= render 'shared/recipe_consultation' %>
+  <% else %>
+    <p class="notthing"><%= "#{@user.name}さんが気になっている相談はありません。" %></p>
+  <% end %>
+
+  
+  <%= paginate @consultations %>
+
+</section>

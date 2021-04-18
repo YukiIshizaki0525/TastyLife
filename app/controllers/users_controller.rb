@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :following, :followers, :consultations]
-  before_action :set_user, only: [:show , :destroy, :following, :followers, :consultations, :favorites, :inventories]
+  before_action :set_user, only: [:show , :destroy, :following, :followers, :consultations, :favorites, :interests, :inventories]
   def index
     @users = User.includes([:recipes], [avatar_attachment: :blob]).page(params[:page]).per(6).order(id: :ASC)
   end
@@ -39,6 +39,12 @@ class UsersController < ApplicationController
     @title = "Favorite"
     @recipes = @user.favorite_recipes.includes([user: { avatar_attachment: :blob }], [:favorites], [image_attachment: :blob]).page(params[:page]).per(6)
     render 'show_favorite'
+  end
+
+  def interests
+    @title = "Interest"
+    @consultations = @user.interest_consultations.page(params[:page]).per(6)
+    render 'show_interest'
   end
 
   def inventories
