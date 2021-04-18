@@ -43,7 +43,7 @@ class UsersController < ApplicationController
 
   def interests
     @title = "Interest"
-    @consultations = @user.interest_consultations.page(params[:page]).per(6)
+    @consultations = @user.interest_consultations.includes([user: { avatar_attachment: :blob }], [:interests]).page(params[:page]).per(6)
     render 'show_interest'
   end
 

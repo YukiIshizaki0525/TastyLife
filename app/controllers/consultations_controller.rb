@@ -60,7 +60,7 @@ class ConsultationsController < ApplicationController
 
   private
     def set_consultation
-      @consultation = Consultation.find_by(params[:consultation_id])
+      @consultation = Consultation.find(params[:id])
     end
 
     def consultation_params
