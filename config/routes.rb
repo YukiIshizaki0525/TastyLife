@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      get :following, :followers, :consultations, :inventories, :favorites
+      get :following, :followers, :consultations, :favorites, :interests, :inventories
     end
   end
   
@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   resources :consultations
 
   resources :consultations do
-    resources :consultation_comments
+    resources :consultation_comments, only: [:create, :destroy]
     resource :interests, only: [:create, :destroy]
   end
 
