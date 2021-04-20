@@ -1,0 +1,5 @@
+<%= search_form_for @q, url: recipes_search_path do |f| %>
+  <%= f.search_field :title_cont %>
+  <br>
+  <%= f.submit '検索' %>
+<% end %>

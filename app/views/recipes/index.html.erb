@@ -2,6 +2,7 @@
 
 <section class="list">
   <div class="cooking-title">レシピ一覧</div>
+  <%= render 'shared/recipe_search' %>
   <%= render 'shared/recipe_tag_list' %>
   <%= render 'shared/recipe_list' %>
   <%= paginate @recipes %>

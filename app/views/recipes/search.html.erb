@@ -1,0 +1,7 @@
+<div class="cooking-title">検索結果</div>
+<%= render 'shared/recipe_search' %>
+<%= render 'shared/recipe_list' %>
+
+<%= paginate @recipes %>
+
+<div class="btn-center"><%= link_to 'レシピ一覧ページに戻る', recipes_path, class:"btn cancel"%></div>
