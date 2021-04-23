@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :tag_search]
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :set_q, only: [:index, :search]
 
   def index
     @recipes = params[:tag_id].present? ? Tag.find(params[:tag_id]).recipes : Recipe
@@ -40,7 +41,7 @@ class RecipesController < ApplicationController
       }
     end
   end
-
+  
   def update
     @recipe.update(recipe_params)
     if @recipe.save
@@ -51,21 +52,29 @@ class RecipesController < ApplicationController
       redirect_back fallback_location: @recipe
     end
   end
-
+  
   def destroy
     @recipe.destroy
     redirect_to user_path(current_user.id), flash: { notice: "「#{@recipe.title}」のレシピを削除しました。" }
   end
-
+  
+  def search
+    @recipes = @q.result(distinct: true).includes([:favorites], [user: { avatar_attachment: :blob }], [image_attachment: :blob]).page(params[:page]).per(6)
+    @search = params[:q][:title_or_ingredients_content_cont]
+  end
+  
   def tag_search
     @tag = Tag.find(params[:tag_id])
     @recipes = @tag.recipes
   end
-
+  
   private
     def set_recipe
       @recipe = Recipe.find(params[:id])
-      # redirect_to(root_url) unless current_user.id == @consultation.user_id
+    end
+
+    def set_q
+      @q = Recipe.ransack(params[:q])
     end
 
     # Only allow a list of trusted parameters through.
@@ -76,8 +85,10 @@ class RecipesController < ApplicationController
         :title,
         :description,
         :user_id,
+        :keyword,
         tag_ids: [],
         ingredients_attributes: [:id, :content, :quantity, :_destroy],
-        steps_attributes: [:id, :direction, :step_image, :_destroy])
+        steps_attributes: [:id, :direction, :step_image, :_destroy]
+      )
     end
-end
+  end

@@ -1,8 +1,7 @@
 // 関連タグについてここから
 .tag {
-  @extend .content-width;
   @extend .mb-sm;
-
+  
   &__container {
     display: flex;
     flex-wrap: wrap;
@@ -16,7 +15,7 @@
 
   &__item {
     @extend .font-sm;
-    flex-basis: 45%;
+    width: 100%;
     display: block;
     text-align: center;
     font-weight: 600;
@@ -24,8 +23,6 @@
     cursor: pointer;
     text-decoration: none !important;
     color: $--c-gray !important;
-    border: 1px solid $--c-light-gray;
-    border-radius: 5px;
     padding: 8px;
     margin-bottom: 10px;
 
@@ -62,9 +59,9 @@
     @extend .content-width;
     @extend .mb-sm;
     text-align: center;
-
-    &>select {
-      width: 100%;
+    border: 1px solid $--c-light-gray;
+    
+    & > select {
       padding: 10px;
       cursor: pointer;
       text-indent: 0.01px;
@@ -82,13 +79,12 @@
 
   &__arrow {
     position: relative;
-    border: 1px solid #bbbbbb;
-    border-radius: 2px;
-    background: #ffffff;
+    border: 1px solid $--c-light-gray;
+    border-radius: 4px;
 
     &::before {
       position: absolute;
-      top: 16px;
+      top: 18px;
       right: 10px;
       width: 0;
       height: 0;
@@ -101,7 +97,7 @@
     }
 
     & > select {
-      padding: 8px 38px 8px 8px;
+      padding: 10px;
       color: $--c-gray;
     }
   }

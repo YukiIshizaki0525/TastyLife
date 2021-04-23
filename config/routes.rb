@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'homes#index'
   get 'recipes/tweet', to: 'homes#tweet_index'
   get 'recipes/tag/:name', to: "recipes#tag_search"
+  get 'recipes/search', to: 'recipes#search'
 
   # letter_opner_webの設定
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
@@ -33,7 +34,6 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
-  
 
   # 相談機能についてのルート
   resources :consultations

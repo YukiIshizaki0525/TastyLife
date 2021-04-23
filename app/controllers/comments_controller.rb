@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    comment = Comment.find_by(id: params[:id], recipe_id: params[:recipe_id])
+    comment = Comment.find_by(recipe_id: params[:recipe_id])
     if comment.user_id == current_user.id
       comment.destroy
     end
