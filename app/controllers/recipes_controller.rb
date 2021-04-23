@@ -59,7 +59,8 @@ class RecipesController < ApplicationController
   end
   
   def search
-    @recipes = @q.result.includes([:favorites], [user: { avatar_attachment: :blob }], [image_attachment: :blob]).page(params[:page]).per(6)
+    @recipes = @q.result(distinct: true).includes([:favorites], [user: { avatar_attachment: :blob }], [image_attachment: :blob]).page(params[:page]).per(6)
+    @search = params[:q][:title_or_ingredients_content_cont]
   end
   
   def tag_search
@@ -70,7 +71,6 @@ class RecipesController < ApplicationController
   private
     def set_recipe
       @recipe = Recipe.find(params[:id])
-      # redirect_to(root_url) unless current_user.id == @consultation.user_id
     end
 
     def set_q

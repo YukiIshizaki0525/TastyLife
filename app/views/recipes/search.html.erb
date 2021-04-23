@@ -1,4 +1,10 @@
-<div class="cooking-title">検索結果</div>
+<div class="cooking-title">
+  <% if @search.present? %>
+    「<%= @search %>」の検索結果
+  <% else %>
+    検索結果
+  <% end %>
+</div>
 <%= render 'shared/recipe_search' %>
 <%= render 'shared/recipe_list' %>
 

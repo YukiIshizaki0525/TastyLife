@@ -161,3 +161,20 @@ img {
   @extend .font-md;
   color: $--c-brown;
 }
+
+.search_form {
+  @extend .font-sm;
+  @extend .mb-sm;
+  @extend .content-width;
+  text-align: center;
+
+  & > input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid $--c-light-gray;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+  }
+
+}
