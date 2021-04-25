@@ -10,8 +10,8 @@ class ConsultationsController < ApplicationController
     @comments = ConsultationComment.includes([user: { avatar_attachment: :blob }]).where(consultation_id: @consultation.id)
 
     if user_signed_in?
-      @new_comment = current_user.consultation_comments.new
-      @comment_reply = current_user.consultation_comments.new
+      @new_comment = current_user.consultation_comments
+      @comment_reply = current_user.consultation_comments
     end
 
     # 閲覧数カウント

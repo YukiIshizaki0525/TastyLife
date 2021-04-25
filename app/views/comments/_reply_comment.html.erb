@@ -1,0 +1,22 @@
+<% comment.replies.order(:created_at).each do |reply| %>
+  <div class="comment__reply-item">
+    <div class="comment__info">
+
+      <%= link_to user_path(id: reply.user_id), class: "comment__img" do %>
+        <% if reply.user.avatar.attached? %>
+          <%= image_tag(reply.user.avatar) %>
+        <% else %>
+          <%= image_tag 'default_user' %>
+        <% end %>
+      <% end %>
+
+      <%= link_to reply.user.name, user_path(id: reply.user_id), class: "comment__name"%>
+    </div>
+    <div class="comment__reply-content">
+      <%= reply.content %>
+      <% if user_signed_in? && reply.user == current_user %>
+        <%= link_to image_tag("delete"), recipe_comment_path(reply.recipe.id, reply.id), class: 'comment__delete', method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

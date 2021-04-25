@@ -5,14 +5,15 @@ class ConsultationCommentsController < ApplicationController
       flash[:notice] = '相談に対するコメントを投稿しました'
       redirect_to comment.consultation
     else
-      flash[:consultation_comment] = comment
-      flash[:error_messages] = comment.errors.full_messages
-      redirect_back fallback_location: comment.consultation
+      redirect_back fallback_location: comment.consultation, flash: {
+        comment: comment,
+        error_messages: comment.errors.full_messages
+      }
     end
   end
 
   def destroy
-    comment = ConsultationComment.find(params[:id]).destroy
+    comment = ConsultationComment.find_by(id: params[:id], consultation_id: params[:consultation_id]).destroy
     redirect_to comment.consultation, flash: { notice: 'コメントが削除されました' }
   end
 

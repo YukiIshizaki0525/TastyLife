@@ -2,8 +2,7 @@
   <div class="comment__inner">
     <div class="comment__texts">
       <div class="comment__count">コメント<%= comments.where(reply_comment: nil).length %>件</div>
-      <%# consultation_comments/_consultation_comment.html.erbにレンダリング %>
-      <%= render partial: 'consultation_comments/comment', locals:{ comments: comments } %>
+      <%= render 'consultation_comments/comment', comments: comments %>
     </div>
     <% if user_signed_in? %>
       <div class="comment__form">
