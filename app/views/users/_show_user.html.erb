@@ -1,11 +1,7 @@
 <div class="user__inner">
   <div class="user__info">
     <div class="user__img">
-      <% if @user.avatar.attached? %>
-        <%= image_tag(@user.avatar) %>
-      <% else %>
-        <%= image_tag 'default_user' %>
-      <% end %>
+      <%= image_tag(@user.avatar) %>
     </div>
     <div class="user__name"><%= @user.name %></div>
     <div class="user__follow_stats">

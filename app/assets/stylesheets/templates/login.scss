@@ -103,7 +103,6 @@
   &__input-avatar {
     align-self: flex-start;
     display: flex;
-    flex-basis: 60%;
 
     & > .img-file {
       margin-right: 30px;
@@ -112,7 +111,7 @@
 
   &__avatar {
     width: 65px;
-    height: 65px;
+    height: 50px;
     overflow: hidden;
 
     & > img {

@@ -38,6 +38,8 @@ gem 'font-awesome-sass'
 # N+1問題
 gem 'bullet'
 
+gem 'mini_magick'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rails-flog', require: 'flog'
