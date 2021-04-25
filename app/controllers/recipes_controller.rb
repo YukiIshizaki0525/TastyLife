@@ -13,7 +13,8 @@ class RecipesController < ApplicationController
     @comments = Comment.includes([:recipe], [user: { avatar_attachment: :blob }]).where(recipe_id: @recipe.id)
 
     if user_signed_in?
-      @comment = current_user.comments.new #=> formのパラメータ用にCommentオブジェクトを取得
+      @comment = current_user.comments.new(flash[:comment])
+      @comment_reply = current_user.comments.new(flash[:comment_reply])
     end
   end
 

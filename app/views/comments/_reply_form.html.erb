@@ -1,0 +1,8 @@
+<%= form_with(model: [@recipe, @comment_reply], class: "comment__replyBx") do |f| %>
+  <%= f.text_field :content , placeholder: "このコメントに返信" %>
+  <%= f.hidden_field :reply_comment, value: comment.id %>
+  <%= f.hidden_field :recipe_id, value: @recipe.id %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+
+  <div class="comment__reply-submit"><%= f.button image_tag('send-comment') %></div>
+<% end %>
