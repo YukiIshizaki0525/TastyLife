@@ -14,7 +14,7 @@ class RecipesController < ApplicationController
 
     if user_signed_in?
       @comment = current_user.comments.new(flash[:comment])
-      @comment_reply = current_user.comments.new(flash[:comment])
+      @comment_reply = current_user.comments.new(flash[:comment_reply])
     end
   end
 

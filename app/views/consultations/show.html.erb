@@ -1,9 +1,12 @@
 <div class="cooking-title">相談詳細</div>
+
 <section class="consultation">
-    <!-- 投稿完了後のフラッシュメッセージ -->
-    <% unless flash[:error_messages] %>
-      <%= render 'layouts/notifications' %>
-    <% end %>
+  <!-- 投稿完了後のフラッシュメッセージ -->
+  <% unless flash[:error_messages] %>
+    <%= render 'layouts/notifications' %>
+  <% else %>
+    <%= render 'shared/error_messages' %>
+  <% end %>
   <div class="consultation__inner">
     <div class="consultation__info">
         <%= link_to(user_path(id: @consultation.user_id), class:'consultation__user-show-img') do %>
