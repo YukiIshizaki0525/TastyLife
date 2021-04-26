@@ -21,8 +21,6 @@
         <%= link_to user_path(id: recipe.user_id), class:'list__user-img' do %>
           <%  if recipe.user.avatar.attached? %>
             <%= image_tag(recipe.user.avatar) %>
-          <% else %>
-            <%= image_tag 'default_user' %>
           <% end %>
         <% end %>
         <%= link_to recipe.user.name, user_path(id: recipe.user_id), class: "list__user-name" %>
