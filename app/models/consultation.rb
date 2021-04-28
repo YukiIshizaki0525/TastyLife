@@ -26,4 +26,9 @@ class Consultation < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 50 }
   validates :content, presence: true, length: { maximum: 200 }
+
+  ransacker :interests_count do
+    query = '(SELECT COUNT(interests.consultation_id) FROM interests where interests.consultation_id = consultations.id GROUP BY interests.consultation_id)'
+    Arel.sql(query)
+  end
 end

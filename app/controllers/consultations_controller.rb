@@ -3,7 +3,16 @@ class ConsultationsController < ApplicationController
   before_action :set_consultation, only: [:show, :edit, :update, :destroy]
 
   def index
-    @consultations = Consultation.includes([:interests], [user: { avatar_attachment: :blob }]).page(params[:page]).per(6)
+    if params[:q].present?
+    # 検索フォームからアクセスした時の処理
+      @q = Consultation.ransack(params[:q])
+      @consultations = @q.result.includes([:interests], [user: { avatar_attachment: :blob }]).page(params[:page]).per(6)
+    else
+    # 検索フォーム以外からアクセスした時の処理
+      params[:q] = { sorts: 'id desc' }
+      @q = Consultation.ransack()
+      @consultations = Consultation.includes([:interests], [user: { avatar_attachment: :blob }]).page(params[:page]).per(6)
+    end
   end
 
   def show

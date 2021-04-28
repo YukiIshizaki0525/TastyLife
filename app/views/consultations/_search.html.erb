@@ -1,0 +1,13 @@
+<%= search_form_for @q, url: consultations_path do |f| %>
+  <div class="tag__select tag__arrow">
+    <%= f.select( :sorts,
+        { '投稿の新しい順': 'id desc',
+          '気になるの多い順': 'interests_count desc'
+        },
+        { selected: params[:q][:sorts]},
+        { onchange: 'this.form.submit()',
+          class: 'tag__item'},
+      )
+    %>
+  </div>
+<% end %>
