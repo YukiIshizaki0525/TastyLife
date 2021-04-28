@@ -31,4 +31,10 @@ class Consultation < ApplicationRecord
     query = '(SELECT COUNT(interests.consultation_id) FROM interests where interests.consultation_id = consultations.id GROUP BY interests.consultation_id)'
     Arel.sql(query)
   end
+
+  ransacker :consultation_comments_count do
+    query = '(SELECT COUNT(consultation_comments.consultation_id) FROM consultation_comments where consultation_comments.consultation_id = consultations.id GROUP BY consultation_comments.consultation_id)'
+    Arel.sql(query)
+  end
+
 end
