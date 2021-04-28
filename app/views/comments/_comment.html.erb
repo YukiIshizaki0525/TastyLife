@@ -9,7 +9,9 @@
   <% end %>
   <div class="comment__info">
     <%= link_to user_path(id: comment.user_id), class: "comment__img" do %>
-      <%= image_tag(comment.user.avatar) %>
+      <% if comment.user.avatar.attached? %>
+        <%= image_tag(comment.user.avatar) %>
+      <% end %>
     <% end %>
     
     <%= link_to comment.user.name, user_path(id: comment.user_id), class: "comment__name"%>
