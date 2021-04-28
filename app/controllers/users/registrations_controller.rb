@@ -7,6 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super do
       # resource.update(confirmed_at: Time .now.utc)
       #↓と同じ意味になります。
+      resource.avatar.attach(io: File.open("app/assets/images/default_user.png"), filename: "default_user.png")
       resource.skip_confirmation!
       resource.save
     end

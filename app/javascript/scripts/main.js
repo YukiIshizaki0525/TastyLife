@@ -7,7 +7,7 @@ window.addEventListener('turbolinks:load', function () {
 	new removeFields();
 	
 	// new imgPreView();
-	if (document.URL.match(/new|edit/)) {
+	if (document.URL.match( "recipe/new" )) {
 		new imgPreView();
 	}
 

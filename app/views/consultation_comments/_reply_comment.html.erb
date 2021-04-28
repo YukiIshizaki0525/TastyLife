@@ -5,8 +5,6 @@
       <%= link_to user_path(id: reply.user_id), class: "comment__img" do %>
         <% if reply.user.avatar.attached? %>
           <%= image_tag(reply.user.avatar) %>
-        <% else %>
-          <%= image_tag 'default_user' %>
         <% end %>
       <% end %>
 

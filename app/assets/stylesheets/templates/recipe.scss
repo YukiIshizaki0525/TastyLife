@@ -81,6 +81,7 @@
 
   &__name {
     @extend .font-md;
+    color: $--c-brown;
     margin-left: 10px;
 
     &:hover {
