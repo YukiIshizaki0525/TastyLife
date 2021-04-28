@@ -3,7 +3,12 @@ class ConsultationsController < ApplicationController
   before_action :set_consultation, only: [:show, :edit, :update, :destroy]
 
   def index
-    @consultations = Consultation.includes([:interests], [user: { avatar_attachment: :blob }]).page(params[:page]).per(6)
+    unless params[:q].present?
+      params[:q] = { sorts: 'created_at desc' }
+    end
+
+    @q = Consultation.ransack(params[:q])
+    @consultations = @q.result.includes([:interests], [user: { avatar_attachment: :blob }]).page(params[:page]).per(6)
   end
 
   def show
