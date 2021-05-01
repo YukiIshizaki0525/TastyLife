@@ -9,6 +9,7 @@ class InventoriesController < ApplicationController
   def create
     inventory = current_user.inventories.new(inventory_params)
     if inventory.save
+      inventory.create_notification_like!(current_user)
       redirect_to inventories_user_path(current_user.id), flash: { notice: "「#{inventory.name}」を投稿しました。" }
     else
       redirect_to new_inventory_path, flash: {

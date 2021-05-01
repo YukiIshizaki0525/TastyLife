@@ -28,7 +28,7 @@ class Recipe < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   # タグ付け関連
-  has_many :recipe_tag_relations, dependent: :delete_all
+  has_many :recipe_tag_relations, dependent: :delete_all, validate: false
   has_many :tags, through: :recipe_tag_relations
 
   # いいね機能関連

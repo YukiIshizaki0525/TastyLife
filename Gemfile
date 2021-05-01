@@ -35,6 +35,11 @@ gem 'impressionist'
 
 gem 'font-awesome-sass'
 
+
+gem 'dotenv-rails'
+gem 'whenever', require: false
+
+
 # N+1問題
 gem 'bullet'
 
