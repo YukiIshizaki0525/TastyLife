@@ -19,7 +19,6 @@ RSpec.describe RecipeTagRelation, type: :model do
   let(:user) { create(:user) }
   let(:recipe) { create(:recipe, :with_ingredients, :with_steps, user_id: user.id)}
   let(:tag) { create(:tag) }
-  let(:recipe_tag) { recipe.recipe_tag_relations.build(tag_id: tag.id) }
 
   it "タグづけされたレシピが作成可能" do
     subject { recipe_tag }

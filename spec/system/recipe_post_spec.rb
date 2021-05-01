@@ -99,10 +99,6 @@ RSpec.describe "レシピ機能", type: :system do
     end
   end
 
-  describe 'タグ付け機能' do
-    it 'タグ付けしたら'
-  end
-
   describe '詳細表示機能' do
     it '誰でもレシピ詳細を閲覧可能' do
       visit recipe_path(posted_recipe)
