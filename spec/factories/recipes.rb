@@ -25,7 +25,7 @@ FactoryBot.define do
         recipe.ingredients << ingredient
       end
     end
-    
+
     trait :with_steps do
       after(:build) do |recipe|
         step = build(:steps)

@@ -16,5 +16,19 @@
 require 'rails_helper'
 
 RSpec.describe RecipeTagRelation, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:user) { create(:user) }
+  let(:recipe) { create(:recipe, :with_ingredients, :with_steps, user_id: user.id)}
+  let(:tag) { create(:tag) }
+  let(:recipe_tag) { recipe.recipe_tag_relations.build(tag_id: tag.id) }
+
+  it "タグづけされたレシピが作成可能" do
+    subject { recipe_tag }
+    expect(recipe_tag).to be_valid
+    expect(recipe_tag.tag[:name]).to eq 'タグ1'
+  end
+
+  describe "バリデーション適用確認" do
+    it { is_expected.to validate_presence_of :recipe_id }
+    it { is_expected.to validate_presence_of :tag_id }
+  end
 end

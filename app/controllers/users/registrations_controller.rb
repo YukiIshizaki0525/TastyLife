@@ -10,6 +10,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       resource.avatar.attach(io: File.open("app/assets/images/default_user.png"), filename: "default_user.png")
       resource.skip_confirmation!
       resource.save
+      #WelcomeMailerクラスのsend_when_signupメソッドを呼び、POSTから受け取ったuserのemailとnameを渡す
+      WelcomeMailer.send_when_signup(params[:user][:email],params[:user][:name]).deliver
     end
   end
 

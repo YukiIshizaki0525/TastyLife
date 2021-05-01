@@ -15,7 +15,5 @@
 #
 FactoryBot.define do
   factory :recipe_tag_relation do
-    recipe { nil }
-    tag { nil }
   end
 end
