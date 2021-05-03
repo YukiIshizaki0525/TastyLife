@@ -34,11 +34,11 @@ RSpec.configure do |config|
   Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
   # ヘッドレスモードのChromeで実行する
-  config.before(:each) do |example|
-    if example.metadata[:type] == :system
-      driven_by :selenium, using: :headless_chrome, screen_size: [768, 654]
-    end
-  end
+  # config.before(:each) do |example|
+  #   if example.metadata[:type] == :system
+  #     driven_by :selenium, using: :headless_chrome, screen_size: [768, 654]
+  #   end
+  # end
 
 end
 

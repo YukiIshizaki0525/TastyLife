@@ -11,6 +11,10 @@
     </p>
   </div>
   <div class="inventory__field">
+    <p class="inventory__label">食材名</p>
+    <p class="inventory__detail"><%= @inventory.name %></p>
+  </div>
+  <div class="inventory__field">
     <p class="inventory__label">入力日</p>
     <p class="inventory__detail"><%= @inventory.created_at.to_s(:datetime_jp)%></p>
   </div>

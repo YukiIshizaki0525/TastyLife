@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "レシピ機能", type: :system do
   let(:user) { create(:user) }
   let(:other_user) { create(:other_user) }
-  let(:recipe) { build(:recipe, user_id: user.id) }
+  let(:recipe) { build(:recipe) }
   let(:posted_recipe) { create(:recipe, :with_ingredients, :with_steps, user_id: user.id) }
 
   before do
@@ -33,7 +33,7 @@ RSpec.describe "レシピ機能", type: :system do
     end
 
     context 'フォームの入力値が異常' do
-      it 'レシピのタイトル・説明が入っていないため登録不可' do
+      it 'レシピのタイトル・説明が入力されていないため登録不可' do
         visit new_recipe_path
         fill_in 'recipe_title', with: nil
         fill_in 'recipe_description', with: nil
@@ -84,7 +84,7 @@ RSpec.describe "レシピ機能", type: :system do
         expect(page).to have_content("分量を入力してください")
       end
 
-        it '手順に値が入っていないため登録不可' do
+      it '手順に値が入っていないため登録不可' do
         visit new_recipe_path
         fill_in 'recipe_title', with: recipe.title
         fill_in 'recipe_description', with: recipe.description
@@ -108,7 +108,7 @@ RSpec.describe "レシピ機能", type: :system do
       expect(page).to have_content("分量1")
       expect(page).to have_content("ステップ1")
     end
-    it '別の方の相談はレシピ編集リンクが表示されない' do
+    it '他の方の相談はレシピ編集リンクが表示されない' do
       sign_in other_user
       visit recipe_path(posted_recipe)
       expect(page).to_not have_content("レシピ編集")

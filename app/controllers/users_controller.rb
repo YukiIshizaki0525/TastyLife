@@ -48,9 +48,15 @@ class UsersController < ApplicationController
   end
 
   def inventories
-    @title = "Inventory"
-    @inventories = @user.inventories.includes([photo_attachment: :blob]).page(params[:page]).order(expiration_date: 'ASC').per(6)
-    render 'show_inventory'
+    if user_signed_in? && @user.id == current_user.id
+      @title = "Inventory"
+      @inventories = @user.inventories.includes([photo_attachment: :blob]).page(params[:page]).order(expiration_date: 'ASC').per(6)
+      render 'show_inventory'
+    else
+      flash[:alert] = "他人の食材管理ページ閲覧及び編集はできません。"
+      redirect_to root_path
+    end
+    
   end
 
     private

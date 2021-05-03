@@ -83,8 +83,6 @@ RSpec.describe "レシピ相談機能", type: :system do
     context '変更反映不可' do
       it '相談タイトル・内容を未入力にしたら変更反映不可' do
         visit edit_consultation_path(posted_consultation)
-        expect(page).to have_field 'consultation_title', with: posted_consultation.title
-        expect(page).to have_field 'consultation_content', with: posted_consultation.content
         fill_in 'consultation_title', with: nil
         fill_in 'consultation_content', with: nil
       end
