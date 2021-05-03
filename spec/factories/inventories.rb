@@ -17,10 +17,11 @@
 #
 FactoryBot.define do
   factory :inventory do
-    name { "MyString" }
-    quantity { 1 }
-    expiration_date { "2021-02-11" }
-    memo { "MyText" }
-    user { nil }
+    name { "にんじん" }
+    quantity { "3本" }
+    expiration_date { "2021-05-10" }
+    memo { "近くのスーパーで5/2に購入" }
+
+    association :user
   end
 end

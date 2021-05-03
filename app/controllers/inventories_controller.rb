@@ -9,8 +9,7 @@ class InventoriesController < ApplicationController
   def create
     inventory = current_user.inventories.new(inventory_params)
     if inventory.save
-      inventory.create_notification_like!(current_user)
-      redirect_to inventories_user_path(current_user.id), flash: { notice: "「#{inventory.name}」を投稿しました。" }
+      redirect_to inventories_user_path(current_user.id), flash: { notice: "「#{inventory.name}」を登録しました。" }
     else
       redirect_to new_inventory_path, flash: {
         inventory: inventory,
@@ -20,15 +19,13 @@ class InventoriesController < ApplicationController
   end
 
   def show
-    
   end
 
   def edit
-
   end
 
   def update
-     @inventory.update(inventory_params)
+    @inventory.update(inventory_params)
     if @inventory.save
       redirect_to inventories_user_path(current_user.id), flash: { notice: "「#{@inventory.name}」の内容を更新しました。" }
     else
@@ -50,7 +47,7 @@ class InventoriesController < ApplicationController
         @inventory
       else
         redirect_back fallback_location: root_path
-        flash[:alert] = "アクセスできません。"
+        flash[:alert] = "他人の食材管理ページ閲覧及び編集はできません。"
       end
     end
 

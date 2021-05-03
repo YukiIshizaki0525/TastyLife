@@ -20,7 +20,7 @@
             <div class="inventory__quantity">
               <span class="inventory__count"><%= inventory.quantity %></span>
             </div>
-            <%= link_to image_tag('delete'), inventory_path(id: inventory.id), method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
+            <%= link_to image_tag('delete', alt: "Delete"), inventory_path(id: inventory.id), method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
           </div>
         </div>
       </div>
