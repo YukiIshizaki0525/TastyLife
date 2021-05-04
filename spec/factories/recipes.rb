@@ -19,7 +19,7 @@ FactoryBot.define do
     title { 'テストタイトル' }
     description { 'テストディスクリプション' }
 
-    association :user
+    # association :user
 
     trait :with_ingredients do
       after(:build) do |recipe|
