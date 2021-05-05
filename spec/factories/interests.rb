@@ -18,8 +18,9 @@
 #  fk_rails_...  (consultation_id => consultations.id)
 #  fk_rails_...  (user_id => users.id)
 #
-require 'rails_helper'
-
-RSpec.describe ConsultationInterest, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+FactoryBot.define do
+  factory :interest do
+    user { nil }
+    consultation { nil }
+  end
 end

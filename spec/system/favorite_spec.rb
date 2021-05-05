@@ -54,10 +54,9 @@ RSpec.describe "レシピいいね機能", type: :system do
     end
   end
 
-  context 'ユーザー詳細ページからのいいね機能について' do
+  context 'ユーザー詳細ページにいいねしたレシピが表示される点について' do
     it 'いいねした投稿が表示される' do
-      visit recipe_path(recipe)
-      find(".favorite__link").find(".fa-heart").click
+      favorite
       visit favorites_user_path(user)
       expect(page).to have_content("Favorite")
       expect(page).to have_content("テストタイトル")
