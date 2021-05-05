@@ -6,13 +6,13 @@
   <p>いいね</p>
   <p class="user__count" id="following"><%= @user.favorites.length %></p>
 <% end %>
-<%= link_to(interests_user_path(@user), class:'user__tab') do %>
-  <p>気になる</p>
-  <p class="user__count"><%= @user.interests.length %></p>
-<% end %>
 <%= link_to(consultations_user_path(@user), class:'user__tab') do %>
   <p>相談</p>
   <p class="user__count"><%= @user.consultations.length %></p>
+<% end %>
+<%= link_to(interests_user_path(@user), class:'user__tab') do %>
+  <p>気になる</p>
+  <p class="user__count"><%= @user.interests.length %></p>
 <% end %>
 <% if @user == current_user %>
   <%= link_to(inventories_user_path(@user), class:'user__tab') do %>
