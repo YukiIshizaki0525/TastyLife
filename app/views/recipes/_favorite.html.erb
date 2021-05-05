@@ -2,12 +2,12 @@
   <% if current_user.already_favorited?(recipe) %>
     <%= link_to recipe_favorites_path(recipe), method: :delete, remote: true, class: "favorite__link" do %>
       <i class="fas fa-heart favorite__btn"></i>
-      <span class="favorite__count"><%= recipe.favorites.length %></span>
     <% end %>
+    <span class="favorite__count"><%= recipe.favorites.length %></span>
   <% else %>
     <%= link_to recipe_favorites_path(recipe), method: :post, remote: true, class: "favorite__link" do %>
       <i class="far fa-heart favorite__btn"></i>
-      <span class="favorite__count"><%= recipe.favorites.length %></span>
     <% end %>
+    <span class="favorite__count"><%= recipe.favorites.length %></span>
   <% end %>
 </section>
