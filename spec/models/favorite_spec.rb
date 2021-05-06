@@ -5,8 +5,13 @@
 #  id         :bigint           not null, primary key
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  recipe_id  :integer
-#  user_id    :integer
+#  recipe_id  :bigint           not null
+#  user_id    :bigint           not null
+#
+# Indexes
+#
+#  index_favorites_on_recipe_id  (recipe_id)
+#  index_favorites_on_user_id    (user_id)
 #
 require 'rails_helper'
 
@@ -30,6 +35,7 @@ RSpec.describe Favorite, type: :model do
   end
 
   it "1人が1つの投稿に対して、1つしかいいねをつけられないこと" do
+    favorite
     is_expected.to validate_uniqueness_of(:recipe_id).scoped_to(:user_id)
   end
 

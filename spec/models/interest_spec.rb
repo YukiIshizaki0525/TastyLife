@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: consultation_interests
+# Table name: interests
 #
 #  id              :bigint           not null, primary key
 #  created_at      :datetime         not null
@@ -10,8 +10,8 @@
 #
 # Indexes
 #
-#  index_consultation_interests_on_consultation_id  (consultation_id)
-#  index_consultation_interests_on_user_id          (user_id)
+#  index_interests_on_consultation_id  (consultation_id)
+#  index_interests_on_user_id          (user_id)
 #
 # Foreign Keys
 #
