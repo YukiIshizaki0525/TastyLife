@@ -4,7 +4,7 @@ RSpec.describe "レシピいいね機能", type: :system do
   let(:user) { create(:user) }
   let(:other_user) { create(:other_user) }
   let!(:recipe) { create(:recipe, :with_ingredients, :with_steps, user_id: other_user.id) }
-  let(:favorite) { user.favorites.create(recipe_id: recipe.id)}
+  let(:favorite) { user.favorites.create(recipe_id: recipe.id) }
   let(:destroy_favorite) { user.favorites.find_by(recipe_id: recipe.id).destroy }
 
   before do
@@ -28,7 +28,8 @@ RSpec.describe "レシピいいね機能", type: :system do
       expect(page).to have_selector '.fas'
       expect(page).to have_selector '.fa-heart'
       expect(recipe.favorites.length).to eq(1)
-      expect{ find(".favorite__link").find(".fa-heart").click }.to change { Favorite.count }.by(0)
+
+      expect{ destroy_favorite }.to change { Favorite.count }.by(-1)
     end
   end
 
@@ -50,7 +51,8 @@ RSpec.describe "レシピいいね機能", type: :system do
       expect(page).to have_selector '.fa-heart'
       expect(recipe.favorites.length).to eq(1)
 
-      expect{ find(".favorite__link").find(".fa-heart").click }.to change { Favorite.count }.by(0)
+      expect{ destroy_favorite }.to change { Favorite.count }.by(-1)
+
     end
   end
 
