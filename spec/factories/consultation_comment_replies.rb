@@ -20,9 +20,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 FactoryBot.define do
-  factory :consulation_comment_reply do
-    content { "MyText" }
-    user { nil }
-    consulation_comment { nil }
+  factory :reply do
+    content { "コメントへの返信です。" }
   end
 end
