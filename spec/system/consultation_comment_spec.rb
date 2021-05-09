@@ -20,7 +20,7 @@ RSpec.describe ConsultationComment, type: :system do
         fill_in "consultation_comment_content", with: comment.content
         click_button '送信する'
         expect(current_path). to eq consultation_path(consultation)
-        expect(page).to have_content("相談に対するコメントを投稿しました")
+        expect(page).to have_content("相談へのコメントを投稿しました。")
       end
     end
 
@@ -86,7 +86,7 @@ RSpec.describe ConsultationComment, type: :system do
       fill_in "consultation_comment_content", with: reply.content, match: :first
       click_button 'send-comment'
       expect(current_path). to eq consultation_path(consultation)
-      expect(page).to have_content("相談に対するコメントを投稿しました")
+      expect(page).to have_content("コメントに返信しました。")
       expect(page).to have_content( reply.content )
       expect(page).to have_content( reply.user.name )
     end
