@@ -17,14 +17,14 @@
     <div class="comment__content">
       <%= comment.content %>
       <% if user_signed_in? && comment.user == current_user %>
-        <%= link_to image_tag("delete"), consultation_consultation_comment_path(comment.id), class: 'comment__delete', method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
+        <%= link_to image_tag("delete", alt: "delete"), consultation_consultation_comment_path(comment.consultation.id, comment.id), class: 'comment__delete', method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
       <% end %>
     </div>
     <% if user_signed_in? %>
-      <%= render 'consultation_comments/reply_form', comment: comment %>
+      <div id="comment-reply-form"><%= render 'consultation_comments/reply_form', comment: comment %></div>
     <% end %>
 
-      <%= render 'consultation_comments/reply_comment', comment: comment %>
+    <%= render 'consultation_comments/reply_comment', comment: comment %>
   </div>
 <% end %>
 

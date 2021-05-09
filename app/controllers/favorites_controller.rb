@@ -8,7 +8,8 @@ class FavoritesController < ApplicationController
     current_user.favorites.find_by(recipe_id: @recipe.id).destroy
   end
 
-  def recipe_params
-    @recipe = Recipe.find(params[:recipe_id])
-  end
+  private
+    def recipe_params
+      @recipe = Recipe.find(params[:recipe_id])
+    end
 end

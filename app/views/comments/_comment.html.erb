@@ -22,7 +22,9 @@
   <div class="comment__content"><%= comment.content %></div>
   
   <% if user_signed_in? %>
-    <%= render 'comments/reply_form', comment: comment %>
+    <div id="comment-form">
+      <%= render 'comments/reply_form', comment: comment %>
+    </div>
   <% end %>
 
   <%= render 'comments/reply_comment', comment: comment %>
