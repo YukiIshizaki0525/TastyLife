@@ -16,9 +16,11 @@
 #  index_consultation_comments_on_user_id          (user_id)
 #
 FactoryBot.define do
-  factory :consulation_comment do
-    content { "MyText" }
-    user { nil }
-    consulation { nil }
+  factory :consultation_comment do
+    content { "相談に対するコメントです。" }
+
+    trait :reply do
+      content { "コメントへの返信です。" }
+    end
   end
 end

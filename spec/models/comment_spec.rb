@@ -20,35 +20,32 @@ require 'rails_helper'
 RSpec.describe Comment, type: :model do
   let(:user) { create(:user) }
   let(:other_user) { create(:other_user) }
-  let(:posted_recipe) { create(:recipe, :with_ingredients, :with_steps, user_id: user.id) }
-  let(:comment) { build(:comment, recipe_id: posted_recipe.id, user_id: other_user.id) }
+  let(:recipe) { create(:recipe, :with_ingredients, :with_steps, user_id: other_user.id) }
+  let(:comment) { build(:comment, recipe_id: recipe.id, user_id: user.id) }
 
   describe "正常系" do
-    it ' 正しく登録できること' do
-      comment.save
+    it '正しくコメント投稿できること' do
       comment.valid?
-
-      expect(comment.comment).to eq('このコメントはテストです。')
+      expect(comment.content).to eq('レシピに対するコメントです。')
     end
   end
 
   describe "異常系" do
-    context "未入力だと登録不可" do
-      it '未入力の場合、登録ができない' do
-        comment = build(:comment, comment: nil)
+    context "未入力だとコメント投稿不可" do
+      it '未入力の場合、コメント投稿ができない' do
+        comment = build(:comment, content: nil)
         comment.valid?
 
-        expect(comment.errors[:comment]).to include("を入力してください")
+        expect(comment.errors[:content]).to include("を入力してください")
       end
     end
 
-    context "文字数制限があること" do
+    context "文字数制限" do
       it "コメントは100文字以内であること" do
-        comment = build(:comment, comment: "a" * 101)
-        comment.save
+        comment = build(:comment, content: "a" * 101)
         comment.valid?
 
-        expect(comment.errors[:comment]).to include("は100文字以内で入力してください")
+        expect(comment.errors[:content]).to include("は100文字以内で入力してください")
       end
     end
   end

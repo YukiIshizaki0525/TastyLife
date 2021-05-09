@@ -17,6 +17,6 @@
 #
 FactoryBot.define do
   factory :comment, class: Comment do
-    comment { 'このコメントはテストです。' }
+    content { 'レシピに対するコメントです。' }
   end
 end

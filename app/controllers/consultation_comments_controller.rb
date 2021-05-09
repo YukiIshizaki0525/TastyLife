@@ -2,7 +2,11 @@ class ConsultationCommentsController < ApplicationController
   def create
     comment = ConsultationComment.create(comment_params)
     if comment.save
-      flash[:notice] = '相談に対するコメントを投稿しました'
+      if comment.reply_comment.nil?
+        flash[:notice] = '相談へのコメントを投稿しました。'
+      else
+        flash[:notice] = 'コメントに返信しました。'
+      end
       redirect_to comment.consultation
     else
       if comment.reply_comment.nil?
@@ -10,7 +14,6 @@ class ConsultationCommentsController < ApplicationController
       else
         flash[:comment_reply] = comment
       end
-      
       flash[:error_messages] = comment.errors.full_messages
       redirect_back fallback_location: comment.consultation
     end
@@ -18,7 +21,7 @@ class ConsultationCommentsController < ApplicationController
 
   def destroy
     comment = ConsultationComment.find_by(id: params[:id], consultation_id: params[:consultation_id]).destroy
-    redirect_to comment.consultation, flash: { notice: 'コメントが削除されました' }
+    redirect_to comment.consultation, notice: 'コメントが削除されました'
   end
 
   private
