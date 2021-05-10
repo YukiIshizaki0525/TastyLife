@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show, :following, :followers, :consultations]
+  before_action :authenticate_user!, only: [:destroy, :inventories]
   before_action :set_user, only: [:show , :destroy, :following, :followers, :consultations, :favorites, :interests, :inventories]
   def index
     @users = User.includes([:recipes], [avatar_attachment: :blob]).page(params[:page]).per(6).order(id: :ASC)

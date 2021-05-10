@@ -1,4 +1,5 @@
 <section class="interest">
+<% if user_signed_in? %>
   <% if current_user.already_interested?(consultation) %>
     <%= link_to consultation_interests_path(consultation), method: :delete, remote: true, class: "interest__delete-link" do %>
       <i class="fas fa-star"></i>
@@ -11,4 +12,5 @@
     <% end %>
   <% end %>
   <span class="interest__count"><%= consultation.interests.length %></span>
+<% end %>
 </section>
