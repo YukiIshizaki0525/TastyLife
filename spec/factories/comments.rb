@@ -18,5 +18,9 @@
 FactoryBot.define do
   factory :comment, class: Comment do
     content { 'レシピに対するコメントです。' }
+
+     trait :reply do
+      content { "コメントへの返信です。" }
+    end
   end
 end

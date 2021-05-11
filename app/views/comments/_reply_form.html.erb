@@ -4,5 +4,5 @@
   <%= f.hidden_field :recipe_id, value: @recipe.id %>
   <%= f.hidden_field :user_id, value: current_user.id %>
 
-  <div class="comment__reply-submit"><%= f.button image_tag('send-comment') %></div>
+  <div class="comment__reply-submit"><%= f.button image_tag('send-comment', alt: "send-comment") %></div>
 <% end %>

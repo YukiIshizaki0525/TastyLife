@@ -2,7 +2,11 @@ class CommentsController < ApplicationController
   def create
     comment = Comment.new(comment_params)
     if comment.save
-      flash[:notice] = 'コメントを投稿しました'
+      if comment.reply_comment.nil?
+        flash[:notice] = '相談へのコメントを投稿しました。'
+      else
+        flash[:notice] = 'コメントに返信しました。'
+      end
       redirect_to comment.recipe
     else
       if comment.reply_comment.nil?

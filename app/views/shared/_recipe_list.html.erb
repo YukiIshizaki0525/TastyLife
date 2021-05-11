@@ -13,7 +13,6 @@
         <%= link_to recipe.title, recipe_path(recipe), class: 'list__recipetitle' %>
         <div class="list__description"><%= recipe.description %></div>
       </div>
-      
       <div class="list__info">
         <div id="recipe_<%= recipe.id %>">
           <%= render partial: "recipes/favorite", locals: { recipe: recipe } %>
