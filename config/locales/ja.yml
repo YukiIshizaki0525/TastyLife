@@ -23,7 +23,7 @@ ja:
         direction: 手順
       comment:
         name: 名前
-        comment: コメント
+        content: コメント
   views:
     pagination:
       first: "&laquo; 最初"

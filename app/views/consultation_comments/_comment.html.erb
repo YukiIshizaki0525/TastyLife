@@ -21,7 +21,7 @@
       <% end %>
     </div>
     <% if user_signed_in? %>
-      <div id="comment-reply-form"><%= render 'consultation_comments/reply_form', comment: comment %></div>
+      <%= render 'consultation_comments/reply_form', comment: comment %>
     <% end %>
 
     <%= render 'consultation_comments/reply_comment', comment: comment %>

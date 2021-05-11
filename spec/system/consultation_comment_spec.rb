@@ -15,12 +15,12 @@ RSpec.describe ConsultationComment, type: :system do
   describe 'コメント投稿機能' do
     context 'フォームの入力値が正常'do
       it '正常に登録される' do
-        consultation
         visit consultation_path(consultation)
         fill_in "consultation_comment_content", with: comment.content
         click_button '送信する'
         expect(current_path). to eq consultation_path(consultation)
         expect(page).to have_content("相談へのコメントを投稿しました。")
+        expect(page).to have_content( comment.content )
       end
     end
 
@@ -47,13 +47,14 @@ RSpec.describe ConsultationComment, type: :system do
     it '誰でもコメントは閲覧可能' do
       posted_comment
       visit consultation_path(consultation)
-      expect(page).to have_content( comment.content )
+      expect(page).to have_content( posted_comment.content )
+      expect(page).to have_selector("img[src$='avatar.jpg']")
     end
 
     it 'コメントした本人であれば削除ボタンが表示される' do
       posted_comment
       visit consultation_path(consultation)
-      expect(page).to have_content( comment.content )
+      expect(page).to have_content( posted_comment.content )
       expect(page).to have_link("delete")
     end
 
@@ -61,7 +62,7 @@ RSpec.describe ConsultationComment, type: :system do
       sign_in other_user
       posted_comment
       visit consultation_path(consultation)
-      expect(page).to have_content( comment.content )
+      expect(page).to have_content( posted_comment.content )
       expect(page).to_not have_link("delete")
     end
   end
@@ -75,7 +76,7 @@ RSpec.describe ConsultationComment, type: :system do
       page.driver.browser.switch_to.alert.accept
 
       expect(page).to have_content 'コメントが削除されました'
-      expect(page).to_not have_content( comment.content )
+      expect(page).to_not have_content( posted_comment.content )
     end
   end
 
