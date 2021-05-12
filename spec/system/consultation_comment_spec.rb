@@ -65,6 +65,13 @@ RSpec.describe ConsultationComment, type: :system do
       expect(page).to have_content( posted_comment.content )
       expect(page).to_not have_link("delete")
     end
+
+    it "ログインしていない場合はコメント投稿フォームが表示されない" do
+      sign_out user
+      visit consultation_path(consultation)
+      expect(page).to_not have_css '.comment__form'
+      expect(page).to_not have_content("コメント投稿はこちら")
+    end
   end
 
   describe 'コメント削除機能' do
