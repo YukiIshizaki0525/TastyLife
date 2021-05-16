@@ -197,4 +197,69 @@ RSpec.describe "レシピ機能", type: :system do
       expect(page).to have_content("「#{posted_recipe.title}」のレシピを削除しました。")
     end
   end
+
+  describe '検索機能' do
+    context "レシピタイトルでの検索可能" do
+      it "全一致で検索可能"do
+        posted_recipe
+        visit recipes_path
+        fill_in "q_title_or_ingredients_content_cont", with: "テストタイトル"
+        find("#q_title_or_ingredients_content_cont").send_keys :return
+        expect(page).to have_content(posted_recipe.title)
+        expect(page).to have_content(posted_recipe.description)
+        expect(page).to have_content(posted_recipe.user.name)
+      end
+
+      it "部分一致でも可能" do
+        posted_recipe
+        visit recipes_path
+        fill_in "q_title_or_ingredients_content_cont", with: "テスト"
+        find("#q_title_or_ingredients_content_cont").send_keys :return
+        expect(page).to have_content(posted_recipe.title)
+        expect(page).to have_content(posted_recipe.description)
+        expect(page).to have_content(posted_recipe.user.name)
+      end
+    end
+
+    context "材料での検索" do
+      it "全一致で検索可能"do
+        posted_recipe
+        visit recipes_path
+        fill_in "q_title_or_ingredients_content_cont", with: "材料1"
+        find("#q_title_or_ingredients_content_cont").send_keys :return
+        expect(page).to have_content(posted_recipe.title)
+        expect(page).to have_content(posted_recipe.description)
+        expect(page).to have_content(posted_recipe.user.name)
+      end
+
+      it "部分一致でも可能" do
+        posted_recipe
+        visit recipes_path
+        fill_in "q_title_or_ingredients_content_cont", with: "材料"
+        find("#q_title_or_ingredients_content_cont").send_keys :return
+        expect(page).to have_content(posted_recipe.title)
+        expect(page).to have_content(posted_recipe.description)
+        expect(page).to have_content(posted_recipe.user.name)
+      end
+    end
+
+    it "検索結果が見つからない場合は何も表示されない" do
+      posted_recipe
+      visit recipes_path
+      fill_in "q_title_or_ingredients_content_cont", with: "sample"
+      find("#q_title_or_ingredients_content_cont").send_keys :return
+      expect(page).to have_content("「sample」の検索結果")
+      expect(page).to_not have_content(posted_recipe.title)
+      expect(page).to_not have_content(posted_recipe.description)
+      expect(page).to_not have_content(posted_recipe.user.name)
+    end
+
+    it "検索結果確認後、レシピ一覧ページに戻ことができる" do
+      posted_recipe
+      visit recipes_path
+      fill_in "q_title_or_ingredients_content_cont", with: "テストタイトル"
+      find("#q_title_or_ingredients_content_cont").send_keys :return
+      click_link "レシピ一覧ページに戻る"
+    end
+  end
 end

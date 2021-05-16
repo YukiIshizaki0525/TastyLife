@@ -27,7 +27,7 @@ RSpec.describe RecipeTagRelation, type: :model do
     expect(recipe_tag.tag[:name]).to eq 'タグ1'
   end
 
-  context "必須入力であること" do
+  context "必須であること" do
     it { is_expected.to validate_presence_of :recipe_id }
     it { is_expected.to validate_presence_of :tag_id }
   end
