@@ -5,6 +5,10 @@ RSpec.describe "レシピ相談機能", type: :system do
   let(:other_user) { create(:other_user) }
   let(:consultation) { build(:consultation, user_id: user.id) }
   let(:posted_consultation) { create(:consultation, user_id: user.id) }
+  let(:other_consultation) { create(:other_consultation, user_id: other_user.id) }
+
+  # let(:consultation_with_interest) { create(:consultation, :with_interest, user_id: user.id)}
+  # let(:consultation_with_comment) { create(:consultation, :with_comment, user_id: user.id)}
 
   before do
     sign_in user
@@ -109,6 +113,46 @@ RSpec.describe "レシピ相談機能", type: :system do
       expect(current_path).to eq consultations_user_path(user.id)
 
       expect(page).to have_content("「#{posted_consultation.title}」の相談を削除しました。")
+    end
+  end
+
+  describe 'ソート機能' do
+    it 'デフォルトは投稿が新しい順で表示される' do
+      posted_consultation
+      other_consultation
+      visit consultations_path
+      sort = page.all('.consultation__item')
+      expect(sort[0].find('.consultation__title').text).to eq posted_consultation.title
+    end
+
+    it '投稿の古い順に並び替えできる' do
+      posted_consultation
+      other_consultation
+      visit consultations_path
+      select '投稿の古い順', from: 'q_sorts'
+      sort = page.all('.consultation__item')
+      expect(sort[0].find('.consultation__title').text).to eq other_consultation.title
+    end
+
+    it '★気になる順に並び替えできる' do
+      posted_consultation
+      visit consultation_path(other_consultation)
+      find(".interest__link").find(".fa-star").click
+      visit consultations_path
+      select '★気になるの多い順', from: 'q_sorts'
+      sort = page.all('.consultation__item')
+      expect(sort[0].find('.consultation__title').text).to eq other_consultation.title
+    end
+
+    it '回答数が多い順に並び替えできる' do
+      posted_consultation
+      visit consultation_path(other_consultation)
+      fill_in "consultation_comment_content", with: "相談に対するコメントです。"
+      click_button '送信する'
+      visit consultations_path
+      select '回答数が多い順', from: 'q_sorts'
+      sort = page.all('.consultation__item')
+      expect(sort[0].find('.consultation__title').text).to eq other_consultation.title
     end
   end
 end
