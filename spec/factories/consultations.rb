@@ -18,5 +18,11 @@ FactoryBot.define do
   factory :consultation do
     title { "相談タイトル" }
     content { "相談内容" }
+
+    factory :other_consultation do
+      title { "相談タイトル2" }
+      content { "相談内容2" }
+      created_at { 1.day.ago }
+    end
   end
 end
