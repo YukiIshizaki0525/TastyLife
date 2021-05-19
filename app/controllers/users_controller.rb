@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to users_url, flash: { success: "「#{@user.name}を削除しました」"}
+    redirect_to users_url, success: "「#{@user.name}を削除しました」"
   end
 
   def following
