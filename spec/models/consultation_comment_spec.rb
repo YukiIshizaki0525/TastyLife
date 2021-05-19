@@ -3,7 +3,7 @@
 # Table name: consultation_comments
 #
 #  id              :bigint           not null, primary key
-#  content         :text(65535)
+#  content         :text(65535)      not null
 #  reply_comment   :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
