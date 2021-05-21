@@ -32,5 +32,10 @@ FactoryBot.define do
         recipe.steps << step
       end
     end
+    
+    factory :other_recipe do
+      title { 'テストタイトル2' }
+      description { 'テストディスクリプション2' }
+    end
   end
 end

@@ -35,7 +35,7 @@ RSpec.describe Recipe, type: :model do
       step = Step.new(direction: "ステップ1")
       recipe.save
 
-      expect(recipe.title).to eq('テストタイトル')
+      expect(recipe.title).to eq('レシピのタイトル')
       expect(recipe.description).to eq('テストディスクリプション')
       expect{recipe.ingredients << ingredient}.to change{recipe.ingredients.to_a}.from([]).to([ingredient])
       expect{recipe.steps << step}.to change{recipe.steps.to_a}.from([]).to([step])
