@@ -203,7 +203,7 @@ RSpec.describe "レシピ機能", type: :system do
       it "全一致で検索可能"do
         posted_recipe
         visit recipes_path
-        fill_in "q_title_or_ingredients_content_cont", with: "テストタイトル"
+        fill_in "q_title_or_ingredients_content_cont", with: "レシピのタイトル"
         find("#q_title_or_ingredients_content_cont").send_keys :return
         expect(page).to have_content(posted_recipe.title)
         expect(page).to have_content(posted_recipe.description)
@@ -257,7 +257,7 @@ RSpec.describe "レシピ機能", type: :system do
     it "検索結果確認後、レシピ一覧ページに戻ことができる" do
       posted_recipe
       visit recipes_path
-      fill_in "q_title_or_ingredients_content_cont", with: "テストタイトル"
+      fill_in "q_title_or_ingredients_content_cont", with: "レシピのタイトル"
       find("#q_title_or_ingredients_content_cont").send_keys :return
       click_link "レシピ一覧ページに戻る"
     end

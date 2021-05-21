@@ -9,6 +9,23 @@
 #
 FactoryBot.define do
   factory :tag do
-    name { "タグ1" }
+    trait :nourishing do
+      name {"栄養満点"}
+    end
+    trait :easy do
+      name {"簡単"}
+    end
+    trait :time_saving do
+      name {"時短"}
+    end
+    trait :cost_performance do
+      name {"コスパ◎"}
+    end
+    trait :longevity do
+      name {"日持ち◎"}
+    end
+    trait :hospitality do
+      name {"おもてなし"}
+    end
   end
 end
