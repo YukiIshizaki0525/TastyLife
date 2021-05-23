@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:destroy, :inventories]
-  before_action :set_user, only: [:show , :destroy, :following, :followers, :consultations, :favorites, :interests, :inventories]
+  before_action :set_user, only: [:show , :destroy, :following, :followers, :consultations, :favorites, :interests, :inventories, :withdrawal]
   def index
     @users = User.includes([:recipes], [avatar_attachment: :blob]).page(params[:page]).per(6).order(id: :ASC)
   end
@@ -56,7 +56,14 @@ class UsersController < ApplicationController
       flash[:alert] = "他人の食材管理ページ閲覧及び編集はできません。"
       redirect_to root_path
     end
-    
+  end
+
+  def withdrawal
+    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+    @user.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to new_user_session_path
   end
 
     private

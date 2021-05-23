@@ -11,7 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       resource.skip_confirmation!
       resource.save
       #WelcomeMailerクラスのsend_when_signupメソッドを呼び、POSTから受け取ったuserのemailとnameを渡す
-      WelcomeMailer.send_when_signup(params[:user][:email],params[:user][:name]).deliver
+      # WelcomeMailer.send_when_signup(params[:user][:email],params[:user][:name]).deliver
     end
   end
 

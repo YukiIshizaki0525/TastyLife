@@ -17,7 +17,6 @@
           <div class="consultation__content"><%= consultation.content %></div>
           <div class="consultation__userinfo">
             <%= link_to(user_path(id: consultation.user_id), class:'consultation__user-index-img') do %>
-              <%= image_tag( consultation.user.avatar ) %>
             <% end %>
             <%= link_to consultation.user.name, user_path(id: consultation.user_id), class: "consultation__user-name" %>
           </div>

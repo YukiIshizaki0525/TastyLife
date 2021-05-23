@@ -22,7 +22,11 @@ Rails.application.routes.draw do
   resources :recipes
   resources :users
   resources :relationships, only: [:create, :destroy]
-  
+
+  # 退会確認画面
+  get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+  # 論理削除用のルーティング
+  patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
 
   resources :users do
     member do
