@@ -158,4 +158,13 @@ class User < ApplicationRecord
   def active_for_authentication?
     super && (is_deleted == false)
   end
+
+  # 退会済みの時のエラーメッセージ
+  def inactive_message
+    if is_deleted?
+      :withdrawal
+    else
+      super
+    end
+  end
 end

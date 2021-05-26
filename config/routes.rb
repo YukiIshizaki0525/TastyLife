@@ -27,13 +27,23 @@ Rails.application.routes.draw do
   get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
   # 論理削除用のルーティング
   patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
+  
+  #再登録
+  get 'users/:id/reregistration', to: 'users#reregistration', as: 'reregistration'
 
   resources :users do
     member do
       get :following, :followers, :consultations, :favorites, :interests, :inventories
     end
   end
-  
+
+  resource :user do
+    collection do
+      get :restoration, to: 'users#restoration'
+      post :restore_mail, to: 'users#restore_mail'
+    end
+  end
+
   resources :recipes do
     resources :comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
