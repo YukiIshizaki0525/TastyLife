@@ -5,13 +5,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     super do
-      # resource.update(confirmed_at: Time .now.utc)
+      resource.update(confirmed_at: Time.now.utc)
       #↓と同じ意味になります。
       resource.avatar.attach(io: File.open("app/assets/images/default_user.png"), filename: "default_user.png")
-      resource.skip_confirmation!
+      # resource.skip_confirmation!
       resource.save
       #WelcomeMailerクラスのsend_when_signupメソッドを呼び、POSTから受け取ったuserのemailとnameを渡す
-      WelcomeMailer.send_when_signup(params[:user][:email],params[:user][:name]).deliver
+      # WelcomeMailer.send_when_signup(params[:user][:email],params[:user][:name]).deliver
     end
   end
 

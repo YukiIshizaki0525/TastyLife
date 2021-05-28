@@ -24,6 +24,7 @@ ja:
       comment:
         name: 名前
         content: コメント
+
   views:
     pagination:
       first: "&laquo; 最初"

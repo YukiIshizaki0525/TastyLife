@@ -39,6 +39,7 @@ ja:
     failure:
       already_authenticated: すでにログインしています。
       inactive: アカウントが有効化されていません。メールに記載された手順にしたがって、アカウントを有効化してください。
+      withdrawal: このアカウントは退会済みです。
       invalid: "Eメールまたはパスワードが違います。"
       last_attempt: もう一回誤るとアカウントがロックされます。
       locked: アカウントは凍結されています。

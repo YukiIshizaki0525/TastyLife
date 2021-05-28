@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:destroy, :inventories]
-  before_action :set_user, only: [:show , :destroy, :following, :followers, :consultations, :favorites, :interests, :inventories]
+  before_action :set_user, only: [:show , :destroy, :following, :followers, :consultations, :favorites, :interests, :inventories, :withdrawal, :reregistration]
+
   def index
     @users = User.includes([:recipes], [avatar_attachment: :blob]).page(params[:page]).per(6).order(id: :ASC)
   end
@@ -56,7 +57,36 @@ class UsersController < ApplicationController
       flash[:alert] = "他人の食材管理ページ閲覧及び編集はできません。"
       redirect_to root_path
     end
-    
+  end
+
+  def withdrawal
+    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+    @user.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理が完了しました。"
+    redirect_to new_user_session_path
+  end
+
+  def restoration
+  end
+
+  def restore_mail
+    @user = User.find_by(email: params[:email])
+    if @user.is_deleted
+      RestoreMailer.send_when_restore(params[:email]).deliver
+      flash[:notice] = "アカウント復旧メールを送信しました。"
+      redirect_to restoration_user_path
+    else
+      flash[:alert] = "このアカウントは退会しておりません。"
+      redirect_to new_user_session_path
+    end
+
+  end
+
+  def reregistration
+    @user.update(is_deleted: false)
+    flash[:notice] = "アカウント復旧が完了しました。ログインをお願いいたします。"
+    redirect_to new_user_session_path
   end
 
     private

@@ -11,6 +11,7 @@
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
 #  failed_attempts        :integer          default(0), not null
+#  is_deleted             :boolean          default(FALSE), not null
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string(255)
 #  locked_at              :datetime
@@ -27,7 +28,6 @@
 # Indexes
 #
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
-#  index_users_on_email                 (email) UNIQUE
 #  index_users_on_name                  (name) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_users_on_unlock_token          (unlock_token) UNIQUE
@@ -147,10 +147,24 @@ class User < ApplicationRecord
   end
 
   def self.guest
-    find_or_create_by!(email: 'guest@example.com') do |user|
-      user.name = "ゲストユーザー"
-      user.password = "Guestuser123"
+    find_or_create_by!(email: 'guest@example.com', name: 'ゲストユーザー') do |user|
+      user.avatar.attach(io: File.open("app/assets/images/default_user.png"), filename: "default_user.png")
+      user.password = SecureRandom.urlsafe_base64
       user.password_confirmation = user.password
+    end
+  end
+
+  # is_deletedがfalseならtrueを返すようにしている
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+
+  # 退会済みの時のエラーメッセージ
+  def inactive_message
+    if is_deleted?
+      :withdrawal
+    else
+      super
     end
   end
 end
