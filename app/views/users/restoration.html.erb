@@ -4,12 +4,13 @@
   </div>
   <div class="login__contentBx">
     <div class="login__formBx">
-      <div class="login__title">アカウント復帰</div>
+      <div class="login__title">アカウント復旧</div>
       <%= render 'layouts/notifications' %>
+      
       <%= form_with url: restore_mail_user_path do |f| %>
         <div class="login__inputBx">
-          <%= f.label "Eメール", {class: 'login__label'} %>
-          <%= f.email_field "Eメール",
+          <%= f.label :email, 'Eメール', {class: 'login__label'} %>
+          <%= f.email_field :email,
                             autofocus: true,
                             required: true,
                             maxlength: '30'%>

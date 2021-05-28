@@ -67,19 +67,20 @@ class UsersController < ApplicationController
     redirect_to new_user_session_path
   end
 
-  def restoratio
+  def restoration
   end
 
   def restore_mail
     @user = User.find_by(email: params[:email])
-    if @user.is_deleted?
+    if @user.is_deleted
       RestoreMailer.send_when_restore(params[:email]).deliver
       flash[:notice] = "アカウント復旧メールを送信しました。"
-      redirect_to restoration_path
+      redirect_to restoration_user_path
     else
-      flash[:notice] = "退会済みユーザーではありません"
+      flash[:alert] = "このアカウントは退会しておりません。"
       redirect_to new_user_session_path
     end
+
   end
 
   def reregistration
