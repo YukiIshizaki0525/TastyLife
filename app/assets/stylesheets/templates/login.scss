@@ -48,7 +48,7 @@
     margin-bottom: 20px;
 
     & > input {
-      @extend .inputBx
+      @extend .input
     }
 
     & > input[type="submit"] {
@@ -66,7 +66,7 @@
     }
 
     & > .withdrawal {
-      @extend .inputBx;
+      @extend .input;
       display: block;
       text-align: center;
 
@@ -79,7 +79,7 @@
   }
 
   &__guest-user {
-    @extend .inputBx;
+    @extend .input;
     display: block;
     margin-bottom: 20px;
     background: $--c-btn;
