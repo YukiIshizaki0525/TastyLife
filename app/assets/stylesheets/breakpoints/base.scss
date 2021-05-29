@@ -193,3 +193,11 @@ img {
   background: transparent;
   text-decoration: none !important;
 }
+
+.withdrawal-content {
+  @extend .font-md;
+  @extend .mb-sm;
+  margin-bottom: 10px;
+  color: $--c-login;
+  font-weight: 400px;
+}
