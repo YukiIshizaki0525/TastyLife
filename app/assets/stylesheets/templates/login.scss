@@ -47,17 +47,8 @@
   &__inputBx {
     margin-bottom: 20px;
 
-    &> input {
-      width: 100%;
-      font-size: 16px;
-      padding: 10px;
-      outline: none;
-      font-weight: 400;
-      border: 1px solid $--c-login;
-      letter-spacing: 1px;
-      color: $--c-login;
-      background: transparent;
-      border-radius: 30px;
+    & > input {
+      @extend .inputBx
     }
 
     & > input[type="submit"] {
@@ -73,20 +64,24 @@
       font-weight: 400px;
       font-size: 14px;
     }
+
+    & > .withdrawal {
+      @extend .inputBx;
+      display: block;
+      text-align: center;
+
+      &:hover {
+        background-color: $--c-btn;
+        color: $--c-white;
+        transition: all 0.3s;
+      }
+    }
   }
 
   &__guest-user {
+    @extend .inputBx;
     display: block;
-    text-align: center;
-    text-decoration: none !important;
-    width: 100%;
-    font-size: 16px;
-    font-weight: 400;
-    padding: 15px;
     margin-bottom: 20px;
-    border: 1px solid $--c-login;
-    letter-spacing: 1px;
-    border-radius: 30px;
     background: $--c-btn;
     color: $--c-white !important;
   }

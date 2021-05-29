@@ -178,3 +178,18 @@ img {
   }
 
 }
+
+.inputBx {
+  width: 100%;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  border: 1px solid $--c-login;
+  border-radius: 30px;
+  color: $--c-login;
+  padding: 10px;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+  text-decoration: none !important;
+}

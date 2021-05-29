@@ -76,14 +76,13 @@
         </div>
 
         <div class="login__inputBx">
-          <%= f.submit t('.update'), class: 'btn btn-primary btn-block' %>
+          <%= f.submit t('.update') %>
         </div>
 
         <div class="login__inputBx">
-          <%= link_to "退会", unsubscribe_user_path(@user) %>
+          <%= link_to "退会する", unsubscribe_user_path(@user), class: 'withdrawal' %>
         </div>
       <% end %>
-      
     </div>
   </div>
 </section>
