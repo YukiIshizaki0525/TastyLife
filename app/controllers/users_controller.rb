@@ -60,19 +60,12 @@ class UsersController < ApplicationController
       redirect_to root_path
     end
   end
-  
-  def unsubscribe
-    
-  end
 
   def withdrawal
     @user.update(is_deleted: true)
     reset_session
     flash[:notice] = "退会処理が完了しました。"
     redirect_to new_user_session_path
-  end
-
-  def restoration
   end
 
   def restore_mail

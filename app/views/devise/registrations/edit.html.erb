@@ -61,29 +61,13 @@
         </div>
 
         <div class="login__inputBx">
-          <%= f.label :current_password, {class: 'login__label'} %>
-          <%= f.password_field :current_password,
-                          autocomplete: 'off',
-                          minlength: @minimum_password_length,
-                          maxlength: '20' %>
-          <% if @minimum_password_length %>
-            <small class="form-text text-muted"><%= t('.we_need_your_current_password_to_confirm_your_changes') %></small>
-          <% end %>
-
-          <% if @user.errors.include?(:current_password) %>
-            <p class="login__form-error"><%= @user.errors.full_messages_for(:current_password).first %>
-          <% end %>
+          <%= f.submit t('.update') %>
         </div>
 
         <div class="login__inputBx">
-          <%= f.submit t('.update'), class: 'btn btn-primary btn-block' %>
-        </div>
-
-        <div class="login__inputBx">
-          <%= link_to "退会", unsubscribe_user_path(@user) %>
+          <%= link_to "退会する", unsubscribe_user_path(@user), class: 'withdrawal' %>
         </div>
       <% end %>
-      
     </div>
   </div>
 </section>

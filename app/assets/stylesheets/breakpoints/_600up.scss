@@ -171,12 +171,6 @@
     align-items: center;
   }
 
-  &__inputBx {
-    & > input {
-      padding: 15px;
-    }
-  }
-
   &__formBx {
     width: 70%;
     padding: 0;
@@ -254,3 +248,7 @@
   }
 }
 // ページネーションここまで
+
+.input {
+  padding: 15px;
+}
