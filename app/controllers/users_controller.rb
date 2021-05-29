@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:destroy, :inventories]
-  before_action :set_user, only: [:show , :destroy, :following, :followers, :consultations, :favorites, :interests, :inventories, :withdrawal, :reregistration]
+  before_action :set_user, only: [:show , :destroy, :following, :followers, :consultations, :favorites, :interests, :inventories, :unsubscribe, :withdrawal, :reregistration]
+
+  before_action :withdrawal_forbid_guest_user, only: [:unsubscribe, :withdrawal]
 
   def index
     @users = User.includes([:recipes], [avatar_attachment: :blob]).page(params[:page]).per(6).order(id: :ASC)
@@ -58,9 +60,12 @@ class UsersController < ApplicationController
       redirect_to root_path
     end
   end
+  
+  def unsubscribe
+    
+  end
 
   def withdrawal
-    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
     @user.update(is_deleted: true)
     reset_session
     flash[:notice] = "退会処理が完了しました。"
@@ -80,7 +85,6 @@ class UsersController < ApplicationController
       flash[:alert] = "このアカウントは退会しておりません。"
       redirect_to new_user_session_path
     end
-
   end
 
   def reregistration
@@ -93,5 +97,13 @@ class UsersController < ApplicationController
 
     def set_user
       @user = User.find(params[:id])
+    end
+
+    # ゲストユーザーの更新・削除不可
+    def withdrawal_forbid_guest_user
+      if @user.email == "guest@example.com"
+        flash[:alert] = "ゲストユーザーの退会処理はできません。"
+        redirect_to root_path
+      end
     end
 end
