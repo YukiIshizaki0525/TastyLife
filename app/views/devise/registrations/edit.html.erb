@@ -61,21 +61,6 @@
         </div>
 
         <div class="login__inputBx">
-          <%= f.label :current_password, {class: 'login__label'} %>
-          <%= f.password_field :current_password,
-                          autocomplete: 'off',
-                          minlength: @minimum_password_length,
-                          maxlength: '20' %>
-          <% if @minimum_password_length %>
-            <small class="form-text text-muted"><%= t('.we_need_your_current_password_to_confirm_your_changes') %></small>
-          <% end %>
-
-          <% if @user.errors.include?(:current_password) %>
-            <p class="login__form-error"><%= @user.errors.full_messages_for(:current_password).first %>
-          <% end %>
-        </div>
-
-        <div class="login__inputBx">
           <%= f.submit t('.update') %>
         </div>
 
