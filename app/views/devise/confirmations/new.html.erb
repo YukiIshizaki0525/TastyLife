@@ -6,8 +6,8 @@
     <div class="login__formBx">
       <div class="login__title">アカウント確認</div>
       <%= render 'layouts/notifications' %>
+
       <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-      
         <div class="login__inputBx">
           <%= f.label :email, {class: 'login__label'} %>
           <%= f.email_field :email,

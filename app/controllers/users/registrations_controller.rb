@@ -5,18 +5,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     super do
-      resource.update(confirmed_at: Time.now.utc)
-      #↓と同じ意味になります。
       resource.avatar.attach(io: File.open("app/assets/images/default_user.png"), filename: "default_user.png")
       resource.save
-      #WelcomeMailerクラスのsend_when_signupメソッドを呼び、POSTから受け取ったuserのemailとnameを渡す
-      # WelcomeMailer.send_when_signup(params[:user][:email],params[:user][:name]).deliver
     end
   end
 
   def after_inactive_sign_up_path_for(resource)
-    # ユーザー登録後のリダイレクト先を指定
-    root_path
+    flash[:notice] = "ユーザー認証メールを送信いたしました。認証が完了しましたらログインをお願いいたします。"
+    redirect_to new_user_session_path
   end
 
   protected

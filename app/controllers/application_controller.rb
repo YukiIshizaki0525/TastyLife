@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
       added_attrs = [:name, :email, :password, :password_confirmation, :remeber_me,:avatar]
       # 新規登録時のストロングパラメータ
       devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+      devise_parameter_sanitizer.permit :sign_in, keys: added_attrs
       # アカウント編集時のストロングパラメータ
       devise_parameter_sanitizer.permit :account_update, keys: added_attrs
     end
