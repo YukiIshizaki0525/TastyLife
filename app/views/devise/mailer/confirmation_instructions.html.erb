@@ -1,14 +1,14 @@
+  <div><%= @resource.name %>様</div>
   <div>RecipeAppをご利用いただきありがとうございます。</div>
 
-  <% if @resource.try(:unconfirmed_email?) %>
-    <!-- true→email変更 false→会員登録 -->
-    <div>以下のURLをクリックして、メールアドレス変更手続きを完了してください。</div>
-    <%= link_to "#{@resource.unconfirmed_email}", confirmation_url(@resource, confirmation_token: @token) %>
-    <div>このURLの有効期限は24時間です。</div>
-  <% else %>
-    <div>会員登録が完了しました。</div>
-    <div>Webページを開く</div>
+  <% if @resource.confirmed_at != nil %>
+    <div>会員登録が完了済みです。</div>
+    <div>下記リンクからログインをお願いいたします。</div>
     <p>http://localhost:3000</p>
+  <% else %>
+    <div>以下のリンクからユーザの認証を行ってユーザ登録を完了してください。</div>
+    <div><%= link_to 'ユーザ認証を実行する', confirmation_url(@resource,confirmation_token: @token) %></div>
   <% end %>
+
 
 

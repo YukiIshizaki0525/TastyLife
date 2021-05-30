@@ -36,4 +36,6 @@ Devise.setup do |config|
 
   config.sign_out_via = :delete
 
+  config.confirm_within = 1.days
+
 end
