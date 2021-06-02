@@ -122,6 +122,7 @@ class imgPreView{
 		this.preview = document.querySelector('.preview')
 		this.set_img = document.querySelector('#set-img')
 		this.description_img = document.querySelector('.description__img')
+		this.img_remove = document.querySelector('#img_remove')
 		this.preview.style.display ="none";
 		this._preview();
 
@@ -137,16 +138,13 @@ class imgPreView{
 			
 			reader.onload = () => {
 				const img = new Image()
+				img.src = reader.result
 				if (this.set_img != undefined) {
-					img.src = reader.result
 					this.description_img.remove();
-					this.preview.appendChild(img)
-					this.preview.style.display = "block";
-				} else {
-					img.src = reader.result
-					this.preview.appendChild(img)
-					this.preview.style.display ="block";
+					this.img_remove.remove();
 				}
+				this.preview.appendChild(img)
+				this.preview.style.display = "block";
 			}
 			reader.readAsDataURL(file)
 		})

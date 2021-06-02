@@ -15,8 +15,10 @@
           <div class="description__img">
             <%= image_tag @recipe.image, id: "set-img" %>
           </div>
-          <%= f.check_box :remove_recipe_image %>
-          <%= f.label :remove_recipe_image %>
+          <div id="img_remove">
+            <%= f.check_box :remove_recipe_image %>
+            <%= f.label :remove_recipe_image %>
+          </div>
         <% end %>
       </div>
       <div class="description__texts">
