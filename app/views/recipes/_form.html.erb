@@ -13,7 +13,7 @@
         <div class="preview description__preview"></div>
         <% if @recipe.image.attached? %>
           <div class="description__img">
-            <%= image_tag @recipe.image %>
+            <%= image_tag @recipe.image, id: "set-img" %>
           </div>
           <%= f.check_box :remove_recipe_image %>
           <%= f.label :remove_recipe_image %>
