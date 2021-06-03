@@ -17,7 +17,8 @@
     text-decoration: none !important;
   }
 
-  &__photo {
+  &__photo,
+  &__preview {
     width: 65px;
     height: 65px;
     overflow: hidden;

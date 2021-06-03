@@ -7,10 +7,15 @@
       <%= f.label :photo, class: "inventory__label" %>
       <div class="inventory__input-photo">
         <label class="img-file">
-          <%= image_tag 'add_a_photo', class:"add-photo-btn"%>
+          <%= image_tag 'add_a_photo', class:"add-photo-btn" %>
           <%= f.file_field :photo, accept: "image/jpeg,image/gif,image/png", class: "image" %>
         </label>
-        <div class="preview inventory__photo"></div>
+        <div class="preview inventory__preview"></div>
+        <% if inventory.photo.attached? %>
+          <div class="inventory__photo">
+            <%= image_tag inventory.photo, class: "set-img" %>
+          </div>
+        <% end %>
       </div>
     </div>
     <div class="inventory__field">
