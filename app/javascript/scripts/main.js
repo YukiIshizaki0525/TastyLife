@@ -120,12 +120,20 @@ class imgPreView{
 	constructor() {
 		this.element = document.querySelector('.image')
 		this.preview = document.querySelector('.preview')
-		this.set_img = document.querySelector('#set-img')
-		this.description_img = document.querySelector('.description__img')
-		this.img_remove = document.querySelector('#img_remove')
+		this.set_img = document.querySelector('.set-img')
+
+		if (document.URL.match("recipes/[0-9]+/edit")) {
+			this.img_field = document.querySelector('.description__img')
+			this.img_remove_check = document.querySelector('#img_remove')
+		}
+
+		if (document.URL.match("users/edit")) {
+			this.img_field = document.querySelector('.login__avatar')
+		}
 		this.preview.style.display ="none";
 		this._preview();
 
+	
 	}
 
 	_preview() {
@@ -135,14 +143,18 @@ class imgPreView{
 			const file = files[0]
 
 			const reader = new FileReader()
-			
 			reader.onload = () => {
 				const img = new Image()
 				img.src = reader.result
-				if (this.set_img != undefined) {
-					this.description_img.remove();
-					this.img_remove.remove();
+				
+				if (this.img_remove_check != undefined) {
+					this.img_remove_check.remove();
 				}
+
+				if (this.set_img != undefined) {
+					this.img_field.remove();
+				}
+
 				this.preview.appendChild(img)
 				this.preview.style.display = "block";
 			}
