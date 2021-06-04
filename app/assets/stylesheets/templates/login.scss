@@ -45,7 +45,7 @@
   }
 
   &__inputBx {
-    margin-bottom: 20px;
+    @extend .mb-sm;
 
     & > input {
       @extend .input
@@ -105,15 +105,18 @@
     }
   }
 
-  &__avatar {
-    width: 65px;
-    height: 50px;
+  &__avatar,
+  &__preview {
+    width: 60px;
+    height: 60px;
     overflow: hidden;
+    
 
     & > img {
       object-fit: cover;
       height: 100%;
       width: 100%;
+      border-radius: 100%;
     }
   }
 

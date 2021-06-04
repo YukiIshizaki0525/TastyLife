@@ -2,13 +2,15 @@
 <section class="inventory">
   <div class="inventory__field">
     <p class="inventory__label">食材画像</p>
-    <p class="inventory__detail">
-      <% if @inventory.photo.attached? %>
-        <%= image_tag @inventory.photo, class: "inventory__photo" %>
-      <% else %>
-        <%= image_tag 'no_image', class: "inventory__photo" %>
-      <% end %>
-    </p>
+    <div class="inventory__detail">
+      <div class="inventory__photo" >
+        <% if @inventory.photo.attached? %>
+          <%= image_tag @inventory.photo %>
+        <% else %>
+          <%= image_tag 'no_image' %>
+        <% end %>
+      </div>
+    </div>
   </div>
   <div class="inventory__field">
     <p class="inventory__label">食材名</p>

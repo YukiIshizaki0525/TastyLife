@@ -11,12 +11,14 @@
             <%= f.file_field :recipe_image, accept: "image/jpeg,image/gif,image/png", class: "image" %>
           </label>
         <div class="preview description__preview"></div>
-        <% if @recipe.image.attached? %>
+        <% if recipe.image.attached? %>
           <div class="description__img">
-            <%= image_tag @recipe.image %>
+            <%= image_tag recipe.image, class: "set-img" %>
           </div>
-          <%= f.check_box :remove_recipe_image %>
-          <%= f.label :remove_recipe_image %>
+          <div id="img_remove">
+            <%= f.check_box :remove_recipe_image %>
+            <%= f.label :remove_recipe_image %>
+          </div>
         <% end %>
       </div>
       <div class="description__texts">

@@ -13,7 +13,12 @@
               <%= image_tag 'add_a_photo', class:"add-photo-btn"%>
               <%= f.file_field :avatar, accept: "image/jpeg,image/gif,image/png", class: "image" %>
             </label>
-            <div class="preview login__avatar"></div>
+            <div class="preview login__preview"></div>
+            <% if resource.avatar.attached? %>
+              <div class="login__avatar">
+                <%= image_tag resource.avatar, class: "set-img" %>
+              </div>
+            <% end %>
           </div>
         </div>
 

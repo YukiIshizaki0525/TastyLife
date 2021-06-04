@@ -9,7 +9,8 @@ window.addEventListener('turbolinks:load', function () {
 	if (document.URL.match("recipes/new") ||
 		document.URL.match("recipes/[0-9]+/edit") ||
 		document.URL.match("users/edit") ||
-		document.URL.match("inventories/[0-9]+/edit")
+		document.URL.match("inventories/[0-9]+/edit") ||
+		document.URL.match("inventories/new")
 	) {
 		new imgPreView();
 	}
@@ -120,9 +121,23 @@ class imgPreView{
 	constructor() {
 		this.element = document.querySelector('.image')
 		this.preview = document.querySelector('.preview')
+		this.set_img = document.querySelector('.set-img')
+
+		if (document.URL.match("recipes/[0-9]+/edit")) {
+			this.img_field = document.querySelector('.description__img')
+			this.img_remove_check = document.querySelector('#img_remove')
+		}
+
+		if (document.URL.match("users/edit")) {
+			this.img_field = document.querySelector('.login__avatar')
+		}
+
+		if (document.URL.match("inventories/[0-9]+/edit")) {
+			this.img_field = document.querySelector('.inventory__photo')
+		}
+
 		this.preview.style.display ="none";
 		this._preview();
-
 	}
 
 	_preview() {
@@ -135,11 +150,21 @@ class imgPreView{
 			reader.onload = () => {
 				const img = new Image()
 				img.src = reader.result
+
+				if (this.img_remove_check != undefined) {
+					this.img_remove_check.remove();
+				}
+
+				if (this.set_img != undefined) {
+					this.img_field.remove();
+				}
+
 				this.preview.appendChild(img)
-				this.preview.style.display ="block";
+				this.preview.style.display = "block";
 			}
 			reader.readAsDataURL(file)
 		})
 	}
+
 }
 
