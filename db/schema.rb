@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_04_103439) do
+ActiveRecord::Schema.define(version: 2021_06_04_103840) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(version: 2021_06_04_103439) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image"
     t.index ["user_id"], name: "index_inventories_on_user_id"
   end
 
@@ -164,6 +165,7 @@ ActiveRecord::Schema.define(version: 2021_06_04_103439) do
     t.text "direction", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image"
     t.index ["recipe_id"], name: "index_steps_on_recipe_id"
   end
 

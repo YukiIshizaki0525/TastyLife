@@ -4,6 +4,7 @@
 #
 #  id              :bigint           not null, primary key
 #  expiration_date :date             not null
+#  image           :string(255)
 #  memo            :text(65535)
 #  name            :string(255)      not null
 #  quantity        :string(255)      not null
