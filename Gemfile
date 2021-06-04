@@ -43,6 +43,9 @@ gem 'whenever', require: false
 # N+1問題
 gem 'bullet'
 
+#画像アップロード
+gem 'carrierwave'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rails-flog', require: 'flog'
