@@ -23,6 +23,8 @@ class Inventory < ApplicationRecord
   validates :quantity, presence: true, length: { maximum: 10 }
   validates :expiration_date, presence: true
 
+  mount_uploader :image, InventoryUploader
+
   def days_left
     today = Date.today
     days_left = self.expiration_date - today
