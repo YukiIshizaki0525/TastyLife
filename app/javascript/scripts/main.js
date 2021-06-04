@@ -9,7 +9,8 @@ window.addEventListener('turbolinks:load', function () {
 	if (document.URL.match("recipes/new") ||
 		document.URL.match("recipes/[0-9]+/edit") ||
 		document.URL.match("users/edit") ||
-		document.URL.match("inventories/[0-9]+/edit")
+		document.URL.match("inventories/[0-9]+/edit") ||
+		document.URL.match("inventories/new")
 	) {
 		new imgPreView();
 	}
@@ -149,7 +150,7 @@ class imgPreView{
 			reader.onload = () => {
 				const img = new Image()
 				img.src = reader.result
-				
+
 				if (this.img_remove_check != undefined) {
 					this.img_remove_check.remove();
 				}
