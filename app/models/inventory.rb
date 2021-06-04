@@ -22,8 +22,6 @@ class Inventory < ApplicationRecord
   validates :quantity, presence: true, length: { maximum: 10 }
   validates :expiration_date, presence: true
 
-  has_one_attached :photo
-
   def days_left
     today = Date.today
     days_left = self.expiration_date - today

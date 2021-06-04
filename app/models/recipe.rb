@@ -35,9 +35,9 @@ class Recipe < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   # レシピ完成イメージの画像
-  has_one_attached :image
-  attribute :recipe_image
-  attribute :remove_recipe_image, :boolean
+  # has_one_attached :image
+  # attribute :recipe_image
+  # attribute :remove_recipe_image, :boolean
 
   # レシピ投稿に関するバリデーション
   validates :user_id, presence: true
@@ -68,9 +68,5 @@ class Recipe < ApplicationRecord
     elsif remove_recipe_image
       self.image.purge
     end
-  end
-
-  def display_image
-    image.variant(gravity: :center, resize:"200x290^", crop:"200x290+0+0").processed
   end
 end
