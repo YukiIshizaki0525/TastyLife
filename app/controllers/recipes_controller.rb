@@ -5,12 +5,12 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = params[:tag_id].present? ? Tag.find(params[:tag_id]).recipes : Recipe
-    @recipes = @recipes.includes([:favorites], [user: { avatar_attachment: :blob }], [image_attachment: :blob]).page(params[:page]).per(6)
+    @recipes = @recipes.includes([:favorites]).page(params[:page]).per(6)
   end
 
   def show
-    @recipe = Recipe.includes([steps: { step_image_attachment: :blob }]).find(params[:id])
-    @comments = Comment.includes([user: { avatar_attachment: :blob }]).where(recipe_id: @recipe.id)
+    @recipe = Recipe.find(params[:id])
+    @comments = Comment.where(recipe_id: @recipe.id)
 
     if user_signed_in?
       @comment = current_user.comments.new(flash[:comment])
@@ -60,7 +60,7 @@ class RecipesController < ApplicationController
   end
   
   def search
-    @recipes = @q.result(distinct: true).includes([:favorites], [user: { avatar_attachment: :blob }], [image_attachment: :blob]).page(params[:page]).per(6)
+    @recipes = @q.result(distinct: true).includes([:favorites]).page(params[:page]).per(6)
     @search = params[:q][:title_or_ingredients_content_cont]
   end
   
