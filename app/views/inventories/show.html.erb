@@ -4,8 +4,8 @@
     <p class="inventory__label">食材画像</p>
     <div class="inventory__detail">
       <div class="inventory__photo" >
-        <% if @inventory.image.attached? %>
-          <%= image_tag @inventory.image %>
+        <% if @inventory.image? %>
+          <%= image_tag @inventory.image.url %>
         <% else %>
           <%= image_tag 'no_image' %>
         <% end %>
