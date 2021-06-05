@@ -9,8 +9,8 @@
     <div class="description__inner">
       <div class="description__img-field">
         <div class="description__img">
-        <% if @recipe.image.attached? %>
-          <%= image_tag @recipe.image %>
+        <% if @recipe.image? %>
+          <%= image_tag @recipe.image.url %>
         <% else %>
           <%= image_tag 'no_image' %>
         <% end %>
@@ -31,8 +31,8 @@
           <div class="cooking-title">ユーザープロフィール</div>
           <div class="recipeuser__inner">
             <div class="recipeuser__img">
-              <% if @recipe.user.avatar.attached? %>
-                <%= link_to image_tag(@recipe.user.avatar), user_path(id: @recipe.user_id) %>
+              <% if @recipe.user.avatar? %>
+                <%= link_to image_tag(@recipe.user.avatar.url), user_path(id: @recipe.user_id) %>
               <% end %>
             </div>
             <%= link_to @recipe.user.name, user_path(id: @recipe.user_id), class:"recipeuser__name" %>
@@ -77,7 +77,7 @@
             <p class="step__number"></p>
             <p class="step__description"><%= step.direction %></p>
           </div>
-          <div class="step__img"><%= image_tag step.image if step.image.attached? %></div>
+          <div class="step__img"><%= image_tag step.image.url if step.image? %></div>
         </div>
       </div>
     <% end %>
