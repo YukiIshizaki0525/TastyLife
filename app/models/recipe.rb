@@ -48,10 +48,10 @@ class Recipe < ApplicationRecord
   validates :description, presence: true, length: { maximum: 140}
 
   # 画像投稿に関するバリデーション
-  validates :image, content_type: { in: %w[image/jpeg image/gif image/png],
-                                    message: "must be a valid image format" },
-                    size:         { less_than: 2.megabytes,
-                                    message: "should be less than 2MB" }
+  # validates :image, content_type: { in: %w[image/jpeg image/gif image/png],
+  #                                   message: "must be a valid image format" },
+  #                   size:         { less_than: 2.megabytes,
+  #                                   message: "should be less than 2MB" }
 
   # 材料・分量・手順についてのバリデーション
   validate :require_any_ingredients
