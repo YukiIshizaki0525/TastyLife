@@ -20,11 +20,11 @@
 class Step < ApplicationRecord
   belongs_to :recipe
   validates :direction, presence: true
-  画像投稿に関するバリデーション
-  validates :image, content_type: { in: %w[image/jpeg image/gif image/png],
-                                    message: "must be a valid image format" },
-                    size:         { less_than: 1.megabytes,
-                                    message: "1MBの画像を添付してください" }
+  # 画像投稿に関するバリデーション
+  # validates :image, content_type: { in: %w[image/jpeg image/gif image/png],
+  #                                   message: "must be a valid image format" },
+  #                   size:         { less_than: 1.megabytes,
+  #                                   message: "1MBの画像を添付してください" }
   
   mount_uploader :image, StepImageUploader
   # レシピ手順の画像
