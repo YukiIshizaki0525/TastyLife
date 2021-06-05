@@ -88,7 +88,7 @@ class RecipesController < ApplicationController
         :keyword,
         tag_ids: [],
         ingredients_attributes: [:id, :content, :quantity, :_destroy],
-        steps_attributes: [:id, :direction, :step_image, :_destroy]
+        steps_attributes: [:id, :direction, :image, :_destroy]
       )
     end
   end
