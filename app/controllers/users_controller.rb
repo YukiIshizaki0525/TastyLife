@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   def inventories
     if user_signed_in? && @user.id == current_user.id
       @title = "Inventory"
-      @inventories = @user.inventoriespage(params[:page]).order(expiration_date: 'ASC').per(6)
+      @inventories = @user.inventories.page(params[:page]).order(expiration_date: 'ASC').per(6)
       render 'show_inventory'
     else
       flash[:alert] = "他人の食材管理ページ閲覧及び編集はできません。"
