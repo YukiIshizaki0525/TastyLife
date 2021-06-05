@@ -4,16 +4,16 @@
 <%= form_with model: @inventory do |f| %>
   <section class="inventory">
     <div class="inventory__field">
-      <%= f.label :photo, class: "inventory__label" %>
+      <%= f.label :image, class: "inventory__label" %>
       <div class="inventory__input-photo">
         <label class="img-file">
           <%= image_tag 'add_a_photo', class:"add-photo-btn" %>
-          <%= f.file_field :photo, accept: "image/jpeg,image/gif,image/png", class: "image" %>
+          <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "image" %>
         </label>
         <div class="preview inventory__preview"></div>
-        <% if inventory.photo.attached? %>
+        <% if inventory.image.attached? %>
           <div class="inventory__photo">
-            <%= image_tag inventory.photo, class: "set-img" %>
+            <%= image_tag inventory.image, class: "set-img" %>
           </div>
         <% end %>
       </div>
