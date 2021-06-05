@@ -28,7 +28,7 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  config.active_storage.service = :local
+  # config.active_storage.service = :local
 
   
   ActionMailer::Base.delivery_method = :letter_opener
