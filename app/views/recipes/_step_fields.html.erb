@@ -5,7 +5,7 @@
     <%= f.text_area :direction, class:"step__input"%>
     <label class="step__img-file">
       <%= image_tag 'add_a_photo', class:"add-photo-btn"%>
-      <%= f.file_field :step_image, accept: "image/jpeg,image/gif,image/png" , class: "image"%>
+      <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" , class: "image"%>
     </label>
     <%= link_to '#' , class: "remove-field-btn" do %>
       <%= image_tag 'delete', class: "js-remove_fields" %>
