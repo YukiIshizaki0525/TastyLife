@@ -79,9 +79,6 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
-  # アイコン画像追加のため
-  # has_one_attached :avatar
-
   validates :name,
             presence: true,
             uniqueness: { case_sensitive: false }
@@ -102,11 +99,11 @@ class User < ApplicationRecord
             format: { with: VALID_PASSWORD_REGEX,
                       message: "は半角6~20文字英大文字・小文字・数字それぞれ1文字以上含む必要があります"}
 
-  # validates :avatar,
-  #           content_type: { in: %w[image/jpeg image/gif image/png],
-  #                           message: "は有効な画像形式である必要があります" },
-  #                           size: { less_than: 1.megabytes,
-  #                                   message: "は1MB未満である必要があります" }
+  validates :avatar,
+            content_type: { in: %w[image/jpeg image/gif image/png],
+                            message: "は有効な画像形式である必要があります" },
+                            size: { less_than: 1.megabytes,
+                                    message: "は1MB未満である必要があります" }
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
