@@ -37,3 +37,6 @@ yarn-debug.log*
 
 .DS_Store
 /vendor/bundle
+
+# Ignore uploaded files in development
+/public/uploads/
