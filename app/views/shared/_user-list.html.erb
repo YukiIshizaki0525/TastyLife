@@ -2,8 +2,8 @@
   <% @users.each do |user| %>
     <%= link_to(user_path(id: user.id), class: "user-list__item") do %>
     <div class="user-list__img">
-      <% if user.avatar.attached? %>
-        <%= image_tag(user.avatar) %>
+      <% if user.avatar? %>
+        <%= image_tag user.avatar.url %>
       <% end %>
     </div>
     <div class="user-list__detail">
