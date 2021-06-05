@@ -52,6 +52,6 @@ class InventoriesController < ApplicationController
     end
 
     def inventory_params
-      params.require(:inventory).permit(:name, :quantity, :expiration_date, :memo, :user_id, :photo)
+      params.require(:inventory).permit(:name, :quantity, :expiration_date, :memo, :user_id, :image)
     end
 end

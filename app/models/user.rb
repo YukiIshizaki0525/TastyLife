@@ -88,7 +88,7 @@ class User < ApplicationRecord
             presence: true,
             format: { with: VALID_EMAIL_REGEX },
             uniqueness: { case_sensitive: false }
-  
+
   VALID_PASSWORD_REGEX =/\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])\w{6,20}\z/
   validates :password,
             presence: true, on: :create,
@@ -176,4 +176,6 @@ class User < ApplicationRecord
     clean_up_passwords
     result
   end
+
+  
 end
