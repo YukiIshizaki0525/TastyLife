@@ -99,6 +99,8 @@ class User < ApplicationRecord
             format: { with: VALID_PASSWORD_REGEX,
                       message: "は半角6~20文字英大文字・小文字・数字それぞれ1文字以上含む必要があります"}
 
+  validates :avatar, presence: true
+
   # validates :avatar,
   #           content_type: { in: %w[image/jpeg image/gif image/png],
   #                           message: "は有効な画像形式である必要があります" },

@@ -20,6 +20,7 @@
 class Step < ApplicationRecord
   belongs_to :recipe
   validates :direction, presence: true
+  validates :image, presence: true
   # 画像投稿に関するバリデーション
   # validates :image, content_type: { in: %w[image/jpeg image/gif image/png],
   #                                   message: "must be a valid image format" },
