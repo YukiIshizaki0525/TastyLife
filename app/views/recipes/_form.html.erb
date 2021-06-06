@@ -2,6 +2,7 @@
 
 <main>
   <%= form_with(model: @recipe, local: true) do |f| %>
+  <%= f.hidden_field :image_cache %>
   <section class="description">
     <div class="description__inner">
       <div class="description__img-field">
@@ -10,6 +11,7 @@
             <%= image_tag 'add_a_photo', class:"add-photo-btn"%>
             <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "image" %>
           </label>
+          <%= image_tag recipe.image.url if recipe.image? %>
           <div class="preview description__preview"></div>
           <% if recipe.image? %>
             <div class="description__img">
