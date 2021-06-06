@@ -14,7 +14,6 @@ window.addEventListener('turbolinks:load', function () {
 	) {
 		new imgPreView();
 	}
-
 });
 
 
@@ -117,7 +116,7 @@ class removeFields {
   }
 }
 
-class imgPreView{
+class imgPreView {
 	constructor() {
 		this.element = document.querySelector('.image')
 		this.preview = document.querySelector('.preview')
@@ -141,23 +140,23 @@ class imgPreView{
 	}
 
 	_preview() {
-			this.element.addEventListener('input', (event) => {
-			const target = event.target
-			const files = target.files
-			const file = files[0]
+		this.element.addEventListener('input', (event) => {
+		const target = event.target
+		const files = target.files
+		const file = files[0]
 
-			const reader = new FileReader()
-			reader.onload = () => {
-				const img = new Image()
-				img.src = reader.result
+		const reader = new FileReader()
+		reader.onload = () => {
+			const img = new Image()
+			img.src = reader.result
 
-				if (this.img_remove_check != undefined) {
-					this.img_remove_check.remove();
-				}
+			if (this.img_remove_check != undefined) {
+				this.img_remove_check.remove();
+			}
 
-				if (this.set_img != undefined) {
-					this.img_field.remove();
-				}
+			if (this.set_img != undefined) {
+				this.img_field.remove();
+			}
 
 				this.preview.appendChild(img)
 				this.preview.style.display = "block";
@@ -165,6 +164,5 @@ class imgPreView{
 			reader.readAsDataURL(file)
 		})
 	}
-
 }
 

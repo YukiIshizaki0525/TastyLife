@@ -10,12 +10,12 @@
             <%= image_tag 'add_a_photo', class:"add-photo-btn"%>
             <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "image" %>
           </label>
-        <div class="preview description__preview"></div>
-        <% if recipe.image? %>
-          <div class="description__img">
-            <%= image_tag recipe.image.url, class: "set-img" %>
-          </div>
-        <% end %>
+          <div class="preview description__preview"></div>
+          <% if recipe.image? %>
+            <div class="description__img">
+              <%= image_tag recipe.image.url, class: "set-img" %>
+            </div>
+          <% end %>
       </div>
       <div class="description__texts">
         <div class="cooking-title">レシピについて</div>

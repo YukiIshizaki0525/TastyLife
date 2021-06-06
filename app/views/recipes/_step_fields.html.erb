@@ -3,12 +3,14 @@
   <div class="step__inputBx">
     <p class="step__number"></p>
     <%= f.text_area :direction, class:"step__input"%>
-    <label class="step__img-file">
-      <%= image_tag 'add_a_photo', class:"add-photo-btn"%>
-      <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" , class: "image"%>
-    </label>
+    <% if f.object.image? %>
+      <%= image_tag f.object.image.url, class: "step__preview" %>
+    <% else %>
+      <%= image_tag 'no_image', class: "step__preview" %>
+    <% end %>
     <%= link_to '#' , class: "remove-field-btn" do %>
       <%= image_tag 'delete', class: "js-remove_fields" %>
     <% end %>
+    <div class="step__fileinput"><span>変更後の画像：</span><%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %></div>
   </div>
 </div>
