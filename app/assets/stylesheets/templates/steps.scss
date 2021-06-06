@@ -14,10 +14,18 @@
   }
 
   &__inputBx {
-    @extend .mb-sm;
+    margin-bottom: 50px;
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
+  }
+
+  &__fileinput {
+    input[type="file"],
+    span {
+      @extend .font-sm;
+      color: $--c-brown;
+    }
   }
 
   &__number {
@@ -51,11 +59,26 @@
     }
   }
 
+  &__preview {
+    display: block;
+    height: 65px;
+    width: 65px;
+    border-radius: 4px;
+    overflow: hidden;
+
+    &>img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
   &__img-file {
     input[type="file"] {
       display: none;
     }
   }
+
 
   &__description {
     @extend .font-sm;

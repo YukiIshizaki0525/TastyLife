@@ -4,6 +4,7 @@
 #
 #  id          :bigint           not null, primary key
 #  description :text(65535)
+#  image       :string(255)
 #  title       :string(255)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
@@ -34,10 +35,12 @@ class Recipe < ApplicationRecord
   # いいね機能関連
   has_many :favorites, dependent: :destroy
 
+  mount_uploader :image, RecipeImageUploader
+
   # レシピ完成イメージの画像
-  has_one_attached :image
-  attribute :recipe_image
-  attribute :remove_recipe_image, :boolean
+  # has_one_attached :image
+  # attribute :recipe_image
+  # attribute :remove_recipe_image, :boolean
 
   # レシピ投稿に関するバリデーション
   validates :user_id, presence: true
@@ -45,10 +48,10 @@ class Recipe < ApplicationRecord
   validates :description, presence: true, length: { maximum: 140}
 
   # 画像投稿に関するバリデーション
-  validates :image, content_type: { in: %w[image/jpeg image/gif image/png],
-                                    message: "must be a valid image format" },
-                    size:         { less_than: 2.megabytes,
-                                    message: "should be less than 2zMB" }
+  # validates :image, content_type: { in: %w[image/jpeg image/gif image/png],
+  #                                   message: "must be a valid image format" },
+  #                   size:         { less_than: 2.megabytes,
+  #                                   message: "should be less than 2MB" }
 
   # 材料・分量・手順についてのバリデーション
   validate :require_any_ingredients
@@ -62,15 +65,11 @@ class Recipe < ApplicationRecord
     errors.add(:base, "作り方は1つ以上登録してください。") if self.steps.blank?
   end
 
-  before_save do
-    if recipe_image
-      self.image = recipe_image
-    elsif remove_recipe_image
-      self.image.purge
-    end
-  end
-
-  def display_image
-    image.variant(gravity: :center, resize:"200x290^", crop:"200x290+0+0").processed
-  end
+  # before_save do
+  #   if recipe_image
+  #     self.image = recipe_image
+  #   elsif remove_recipe_image
+  #     self.image.purge
+  #   end
+  # end
 end

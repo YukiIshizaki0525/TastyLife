@@ -2,8 +2,8 @@
   <% @recipes.each do |recipe| %>
     <div class="list__item">
       <%= link_to recipe_path(recipe), class: "list__img" do %>
-        <%  if recipe.image.attached? %>
-          <%= image_tag(recipe.image) %>
+        <%  if recipe.image? %>
+          <%= image_tag recipe.image.url %>
         <% else %>
           <%= image_tag 'no_image' %>
         <% end %>
@@ -18,8 +18,8 @@
           <%= render partial: "recipes/favorite", locals: { recipe: recipe } %>
         </div>
         <%= link_to user_path(id: recipe.user_id), class:'list__user-img' do %>
-          <%  if recipe.user.avatar.attached? %>
-            <%= image_tag(recipe.user.avatar) %>
+          <%  if recipe.user.avatar? %>
+            <%= image_tag recipe.user.avatar.url %>
           <% end %>
         <% end %>
         <%= link_to recipe.user.name, user_path(id: recipe.user_id), class: "list__user-name" %>

@@ -4,11 +4,11 @@ class UsersController < ApplicationController
   before_action :withdrawal_forbid_guest_user, only: [:unsubscribe, :withdrawal]
 
   def index
-    @users = User.includes([:recipes], [avatar_attachment: :blob]).page(params[:page]).per(6).order(id: :ASC)
+    @users = User.includes(:recipes).page(params[:page]).per(6).order(id: :ASC)
   end
 
   def show
-    @recipes = @user.recipes.includes([:favorites], [image_attachment: :blob]).page(params[:page]).per(6)
+    @recipes = @user.recipes.includes(:favorites).page(params[:page]).per(6)
   end
 
   def destroy
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   def following
     @title = "さんがフォロー中"
     @message = "まだ誰もフォローしていません。"
-    @users = @user.following.includes([:recipes], [avatar_attachment: :blob]).page(params[:page]).per(6)
+    @users = @user.following.includes(:recipes).page(params[:page]).per(6)
     render 'show_follow'
   end
 
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   def followers
     @title = "さんのフォロワー"
     @message = "まだ誰からもフォローされていません。"
-    @users = @user.followers.includes([:recipes], [avatar_attachment: :blob]).page(params[:page]).per(6)
+    @users = @user.followers.includes(:recipes).page(params[:page]).per(6)
     render 'show_follow'
   end
 
@@ -39,20 +39,20 @@ class UsersController < ApplicationController
 
   def favorites
     @title = "Favorite"
-    @recipes = @user.favorite_recipes.includes([user: { avatar_attachment: :blob }], [:favorites], [image_attachment: :blob]).page(params[:page]).per(6)
+    @recipes = @user.favorite_recipes.includes(:favorites).page(params[:page]).per(6)
     render 'show_favorite'
   end
 
   def interests
     @title = "Interest"
-    @consultations = @user.interest_consultations.includes([user: { avatar_attachment: :blob }], [:interests]).page(params[:page]).per(6)
+    @consultations = @user.interest_consultations.includes([:interests]).page(params[:page]).per(6)
     render 'show_interest'
   end
 
   def inventories
     if user_signed_in? && @user.id == current_user.id
       @title = "Inventory"
-      @inventories = @user.inventories.includes([photo_attachment: :blob]).page(params[:page]).order(expiration_date: 'ASC').per(6)
+      @inventories = @user.inventories.page(params[:page]).order(expiration_date: 'ASC').per(6)
       render 'show_inventory'
     else
       flash[:alert] = "他人の食材管理ページ閲覧及び編集はできません。"

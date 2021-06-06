@@ -6,8 +6,8 @@
     <% @tweet.each do |recipe| %>
       <div class="tweet__item">
         <%= link_to(recipe_path(id: recipe.id), class:'tweet__img') do %>
-          <%  if recipe.image.attached? %>
-            <%= image_tag(recipe.image) %>
+          <%  if recipe.image? %>
+            <%= image_tag recipe.image.url %>
           <% else %>
             <%= image_tag 'no_image' %>
           <% end %>
@@ -19,7 +19,7 @@
           <div class="tweet__info">
             <div class="tweet__userinfo">
               <%= link_to(user_path(id: recipe.user_id)) do %>
-                <div class="tweet__useravatar"><%= image_tag(recipe.user.avatar) if recipe.user.avatar.attached? %></div>
+                <div class="tweet__useravatar"><%= image_tag recipe.user.avatar.url if recipe.user.avatar? %></div>
               <% end %>
               <%= link_to recipe.user.name ,user_path(id: recipe.user_id), class:"tweet__username" %>
             </div>

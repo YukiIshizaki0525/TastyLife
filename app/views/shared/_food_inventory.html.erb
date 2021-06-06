@@ -3,8 +3,8 @@
     <% @inventories.each do |inventory| %>
       <div class="inventory__item">
         <div class="inventory__photo">
-          <% if inventory.photo.attached? %>
-            <%= image_tag inventory.photo %>
+          <% if inventory.image? %>
+            <%= image_tag inventory.image.url %>
           <% else %>
             <%= image_tag 'no_image' %>
           <% end %>

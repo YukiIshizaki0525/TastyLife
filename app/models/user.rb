@@ -3,6 +3,7 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
+#  avatar                 :string(255)
 #  confirmation_sent_at   :datetime
 #  confirmation_token     :string(255)
 #  confirmed_at           :datetime
@@ -76,8 +77,7 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
-  # アイコン画像追加のため
-  has_one_attached :avatar
+  mount_uploader :avatar, AvatarUploader
 
   validates :name,
             presence: true,
@@ -88,7 +88,7 @@ class User < ApplicationRecord
             presence: true,
             format: { with: VALID_EMAIL_REGEX },
             uniqueness: { case_sensitive: false }
-  
+
   VALID_PASSWORD_REGEX =/\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])\w{6,20}\z/
   validates :password,
             presence: true, on: :create,
@@ -99,11 +99,11 @@ class User < ApplicationRecord
             format: { with: VALID_PASSWORD_REGEX,
                       message: "は半角6~20文字英大文字・小文字・数字それぞれ1文字以上含む必要があります"}
 
-  validates :avatar,
-            content_type: { in: %w[image/jpeg image/gif image/png],
-                            message: "は有効な画像形式である必要があります" },
-                            size: { less_than: 1.megabytes,
-                                    message: "は1MB未満である必要があります" }
+  # validates :avatar,
+  #           content_type: { in: %w[image/jpeg image/gif image/png],
+  #                           message: "は有効な画像形式である必要があります" },
+  #                           size: { less_than: 1.megabytes,
+  #                                   message: "は1MB未満である必要があります" }
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
@@ -172,7 +172,7 @@ class User < ApplicationRecord
       params.delete(:password_confirmation)
     end
 
-    result = update_attributes(params, *options)
+    result = update(params, *options)
     clean_up_passwords
     result
   end

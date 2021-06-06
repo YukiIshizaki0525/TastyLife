@@ -4,6 +4,7 @@
 #
 #  id              :bigint           not null, primary key
 #  expiration_date :date             not null
+#  image           :string(255)
 #  memo            :text(65535)
 #  name            :string(255)      not null
 #  quantity        :string(255)      not null
@@ -22,7 +23,7 @@ class Inventory < ApplicationRecord
   validates :quantity, presence: true, length: { maximum: 10 }
   validates :expiration_date, presence: true
 
-  has_one_attached :photo
+  mount_uploader :image, InventoryImageUploader
 
   def days_left
     today = Date.today

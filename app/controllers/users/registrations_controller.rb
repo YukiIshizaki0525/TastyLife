@@ -5,7 +5,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     super do
-      resource.avatar.attach(io: File.open("app/assets/images/default_user.png"), filename: "default_user.png")
+      resource.avatar.url(io: File.open("app/assets/images/default_user.png"), filename: "default_user.png")
       resource.save
     end
   end
