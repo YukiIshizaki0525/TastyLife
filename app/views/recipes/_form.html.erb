@@ -2,6 +2,7 @@
 
 <main>
   <%= form_with(model: @recipe, local: true) do |f| %>
+  <%= f.hidden_field :image_cache %>
   <section class="description">
     <div class="description__inner">
       <div class="description__img-field">

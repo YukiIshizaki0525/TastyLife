@@ -1,7 +1,12 @@
 class RecipeImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
+  # process resize_to_fit: [400, 200]
+
+  def size_range
+    1..3.megabytes
+  end
 
   # Choose what kind of storage to use for this uploader:
   storage :file
