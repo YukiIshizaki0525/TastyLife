@@ -23,6 +23,7 @@ ja:
       recipe/steps:
         direction: 手順
         image: 手順の画像
+        remove_image: 画像を削除
       comment:
         name: 名前
         content: コメント

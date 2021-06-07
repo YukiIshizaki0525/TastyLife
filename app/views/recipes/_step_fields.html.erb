@@ -11,6 +11,12 @@
     <%= link_to '#' , class: "remove-field-btn" do %>
       <%= image_tag 'delete', class: "js-remove_fields" %>
     <% end %>
-    <div class="step__fileinput"><span>変更後の画像：</span><%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %></div>
+    <div class="step__file-input">
+      <span class="step__file-label">変更後の画像：</span><%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+      <div class="step__file-label">
+        <%= f.check_box :remove_image %>
+        <%= f.label :remove_image, "画像を削除" %>
+      </div>
+    </div>
   </div>
 </div>

@@ -29,6 +29,11 @@
     }
   }
 
+  &__remove-img-label {
+    @extend .font-md;
+    color: $--c-brown;
+  }
+
   &__title {
     @extend .font-lr;
     font-weight: bold;
