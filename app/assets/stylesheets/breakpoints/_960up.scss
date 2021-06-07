@@ -69,7 +69,8 @@
 
 // レシピ詳細ここから
 .description {
-  &__img {
+  &__img,
+  &__preview {
     height: 400px;
   }
 }

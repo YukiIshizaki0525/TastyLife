@@ -18,6 +18,7 @@
 
   &__img,
   &__preview {
+    @extend .mb-sm;
     height: 300px;
     overflow: hidden;
 
