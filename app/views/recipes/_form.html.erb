@@ -17,10 +17,12 @@
                 <%= image_tag recipe.image.url, class: "set-img" %>
               </div>
             <% end %>
-          <div class="description__remove-img-label">
-            <%= f.check_box :remove_image %>
-            <%= f.label :remove_image %>
-          </div>
+            <% unless current_page?(controller:"recipes", action: "new") %>
+              <div class="description__remove-img-label">
+                <%= f.check_box :remove_image %>
+                <%= f.label :remove_image %>
+              </div>
+            <% end %>
       </div>
       <div class="description__texts">
         <div class="cooking-title">レシピについて</div>
