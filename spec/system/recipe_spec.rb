@@ -14,7 +14,7 @@ RSpec.describe "レシピ機能", type: :system do
     context 'フォームの入力値が正常'do
       it '正常に登録される' do
         visit new_recipe_path
-        attach_file "recipe[recipe_image]", "#{Rails.root}/spec/fixtures/salad.jpg", make_visible: true
+        attach_file "recipe[image]", "#{Rails.root}/spec/fixtures/salad.jpg", make_visible: true
         fill_in 'recipe_title', with: recipe.title
         fill_in 'recipe_description', with: recipe.description
         click_link "材料の追加"
@@ -193,7 +193,6 @@ RSpec.describe "レシピ機能", type: :system do
       visit edit_recipe_path(posted_recipe)
       expect { click_link 'このレシピを削除' }.to change { Recipe.count }.by(-1)
       expect(current_path).to eq user_path(user)
-
       expect(page).to have_content("「#{posted_recipe.title}」のレシピを削除しました。")
     end
   end
@@ -203,7 +202,7 @@ RSpec.describe "レシピ機能", type: :system do
       it "全一致で検索可能"do
         posted_recipe
         visit recipes_path
-        fill_in "q_title_or_ingredients_content_cont", with: "レシピのタイトル"
+        fill_in "q_title_or_ingredients_content_cont", with: "テストタイトル"
         find("#q_title_or_ingredients_content_cont").send_keys :return
         expect(page).to have_content(posted_recipe.title)
         expect(page).to have_content(posted_recipe.description)
