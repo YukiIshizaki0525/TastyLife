@@ -27,6 +27,8 @@ ja:
       comment:
         name: 名前
         content: コメント
+      inventory:
+        image: 食材画像
 
   views:
     pagination:
