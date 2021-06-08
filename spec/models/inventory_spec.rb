@@ -23,9 +23,6 @@ RSpec.describe Inventory, type: :model do
 
   describe "正常系" do
     it '登録可能' do
-      inventory.photo = fixture_file_upload("calot.jpg")
-      inventory.save
-
       expect(inventory.name).to eq("にんじん")
       expect(inventory.quantity).to eq("3本")
       expect(inventory.expiration_date.to_s).to eq("2021-05-10")

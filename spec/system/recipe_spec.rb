@@ -22,6 +22,7 @@ RSpec.describe "レシピ機能", type: :system do
         find(".ingredient__quantity").set("分量1")
         click_link "作り方の追加"
         find(".step__input").set("ステップ1")
+        attach_file "step-image", "#{Rails.root}/spec/fixtures/tomato.jpg", make_visible: true
 
         expect { click_button '送信する' }.to change { Recipe.count }.by(1)
         expect(page).to have_content("「テストタイトル」のレシピを投稿しました。")
@@ -29,6 +30,7 @@ RSpec.describe "レシピ機能", type: :system do
         expect(page).to have_content("材料1")
         expect(page).to have_content("分量1")
         expect(page).to have_content("ステップ1")
+        expect(page).to have_selector("img[src$='tomato.jpg']")
       end
     end
 
