@@ -4,7 +4,7 @@ RSpec.describe "レシピ機能", type: :system do
   let(:user) { create(:user) }
   let(:other_user) { create(:other_user) }
   let(:recipe) { build(:recipe) }
-  let(:posted_recipe) { create(:recipe, :with_ingredients, :with_steps, user_id: user.id) }
+  let(:posted_recipe) { create(:recipe, :with_ingredients, :with_steps, :with_images, user_id: user.id) }
 
   before do
     sign_in user #=> サインイン状態になる
@@ -22,7 +22,7 @@ RSpec.describe "レシピ機能", type: :system do
         find(".ingredient__quantity").set("分量1")
         click_link "作り方の追加"
         find(".step__input").set("ステップ1")
-     
+
         expect { click_button '送信する' }.to change { Recipe.count }.by(1)
         expect(page).to have_content("「テストタイトル」のレシピを投稿しました。")
         expect(page).to have_selector("img[src$='salad.jpg']")
@@ -95,6 +95,21 @@ RSpec.describe "レシピ機能", type: :system do
         find(".step__input").set(nil)
         click_button '送信する'
         expect(page).to have_content("手順を入力してください")
+      end
+
+      it 'レシピ画像は3MB以上の時は登録不可' do
+        visit new_recipe_path
+        attach_file "recipe[image]", "#{Rails.root}/spec/fixtures/pasta_8MB.jpg", make_visible: true
+        fill_in 'recipe_title', with: recipe.title
+        fill_in 'recipe_description', with: recipe.description
+        click_link "材料の追加"
+        find(".ingredient__content").set("材料1")
+        find(".ingredient__quantity").set("分量1")
+        click_link "作り方の追加"
+        find(".step__input").set("ステップ1")
+
+        click_button '送信する'
+        expect(page).to have_content("レシピ画像は3MB以下のサイズにしてください")
       end
     end
   end
@@ -194,6 +209,14 @@ RSpec.describe "レシピ機能", type: :system do
       expect { click_link 'このレシピを削除' }.to change { Recipe.count }.by(-1)
       expect(current_path).to eq user_path(user)
       expect(page).to have_content("「#{posted_recipe.title}」のレシピを削除しました。")
+    end
+
+    it "編集ページからレシピの画像削除が可能" do
+      visit edit_recipe_path(posted_recipe)
+      check 'recipe[remove_image]'
+      click_button '送信する'
+      expect(current_path).to eq recipe_path(posted_recipe)
+      expect(page).to have_selector("img[src$='salad.jpg']")
     end
   end
 

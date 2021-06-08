@@ -35,7 +35,7 @@ FactoryBot.define do
     end
 
     trait :with_images do
-      image {}
+      image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/salad.jpg')) }
     end
     
     factory :other_recipe do
