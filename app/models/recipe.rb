@@ -65,11 +65,9 @@ class Recipe < ApplicationRecord
     errors.add(:base, "作り方は1つ以上登録してください。") if self.steps.blank?
   end
 
-  # before_save do
-  #   if recipe_image
-  #     self.image = recipe_image
-  #   elsif remove_recipe_image
-  #     self.image.purge
-  #   end
-  # end
+  before_save do
+    if remove_image == true
+      self.remove_image!
+    end
+  end
 end

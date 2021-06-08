@@ -20,10 +20,11 @@
     flex-wrap: wrap;
   }
 
-  &__fileinput {
+  &__file-input {
     input[type="file"],
-    span {
+    & > .step__file-label {
       @extend .font-sm;
+      @extend .mb-sm;
       color: $--c-brown;
     }
   }

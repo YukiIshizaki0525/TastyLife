@@ -83,13 +83,14 @@ class RecipesController < ApplicationController
       params.require(:recipe).permit(
         :image,
         :image_cache,
+        :remove_image,
         :title,
         :description,
         :user_id,
         :keyword,
         tag_ids: [],
         ingredients_attributes: [:id, :content, :quantity, :_destroy],
-        steps_attributes: [:id, :direction, :_destroy, :image]
+        steps_attributes: [:id, :direction, :image, :remove_image, :_destroy]
       )
     end
   end
