@@ -27,10 +27,4 @@ class Step < ApplicationRecord
   #                                   message: "1MBの画像を添付してください" }
   
   mount_uploader :image, StepImageUploader
-
-  before_save do
-    if remove_image == true
-      self.remove_image!
-    end
-  end
 end

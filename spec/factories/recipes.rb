@@ -33,6 +33,10 @@ FactoryBot.define do
         recipe.steps << step
       end
     end
+
+    trait :with_images do
+      image {}
+    end
     
     factory :other_recipe do
       title { 'テストタイトル2' }
