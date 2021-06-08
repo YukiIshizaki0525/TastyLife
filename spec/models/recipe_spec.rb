@@ -36,7 +36,7 @@ RSpec.describe Recipe, type: :model do
       step = Step.new(direction: "ステップ1")
       recipe.save
 
-      expect(recipe.title).to eq('レシピのタイトル')
+      expect(recipe.title).to eq('テストタイトル')
       expect(recipe.description).to eq('テストディスクリプション')
       expect{recipe.ingredients << ingredient}.to change{recipe.ingredients.to_a}.from([]).to([ingredient])
       expect{recipe.steps << step}.to change{recipe.steps.to_a}.from([]).to([step])
@@ -77,6 +77,16 @@ RSpec.describe Recipe, type: :model do
 
         recipe.valid?
         expect(recipe.errors.full_messages.first).to eq("手順を入力してください")
+      end
+
+      it "レシピ画像サイズが3MB以上だと登録不可" do
+        recipe.image = fixture_file_upload("pasta_8MB.jpg")
+        ingredient = Ingredient.new(content: "材料1", quantity: "分量1")
+        step = Step.new(direction: "ステップ1")
+        recipe.save
+
+        recipe.valid?
+        expect(recipe.errors.full_messages.first).to eq("レシピ画像は3MB以下のサイズにしてください")
       end
     end
 
