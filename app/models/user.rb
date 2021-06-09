@@ -59,7 +59,7 @@ class User < ApplicationRecord
   # 相談機能について
   has_many :consultations, dependent: :destroy
   has_many :consultation_comments, dependent: :destroy
-  has_many :consultations_comment_reply, dependent: :destroy
+  # has_many :consultations_comment_reply, dependent: :destroy
 
   # 食材管理について
   has_many :inventories, dependent: :destroy
@@ -73,9 +73,6 @@ class User < ApplicationRecord
   has_many :interests, dependent: :destroy
 
   has_many :interest_consultations, through: :interests, source: :consultation
-
-  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
-  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
   mount_uploader :avatar, AvatarUploader
 
