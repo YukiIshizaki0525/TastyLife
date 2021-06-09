@@ -10,7 +10,7 @@
   <div class="consultation__inner">
     <div class="consultation__info">
         <%= link_to(user_path(id: @consultation.user_id), class:'consultation__user-show-img') do %>
-          <%= image_tag(@consultation.user.avatar.url) %>
+          <%= image_tag @consultation.user.avatar.url  %>
         <% end %>
         <%= link_to @consultation.user.name, user_path(id: @consultation.user_id), class: "consultation__user-name" %>
     </div>

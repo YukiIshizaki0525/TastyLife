@@ -18,9 +18,7 @@
           <div class="tweet__description"><%= recipe.description %></div>
           <div class="tweet__info">
             <div class="tweet__userinfo">
-              <%= link_to(user_path(id: recipe.user_id)) do %>
-                <div class="tweet__useravatar"><%= image_tag recipe.user.avatar.url if recipe.user.avatar? %></div>
-              <% end %>
+              <%= link_to image_tag(recipe.user.avatar.url), user_path(id: recipe.user_id), class: "tweet__useravatar" %>
               <%= link_to recipe.user.name ,user_path(id: recipe.user_id), class:"tweet__username" %>
             </div>
             <div id="recipe_<%= recipe.id %>">

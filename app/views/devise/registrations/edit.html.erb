@@ -15,11 +15,9 @@
               <%= f.file_field :avatar, accept: "image/jpeg,image/gif,image/png", class: "image" %>
             </label>
             <div class="preview login__preview"></div>
-            <% if resource.avatar? %>
-              <div class="login__avatar">
-                <%= image_tag resource.avatar.url, class: "set-img" %>
-              </div>
-            <% end %>
+            <div class="login__avatar">
+              <%= image_tag resource.avatar.url, class: "set-img" %>
+            </div>
           </div>
         </div>
 

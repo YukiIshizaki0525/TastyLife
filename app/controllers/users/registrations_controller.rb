@@ -32,7 +32,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
     def user_params
-      params.require(:user).permit(:name, :email, :avatar, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email :password, :password_confirmation)
     end
     # ゲストユーザーの更新・削除不可
     def forbid_test_user
