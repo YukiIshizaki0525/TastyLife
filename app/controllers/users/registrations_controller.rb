@@ -32,11 +32,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
     def user_params
-      params.require(:user).permit(:name, :email :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
     # ゲストユーザーの更新・削除不可
     def forbid_test_user
-      if resource.email == "guest@example.com"
+      if @user.email == "guest@example.com"
         flash[:alert] = "ゲストユーザーの編集・退会はできません。"
         redirect_to root_path
       end
