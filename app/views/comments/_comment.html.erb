@@ -8,14 +8,8 @@
     <%= link_to image_tag("delete", alt: "delete"), recipe_comment_path(comment.recipe.id, comment.id), class: 'comment__delete', method: :delete, data: { confirm: '削除してよろしいですか？' } %>
   <% end %>
   <div class="comment__info">
-    <%= link_to user_path(id: comment.user_id), class: "comment__img" do %>
-      <% if comment.user.avatar.attached? %>
-        <%= image_tag(comment.user.avatar) %>
-      <% end %>
-    <% end %>
-    
+    <%= link_to image_tag(comment.user.avatar.url), user_path(id: comment.user_id), class: "comment__img" %>
     <%= link_to comment.user.name, user_path(id: comment.user_id), class: "comment__name"%>
-  
     <div class="post-date"><%= comment.created_at.to_s(:datetime_jp) %></div>
   </div>
 

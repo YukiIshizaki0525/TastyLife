@@ -18,9 +18,8 @@
           <%= render partial: "recipes/favorite", locals: { recipe: recipe } %>
         </div>
         <%= link_to user_path(id: recipe.user_id), class:'list__user-img' do %>
-          <%  if recipe.user.avatar? %>
-            <%= image_tag recipe.user.avatar.url %>
-          <% end %>
+        <%= image_tag recipe.user.avatar.url %>
+
         <% end %>
         <%= link_to recipe.user.name, user_path(id: recipe.user_id), class: "list__user-name" %>
       </div>

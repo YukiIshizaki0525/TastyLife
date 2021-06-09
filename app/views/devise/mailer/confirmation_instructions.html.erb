@@ -1,13 +1,13 @@
-  <div><%= @resource.name %>様</div>
+  <div><%= @user.name %>様</div>
   <div>RecipeAppをご利用いただきありがとうございます。</div>
 
-  <% if @resource.confirmed_at != nil %>
+  <% if @user.confirmed_at != nil %>
     <div>会員登録が完了済みです。</div>
     <div>下記リンクからログインをお願いいたします。</div>
     <p>http://localhost:3000</p>
   <% else %>
     <div>以下のリンクからユーザの認証を行ってユーザ登録を完了してください。</div>
-    <div><%= link_to 'ユーザ認証を実行する', confirmation_url(@resource,confirmation_token: @token) %></div>
+    <div><%= link_to 'ユーザ認証を実行する', confirmation_url(@user,confirmation_token: @token) %></div>
   <% end %>
 
 

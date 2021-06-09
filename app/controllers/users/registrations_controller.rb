@@ -3,17 +3,26 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :forbid_test_user, {only: [:edit,:update,:destroy]}
 
+  def new
+    super
+    @user = User.new
+  end
+
   def create
-    super do
-      resource.avatar.url(io: File.open("app/assets/images/default_user.png"), filename: "default_user.png")
-      resource.save
+    @user = User.new(user_params)
+    if @user.save
+      flash[:notice] = "ユーザー認証メールを送信いたしました。認証が完了しましたらログインをお願いいたします。"
+      redirect_to new_user_session_path
+    else
+      flash[:alert] = "ユーザー登録に失敗しました。"
+      render action: :new and return
     end
   end
 
-  def after_inactive_sign_up_path_for(resource)
-    flash[:notice] = "ユーザー認証メールを送信いたしました。認証が完了しましたらログインをお願いいたします。"
-    redirect_to new_user_session_path
-  end
+  # def after_inactive_sign_up_path_for(resource)
+  #   flash[:notice] = "ユーザー認証メールを送信いたしました。認証が完了しましたらログインをお願いいたします。"
+  #   redirect_to new_user_session_path
+  # end
 
   protected
     # アカウント編集後、プロフィール画面に移動する
@@ -22,9 +31,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
 
   private
+    def user_params
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
     # ゲストユーザーの更新・削除不可
     def forbid_test_user
-      if resource.email == "guest@example.com"
+      if @user.email == "guest@example.com"
         flash[:alert] = "ゲストユーザーの編集・退会はできません。"
         redirect_to root_path
       end
