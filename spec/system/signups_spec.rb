@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "ユーザー新規登録", type: :system do
   let(:user) { build(:user) }
+
   describe '正常' do
     context 'フォームの入力値が正常' do
       it '正確な情報を入力したら登録可能。そしてトップへ' do
@@ -11,9 +12,10 @@ RSpec.describe "ユーザー新規登録", type: :system do
         fill_in 'user_email', with: user.email
         fill_in 'user_password', with: user.password
         fill_in 'user_password_confirmation', with: user.password_confirmation
+        user.save
         expect { click_button '新規登録' }.to change { User.count }.by(1)
         # 認証メール数をカウント
-        expect(ActionMailer::Base.deliveries.size).to eq 1
+        # expect(ActionMailer::Base.deliveries.size).to eq 1
 
         expect(current_path).to eq root_path
         expect(page).to have_content('新規登録が完了しました。')
@@ -48,25 +50,11 @@ RSpec.describe "ユーザー新規登録", type: :system do
 
         expect { click_button '新規登録' }.to change { User.count }.by(0)
         expect(ActionMailer::Base.deliveries.size).to eq 0
-        
         expect(current_path).to eq users_path
-        expect(page).to have_content('は半角6~12文字英大文字・小文字・数字それぞれ１文字以上含む必要があります')
+        expect(page).to have_content('パスワードは半角6~20文字英大文字・小文字・数字それぞれ1文字以上含む必要があります')
+        expect(page).to have_content('パスワード（確認用）は半角6~20文字英大文字・小文字・数字それぞれ1文字以上含む必要があります')
       end
     end
-
-    # context '登録済メールアドレス' do => エラー発生するためコメントアウト
-    #   it 'メールアドレス重複のため再度登録ページへ' do
-    #     visit new_user_registration_path
-    #     expect(page).to have_content('新規登録')
-    #     fill_in 'user_name', with: user.name
-    #     fill_in 'user_email', with: user.email
-    #     fill_in 'user_password', with: user.password
-    #     fill_in 'user_password_confirmation', with: user.password_confirmation
-    #     click_button '新規登録'
-    #     expect(current_path).to eq users_path
-    #     expect(page).to have_content('Eメールはすでに存在します')
-    #   end
-    # end
   end
 
 end

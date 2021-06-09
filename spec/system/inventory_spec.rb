@@ -16,14 +16,12 @@ RSpec.describe "食材管理機能", type: :system do
         visit user_path(user)
         click_link "食材"
         click_link "保存中の食材を登録"
-        attach_file "inventory[photo]", "#{Rails.root}/spec/fixtures/calot.jpg", make_visible: true
+        attach_file "inventory[image]", "#{Rails.root}/spec/fixtures/calot.jpg", make_visible: true
         fill_in 'inventory_name', with: inventory.name
         fill_in 'inventory_quantity', with: inventory.quantity
         fill_in 'inventory_expiration_date', with: "002021-05-10"
         fill_in 'inventory_memo', with: inventory.memo
-
         click_button '送信する'
-        # expect { click_button '送信する' }.to change { Inventory.count }.by(1)
 
         expect(page).to have_content("「にんじん」を登録しました。")
         expect(page).to have_selector("img[src$='calot.jpg']")
@@ -75,6 +73,20 @@ RSpec.describe "食材管理機能", type: :system do
         expect(page).to have_content("食材名は20文字以内で入力してください")
         expect(page).to have_content("数量は10文字以内で入力してください")
       end
+
+      it '食材画像は3MB以上の場合、登録不可' do
+        visit user_path(user)
+        click_link "食材"
+        click_link "保存中の食材を登録"
+        attach_file "inventory[image]", "#{Rails.root}/spec/fixtures/pasta_8MB.jpg", make_visible: true
+        fill_in 'inventory_name', with: inventory.name
+        fill_in 'inventory_quantity', with: inventory.quantity
+        fill_in 'inventory_expiration_date', with: "002021-05-10"
+        fill_in 'inventory_memo', with: inventory.memo
+        click_button '送信する'
+
+        expect(page).to have_content("食材画像は3MB以下のサイズにしてください")
+      end
     end
   end
 
@@ -97,15 +109,17 @@ RSpec.describe "食材管理機能", type: :system do
         visit edit_inventory_path(posted_inventory)
         expect(page).to have_field 'inventory_name', with: posted_inventory.name
         expect(page).to have_field 'inventory_quantity', with: posted_inventory.quantity
-        fill_in 'inventory_name', with: "玉ねぎ"
-        fill_in 'inventory_quantity', with: "2個"
+        attach_file "inventory[image]", "#{Rails.root}/spec/fixtures/tomato.jpg", make_visible: true
+        fill_in 'inventory_name', with: "トマト"
+        fill_in 'inventory_quantity', with: "3個"
         fill_in 'inventory_expiration_date', with: "002021-05-08"
         fill_in 'inventory_memo', with: "近くのスーパーで5/3に2個購入"
 
         click_button '送信する'
 
-        expect(page).to have_content("玉ねぎ")
-        expect(page).to have_content("2個")
+        expect(page).to have_content("トマト")
+        expect(page).to have_content("3個")
+        expect(page).to have_selector("img[src$='tomato.jpg']")
 
       end
     end

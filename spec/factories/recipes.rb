@@ -33,6 +33,10 @@ FactoryBot.define do
         recipe.steps << step
       end
     end
+
+    trait :with_images do
+      image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/salad.jpg')) }
+    end
     
     factory :other_recipe do
       title { 'テストタイトル2' }
