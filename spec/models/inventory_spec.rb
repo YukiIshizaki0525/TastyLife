@@ -27,7 +27,6 @@ RSpec.describe Inventory, type: :model do
       expect(inventory.quantity).to eq("3本")
       expect(inventory.expiration_date.to_s).to eq("2021-05-10")
       expect(inventory.memo).to eq("近くのスーパーで5/2に購入")
-
       expect(inventory).to be_valid
     end
 
@@ -62,6 +61,14 @@ RSpec.describe Inventory, type: :model do
 
         expect(inventory.errors[:quantity]).to include("は10文字以内で入力してください")
       end
+    end
+
+    it "食材画像サイズが3MB以上だと登録不可" do
+      inventory.image = fixture_file_upload("pasta_8MB.jpg")
+      inventory.save
+
+      inventory.valid?
+      expect(inventory.errors.full_messages.first).to eq("食材画像は3MB以下のサイズにしてください")
     end
   end
 end
