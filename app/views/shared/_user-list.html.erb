@@ -1,13 +1,13 @@
 <div class="user-list__container">
   <% @users.each do |user| %>
     <%= link_to(user_path(id: user.id), class: "user-list__item") do %>
-    <div class="user-list__img">
-      <%= image_tag user.avatar.url %>
-    </div>
-    <div class="user-list__detail">
-      <p class="user-list__name"><%= user.name %></p>
-      <p class="user-list__count">レシピ投稿数: <%= user.recipes.length %></p>
-    </div>
+      <div class="user-list__img">
+        <%= image_tag user.avatar.url %>
+      </div>
+      <div class="user-list__detail">
+        <p class="user-list__name"><%= user.name %></p>
+        <p class="user-list__count">レシピ投稿数: <%= user.recipes.length %></p>
+      </div>
     <% end %>
   <% end %>
 </div>
