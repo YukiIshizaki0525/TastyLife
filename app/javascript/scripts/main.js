@@ -122,10 +122,6 @@ class imgPreView {
 		this.preview = document.querySelector('.preview')
 		this.set_img = document.querySelector('.set-img')
 
-		if (document.URL.match("users/edit")) {
-			this.img_field = document.querySelector('.login__avatar')
-		}
-
 		if (document.URL.match("inventories/[0-9]+/edit")) {
 			this.img_field = document.querySelector('.inventory__photo')
 		}
