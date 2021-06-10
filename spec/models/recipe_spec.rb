@@ -42,7 +42,6 @@ RSpec.describe Recipe, type: :model do
       expect{recipe.steps << step}.to change{recipe.steps.to_a}.from([]).to([step])
 
       expect(recipe).to be_valid
-
     end
   end
   

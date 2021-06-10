@@ -21,7 +21,12 @@ class ConsultationCommentsController < ApplicationController
 
   def destroy
     comment = ConsultationComment.find_by(id: params[:id], consultation_id: params[:consultation_id]).destroy
-    redirect_to comment.consultation, notice: 'コメントが削除されました'
+    redirect_to comment.consultation
+    if comment.reply_comment.nil?
+      flash[:notice] = '相談へのコメントを削除しました。'
+    else
+      flash[:notice] = '返信したコメントを削除しました。'
+    end
   end
 
   private
