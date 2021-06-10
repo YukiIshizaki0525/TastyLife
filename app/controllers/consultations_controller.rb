@@ -12,15 +12,12 @@ class ConsultationsController < ApplicationController
   end
 
   def show
-    @comments = ConsultationComment.includes(:consultation)
+    @comments = ConsultationComment.includes(:consultation).where(consultation_id: @consultation.id)
 
     if user_signed_in?
       @new_comment = current_user.consultation_comments.new(flash[:comment])
       @comment_reply = current_user.consultation_comments.new(flash[:comment_reply])
     end
-
-    # 閲覧数カウント
-    # impressionist(@consultation, nil, unique: [:ip_address])
   end
 
   def new
