@@ -11,9 +11,9 @@
     <% end %>
     <div class="step__file-input">
       <% if current_page?(controller:"recipes", action: "new") %>
-        <span class="step__file-label">手順の画像：</span><%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+        <span class="step__file-label">手順の画像：</span><%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", id: "step-image" %>
       <% else %>
-        <span class="step__file-label">変更後の画像：</span><%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+        <span class="step__file-label">変更後の画像：</span><%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", id: "step-image" %>
       <% end %>
     </div>
   </div>
