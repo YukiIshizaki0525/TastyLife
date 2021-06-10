@@ -3,11 +3,7 @@
     <% @inventories.each do |inventory| %>
       <div class="inventory__item">
         <div class="inventory__photo">
-          <% if inventory.image? %>
-            <%= image_tag inventory.image.url %>
-          <% else %>
-            <%= image_tag 'no_image' %>
-          <% end %>
+          <%= image_tag inventory.image.url %>
         </div>
         <div class="inventory__info">
           <div class="inventory__name">

@@ -19,6 +19,6 @@ class InventoryImageUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url(*args)
-    "default_user.png"
+    "no_image.png"
   end
 end
