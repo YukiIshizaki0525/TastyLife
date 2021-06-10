@@ -122,11 +122,6 @@ class imgPreView {
 		this.preview = document.querySelector('.preview')
 		this.set_img = document.querySelector('.set-img')
 
-		if (document.URL.match("recipes/[0-9]+/edit")) {
-			this.img_field = document.querySelector('.description__img')
-			this.img_remove_check = document.querySelector('#img_remove')
-		}
-
 		if (document.URL.match("users/edit")) {
 			this.img_field = document.querySelector('.login__avatar')
 		}
@@ -150,12 +145,8 @@ class imgPreView {
 			const img = new Image()
 			img.src = reader.result
 
-			if (this.img_remove_check != undefined) {
-				this.img_remove_check.remove();
-			}
-
 			if (this.set_img != undefined) {
-				this.img_field.remove();
+				this.set_img.remove();
 			}
 
 				this.preview.appendChild(img)

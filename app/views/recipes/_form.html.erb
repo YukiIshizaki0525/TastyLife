@@ -12,11 +12,7 @@
             <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "image" %>
           </label>
           <div class="preview description__preview"></div>
-            <% if @recipe.image? %>
-              <div class="description__img">
-                <%= image_tag recipe.image.url, class: "set-img" %>
-              </div>
-            <% end %>
+            <%= image_tag recipe.image.url, class: "set-img description__img" %>
             <% unless current_page?(controller:"recipes", action: "new") %>
               <div class="description__remove-img-label">
                 <%= f.check_box :remove_image %>
