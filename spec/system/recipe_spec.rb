@@ -22,7 +22,7 @@ RSpec.describe "レシピ機能", type: :system do
         find(".ingredient__quantity").set("分量1")
         click_link "作り方の追加"
         find(".step__input").set("ステップ1")
-        attach_file "step-image", "#{Rails.root}/spec/fixtures/tomato.jpg", make_visible: true
+        attach_file "step-image", "#{Rails.root}/spec/fixtures/tomato.jpg"
 
         expect { click_button '送信する' }.to change { Recipe.count }.by(1)
         expect(page).to have_content("「テストタイトル」のレシピを投稿しました。")
@@ -99,7 +99,7 @@ RSpec.describe "レシピ機能", type: :system do
         expect(page).to have_content("手順を入力してください")
       end
 
-      it 'レシピ画像は3MB以上の時は登録不可' do
+      it 'レシピ画像及び手順画像は3MB以上の時は登録不可' do
         visit new_recipe_path
         attach_file "recipe[image]", "#{Rails.root}/spec/fixtures/pasta_8MB.jpg", make_visible: true
         fill_in 'recipe_title', with: recipe.title
@@ -109,9 +109,11 @@ RSpec.describe "レシピ機能", type: :system do
         find(".ingredient__quantity").set("分量1")
         click_link "作り方の追加"
         find(".step__input").set("ステップ1")
+        attach_file "step-image", "#{Rails.root}/spec/fixtures/pasta_8MB.jpg"
 
         click_button '送信する'
         expect(page).to have_content("レシピ画像は3MB以下のサイズにしてください")
+        expect(page).to have_content("手順の画像は3MB以下のサイズにしてください")
       end
     end
   end
