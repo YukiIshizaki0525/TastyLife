@@ -2,12 +2,10 @@
   <div class="inventory__container">
     <% @inventories.each do |inventory| %>
       <div class="inventory__item">
-        <div class="inventory__photo">
-          <%= image_tag inventory.image.url %>
-        </div>
+        <%= link_to image_tag(inventory.image.url), inventory_path(inventory.id), class: "inventory__photo" %>
         <div class="inventory__info">
           <div class="inventory__name">
-            <%= link_to inventory.name, inventory_path(id: inventory.id) %>
+            <%= link_to inventory.name, inventory_path(inventory.id) %>
           </div>
           <div class="inventory__content">
             <div class="inventory__expiration-date">
