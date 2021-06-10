@@ -8,10 +8,6 @@ class StepImageUploader < CarrierWave::Uploader::Base
     1..3.megabytes
   end
 
-  def size_range
-    1..3.megabytes
-  end
-
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
