@@ -3,13 +3,7 @@
   <div class="inventory__field">
     <p class="inventory__label">食材画像</p>
     <div class="inventory__detail">
-      <div class="inventory__photo" >
-        <% if @inventory.image? %>
-          <%= image_tag @inventory.image.url %>
-        <% else %>
-          <%= image_tag 'no_image' %>
-        <% end %>
-      </div>
+      <%= image_tag @inventory.image.url, class: "inventory__photo" %>
     </div>
   </div>
   <div class="inventory__field">

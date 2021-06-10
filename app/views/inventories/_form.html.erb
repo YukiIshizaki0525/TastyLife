@@ -11,11 +11,9 @@
           <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "image" %>
         </label>
         <div class="preview inventory__preview"></div>
-        <% if inventory.image? %>
-          <div class="inventory__photo">
-            <%= image_tag inventory.image.url, class: "set-img" %>
-          </div>
-        <% end %>
+        <div class="inventory__photo">
+          <%= image_tag inventory.image.url, class: "set-img" %>
+        </div>
       </div>
     </div>
     <div class="inventory__field">

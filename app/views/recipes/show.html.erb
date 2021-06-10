@@ -9,11 +9,7 @@
     <div class="description__inner">
       <div class="description__img-field">
         <div class="description__img">
-          <% if @recipe.image? %>
-            <%= image_tag @recipe.image.url %>
-          <% else %>
-            <%= image_tag 'no_image' %>
-          <% end %>
+          <%= image_tag @recipe.image.url %>
         </div>
       </div>
       <div class="description__texts">
