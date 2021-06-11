@@ -16,7 +16,7 @@ class ConsultationsController < ApplicationController
 
     if user_signed_in?
       @new_comment = current_user.consultation_comments.new(flash[:comment])
-      @comment_reply = current_user.consultation_comments.new(flash[:comment_reply])
+      @comment_reply = current_user.consultation_comments.new
     end
   end
 

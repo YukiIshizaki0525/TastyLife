@@ -11,8 +11,6 @@ class ConsultationCommentsController < ApplicationController
     else
       if comment.reply_comment.nil?
         flash[:comment] = comment
-      else
-        flash[:comment_reply] = ConsultationComment.find(comment.reply_comment)
       end
       flash[:error_messages] = comment.errors.full_messages
       redirect_back fallback_location: comment.consultation

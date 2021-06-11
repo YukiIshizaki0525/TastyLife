@@ -1,4 +1,4 @@
-<%= form_with(model: [@consultation, @comment_reply], class: "comment__replyBx") do |f| %>
+<%= form_with(model: [@consultation, @comment_reply], class: "comment__replyBx", id: "#{comment.reply_comment}") do |f| %>
   <%= f.text_field :content , placeholder: "このコメントに返信" %>
   <%= f.hidden_field :reply_comment, value: comment.id %>
   <%= f.hidden_field :consultation_id, value: @consultation.id %>
