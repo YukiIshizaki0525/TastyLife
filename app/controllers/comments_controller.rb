@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
     comment = Comment.new(comment_params)
     if comment.save
       if comment.reply_comment.nil?
-        flash[:notice] = '相談へのコメントを投稿しました。'
+        flash[:notice] = 'レシピへのコメントを投稿しました。'
       else
         flash[:notice] = 'コメントに返信しました。'
       end
@@ -11,8 +11,6 @@ class CommentsController < ApplicationController
     else
       if comment.reply_comment.nil?
         flash[:comment] = comment
-      else
-        flash[:comment_reply] = comment
       end
 
       flash[:error_messages] = comment.errors.full_messages
