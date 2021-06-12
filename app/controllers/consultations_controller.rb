@@ -8,11 +8,11 @@ class ConsultationsController < ApplicationController
     end
 
     @q = Consultation.ransack(params[:q])
-    @consultations = @q.result.includes(:interests).page(params[:page]).per(6)
+    @consultations = @q.result.includes([:user], [:interests]).page(params[:page]).per(6)
   end
 
   def show
-    @comments = ConsultationComment.includes(:consultation).where(consultation_id: @consultation.id)
+    @comments = ConsultationComment.includes([:user], [:consultation]).where(consultation_id: @consultation.id)
 
     if user_signed_in?
       @new_comment = current_user.consultation_comments.new(flash[:comment])

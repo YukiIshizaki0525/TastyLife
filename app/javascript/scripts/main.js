@@ -122,7 +122,7 @@ class imgPreView {
 		this.element = document.querySelector('.image')
 		this.preview = document.querySelector('.preview')
 		this.set_img = document.querySelector('.set-img')
-		
+
 		this.preview.style.display ="none";
 		this._preview();
 	}
