@@ -9,6 +9,7 @@ window.addEventListener('turbolinks:load', function () {
 	if (document.URL.match("recipes/new") ||
 		document.URL.match("recipes/[0-9]+/edit") ||
 		document.URL.match("users/edit") ||
+		document.URL.match("/users") ||
 		document.URL.match("inventories/[0-9]+/edit") ||
 		document.URL.match("inventories/new")
 	) {
