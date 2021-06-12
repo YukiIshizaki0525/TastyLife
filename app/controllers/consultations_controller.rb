@@ -8,7 +8,7 @@ class ConsultationsController < ApplicationController
     end
 
     @q = Consultation.ransack(params[:q])
-    @consultations = @q.result.includes(:interests).page(params[:page]).per(6)
+    @consultations = @q.result.includes([:user], [:interests]).page(params[:page]).per(6)
   end
 
   def show
