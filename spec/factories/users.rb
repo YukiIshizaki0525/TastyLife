@@ -53,13 +53,13 @@ FactoryBot.define do
   #   confirmed_at { Date.today }
   # end
   factory :user do
-    name {"Alice"}
-    sequence(:email) { |n| "test#{n}@example.com" }
-    # email { "alicetester@example.com"}
+    name { "Alice" }
+    # sequence(:email) { |n| "test#{n}@example.com" }
+    email { "Alice@example.com"}
     avatar { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/avatar.jpg')) }
     password {"v4xqUvAXhK"}
     password_confirmation {"v4xqUvAXhK"}
-    confirmed_at { Time.zone.now }
+    confirmed_at { Date.today }
 
 
   # 他人
@@ -70,11 +70,6 @@ FactoryBot.define do
       password { "C2e6aNEY" }
       password_confirmation { "C2e6aNEY" }
       confirmed_at { Date.today }
-
-      #プロフィール画像を設定
-      # after(:build) do |other_user|
-      #   other_user.avatar.(io: File.open('spec/fixtures/other_user_avatar.jpg'), filename: 'other_user_avatar.jpg', content_type: 'image/jpg')
-      # end
     end
   end
 end

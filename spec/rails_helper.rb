@@ -25,7 +25,6 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   #sign_inヘルパーを利用できるようにする
   config.include Devise::Test::IntegrationHelpers, type: :system
-  config.include Devise::Test::IntegrationHelpers, type: :request
 
   #FactoryBotもinclude
   config.include FactoryBot::Syntax::Methods
