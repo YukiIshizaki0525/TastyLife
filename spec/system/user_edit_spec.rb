@@ -16,6 +16,8 @@ RSpec.describe "ユーザー編集", type: :system do
         expect(page).to have_selector("img[src$='avatar.jpg']")
 
         fill_in 'user_name', with: 'Bob'
+        fill_in 'user_password', with: "Sample123"
+        fill_in 'user_password_confirmation', with: "Sample123"
         attach_file 'user_avatar', "#{Rails.root}/spec/fixtures/change_after_avatar.jpg", make_visible: true
 
         click_button '更新'
@@ -45,6 +47,14 @@ RSpec.describe "ユーザー編集", type: :system do
         expect(page).to have_content('Eメールを入力してください')
       end
 
+      it 'メールアドレスが不正な値であるため、再度ユーザー編集ページへ' do
+        fill_in 'user_email', with: "Bob@example"
+        click_button '更新'
+
+        expect(current_path).to eq users_path
+        expect(page).to have_content('Eメールは不正な値です')
+      end
+
       it 'パスワードが一致しないため、再度ユーザー編集ページへ' do
         fill_in 'user_password', with: "Sample"
         fill_in 'user_password_confirmation', with: "Sample2"
@@ -55,7 +65,11 @@ RSpec.describe "ユーザー編集", type: :system do
       end
 
       it 'プロフィール画像が3MB以上の場合は更新不可' do
+        attach_file "user_avatar", "#{Rails.root}/spec/fixtures/pasta_8MB.jpg", make_visible: true
+        click_button '更新'
 
+        expect(current_path).to eq users_path
+        expect(page).to have_content("プロフィール画像は3MB以下のサイズにしてください")
       end
     end
   end

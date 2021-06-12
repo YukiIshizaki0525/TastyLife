@@ -19,6 +19,9 @@
             </div>
           </div>
         </div>
+        <% if @user.errors.include?(:avatar) %>
+          <p class="login__form-error"><%= @user.errors.full_messages_for(:avatar).first %>
+        <% end %>
 
         <div class="login__inputBx">
           <%= f.label :name, {class: 'login__label'} %>
