@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
   def consultations
     @title = "Consultation"
-    @consultations = @user.consultations.includes([:consultation_comments], [:interests]).page(params[:page]).per(3)
+    @consultations = @user.consultations.includes(:interests).page(params[:page]).per(3)
     render 'show_consultation'
   end
 
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
   def interests
     @title = "Interest"
-    @consultations = @user.interest_consultations.includes([:interests]).page(params[:page]).per(6)
+    @consultations = @user.interest_consultations.includes([:user], [:interests]).page(params[:page]).per(6)
     render 'show_interest'
   end
 
