@@ -19,11 +19,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  # def after_inactive_sign_up_path_for(resource)
-  #   flash[:notice] = "ユーザー認証メールを送信いたしました。認証が完了しましたらログインをお願いいたします。"
-  #   redirect_to new_user_session_path
-  # end
-
   protected
     # アカウント編集後、プロフィール画面に移動する
     def after_update_path_for(resource)
