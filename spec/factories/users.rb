@@ -55,7 +55,7 @@ FactoryBot.define do
   factory :user do
     name { "Alice" }
     # sequence(:email) { |n| "test#{n}@example.com" }
-    email { "Alice@example.com"}
+    email { "Alice@example.com" }
     avatar { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/avatar.jpg')) }
     password {"v4xqUvAXhK"}
     password_confirmation {"v4xqUvAXhK"}

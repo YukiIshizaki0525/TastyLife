@@ -1,14 +1,24 @@
   <div><%= @user.name %>様</div>
   <div>RecipeAppをご利用いただきありがとうございます。</div>
 
-  <% if @user.confirmed_at != nil %>
-    <div>会員登録が完了済みです。</div>
-    <div>下記リンクからログインをお願いいたします。</div>
-    <p>http://localhost:3000</p>
-  <% else %>
-    <div>以下のリンクからユーザの認証を行ってユーザ登録を完了してください。</div>
+  <% if @user.try(:unconfirmed_email?) %>
+    <div>以下のリンクからユーザの認証を行ってメールアドレス変更手続きを完了してください。</div>
     <div><%= link_to 'ユーザ認証を実行する', confirmation_url(@user,confirmation_token: @token) %></div>
+  <% else %>
+    <% if @user.confirmed_at != nil %>
+      <div>会員登録が完了済みです。</div>
+      <div>下記リンクからログインをお願いいたします。</div>
+      <p>http://localhost:3000</p>
+    <% else %>
+      <div>以下のリンクからユーザの認証を行ってユーザ登録を完了してください。</div>
+      <div><%= link_to 'ユーザ認証を実行する', confirmation_url(@user,confirmation_token: @token) %></div>
+      <div> このURLの有効期限は24時間です。</div>
+    <% end %>
   <% end %>
+
+
+
+
 
 
 

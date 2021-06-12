@@ -1,4 +1,5 @@
 <section class="user">
+  <%= render 'layouts/notifications' %>
   <%= render 'show_user' %>
 </section>
 
@@ -6,7 +7,6 @@
   <div class="subheader">
     <div class="main-title">Recipe</div>
   </div>
-  <%= render 'layouts/notifications' %>
   <% if @recipes.any? %>
     <%= render 'shared/recipe_list' %>
   <% else %>

@@ -5,11 +5,6 @@ RSpec.describe "ユーザーログイン", type: :system do
 
   describe 'ユーザーログイン' do
     context 'フォームの入力値が正常' do
-      before do
-        user.confirmed_at = Time.zone.now
-        user.save
-      end
-
       it '正確な情報を入力したらログイン可能。そしてトップへ' do
         visit new_user_session_path
         expect(page).to have_content('ログイン')
