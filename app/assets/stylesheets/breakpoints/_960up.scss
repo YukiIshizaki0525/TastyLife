@@ -48,6 +48,14 @@
 }
 // モバイルメニューここまで
 
+// button.scssここから
+.following,
+.followed,
+.submenu {
+  width: 150px;
+}
+// button.scssここまで
+
 // recipe-list.scssここから
 .list {
   &__container {
@@ -78,7 +86,7 @@
 
 // consultation.scssここまで
 
-// レシピ詳細ここから
+// recipe.scssここから
 .description {
   &__img,
   &__preview {
@@ -92,7 +100,9 @@
     width: 60px;
   }
 }
+// recipe.scssここまで
 
+// recipe.scssここから
 .step {
   &__img {
     height: 180px;
@@ -103,9 +113,9 @@
     width: 70%;
   }
 }
-// レシピ詳細ここまで
+// recipe.scssここまで
 
-// ユーザー詳細ページここから
+// user.scssここから
 .user {
   &__img {
     height: 150px;
@@ -113,17 +123,9 @@
   }
 }
 
-// ユーザー詳細ページここまで
+// user.scssここまで
 
-// 投稿・一覧ボタンここから
-.following,
-.followed,
-.submenu {
-  width: 150px;
-}
-// 投稿・一覧ボタンここまで
-
-// コメント表示・フォームここから
+// comment.scssここから
 .comment {
   &__texts,
   &__form {
@@ -134,9 +136,9 @@
     padding-left: 15px;
   }
 }
-// コメント表示・フォームここまで
+// comment.scssここまで
 
-// タグについてはここから
+// tag.scssここから
 .tag {
   &__container {
     &::before {
@@ -156,9 +158,9 @@
     flex-basis: 21%;
   }
 }
-// タグについてはここまで
+// tag.scssここまで
 
-// 保存中の食材についてここから
+// inventories.scssここから
 .inventory {
   &__container {
     &::after {
@@ -171,4 +173,4 @@
     flex-basis: 30%;
   }
 }
-// 保存中の食材についてここまで
+// inventories.scssここまで
