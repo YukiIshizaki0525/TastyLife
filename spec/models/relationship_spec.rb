@@ -20,7 +20,6 @@ RSpec.describe Relationship, type: :model do
   let(:user) { create(:user) }
   let(:other_user) { create(:other_user) }
   let(:active) { user.active_relationships.build(followed_id: other_user.id) }
-  let(:users) { create_list(:other_user, 30) }
   subject { active }
 
   describe "follow/followedメソッドについて" do

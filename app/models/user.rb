@@ -101,6 +101,7 @@ class User < ApplicationRecord
   #                           size: { less_than: 1.megabytes,
   #                                   message: "は1MB未満である必要があります" }
 
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable
