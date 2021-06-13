@@ -1,56 +1,66 @@
 require 'rails_helper'
 
 RSpec.feature "Following", type: :system do
-  include_context "setup"
-
   let(:user){ create(:user) }
   let(:other_user){ create(:other_user) }
-  # let(:users) { create_list(:other_user, 30) }
 
   describe "フォロー機能について" do
-    before do
-      sign_in user
+    context "フォローする場合" do
+      let(:follow){ user.follow(other_user) }
 
-      # users.each do |u|
-      #   user.follow(u) #=> 自分が30人にフォローする
-      #   u.follow(user) #=> 他人の30人からフォローされる
-      # end
-
-      # user.follow(other_user) #=> 自分が他人(1人)をにフォローする
-      # other_user.follow(user) #=> 他人が自分(1人)をフォローする
-    end
-
-    # it { expect(user.following.count).to eq 31}
-    # it { expect(other_user.following.count).to eq 1 }
-    # it { expect(user.followers.count).to eq 31 }
-
-    it "ユーザー詳細ページからフォロー可能" do
-      visit user_path(other_user)
-      click_button "Follow"
-      expect(user.following.count).to eq 1
-
-      visit following_user_path(user)
-      expect(page).to have_content("Aliceさんがフォロー中")
-      expect(page).to have_content("#{other_user.name}")
-    end
-
-    it
-
-    it "フォロー一覧ページにフォロー中の方の名前が表示される" do
-        before do
-          sign_in user
-        end
-          it { expect(page).to have_text("#{@title}") }
-          it { expect(page).to have_selector 'p', text: user.following.first.name }
-    end
-
-    it "フォロワー一覧ページにフォローされている方の名前が表示される" do
       before do
         sign_in user
-        visit user_path(user)
-        click_link "followers"
       end
-      it { expect(page).to have_selector 'p', text: user.followers.first.name }
+
+      it "ユーザー詳細ページからフォロー可能、フォロー一覧にフォローしたユーザーが追加される" do
+        visit user_path(other_user)
+        click_button "Follow"
+
+        visit following_user_path(user)
+        expect(user.following.count).to eq 1
+
+        expect(page).to have_content("Aliceさんがフォロー中")
+        expect(page).to have_content("#{other_user.name}")
+      end
+
+      it "ユーザー詳細ページからフォロー解除可能、フォロー一覧からフォローしたユーザーが削除される" do
+        follow
+        visit user_path(other_user)
+        click_button "Unfollow"
+
+        visit following_user_path(user)
+        expect(user.following.count).to eq 0
+
+        expect(page).to have_content("Aliceさんがフォロー中")
+        expect(page).to have_content("まだ誰もフォローしていません。")
+        expect(page).to_not have_content("#{other_user.name}")
+      end
+    end
+
+    context "フォローされる場合" do
+      let!(:followed){ other_user.follow(user)}
+
+      it "フォロワー一覧ページにフォローしたユーザーが追加される" do
+        sign_in user
+        visit followers_user_path(user)
+        expect(user.followers.count).to eq 1
+
+        expect(page).to have_content("Aliceさんのフォロワー")
+        expect(page).to have_content("#{other_user.name}")
+      end
+
+      it "フォロワー一覧ページにフォローしたユーザーが削除される" do
+        sign_in other_user
+        visit user_path(user)
+        click_button "Unfollow"
+
+        visit followers_user_path(user)
+        expect(user.followers.count).to eq 0
+
+        expect(page).to have_content("Aliceさんのフォロワー")
+        expect(page).to have_content("まだ誰からもフォローされていません。")
+        expect(page).to_not have_content("#{other_user.name}")
+      end
     end
   end
 end
