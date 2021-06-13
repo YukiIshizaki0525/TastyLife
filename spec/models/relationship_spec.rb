@@ -22,19 +22,15 @@ RSpec.describe Relationship, type: :model do
   let(:active) { user.active_relationships.build(followed_id: other_user.id) }
   subject { active }
 
-  it { should be_valid }
-
-  describe "follow/followedメソッドの正当性" do
+  describe "follow/followedメソッドについて" do
     it { should respond_to(:follower) }
     it { should respond_to(:followed) }
     
-    # フォロワーを返すメソッド
-    it "follower method return followers" do
+    it "フォロワーを返すメソッドが有効であること" do
       expect(active.follower). to eq user
     end
 
-    # フォローしているユーザーを返すメソッド
-    it "followed methos return following-users" do
+    it "フォローしているユーザーを返すメソッドが有効であること" do
       expect(active.followed). to eq other_user
     end
   end
