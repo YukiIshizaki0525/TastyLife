@@ -25,15 +25,14 @@
 
   &__description {
     @extend .font-sm;
-    @extend .mb-sm;
     color: $--c-dark-gray;
   }
 
   &__img {
-    display: block;
-    height: 150px;
-    overflow: hidden;
     margin-bottom: 5px;
+    display: block;
+    height: 180px;
+    overflow: hidden;
     border-radius: 4px;
 
     & > img {
@@ -54,6 +53,13 @@
     justify-content: flex-end;
     @extend .font-sm;
     @extend .mb-sm;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  &__detail {
+    width: 90%;
+    margin: 0 auto;
   }
 
   &__user-img {
