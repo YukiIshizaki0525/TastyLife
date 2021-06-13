@@ -1,3 +1,4 @@
+// base.scssここから
 .font-lr {
   font-size: 24px;
 }
@@ -11,6 +12,12 @@
   flex-wrap: wrap;
 }
 
+.input {
+  padding: 15px;
+}
+// base.scssここまで
+
+// top-page.scssここから
 .introduction {
   &__inner {
     padding: 50px;
@@ -25,6 +32,7 @@
     align-items: flex-end;
   }
 }
+// top-page.scssここまで
 
 // recipe-list.scssここから
 .list {
@@ -62,7 +70,7 @@
 }
 // recipe-tweet.scssここまで
 
-// レシピ一覧ここから
+// user.scssここから
 .user-list {
   &__container {
     &::after {
@@ -79,7 +87,30 @@
     height: 200px;
   }
 }
-// レシピ一覧ここまで
+
+.user {
+  flex-basis: 20%;
+
+  &__img {
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+  }
+
+  &__inner {
+    justify-content: space-between;
+  }
+
+  &__info {
+    flex-basis: 42%;
+  }
+
+  &__submenu {
+    flex-basis: 42%;
+  }
+}
+
+// user.scssここまで
 
 // consultation.scssここから
 .consultation {
@@ -89,14 +120,16 @@
 }
 // consultation.scssここまで
 
-// レシピ詳細ここから
+// recipe.scssここから
 .description {
   &__texts,
   &__img-field {
     flex-basis: 47%;
   }
 }
+// recipe.scssここまで
 
+// steps.scssここから
 .step {
   &__inner {
     padding: 18px 0;
@@ -126,43 +159,17 @@
     margin: 0;
   }
 }
-// レシピ詳細ここまで
+// steps.scssここまで
 
-// ユーザー詳細ページここから
-.user {
-  flex-basis: 20%;
-
-  &__img {
-    height: 100px;
-    width: 100px;
-    border-radius: 100%;
-  }
-
-  &__inner {
-    justify-content: space-between;
-  }
-
-  &__info {
-    flex-basis: 42%;
-  }
-
-  &__submenu {
-    flex-basis: 42%;
-  }
-}
-
-// ユーザー詳細ページここまで
-
-// 投稿・一覧ボタンここから
+// button.scssここから
 .following,
 .followed,
 .submenu {
   width: 130px;
 }
+// button.scssここまで
 
-// 投稿・一覧ボタンここまで
-
-// ログインページここから
+// login.scssここから
 .login {
   position: relative;
   height: 100vh;
@@ -189,9 +196,9 @@
     background-color: transparent;
   }
 }
-// ログインページここまで
+// login.scssここまで
 
-// コメント表示・フォームここから
+// comment.scssここから
 .comment {
   &__inner {
     justify-content: space-between;
@@ -202,9 +209,9 @@
     flex-basis: 47%;
   }
 }
-// コメント表示・フォームここから
+// comment.scssここから
 
-// タグについてはここから
+// tag.scssここから
 .tag {
   &__container {
     &::after {
@@ -218,8 +225,9 @@
   }
 }
 
-// タグについてはここまで
+// tag.scssここまで
 
+// consultation.scssここから
 .consultation {
   &__user-show-img {
     width: 100px;
@@ -236,16 +244,17 @@
     }
   }
 }
+// consultation.scssここまで
 
-// 保存中の食材についてここから
+// inventories.scssここから
 .inventory {
   &__item {
     flex-basis: 47%;
   }
 }
-// 保存中の食材についてここまで
+// inventories.scssここまで
 
-// ページネーションここから
+// pagination.scssここから
 .pagination {
   &>.page,
   .first,
@@ -258,8 +267,4 @@
     line-height: 50px;
   }
 }
-// ページネーションここまで
-
-.input {
-  padding: 15px;
-}
+// pagination.scssここまで

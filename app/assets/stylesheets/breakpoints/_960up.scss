@@ -1,4 +1,19 @@
-// PC表示時のフォントサイズ
+.header {
+  &__nav {
+    display: block;
+  }
+}
+
+// mobile-menu.scssここから
+.mobile-menu {
+  &__btn {
+    display: none;
+  }
+}
+// mobile-menu.scssここまで
+
+
+// base.scssここから
 .font-sm {
   font-size: 16px;
 }
@@ -31,22 +46,7 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
-
-// ヘッダーここから
-.header {
-  &__nav {
-    display: block;
-  }
-}
-// ヘッダーここまで
-
-// モバイルメニューここから
-.mobile-menu {
-  &__btn {
-    display: none;
-  }
-}
-// モバイルメニューここまで
+// base.scssここまで
 
 // button.scssここから
 .following,
