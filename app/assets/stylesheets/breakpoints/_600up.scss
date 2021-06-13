@@ -26,7 +26,7 @@
   }
 }
 
-// トップページここから
+// recipe-list.scssここから
 .list {
   &__container {
     // 1行の要素を左右に寄せる。flexの親要素に指定。
@@ -46,7 +46,9 @@
     height: 200px;
   }
 }
+// recipe-list.scssここまで
 
+// recipe-tweet.scssここから
 .tweet {
   &__img {
     height: 125px;
@@ -58,7 +60,8 @@
     color: $--c-dark-gray;
   }
 }
-// トップページここまで
+// recipe-tweet.scssここまで
+
 // レシピ一覧ここから
 .user-list {
   &__container {
@@ -77,6 +80,14 @@
   }
 }
 // レシピ一覧ここまで
+
+// consultation.scssここから
+.consultation {
+  &__status {
+    flex-basis: 20%;
+  }
+}
+// consultation.scssここまで
 
 // レシピ詳細ここから
 .description {

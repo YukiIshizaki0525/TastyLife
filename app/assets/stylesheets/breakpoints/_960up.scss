@@ -48,7 +48,7 @@
 }
 // モバイルメニューここまで
 
-// トップページここから
+// recipe-list.scssここから
 .list {
   &__container {
     justify-content: space-between;
@@ -58,14 +58,25 @@
     height: 290px;
   }
 }
+// recipe-list.scssここまで
 
+// recipe-tweet.scssここから
 .tweet {
   &__img {
     height: 150px;
     width: 150px;
   }
 }
-// トップページここまで
+// recipe-tweet.scssここまで
+
+// consultation.scssここから
+.consultation {
+  &__status {
+    flex-basis: 16%;
+  }
+}
+
+// consultation.scssここまで
 
 // レシピ詳細ここから
 .description {
