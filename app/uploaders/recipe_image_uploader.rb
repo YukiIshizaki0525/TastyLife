@@ -2,7 +2,7 @@ class RecipeImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  # process resize_to_fit: [400, 200]
+  # process resize_to_fit: [300, 300]
 
   def size_range
     1..3.megabytes
@@ -20,6 +20,6 @@ class RecipeImageUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url(*args)
-    "no-image.png"
+    "no_image.png"
   end
 end

@@ -81,4 +81,18 @@
       text-decoration: underline;
     }
   }
+
+  &__comment {
+    @extend .font-md;
+    display: block;
+    color: $--c-black !important;
+    margin-right: 30px;
+  }
+
+  &__reaction {
+    @extend .mb-sm;
+    display: flex;
+    align-items: center;
+    float: right;
+  }
 }

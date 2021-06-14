@@ -20,8 +20,14 @@
                 <%= image_tag recipe.image.url %>
               </div>
             <% end %>
-          <div id="recipe_<%= recipe.id %>">
-            <%= render partial: "recipes/favorite", locals: { recipe: recipe } %>
+          <div class="tweet__reaction">
+            <%= link_to recipe_path(id: recipe.id), class: "tweet__comment" do %>
+              <i class="far fa-comment"></i>
+              <span><%= recipe.comments.length %></span>
+            <% end %>
+            <div id="recipe_<%= recipe.id %>" >
+              <%= render partial: "recipes/favorite", locals: { recipe: recipe } %>
+            </div>
           </div>
         </div>
       </div>
