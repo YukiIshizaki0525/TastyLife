@@ -8,23 +8,29 @@
     text-decoration: none !important;
   }
   &__img {
-    height: 100px;
-    width: 100px;
+    @extend .mb-sm;
+    height: 130px;
     overflow: hidden;
     margin-bottom: 5px;
     border-radius: 4px;
-
-    &:hover {
-      background-color: $--bg-light-gray;
-      opacity: 0.75;
-    }
 
     & > img {
       object-fit: cover;
       height: 100%;
       width: 100%;
     }
+
+    &:hover {
+      background-color: $--bg-light-gray;
+      opacity: 0.75;
+    }
   }
+
+  &__user-avatar {
+    display: flex;
+    justify-content: space-between;
+  }
+
 
   &__detail {
     margin-left: 10.5px;
@@ -33,6 +39,11 @@
     & div > .favorite {
       display: inline-block
     }
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between
   }
 
   &__title {
@@ -47,21 +58,13 @@
     @extend .mb-sm;
   }
 
-  &__info {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &__userinfo {
-    display: flex;
-  }
 
   &__useravatar {
-    height: 25px;
-    width: 25px;
+    height: 30px;
+    width: 30px;
     overflow: hidden;
-    margin-right: 10px;
-
+    border-radius: 50%;
+    margin-right: 5px;
     & > img {
       object-fit: cover;
       height: 100%;
@@ -70,6 +73,7 @@
   }
 
   &__username {
+    @extend .mb-sm;
     margin-right: 30px;
     color: $--c-brown !important;
 

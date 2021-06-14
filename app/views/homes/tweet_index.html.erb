@@ -5,19 +5,23 @@
   <div class="tweet__container">
     <% @tweet.each do |recipe| %>
       <div class="tweet__item">
-        <%= link_to image_tag(recipe.image.url), recipe_path(recipe), class: 'tweet__img' %>
+        <div class="tweet__user-avatar">
+          <%= link_to image_tag(recipe.user.avatar.url), user_path(id: recipe.user_id), class: "tweet__useravatar" %>
+        </div>
         <div class="tweet__detail">
-          <span class="timestamp"><%= recipe.created_at.to_s(:datetime_jp) %></span><br>
+          <div class="tweet__info">
+            <%= link_to recipe.user.name ,user_path(id: recipe.user_id), class:"tweet__username" %>
+            <span class="timestamp"><%= recipe.created_at.to_s(:short) %></span>
+          </div>
           <%= link_to recipe.title, recipe_path(id: recipe.id), class: 'tweet__title' %>
           <div class="tweet__description"><%= recipe.description %></div>
-          <div class="tweet__info">
-            <div class="tweet__userinfo">
-              <%= link_to image_tag(recipe.user.avatar.url), user_path(id: recipe.user_id), class: "tweet__useravatar" %>
-              <%= link_to recipe.user.name ,user_path(id: recipe.user_id), class:"tweet__username" %>
-            </div>
-            <div id="recipe_<%= recipe.id %>">
-              <%= render partial: "recipes/favorite", locals: { recipe: recipe } %>
-            </div>
+            <%= link_to recipe_path(recipe) do %>
+              <div class="tweet__img">
+                <%= image_tag recipe.image.url %>
+              </div>
+            <% end %>
+          <div id="recipe_<%= recipe.id %>">
+            <%= render partial: "recipes/favorite", locals: { recipe: recipe } %>
           </div>
         </div>
       </div>
