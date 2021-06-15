@@ -59,13 +59,22 @@
 // recipe-tweet.scssここから
 .tweet {
   &__img {
-    height: 125px;
-    width: 125px;
+    height: 270px;
+    width: 500px;
   }
 
   &__description {
     display: block;
     color: $--c-dark-gray;
+  }
+
+  &__detail {
+    flex-basis: 90%;
+  }
+
+  &__user-avatar {
+    height: 48px;
+    width: 48px;
   }
 }
 // recipe-tweet.scssここまで

@@ -3,10 +3,12 @@
     @extend .content-width;
     @extend .mb-sm;
     display: flex;
+    justify-content: space-between;
     border-bottom: 1px solid $--c-light-gray;
     border-radius: 4px;
     text-decoration: none !important;
   }
+
   &__img {
     @extend .mb-sm;
     height: 130px;
@@ -26,19 +28,8 @@
     }
   }
 
-  &__user-avatar {
-    display: flex;
-    justify-content: space-between;
-  }
-
-
   &__detail {
-    margin-left: 10.5px;
-    position: relative;
-
-    & div > .favorite {
-      display: inline-block
-    }
+    flex-basis: 83%;
   }
 
   &__info {
@@ -59,12 +50,13 @@
   }
 
 
-  &__useravatar {
-    height: 30px;
-    width: 30px;
+  &__user-avatar {
+    display: block;
+    height: 40px;
+    width: 40px;
     overflow: hidden;
     border-radius: 50%;
-    margin-right: 5px;
+
     & > img {
       object-fit: cover;
       height: 100%;
@@ -72,7 +64,7 @@
     }
   }
 
-  &__username {
+  &__user-name {
     @extend .mb-sm;
     margin-right: 30px;
     color: $--c-brown !important;

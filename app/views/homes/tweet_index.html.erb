@@ -5,12 +5,10 @@
   <div class="tweet__container">
     <% @tweet.each do |recipe| %>
       <div class="tweet__item">
-        <div class="tweet__user-avatar">
-          <%= link_to image_tag(recipe.user.avatar.url), user_path(id: recipe.user_id), class: "tweet__useravatar" %>
-        </div>
+        <%= link_to image_tag(recipe.user.avatar.url), user_path(id: recipe.user_id), class:"tweet__user-avatar" %>
         <div class="tweet__detail">
           <div class="tweet__info">
-            <%= link_to recipe.user.name ,user_path(id: recipe.user_id), class:"tweet__username" %>
+            <%= link_to recipe.user.name ,user_path(id: recipe.user_id), class:"tweet__user-name" %>
             <span class="timestamp"><%= recipe.created_at.to_s(:short) %></span>
           </div>
           <%= link_to recipe.title, recipe_path(id: recipe.id), class: 'tweet__title' %>
