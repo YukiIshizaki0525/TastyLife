@@ -64,18 +64,18 @@
   &__inner {
     @extend .flex;
     @extend .mb-sm;
-    align-items: center;
+    align-items: flex-start;
     padding-top: 10px;
   }
 
   &__info {
     display: flex;
     flex-direction: column;
-    align-self: center;
+    margin: 0 auto;
   }
 
   &__img {
-    @extend .mr-sm;
+    @extend .mb-sm;
     height: 75px;
     width: 75px;
     overflow: hidden;
