@@ -1,5 +1,8 @@
 // 関連タグについてここから
 .tag {
+  & >.cooking-title {
+    width: 100%;
+  }
   @extend .mb-sm;
   @extend .content-width;
   &__container {

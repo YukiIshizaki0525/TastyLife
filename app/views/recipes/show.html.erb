@@ -73,7 +73,11 @@
             <p class="step__number"></p>
             <p class="step__description"><%= step.direction %></p>
           </div>
-          <div class="step__img"><%= image_tag step.image.url if step.image? %></div>
+          <% if step.image? %>
+            <div class="step__img">
+              <%= image_tag step.image.url %>
+            </div>
+          <% end %>
         </div>
       </div>
     <% end %>

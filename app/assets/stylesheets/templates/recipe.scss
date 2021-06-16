@@ -57,18 +57,25 @@
     }
   }
   &__texts {
-    & > .cooking-title {
-      width: 100%;
+    & div > .favorite {
+      @extend .mb-sm;
     }
   }
 }
 
 .recipeuser {
   @extend .mb-sm;
+  & >.cooking-title {
+    width: 100%;
+  }
 
   &__inner {
     display: flex;
     align-items: center;
+
+    & > .btn {
+      margin-left: 30px;
+    }
   }
 
   &__img {
