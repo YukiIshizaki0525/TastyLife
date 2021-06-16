@@ -10,7 +10,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    @comments = Comment.where(recipe_id: @recipe.id)
+    @comments = Comment.where(recipe_id: @recipe.id).includes([:user], [:recipe])
 
     if user_signed_in?
       @comment = current_user.comments.new(flash[:comment])

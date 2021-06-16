@@ -1,5 +1,6 @@
 .list {
   @extend .mb-lg;
+
   & .tag {
     width: 100%
   }
@@ -25,6 +26,7 @@
 
   &__description {
     @extend .font-sm;
+    @extend .mb-sm;
     color: $--c-dark-gray;
   }
 
@@ -62,6 +64,14 @@
     margin: 0 auto;
   }
 
+  &__comment {
+    @extend .font-md;
+    display: block;
+    color: $--c-black !important;
+    text-decoration: none !important;
+    margin-right: 30px;
+  }
+
   &__user-img {
     overflow: hidden;
     height: 30px;
@@ -75,7 +85,6 @@
       width: 100%;
     }
   }
-
 
   &__user-name {
     align-items: flex-end;
