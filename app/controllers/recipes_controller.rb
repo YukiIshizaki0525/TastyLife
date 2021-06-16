@@ -66,7 +66,7 @@ class RecipesController < ApplicationController
   
   def tag_search
     @tag = Tag.find(params[:tag_id])
-    @recipes = @tag.recipes
+    @recipes = @tag.recipes.includes([:user], [:favorites])
   end
   
   private

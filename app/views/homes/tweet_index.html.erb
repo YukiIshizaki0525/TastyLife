@@ -11,19 +11,23 @@
             <%= link_to recipe.user.name ,user_path(id: recipe.user_id), class:"tweet__user-name" %>
             <span class="timestamp"><%= recipe.created_at.to_s(:short) %></span>
           </div>
-          <div class="tweet__content">
-            <div>
-              <%= link_to recipe.title, recipe_path(id: recipe.id), class: 'tweet__title' %>
-              <div class="tweet__description"><%= recipe.description %></div>
-            </div>
-            
-          </div>
+          <%= link_to recipe.title, recipe_path(id: recipe.id), class: 'tweet__title' %>
+          <div class="tweet__description"><%= recipe.description %></div>
 
-            <%= link_to recipe_path(recipe) do %>
-              <div class="tweet__img">
-                <%= image_tag recipe.image.url %>
-              </div>
-            <% end %>
+          <%= link_to recipe_path(recipe) do %>
+            <div class="tweet__img">
+              <%= image_tag recipe.image.url %>
+            </div>
+          <% end %>
+
+          <section class="tag">
+            <div class="tag__container">
+              <% recipe.tags.each do |tag| %>
+                <%= render_with_tags(tag.name, tag.id) %>
+              <% end %>
+            </div>
+          </section>
+
           <div class="tweet__reaction">
             <%= link_to recipe_path(id: recipe.id), class: "tweet__comment" do %>
               <i class="far fa-comment"></i>

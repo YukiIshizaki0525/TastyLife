@@ -9,14 +9,14 @@
   }
 
   &__none {
-    
     @extend .font-sm;
     color: $--c-dark-gray;
   }
 
   &__item {
     @extend .font-sm;
-    width: 100%;
+    flex-basis: 46%;
+    margin-bottom: 10px;
     display: block;
     text-align: center;
     font-weight: 600;
@@ -27,7 +27,6 @@
     text-decoration: none !important;
     color: $--c-gray !important;
     padding: 8px;
-    margin-bottom: 10px;
 
     &:hover {
       background-color: $--bg-light-gray;
