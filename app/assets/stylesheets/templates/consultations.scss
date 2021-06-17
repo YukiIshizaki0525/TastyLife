@@ -136,11 +136,16 @@
   &__detail-info {
     display: flex;
     justify-content: space-between;
+
+    & > a {
+      flex-basis: 47%
+    }
   }
 
   &__pv {
     @extend .post-date;
     font-weight: 600;
+    flex-basis: 47%
   }
 
   &__edit-link {
