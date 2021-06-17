@@ -1,10 +1,6 @@
 .list {
   @extend .mb-lg;
-
-  & .tag {
-    width: 100%
-  }
-
+  
   &__container {
     @extend .flex;
     @extend .content-width;

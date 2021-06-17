@@ -1,8 +1,8 @@
-// 関連タグについてここから
 .tag {
   & >.cooking-title {
     width: 100%;
   }
+
   @extend .mb-sm;
   @extend .content-width;
   &__container {
@@ -18,9 +18,9 @@
 
   &__item {
     @extend .font-sm;
-    flex-basis: 46%;
     margin-bottom: 10px;
     display: block;
+    width: 100%;
     text-align: center;
     font-weight: 600;
     border: 1px solid $--c-light-gray;
@@ -61,11 +61,10 @@
   }
 
   &__select {
-    @extend .content-width;
     @extend .mb-sm;
     text-align: center;
     border: 1px solid $--c-light-gray;
-    
+
     & > select {
       padding: 10px;
       cursor: pointer;
@@ -107,4 +106,3 @@
     }
   }
 }
-// 関連タグについてここまで
