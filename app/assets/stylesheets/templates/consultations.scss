@@ -9,6 +9,10 @@
     @extend .mb-lg;
   }
 
+  &__search {
+    @extend .content-width;
+  }
+
   &__title {
     display: block;
     @extend .font-md;
