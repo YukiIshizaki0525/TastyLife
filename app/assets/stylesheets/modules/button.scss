@@ -46,6 +46,8 @@
     color: $--c-btn;
     background-color: $--c-white;
     border: 1px solid $--c-btn;
+    border-radius: 30px;
+    width: 60%;
     letter-spacing: 2px;
     font-weight: 600;
     padding: 10px 40px;
@@ -86,11 +88,15 @@
   }
 
   &.cancel {
+    border: 1px solid $--c-login;
+    color: $--c-login;
     text-decoration: none !important;
     letter-spacing: 2px;
     font-weight: 600;
     padding: 10px 40px;
     margin: 10px auto;
+    border-radius: 30px;
+    width: 60%;
 
     &:hover {
       background-color: $--c-btn;
@@ -100,6 +106,7 @@
 }
 
 .btn-center {
+  @extend .content-width;
   text-align: center;
 }
 
@@ -108,7 +115,7 @@
   font-size: 16px;
   padding: 10px;
   margin: 0 auto;
-  width: 50%;
+  width: 60%;
   text-align: center;
   outline: none;
   text-decoration: none !important;

@@ -60,6 +60,10 @@
     & div > .favorite {
       @extend .mb-sm;
     }
+
+    & > .cooking-title {
+      width: 100%;
+    }
   }
 }
 

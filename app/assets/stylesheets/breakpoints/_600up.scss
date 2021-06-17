@@ -172,11 +172,24 @@
 // steps.scssここまで
 
 // button.scssここから
-.following,
-.followed,
-.submenu {
-  width: 130px;
+.btn {
+  &.slide-bg,
+  &.cancel {
+    width: 40%;
+  }
+
+  &.following,
+  &.followed,
+  &.submenu {
+    width: 130px;
+  }
 }
+
+.add-field-btn {
+  width: 40%;
+}
+
+
 // button.scssここまで
 
 // login.scssここから

@@ -3,6 +3,7 @@
     width: 100%;
   }
 
+
   @extend .content-width;
   @extend .mb-lg;
   counter-reset: number;
@@ -104,5 +105,10 @@
   &__content {
     display: flex;
     flex-direction: row;
+  }
+
+  &__submit {
+    @extend .content-width;
+    text-align: center;
   }
 }
