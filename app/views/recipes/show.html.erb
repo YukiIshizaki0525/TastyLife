@@ -27,9 +27,7 @@
           <div class="cooking-title">ユーザープロフィール</div>
           <div class="recipeuser__inner">
             <div class="recipeuser__img">
-              <% if @recipe.user.avatar? %>
-                <%= link_to image_tag(@recipe.user.avatar.url), user_path(id: @recipe.user_id) %>
-              <% end %>
+              <%= link_to image_tag(@recipe.user.avatar.url), user_path(id: @recipe.user_id) %>
             </div>
             <%= link_to @recipe.user.name, user_path(id: @recipe.user_id), class:"recipeuser__name" %>
             <% if user_signed_in? && @recipe.user == current_user %>

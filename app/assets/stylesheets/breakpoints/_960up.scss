@@ -49,10 +49,10 @@
 // base.scssここまで
 
 // button.scssここから
-.following,
-.followed,
-.submenu {
-  width: 150px;
+.btn {
+  &.edit-btn {
+    width: 30%;
+  }
 }
 // button.scssここまで
 

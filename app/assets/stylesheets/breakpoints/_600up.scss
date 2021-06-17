@@ -173,6 +173,7 @@
 
 // button.scssここから
 .btn {
+
   &.slide-bg,
   &.cancel {
     width: 40%;
@@ -181,7 +182,11 @@
   &.following,
   &.followed,
   &.submenu {
-    width: 130px;
+    width: 60%;
+  }
+
+  &.edit-btn {
+    width: 40%;
   }
 }
 
