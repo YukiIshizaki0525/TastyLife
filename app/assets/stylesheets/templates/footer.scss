@@ -1,0 +1,11 @@
+.footer {
+  padding-bottom: 10px;
+  background-color: $--bg-gray;
+  
+  &__inner {
+    @extend .content-width;
+    @extend .flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

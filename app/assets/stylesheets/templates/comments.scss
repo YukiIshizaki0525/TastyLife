@@ -1,5 +1,6 @@
 .comment {
   @extend .content-width;
+  @extend .mb-lg;
 
   &__inner {
     @extend .flex;
