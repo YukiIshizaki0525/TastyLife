@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
-  before_action :authenticate_user!, except: [:tweet_index]
+  before_action :authenticate_user!, only: [:tweet_index]
   
   def index
     @recipes = Recipe.includes([:favorites], [:user]).page(params[:page]).limit(3)

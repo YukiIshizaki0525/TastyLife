@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :destroy, :inventories]
-  before_action :set_user, except: [:index, :restore_mail]
+  before_action :set_user, except: [:index, :restore_mail, :restoration]
   before_action :withdrawal_forbid_guest_user, only: [:unsubscribe, :withdrawal]
 
   def index
