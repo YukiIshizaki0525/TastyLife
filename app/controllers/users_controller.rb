@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @recipes = @user.recipes.includes(:favorites).page(params[:page]).per(6)
+    @recipes = @user.recipes.includes([:favorites]).page(params[:page]).per(6)
   end
 
   def destroy
@@ -91,7 +91,6 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
-    # ゲストユーザーの更新・削除不可
     def withdrawal_forbid_guest_user
       if @user.email == "guest@example.com"
         flash[:alert] = "ゲストユーザーの退会処理はできません。"

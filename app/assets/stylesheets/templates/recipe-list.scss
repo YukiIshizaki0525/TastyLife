@@ -1,6 +1,6 @@
 .list {
   @extend .mb-lg;
-  
+
   &__container {
     @extend .flex;
     @extend .content-width;
@@ -75,7 +75,7 @@
     border-radius: 100%;
     margin-right: 8px;
 
-    &>img {
+    & > img {
       object-fit: cover;
       height: 100%;
       width: 100%;

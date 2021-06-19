@@ -168,13 +168,17 @@
     width: 65%;
     margin: 0;
   }
+
+  &__submit {
+    &>.slide-bg {
+      width: 40%;
+    }
+  }
 }
 // steps.scssここまで
 
 // button.scssここから
 .btn {
-
-  &.slide-bg,
   &.cancel {
     width: 40%;
   }
