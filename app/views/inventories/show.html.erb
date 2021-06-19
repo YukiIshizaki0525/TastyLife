@@ -30,7 +30,7 @@
       <p class="inventory__detail">登録されていません</p>
     <% end %>
   </div>
-  <div class="btn-center"><%= link_to '編集する', edit_inventory_path(id: @inventory.id),
-  class:"btn cancel" %></div>
-  <div class="btn-center"><%= link_to 'マイページに戻る', inventories_user_path(current_user.id), class:"btn cancel"%></div>
+  <div class="edit"><%= link_to '編集する', edit_inventory_path(id: @inventory.id),
+  class:"btn inventory-edit-btn" %></div>
+  <div class="cancel"><%= link_to 'マイページに戻る', inventories_user_path(current_user.id), class:"btn cancel-btn"%></div>
 </section>

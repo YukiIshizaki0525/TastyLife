@@ -1,5 +1,8 @@
 .inventory {
   @extend .content-width;
+  & > .submit {
+    width: 100%;
+  }
 
   &__container {
     @extend .flex;
@@ -90,7 +93,6 @@
     flex-basis: 50%;
   }
 
-  // 投稿・編集ページここから
   &__input {
     @extend .recipe-input;
   }
@@ -120,5 +122,5 @@
       border-radius: 15px;
     }
   }
-  // 投稿・編集ページここまで
+
 }

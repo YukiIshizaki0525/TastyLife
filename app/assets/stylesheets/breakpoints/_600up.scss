@@ -194,6 +194,12 @@
   }
 }
 
+.edit {
+  & >.inventory-edit-btn {
+    width: 40%;
+  }
+}
+
 .cancel {
   & .cancel-btn {
     width: 40%;

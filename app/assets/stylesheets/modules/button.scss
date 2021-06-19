@@ -67,8 +67,19 @@
     }
   }
 
-  &.edit-btn {
-    text-decoration: none !important;
+  &.recipe-edit-btn {
+    &:hover {
+      background-color: $--c-btn;
+      color: $--c-white;
+    }
+  }
+
+  &.inventory-edit-btn {
+    letter-spacing: 2px;
+    font-weight: 600;
+    padding: 10px 40px;
+    margin: 10px auto;
+    border-radius: 30px;
 
     &:hover {
       background-color: $--c-btn;
@@ -79,7 +90,6 @@
   &.cancel-btn {
     border: 1px solid $--c-login;
     color: $--c-login;
-    text-decoration: none !important;
     letter-spacing: 2px;
     font-weight: 600;
     padding: 10px 40px;
@@ -136,7 +146,16 @@
 .comment-submit {
   text-align: center;
 
-  &>.slide-bg {
+  & > .slide-bg {
+    width: 60%;
+  }
+}
+
+.edit {
+  @extend .content-width;
+  text-align: center;
+
+  & > .inventory-edit-btn {
     width: 60%;
   }
 }

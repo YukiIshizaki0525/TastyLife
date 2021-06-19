@@ -31,7 +31,7 @@
             </div>
             <%= link_to @recipe.user.name, user_path(id: @recipe.user_id), class:"recipeuser__name" %>
             <% if user_signed_in? && @recipe.user == current_user %>
-              <%= link_to 'レシピ編集', edit_recipe_path, class:"btn edit-btn" %>
+              <%= link_to 'レシピ編集', edit_recipe_path, class:"btn recipe-edit-btn" %>
             <% end %>
           </div>
         </div>
