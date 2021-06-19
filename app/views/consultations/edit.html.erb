@@ -2,5 +2,5 @@
 
 <div class="cancel"><%= link_to '編集をやめる', @consultation, class:"btn cancel-btn"%></div>
 
-<div class="cancel"><%= link_to '相談を削除', @consultation, method: :delete, class:"btn cancel-btn"%></div>
+<div class="cancel"><%= link_to '相談を削除', @consultation, method: :delete, data: { confirm: "削除してよろしいですか？" }, class:"btn cancel-btn"%></div>
 
