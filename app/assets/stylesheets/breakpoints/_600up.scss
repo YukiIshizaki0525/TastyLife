@@ -126,6 +126,12 @@
   &__status {
     flex-basis: 20%;
   }
+
+  &__submit {
+    &>.slide-bg {
+      width: 40%;
+    }
+  }
 }
 // consultation.scssここまで
 
