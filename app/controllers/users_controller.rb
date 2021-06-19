@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :destroy, :inventories]
   before_action :set_user, except: [:index, :restore_mail, :restoration]
-  before_action :withdrawal_forbid_guest_user, only: [:unsubscribe, :withdrawal, :restore_mail]
-  before_action :withdrawal_forbit_other_user, only: [:unsubscribe, :withdrawal, :restore_mail]
+  before_action :withdrawal_forbid_guest_user, only: [:unsubscribe, :withdrawal]
+  before_action :withdrawal_forbit_other_user, only: [:unsubscribe, :withdrawal]
 
   def index
     @users = User.includes(:recipes).page(params[:page]).per(6).order(id: :ASC)
@@ -59,10 +59,6 @@ class UsersController < ApplicationController
       flash[:alert] = "他人の食材管理ページ閲覧及び編集はできません。"
       redirect_to root_path
     end
-  end
-
-  def unsubscribe
-    
   end
 
   def withdrawal
