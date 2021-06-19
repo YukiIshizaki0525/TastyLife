@@ -2,7 +2,6 @@
   @extend .content-width;
   @extend .mb-lg;
 
-  // 相談ページ(共通)ここから
   &__inner {
     display: flex;
     align-items: center;
@@ -37,9 +36,7 @@
     width: 100%;
     margin-left: 20px;
   }
-  // 相談ページ(共通)ここから
 
-  // 相談ページ(一覧のみ)はここから
   &__item {
     display: flex;
     align-items: center;
@@ -87,9 +84,6 @@
     justify-content: center;
   }
 
-  // 相談ページ(一覧のみ)はここまで
-
-  // 相談ページ(詳細のみ)はここから
   &__info {
     display: flex;
     flex-direction: column;
@@ -160,8 +154,6 @@
     float: right;
   }
 
-  // 相談ページ(詳細のみ)はここまで
-
   &__inputBx {
     @extend .mb-sm;
 
@@ -188,5 +180,9 @@
         border: 2px solid $--c-brown;
       }
     }
+  }
+
+  &__submit {
+    text-align: center;
   }
 }

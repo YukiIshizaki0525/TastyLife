@@ -106,13 +106,4 @@
     display: flex;
     flex-direction: row;
   }
-
-  &__submit {
-    @extend .content-width;
-    text-align: center;
-
-    &>.slide-bg {
-      width: 60%;
-    }
-  }
 }
