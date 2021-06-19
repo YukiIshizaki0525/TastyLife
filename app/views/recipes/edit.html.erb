@@ -1,5 +1,5 @@
 <%= render 'form', recipe: @recipe %>
 
-<div class="btn-center"><%= link_to '編集をやめる', @recipe, class:"btn cancel"%></div>
+<div class="cancel"><%= link_to '編集をやめる', @recipe, class:"btn cancel-btn"%></div>
 
-<div class="btn-center"><%= link_to 'レシピを削除', @recipe, method: :delete, data: { confirm: "削除してよろしいですか？" }, class:"btn cancel"%></div>
+<div class="cancel"><%= link_to 'レシピを削除', @recipe, method: :delete, data: { confirm: "削除してよろしいですか？" }, class:"btn cancel-btn"%></div>

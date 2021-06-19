@@ -86,7 +86,7 @@
     }
   }
 
-  &.cancel {
+  &.cancel-btn {
     border: 1px solid $--c-login;
     color: $--c-login;
     text-decoration: none !important;
@@ -95,18 +95,12 @@
     padding: 10px 40px;
     margin: 10px auto;
     border-radius: 30px;
-    width: 60%;
 
     &:hover {
       background-color: $--c-btn;
       color: $--c-white;
     }
   }
-}
-
-.btn-center {
-  @extend .content-width;
-  text-align: center;
 }
 
 .add-field-btn {
@@ -137,5 +131,23 @@
     object-fit: cover;
     height: 100%;
     width: 100%;
+  }
+}
+
+.submit {
+  @extend .content-width;
+  text-align: center;
+
+  & > .slide-bg {
+    width: 60%;
+  }
+}
+
+.cancel {
+  @extend .content-width;
+  text-align: center;
+
+  & .cancel-btn {
+    width: 60%;
   }
 }
