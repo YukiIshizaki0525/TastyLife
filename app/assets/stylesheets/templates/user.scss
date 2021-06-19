@@ -149,7 +149,7 @@
 
     &.active {
       & > p {
-        color: $--c-user-submenu-btn-hover;
+        color: $--c-btn-hover;
       }
     }
 
@@ -159,8 +159,9 @@
     }
   }
 
-  &__submenu {
-    width: 100%;
+  &__follow-submit {
+    @extend .mb-sm;
+    text-align: center;
   }
 
   &__count {

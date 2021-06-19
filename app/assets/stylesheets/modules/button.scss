@@ -12,34 +12,24 @@
 
   &.following {
     &:hover {
-      border: 1px solid $--c-follow-btn-hover;
-      color: $--c-follow-btn-hover;
+      border: 1px solid $--c-btn-hover;
+      color: $--c-btn-hover;
     }
   }
 
   &.followed {
     background-color: $--c-btn;
     color: $--c-white;
-
-    &:hover {
-      background-color: $--c-white;
-      color: $--c-btn;
-    }
   }
 
   &.submenu {
     width: 100%;
     margin-bottom: 10px;
-    &:hover {
-      border: 1px solid $--c-user-submenu-btn-hover;
-      color: $--c-user-submenu-btn-hover;
-    }
-  }
 
-  &.comment_btn {
-    background-color: $--c-btn;
-    color: $--c-white;
-    letter-spacing: 3px;
+    &:hover {
+      border: 1px solid $--c-btn-hover;
+      color: $--c-btn-hover;
+    }
   }
 
   &.slide-bg {
