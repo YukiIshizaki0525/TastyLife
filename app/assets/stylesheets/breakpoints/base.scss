@@ -3,6 +3,13 @@ body {
   font-family: "Kameron", "Noto Sans JP", sans-serif;
 }
 
+#container {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 125px;
+  box-sizing: border-box;
+}
+
 img {
   max-width: 100%;
   vertical-align: bottom;
