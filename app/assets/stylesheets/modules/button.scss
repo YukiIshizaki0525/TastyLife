@@ -143,6 +143,14 @@
   }
 }
 
+.comment-submit {
+  text-align: center;
+
+  &>.slide-bg {
+    width: 60%;
+  }
+}
+
 .cancel {
   @extend .content-width;
   text-align: center;
