@@ -5,17 +5,35 @@
   <div class="tweet__container">
     <% @tweet.each do |recipe| %>
       <div class="tweet__item">
-        <%= link_to image_tag(recipe.image.url), recipe_path(recipe), class: 'tweet__img' %>
+        <%= link_to image_tag(recipe.user.avatar.url), user_path(id: recipe.user_id), class:"tweet__user-avatar" %>
         <div class="tweet__detail">
-          <span class="timestamp"><%= recipe.created_at.to_s(:datetime_jp) %></span><br>
+          <div class="tweet__info">
+            <%= link_to recipe.user.name ,user_path(id: recipe.user_id), class:"tweet__user-name" %>
+            <span class="timestamp"><%= recipe.created_at.to_s(:short) %></span>
+          </div>
           <%= link_to recipe.title, recipe_path(id: recipe.id), class: 'tweet__title' %>
           <div class="tweet__description"><%= recipe.description %></div>
-          <div class="tweet__info">
-            <div class="tweet__userinfo">
-              <%= link_to image_tag(recipe.user.avatar.url), user_path(id: recipe.user_id), class: "tweet__useravatar" %>
-              <%= link_to recipe.user.name ,user_path(id: recipe.user_id), class:"tweet__username" %>
+
+          <%= link_to recipe_path(recipe) do %>
+            <div class="tweet__img">
+              <%= image_tag recipe.image.url %>
             </div>
-            <div id="recipe_<%= recipe.id %>">
+          <% end %>
+
+          <section class="tag">
+            <div class="tag__container">
+              <% recipe.tags.each do |tag| %>
+                <%= render_with_tags(tag.name, tag.id) %>
+              <% end %>
+            </div>
+          </section>
+
+          <div class="tweet__reaction">
+            <%= link_to recipe_path(id: recipe.id), class: "tweet__comment" do %>
+              <i class="far fa-comment"></i>
+              <span><%= recipe.comments.length %></span>
+            <% end %>
+            <div id="recipe_<%= recipe.id %>" >
               <%= render partial: "recipes/favorite", locals: { recipe: recipe } %>
             </div>
           </div>

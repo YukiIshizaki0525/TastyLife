@@ -1,4 +1,8 @@
 .ingredient {
+  & >.cooking-title {
+    width: 100%;
+  }
+
   &__ul {
     @extend .font-sm;
     display: flex;

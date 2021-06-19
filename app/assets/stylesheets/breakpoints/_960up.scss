@@ -1,4 +1,19 @@
-// PC表示時のフォントサイズ
+.header {
+  &__nav {
+    display: block;
+  }
+}
+
+// mobile-menu.scssここから
+.mobile-menu {
+  &__btn {
+    display: none;
+  }
+}
+// mobile-menu.scssここまで
+
+
+// base.scssここから
 .font-sm {
   font-size: 16px;
 }
@@ -31,24 +46,17 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
+// base.scssここまで
 
-// ヘッダーここから
-.header {
-  &__nav {
-    display: block;
-  }
-}
-// ヘッダーここまで
+// button.scssここから
+// .btn {
+//   &.edit-btn {
+//     width: 30%;
+//   }
+// }
+// button.scssここまで
 
-// モバイルメニューここから
-.mobile-menu {
-  &__btn {
-    display: none;
-  }
-}
-// モバイルメニューここまで
-
-// トップページここから
+// recipe-list.scssここから
 .list {
   &__container {
     justify-content: space-between;
@@ -58,16 +66,21 @@
     height: 290px;
   }
 }
+// recipe-list.scssここまで
 
-.tweet {
-  &__img {
-    height: 150px;
-    width: 150px;
+// recipe-tweet.scssここから
+// recipe-tweet.scssここまで
+
+// consultation.scssここから
+.consultation {
+  &__status {
+    flex-basis: 16%;
   }
 }
-// トップページここまで
 
-// レシピ詳細ここから
+// consultation.scssここまで
+
+// recipe.scssここから
 .description {
   &__img,
   &__preview {
@@ -81,7 +94,9 @@
     width: 60px;
   }
 }
+// recipe.scssここまで
 
+// recipe.scssここから
 .step {
   &__img {
     height: 180px;
@@ -92,27 +107,18 @@
     width: 70%;
   }
 }
-// レシピ詳細ここまで
+// recipe.scssここまで
 
-// ユーザー詳細ページここから
+// user.scssここから
 .user {
   &__img {
     height: 150px;
     width: 150px;
   }
 }
+// user.scssここまで
 
-// ユーザー詳細ページここまで
-
-// 投稿・一覧ボタンここから
-.following,
-.followed,
-.submenu {
-  width: 150px;
-}
-// 投稿・一覧ボタンここまで
-
-// コメント表示・フォームここから
+// comment.scssここから
 .comment {
   &__texts,
   &__form {
@@ -123,9 +129,9 @@
     padding-left: 15px;
   }
 }
-// コメント表示・フォームここまで
+// comment.scssここまで
 
-// タグについてはここから
+// tag.scssここから
 .tag {
   &__container {
     &::before {
@@ -145,9 +151,9 @@
     flex-basis: 21%;
   }
 }
-// タグについてはここまで
+// tag.scssここまで
 
-// 保存中の食材についてここから
+// inventories.scssここから
 .inventory {
   &__container {
     &::after {
@@ -160,4 +166,4 @@
     flex-basis: 30%;
   }
 }
-// 保存中の食材についてここまで
+// inventories.scssここまで

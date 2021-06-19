@@ -12,40 +12,31 @@
 
   &.following {
     &:hover {
-      border: 1px solid $--c-follow-btn-hover;
-      color: $--c-follow-btn-hover;
+      border: 1px solid $--c-btn-hover;
+      color: $--c-btn-hover;
     }
   }
 
   &.followed {
     background-color: $--c-btn;
     color: $--c-white;
-
-    &:hover {
-      background-color: $--c-white;
-      color: $--c-btn;
-    }
   }
 
   &.submenu {
     width: 100%;
-    margin-bottom: 5px;
-    &:hover {
-      border: 1px solid $--c-user-submenu-btn-hover;
-      color: $--c-user-submenu-btn-hover;
-    }
-  }
+    margin-bottom: 10px;
 
-  &.comment_btn {
-    background-color: $--c-btn;
-    color: $--c-white;
-    letter-spacing: 3px;
+    &:hover {
+      border: 1px solid $--c-btn-hover;
+      color: $--c-btn-hover;
+    }
   }
 
   &.slide-bg {
     color: $--c-btn;
     background-color: $--c-white;
     border: 1px solid $--c-btn;
+    border-radius: 30px;
     letter-spacing: 2px;
     font-weight: 600;
     padding: 10px 40px;
@@ -62,7 +53,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      transform: translateX(-100%);
+      transform: translateX(-105%);
       transition: transform 0.3s;
       z-index: -1;
     }
@@ -76,31 +67,40 @@
     }
   }
 
-  &.edit-btn {
-    text-decoration: none !important;
-
+  &.recipe-edit-btn {
     &:hover {
       background-color: $--c-btn;
       color: $--c-white;
     }
   }
 
-  &.cancel {
-    text-decoration: none !important;
+  &.inventory-edit-btn {
     letter-spacing: 2px;
     font-weight: 600;
     padding: 10px 40px;
     margin: 10px auto;
+    border-radius: 30px;
 
     &:hover {
       background-color: $--c-btn;
       color: $--c-white;
     }
   }
-}
 
-.btn-center {
-  text-align: center;
+  &.cancel-btn {
+    border: 1px solid $--c-login;
+    color: $--c-login;
+    letter-spacing: 2px;
+    font-weight: 600;
+    padding: 10px 40px;
+    margin: 10px auto;
+    border-radius: 30px;
+
+    &:hover {
+      background-color: $--c-btn;
+      color: $--c-white;
+    }
+  }
 }
 
 .add-field-btn {
@@ -108,7 +108,7 @@
   font-size: 16px;
   padding: 10px;
   margin: 0 auto;
-  width: 50%;
+  width: 60%;
   text-align: center;
   outline: none;
   text-decoration: none !important;
@@ -131,5 +131,40 @@
     object-fit: cover;
     height: 100%;
     width: 100%;
+  }
+}
+
+.submit {
+  @extend .content-width;
+  text-align: center;
+
+  & > .slide-bg {
+    width: 60%;
+  }
+}
+
+.comment-submit {
+  text-align: center;
+
+  & > .slide-bg {
+    width: 60%;
+  }
+}
+
+.edit {
+  @extend .content-width;
+  text-align: center;
+
+  & > .inventory-edit-btn {
+    width: 60%;
+  }
+}
+
+.cancel {
+  @extend .content-width;
+  text-align: center;
+
+  & .cancel-btn {
+    width: 60%;
   }
 }

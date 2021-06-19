@@ -1,5 +1,8 @@
-// 関連タグについてここから
 .tag {
+  & >.cooking-title {
+    width: 100%;
+  }
+
   @extend .mb-sm;
   @extend .content-width;
   &__container {
@@ -9,15 +12,15 @@
   }
 
   &__none {
-    
     @extend .font-sm;
     color: $--c-dark-gray;
   }
 
   &__item {
     @extend .font-sm;
-    width: 100%;
+    margin-bottom: 10px;
     display: block;
+    width: 100%;
     text-align: center;
     font-weight: 600;
     border: 1px solid $--c-light-gray;
@@ -27,7 +30,6 @@
     text-decoration: none !important;
     color: $--c-gray !important;
     padding: 8px;
-    margin-bottom: 10px;
 
     &:hover {
       background-color: $--bg-light-gray;
@@ -59,11 +61,10 @@
   }
 
   &__select {
-    @extend .content-width;
     @extend .mb-sm;
     text-align: center;
     border: 1px solid $--c-light-gray;
-    
+
     & > select {
       padding: 10px;
       cursor: pointer;
@@ -105,4 +106,3 @@
     }
   }
 }
-// 関連タグについてここまで

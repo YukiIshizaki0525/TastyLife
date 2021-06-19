@@ -3,36 +3,38 @@
     @extend .content-width;
     @extend .mb-sm;
     display: flex;
+    justify-content: space-between;
     border-bottom: 1px solid $--c-light-gray;
     border-radius: 4px;
     text-decoration: none !important;
   }
+
   &__img {
-    height: 100px;
-    width: 100px;
+    @extend .mb-sm;
+    height: 130px;
     overflow: hidden;
     margin-bottom: 5px;
     border-radius: 4px;
-
-    &:hover {
-      background-color: $--bg-light-gray;
-      opacity: 0.75;
-    }
 
     & > img {
       object-fit: cover;
       height: 100%;
       width: 100%;
     }
+
+    &:hover {
+      background-color: $--bg-light-gray;
+      opacity: 0.75;
+    }
   }
 
   &__detail {
-    margin-left: 10.5px;
-    position: relative;
+    flex-basis: 83%;
+  }
 
-    & div > .favorite {
-      display: inline-block
-    }
+  &__info {
+    display: flex;
+    justify-content: space-between
   }
 
   &__title {
@@ -47,20 +49,13 @@
     @extend .mb-sm;
   }
 
-  &__info {
-    display: flex;
-    justify-content: space-between;
-  }
 
-  &__userinfo {
-    display: flex;
-  }
-
-  &__useravatar {
-    height: 25px;
-    width: 25px;
+  &__user-avatar {
+    display: block;
+    height: 40px;
+    width: 40px;
     overflow: hidden;
-    margin-right: 10px;
+    border-radius: 50%;
 
     & > img {
       object-fit: cover;
@@ -69,12 +64,28 @@
     }
   }
 
-  &__username {
+  &__user-name {
+    @extend .mb-sm;
     margin-right: 30px;
     color: $--c-brown !important;
 
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  &__comment {
+    @extend .font-md;
+    display: block;
+    color: $--c-black !important;
+    text-decoration: none !important;
+    margin-right: 30px;
+  }
+
+  &__reaction {
+    @extend .mb-sm;
+    display: flex;
+    align-items: center;
+    float: right;
   }
 }

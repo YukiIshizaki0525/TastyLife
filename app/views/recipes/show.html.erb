@@ -27,13 +27,11 @@
           <div class="cooking-title">ユーザープロフィール</div>
           <div class="recipeuser__inner">
             <div class="recipeuser__img">
-              <% if @recipe.user.avatar? %>
-                <%= link_to image_tag(@recipe.user.avatar.url), user_path(id: @recipe.user_id) %>
-              <% end %>
+              <%= link_to image_tag(@recipe.user.avatar.url), user_path(id: @recipe.user_id) %>
             </div>
             <%= link_to @recipe.user.name, user_path(id: @recipe.user_id), class:"recipeuser__name" %>
             <% if user_signed_in? && @recipe.user == current_user %>
-              <%= link_to 'レシピ編集', edit_recipe_path, class:"btn edit-btn" %>
+              <%= link_to 'レシピ編集', edit_recipe_path, class:"btn recipe-edit-btn" %>
             <% end %>
           </div>
         </div>
@@ -73,7 +71,11 @@
             <p class="step__number"></p>
             <p class="step__description"><%= step.direction %></p>
           </div>
-          <div class="step__img"><%= image_tag step.image.url if step.image? %></div>
+          <% if step.image? %>
+            <div class="step__img">
+              <%= image_tag step.image.url %>
+            </div>
+          <% end %>
         </div>
       </div>
     <% end %>

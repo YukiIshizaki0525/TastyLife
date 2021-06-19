@@ -15,7 +15,7 @@
       <% end %>
     </div>
   </div>
-  <div class="user__submenu">
+  <div class="user__follow-submit">
     <%= render 'shared/user_submenu' if @user == current_user %>
     <div id="follow_form"><%= render 'follow_form' if user_signed_in? %></div>
   </div>

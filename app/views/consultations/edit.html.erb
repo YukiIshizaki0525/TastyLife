@@ -1,6 +1,6 @@
 <%= render 'form', consultation: @consultation %>
 
-<div class="btn-center"><%= link_to '編集をやめる', @consultation, class:"btn cancel"%></div>
+<div class="cancel"><%= link_to '編集をやめる', @consultation, class:"btn cancel-btn"%></div>
 
-<div class="btn-center"><%= link_to 'この相談を削除', @consultation, method: :delete, class:"btn cancel"%></div>
+<div class="cancel"><%= link_to '相談を削除', @consultation, method: :delete, class:"btn cancel-btn"%></div>
 

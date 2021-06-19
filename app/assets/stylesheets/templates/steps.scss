@@ -1,4 +1,9 @@
 .step {
+  & >.cooking-title {
+    width: 100%;
+  }
+
+
   @extend .content-width;
   @extend .mb-lg;
   counter-reset: number;
@@ -33,7 +38,7 @@
     color: $--c-white;
     background-color: $--c-brown;
     border-radius: 3px;
-    margin-bottom: 0;
+    margin: 0 10px 0 0;
     width: 35px;
     height: 20px;
     line-height: 20px;
@@ -46,11 +51,14 @@
   }
 
   &__img {
-    display: block;
     height: 75px;
     width: 110px;
     border-radius: 4px;
     overflow: hidden;
+
+    &:empty {
+      display: none;
+    }
 
     & > img {
       object-fit: cover;
@@ -82,7 +90,7 @@
 
   &__description {
     @extend .font-sm;
-    padding: 0 10px;
+    width: 80%;
     color: $--c-dark-gray;
   }
 
@@ -97,6 +105,5 @@
   &__content {
     display: flex;
     flex-direction: row;
-    width: 80%;
   }
 }

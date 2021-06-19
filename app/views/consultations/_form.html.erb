@@ -3,7 +3,6 @@
 
 <%= form_with(model: @consultation, local: true) do |f| %>
   <section class="consultation">
-    
     <div class="consultation__inputBx">
       <%= f.label :title %>
       <%= f.text_field :title, placeholder: "50文字まで入力可能" %>
@@ -13,7 +12,6 @@
       <%= f.label :content %>
       <%= f.text_area :content, placeholder: "200文字まで入力可能" %>
     </div>
-
-    <div class="btn-center"><%= f.button "送信する" , class:"btn slide-bg"%></div>
+    <div class="submit"><%= f.button "送信する" , class:"btn slide-bg" %></div>
   </section>
 <% end %>

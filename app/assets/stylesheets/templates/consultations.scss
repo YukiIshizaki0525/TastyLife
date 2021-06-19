@@ -2,11 +2,18 @@
   @extend .content-width;
   @extend .mb-lg;
 
-  // 相談ページ(共通)ここから
+  & > .submit {
+    width: 100%;
+  }
+
   &__inner {
     display: flex;
     align-items: center;
     @extend .mb-lg;
+  }
+
+  &__search {
+    @extend .content-width;
   }
 
   &__title {
@@ -20,6 +27,7 @@
 
   &__content {
     @extend .font-sm;
+    @extend .mb-sm;
     color: $--c-dark-gray;
   }
 
@@ -32,9 +40,7 @@
     width: 100%;
     margin-left: 20px;
   }
-  // 相談ページ(共通)ここから
 
-  // 相談ページ(一覧のみ)はここから
   &__item {
     display: flex;
     align-items: center;
@@ -47,7 +53,8 @@
     @extend .flex;
     align-items: center;
     color: $--c-dark-gray;
-    flex-basis: 20%;
+    flex-basis: 27%;
+    width: 80%;
   }
 
   &__userinfo {
@@ -79,12 +86,8 @@
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
-
   }
 
-  // 相談ページ(一覧のみ)はここまで
-
-  // 相談ページ(詳細のみ)はここから
   &__info {
     display: flex;
     flex-direction: column;
@@ -131,11 +134,16 @@
   &__detail-info {
     display: flex;
     justify-content: space-between;
+
+    & > a {
+      flex-basis: 47%
+    }
   }
 
   &__pv {
     @extend .post-date;
     font-weight: 600;
+    flex-basis: 47%
   }
 
   &__edit-link {
@@ -149,8 +157,6 @@
     display: inline;
     float: right;
   }
-
-  // 相談ページ(詳細のみ)はここまで
 
   &__inputBx {
     @extend .mb-sm;

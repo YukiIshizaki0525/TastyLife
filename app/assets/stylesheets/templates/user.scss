@@ -58,7 +58,6 @@
 //ユーザー一覧ページここまで
 
 // ユーザー詳細ページここから
-
 .user {
   @extend .content-width;
 
@@ -72,11 +71,11 @@
   &__info {
     display: flex;
     flex-direction: column;
-    align-self: center;
+    margin: 0 auto;
   }
 
   &__img {
-    @extend .mr-sm;
+    @extend .mb-sm;
     height: 75px;
     width: 75px;
     overflow: hidden;
@@ -150,7 +149,7 @@
 
     &.active {
       & > p {
-        color: $--c-user-submenu-btn-hover;
+        color: $--c-btn-hover;
       }
     }
 
@@ -160,8 +159,9 @@
     }
   }
 
-  &__submenu {
-    width: 100%;
+  &__follow-submit {
+    @extend .mb-sm;
+    text-align: center;
   }
 
   &__count {
