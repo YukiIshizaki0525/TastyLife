@@ -12,40 +12,20 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
-# ログイン機能
 gem 'devise'
-# 日本語化
 gem 'rails-i18n', '~> 6.0'
 gem 'devise-i18n'
-# Bootstrap
 gem 'devise-bootstrap-views', '~> 1.0'
-
-# ActiveStorageバリデーション用
-gem 'active_storage_validations', '0.8.2'
-# 画像処理用
-gem 'image_processing',           '1.9.3'
-gem 'mini_magick',                '4.9.5'
-
 gem 'annotate'
 gem 'kaminari'
 gem 'ransack'
-
-# 閲覧数カウント
 gem 'impressionist'
-
 gem 'font-awesome-sass'
-
-
-gem 'dotenv-rails'
-gem 'whenever', require: false
-
-
-# N+1問題
 gem 'bullet'
-
-#画像アップロード
 gem 'carrierwave'
 gem 'rmagick'
+gem 'image_processing',           '1.9.3'
+gem 'mini_magick',                '4.9.5'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -67,7 +47,6 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'rubocop'
-  gem 'letter_opener_web'
 end
 
 group :test do
