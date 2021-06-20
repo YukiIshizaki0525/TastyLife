@@ -61,7 +61,7 @@ RSpec.describe "レシピいいね機能", type: :system do
       favorite
       visit favorites_user_path(user)
       expect(page).to have_content("Favorite")
-      expect(page).to have_content("レシピのタイトル")
+      expect(page).to have_content("テストタイトル")
       expect(recipe.favorites.length).to eq(1)
     end
 
