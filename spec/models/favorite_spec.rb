@@ -24,7 +24,7 @@ RSpec.describe Favorite, type: :model do
 
   it "レシピにいいね可能" do
     expect(favorite.user.name).to eq "Alice"
-    expect(favorite.recipe.title).to eq "レシピのタイトル"
+    expect(favorite.recipe.title).to eq "テストタイトル"
     expect(user.favorites.count).to eq 1
   end
   
