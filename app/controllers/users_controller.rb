@@ -9,7 +9,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @recipes = @user.recipes.includes([:favorites]).page(params[:page]).per(6)
+    if user_signed_in?
+      @recipes = @user.recipes.includes([:favorites]).page(params[:page]).per(6)
+    else
+      @recipes = @user.recipes.page(params[:page]).per(6)
+    end
   end
 
   def destroy
