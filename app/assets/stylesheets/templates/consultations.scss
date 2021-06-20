@@ -2,7 +2,8 @@
   @extend .content-width;
   @extend .mb-lg;
 
-  & > .submit {
+  & > .cooking-title,
+  &>.submit {
     width: 100%;
   }
 
@@ -10,10 +11,6 @@
     display: flex;
     align-items: center;
     @extend .mb-lg;
-  }
-
-  &__search {
-    @extend .content-width;
   }
 
   &__title {

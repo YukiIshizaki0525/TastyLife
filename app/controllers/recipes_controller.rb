@@ -65,7 +65,11 @@ class RecipesController < ApplicationController
   end
   
   def search
-    @recipes = @q.result(distinct: true).includes([:favorites]).page(params[:page]).per(6)
+    if user_signed_in?
+      @recipes = @q.result(distinct: true).includes([:favorites]).page(params[:page]).per(6)
+    else
+      @recipes = @q.result(distinct: true).includes([:user]).page(params[:page]).per(6)
+    end
     @search = params[:q][:title_or_ingredients_content_cont]
   end
   
