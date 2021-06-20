@@ -1,10 +1,11 @@
 .tag {
+  @extend .content-width;
+  @extend .mb-sm;
+  
   & >.cooking-title {
     width: 100%;
   }
 
-  @extend .mb-sm;
-  @extend .content-width;
   &__container {
     display: flex;
     flex-wrap: wrap;
