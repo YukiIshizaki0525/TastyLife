@@ -44,7 +44,7 @@ class UsersController < ApplicationController
 
   def favorites
     @title = "Favorite"
-    @recipes = @user.favorite_recipes.includes(:favorites).page(params[:page]).per(6)
+    @recipes = @user.favorite_recipes.includes([:user], [:favorites]).page(params[:page]).per(6)
     render 'show_favorite'
   end
 
