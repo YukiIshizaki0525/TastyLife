@@ -79,10 +79,10 @@ RSpec.describe ConsultationComment, type: :system do
       posted_comment
       visit consultation_path(consultation)
       click_link 'delete'
-      expect(page.driver.browser.switch_to.alert.text).to eq "削除してもよろしいですか？"
+      expect(page.driver.browser.switch_to.alert.text).to eq "削除してよろしいですか？"
       page.driver.browser.switch_to.alert.accept
 
-      expect(page).to have_content 'コメントが削除されました'
+      expect(page).to have_content 'コメントを削除しました。'
       expect(page).to_not have_content( posted_comment.content )
     end
   end
