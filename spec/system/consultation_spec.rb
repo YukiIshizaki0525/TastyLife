@@ -7,9 +7,6 @@ RSpec.describe "レシピ相談機能", type: :system do
   let(:posted_consultation) { create(:consultation, user_id: user.id) }
   let(:other_consultation) { create(:other_consultation, user_id: other_user.id) }
 
-  # let(:consultation_with_interest) { create(:consultation, :with_interest, user_id: user.id)}
-  # let(:consultation_with_comment) { create(:consultation, :with_comment, user_id: user.id)}
-
   before do
     sign_in user
   end
@@ -21,7 +18,6 @@ RSpec.describe "レシピ相談機能", type: :system do
         fill_in 'consultation_title', with: consultation.title
         fill_in 'consultation_content', with: consultation.content
         expect { click_button '送信する' }.to change { Consultation.count }.by(1)
-        # expect(current_path).to eq consultation_path(consultation)
 
         expect(page).to have_content("「#{consultation.title}」の相談を投稿しました。")
         expect(page).to have_selector("img[src$='avatar.jpg']")
@@ -109,9 +105,11 @@ RSpec.describe "レシピ相談機能", type: :system do
   describe '削除機能' do
     it '編集ページから削除ボタンを押せば相談の削除が可能' do
       visit edit_consultation_path(posted_consultation)
-      expect { click_link 'この相談を削除' }.to change { Consultation.count }.by(-1)
-      expect(current_path).to eq consultations_user_path(user.id)
+      click_link '相談を削除'
+      expect(page.driver.browser.switch_to.alert.text).to eq "削除してよろしいですか？"
+      page.driver.browser.switch_to.alert.accept
 
+      expect(current_path).to eq consultations_user_path(user.id)
       expect(page).to have_content("「#{posted_consultation.title}」の相談を削除しました。")
     end
   end
