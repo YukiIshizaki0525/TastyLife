@@ -111,9 +111,7 @@ RSpec.describe "レシピ相談機能", type: :system do
       expect(page.driver.browser.switch_to.alert.text).to eq "削除してよろしいですか？"
       page.driver.browser.switch_to.alert.accept
 
-      expect(current_path).to eq consultations_user_path(user.id)
       expect(page).to have_content("「#{posted_consultation.title}」の相談を削除しました。")
-
       expect(Consultation.count).to eq 0
     end
   end

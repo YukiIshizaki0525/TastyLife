@@ -216,9 +216,9 @@ RSpec.describe "レシピ機能", type: :system do
       expect(page.driver.browser.switch_to.alert.text).to eq "削除してよろしいですか？"
       page.driver.browser.switch_to.alert.accept
       expect(current_path).to eq user_path(user)
+      expect(Recipe.count).to eq 0
       expect(page).to have_content("「#{posted_recipe.title}」のレシピを削除しました。")
 
-      expect(Recipe.count).to eq 0
     end
 
     it "編集ページからレシピの画像削除が可能" do
