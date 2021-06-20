@@ -11,27 +11,20 @@ RSpec.describe "相談気になる機能", type: :system do
     sign_in user
   end
 
-  context '相談詳細ページからの気になる機能について' do
+  context '相談詳細ページからの気になる機能について', js:true do
     it '気になる登録をする' do
       visit consultation_path(consultation)
-      expect(page).to have_selector '.fas'
-      expect(page).to have_selector '.fa-star'
-      expect(consultation.interests.length).to eq(0)
-      find(".interest__link").find(".fa-star").click
-
-      expect{ find(".interest__link").find(".fa-star").click }.to change {
-      Interest.count }.by(1)
+      find('.interest__link').click
+      expect(page).to have_css '.interest__delete-link'
+      expect(page).to have_css "div#consultation_#{consultation.id}", text: '1'
     end
 
     it '気になる登録した相談を解除' do
       interest
       visit consultation_path(consultation)
-      expect(page).to have_selector '.fas'
-      expect(page).to have_selector '.fa-star'
-      expect(consultation.interests.length).to eq(1)
-
-      expect{ find(".interest__delete-link").find(".fa-star").click }.to change {
-      Interest.count }.by(0)
+      find('.interest__delete-link').click
+      expect(page).to have_css '.interest__link'
+      expect(page).to have_css "div#consultation_#{consultation.id}", text: '0'
     end
   end
 
