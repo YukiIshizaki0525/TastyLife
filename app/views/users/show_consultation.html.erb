@@ -8,10 +8,12 @@
   </div>
   <%= render 'layouts/notifications' %>
 
-  <% if @consultations.any? %>
-    <%= render 'shared/recipe_consultation' %>
-  <% else %>
-    <p class="notthing"><%= "#{@user.name}さんの相談はありません。" %></p>
-  <% end %>
+    <% if @consultations.any? %>
+      <section class="consultation">
+        <%= render 'shared/recipe_consultation' %>
+      </section>
+    <% else %>
+      <p class="notthing"><%= "#{@user.name}さんの相談はありません。" %></p>
+    <% end %>
 </section>
 
