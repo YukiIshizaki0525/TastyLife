@@ -1,11 +1,16 @@
 class RecipesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show, :tag_search]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
   before_action :set_q, only: [:index, :search]
 
   def index
     @recipes = params[:tag_id].present? ? Tag.find(params[:tag_id]).recipes : Recipe
-    @recipes = @recipes.includes([:user], [:favorites]).page(params[:page]).per(6)
+
+    if user_signed_in?
+      @recipes = @recipes.includes([:user], [:favorites]).page(params[:page]).per(6)
+    else
+      @recipes = @recipes.includes([:user]).page(params[:page]).per(6)
+    end
   end
 
   def show
