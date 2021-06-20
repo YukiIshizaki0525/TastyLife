@@ -17,6 +17,7 @@ RSpec.describe "相談気になる機能", type: :system do
       expect(page).to have_selector '.fas'
       expect(page).to have_selector '.fa-star'
       expect(consultation.interests.length).to eq(0)
+      find(".interest__link").find(".fa-star").click
 
       expect{ find(".interest__link").find(".fa-star").click }.to change {
       Interest.count }.by(1)
