@@ -210,9 +210,15 @@ RSpec.describe "レシピ機能", type: :system do
   describe '削除機能' do
     it '編集ページから削除ボタンを押せばレシピの削除が可能' do
       visit edit_recipe_path(posted_recipe)
-      expect { click_link 'このレシピを削除' }.to change { Recipe.count }.by(-1)
+      expect(Recipe.count).to eq 1
+
+      click_link 'レシピを削除'
+      expect(page.driver.browser.switch_to.alert.text).to eq "削除してよろしいですか？"
+      page.driver.browser.switch_to.alert.accept
       expect(current_path).to eq user_path(user)
+      expect(Recipe.count).to eq 0
       expect(page).to have_content("「#{posted_recipe.title}」のレシピを削除しました。")
+
     end
 
     it "編集ページからレシピの画像削除が可能" do
@@ -220,7 +226,7 @@ RSpec.describe "レシピ機能", type: :system do
       check 'recipe[remove_image]'
       click_button '送信する'
       expect(current_path).to eq recipe_path(posted_recipe)
-      expect(page).to have_selector("img[src$='salad.jpg']")
+      expect(page).to_not have_selector("img[src$='salad.jpg']")
     end
   end
 
@@ -285,7 +291,7 @@ RSpec.describe "レシピ機能", type: :system do
       visit recipes_path
       fill_in "q_title_or_ingredients_content_cont", with: "レシピのタイトル"
       find("#q_title_or_ingredients_content_cont").send_keys :return
-      click_link "レシピ一覧ページに戻る"
+      click_link "レシピ一覧に戻る"
     end
   end
 end

@@ -10,7 +10,7 @@
 FactoryBot.define do
   factory :tag do
     trait :nourishing do
-      name {"栄養満点"}
+      name { "栄養満点" }
     end
     trait :easy do
       name {"簡単"}

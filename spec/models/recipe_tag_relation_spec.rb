@@ -18,13 +18,13 @@ require 'rails_helper'
 RSpec.describe RecipeTagRelation, type: :model do
   let(:user) { create(:user) }
   let(:recipe) { create(:recipe, :with_ingredients, :with_steps, user_id: user.id)}
-  let(:tag) { create(:tag) }
+  let(:tag) { create(:tag, :nourishing) }
   let(:recipe_tag) { recipe.recipe_tag_relations.build(tag_id: tag.id) }
 
   it "タグづけされたレシピが作成可能" do
-    subject { recipe_tag }
+    recipe_tag
     expect(recipe_tag).to be_valid
-    expect(recipe_tag.tag[:name]).to eq 'タグ1'
+    expect(recipe_tag.tag[:name]).to eq '栄養満点'
   end
 
   context "必須であること" do

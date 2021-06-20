@@ -9,7 +9,9 @@ require 'rspec/rails'
 # shoulda-matchersの読み込み
 require 'shoulda/matchers'
 
-Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
+
+  # supportディレクトリを利用
+  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -17,6 +19,7 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
@@ -29,9 +32,6 @@ RSpec.configure do |config|
   #FactoryBotもinclude
   config.include FactoryBot::Syntax::Methods
 
-  # supportディレクトリを利用
-  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
-
   # ヘッドレスモードのChromeで実行する
   config.before(:each) do |example|
     if example.metadata[:type] == :system
@@ -42,7 +42,6 @@ RSpec.configure do |config|
 
 end
 
-# /spec/rails_helper.rb  
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     # 今回はRspecを使うのでこのように設定

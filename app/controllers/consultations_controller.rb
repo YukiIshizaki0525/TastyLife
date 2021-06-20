@@ -12,12 +12,11 @@ class ConsultationsController < ApplicationController
   end
 
   def show
+    @comments = ConsultationComment.includes([:user]).where(consultation_id: @consultation.id)
+
     if user_signed_in?
-      @comments = ConsultationComment.includes([:user], [:consultation]).where(consultation_id: @consultation.id)
       @new_comment = current_user.consultation_comments.new(flash[:comment])
       @comment_reply = current_user.consultation_comments.new
-    else
-      @comments = ConsultationComment.includes([:user]).where(consultation_id: @consultation.id)
     end
   end
 

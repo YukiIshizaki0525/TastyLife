@@ -14,7 +14,7 @@ RSpec.feature "Following", type: :system do
 
       it "ユーザー詳細ページからフォロー可能、フォロー一覧にフォローしたユーザーが追加される" do
         visit user_path(other_user)
-        click_button "Follow"
+        click_button "フォロー"
 
         visit following_user_path(user)
         expect(user.following.count).to eq 1
@@ -26,7 +26,7 @@ RSpec.feature "Following", type: :system do
       it "ユーザー詳細ページからフォロー解除可能、フォロー一覧からフォローしたユーザーが削除される" do
         follow
         visit user_path(other_user)
-        click_button "Unfollow"
+        click_button "フォロー解除"
 
         visit following_user_path(user)
         expect(user.following.count).to eq 0
@@ -52,7 +52,7 @@ RSpec.feature "Following", type: :system do
       it "フォロワー一覧ページにフォローしたユーザーが削除される" do
         sign_in other_user
         visit user_path(user)
-        click_button "Unfollow"
+        click_button "フォロー解除"
 
         visit followers_user_path(user)
         expect(user.followers.count).to eq 0
