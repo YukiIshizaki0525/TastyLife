@@ -14,8 +14,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
-    @comments = Comment.where(recipe_id: @recipe.id).includes([:user], [:recipe])
+    @comments = Comment.where(recipe_id: @recipe.id).includes([:user])
 
     if user_signed_in?
       @comment = current_user.comments.new(flash[:comment])
