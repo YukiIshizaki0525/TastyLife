@@ -9,7 +9,9 @@
   </div>
 
   <% if @consultations.any? %>
-    <%= render 'shared/recipe_consultation' %>
+    <section class="consultation">
+      <%= render 'shared/recipe_consultation' %>
+    </section>
   <% else %>
     <p class="notthing"><%= "#{@user.name}さんが気になっている相談はありません。" %></p>
   <% end %>
