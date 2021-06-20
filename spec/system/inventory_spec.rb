@@ -15,7 +15,7 @@ RSpec.describe "食材管理機能", type: :system do
       it '入力値が正常のため登録可能' do
         visit user_path(user)
         click_link "食材"
-        click_link "保存中の食材を登録"
+        click_link "食材を登録"
         attach_file "inventory[image]", "#{Rails.root}/spec/fixtures/calot.jpg", make_visible: true
         fill_in 'inventory_name', with: inventory.name
         fill_in 'inventory_quantity', with: inventory.quantity
@@ -32,7 +32,7 @@ RSpec.describe "食材管理機能", type: :system do
       it '画像とメモは設定されていなくても登録可能' do
         visit user_path(user)
         click_link "食材"
-        click_link "保存中の食材を登録"
+        click_link "食材を登録"
         fill_in 'inventory_name', with: inventory.name
         fill_in 'inventory_quantity', with: inventory.quantity
         fill_in 'inventory_expiration_date', with: "002021-05-10"
@@ -49,7 +49,7 @@ RSpec.describe "食材管理機能", type: :system do
       it '食材名・数量・賞味期限が入力されていないため登録不可' do
         visit user_path(user)
         click_link "食材"
-        click_link "保存中の食材を登録"
+        click_link "食材を登録"
         fill_in 'inventory_name', with: nil
         fill_in 'inventory_quantity', with: nil
         fill_in 'inventory_expiration_date', with: nil
@@ -62,7 +62,7 @@ RSpec.describe "食材管理機能", type: :system do
       it '食材名は20文字・数量は10文字を超える場合は登録不可' do
         visit user_path(user)
         click_link "食材"
-        click_link "保存中の食材を登録"
+        click_link "食材を登録"
         fill_in 'inventory_name', with: "a" * 21
         fill_in 'inventory_quantity', with: "a" * 11
         fill_in 'inventory_expiration_date', with: "002021-05-10"
@@ -77,7 +77,7 @@ RSpec.describe "食材管理機能", type: :system do
       it '食材画像は3MB以上の場合、登録不可' do
         visit user_path(user)
         click_link "食材"
-        click_link "保存中の食材を登録"
+        click_link "食材を登録"
         attach_file "inventory[image]", "#{Rails.root}/spec/fixtures/pasta_8MB.jpg", make_visible: true
         fill_in 'inventory_name', with: inventory.name
         fill_in 'inventory_quantity', with: inventory.quantity
@@ -152,7 +152,7 @@ RSpec.describe "食材管理機能", type: :system do
       visit inventories_user_path(posted_inventory.user)
       click_on 'Delete'
 
-      expect(page.driver.browser.switch_to.alert.text).to eq "削除してもよろしいですか？"
+      expect(page.driver.browser.switch_to.alert.text).to eq "削除してよろしいですか？"
       page.driver.browser.switch_to.alert.accept
 
       expect(current_path).to eq inventories_user_path(user)
