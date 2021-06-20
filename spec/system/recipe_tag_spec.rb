@@ -23,7 +23,7 @@ RSpec.describe "レシピタグ付け機能", type: :system do
   describe 'タグ付け機能について' do
     it 'タグ付けして投稿' do
       visit new_recipe_path
-      attach_file "recipe[recipe_image]", "#{Rails.root}/spec/fixtures/salad.jpg", make_visible: true
+      attach_file "recipe[image]", "#{Rails.root}/spec/fixtures/salad.jpg", make_visible: true
       fill_in 'recipe_title', with: recipe.title
       fill_in 'recipe_description', with: recipe.description
       click_link "材料の追加"
