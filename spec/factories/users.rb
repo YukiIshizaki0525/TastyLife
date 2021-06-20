@@ -35,34 +35,14 @@
 #
 
 FactoryBot.define do
-  # spec/support/shared_context.rbに他人を30人DB保存できるコードあり
-
-  # factory :user, class: User do
-  #   name { "alice" }
-  #   sequence(:email) { |n| "test#{n}@example.com" }
-  #   password { "v4xqUvAXhK" }
-  #   password_confirmation { "v4xqUvAXhK" }
-  #   confirmed_at { Date.today }
-  # end
-
-  # factory :other_user, class: User do
-  #   name { "bob" }
-  #   email { "bobtester@example.com" }
-  #   password { "C2e6aNEY" }
-  #   password_confirmation { "C2e6aNEY" }
-  #   confirmed_at { Date.today }
-  # end
   factory :user do
     name { "Alice" }
-    # sequence(:email) { |n| "test#{n}@example.com" }
     email { "Alice@example.com" }
     avatar { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/avatar.jpg')) }
     password {"v4xqUvAXhK"}
     password_confirmation {"v4xqUvAXhK"}
     confirmed_at { Date.today }
 
-
-  # 他人
     factory :other_user do
       name { Faker::Internet.username }
       email { Faker::Internet.email }

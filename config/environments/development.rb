@@ -10,9 +10,7 @@ Rails.application.configure do
   end
 
   config.cache_classes = false
-
   config.eager_load = false
-
   config.consider_all_requests_local = true
 
   if Rails.root.join('tmp/caching-dev.txt').exist?
@@ -27,10 +25,7 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
-
   # config.active_storage.service = :local
-
-  
   ActionMailer::Base.delivery_method = :letter_opener
   
   #deviseが認証用のURLなどを生成するのに必要になる（らしい）
