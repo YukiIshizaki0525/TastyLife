@@ -11,48 +11,37 @@ RSpec.describe "レシピいいね機能", type: :system do
     sign_in user
   end
 
-  context ' レシピ一覧ページからのいいね機能について' do
+  context ' レシピ一覧ページからのいいね機能について', js:true do
     it 'いいねする' do
       visit recipes_path
-      expect(page).to have_selector '.far'
-      expect(page).to have_selector '.fa-heart'
-      expect(recipe.favorites.length).to eq(0)
-      find(".favorite__link").find(".fa-heart").click
-
-      expect{ find(".favorite__link").find(".fa-heart").click }.to change { Favorite.count }.by(1)
+      find('.far').click
+      expect(page).to have_css '.fas'
+      expect(page).to have_css "div#recipe_#{recipe.id}", text: '1'
     end
 
     it 'いいねを解除' do
       favorite
       visit recipes_path
-      expect(page).to have_selector '.fas'
-      expect(page).to have_selector '.fa-heart'
-      expect(recipe.favorites.length).to eq(1)
-
-      expect{ destroy_favorite }.to change { Favorite.count }.by(-1)
+      find('.fas').click
+      expect(page).to have_css '.far'
+      expect(page).to have_css "div#recipe_#{recipe.id}", text: '0'
     end
   end
 
-  context 'レシピ詳細ページからのいいね機能について' do
+  context 'レシピ詳細ページからのいいね機能について', js:true do
     it 'いいねする' do
       visit recipe_path(recipe)
-      expect(page).to have_selector '.far'
-      expect(page).to have_selector '.fa-heart'
-      expect(recipe.favorites.length).to eq(0)
-      find(".favorite__link").find(".fa-heart").click
-
-      expect{ find(".favorite__link").find(".fa-heart").click }.to change { Favorite.count }.by(1)
+      find('.far').click
+      expect(page).to have_css '.fas'
+      expect(page).to have_css "div#recipe_#{recipe.id}", text: '1'
     end
 
     it 'いいねを解除' do
       favorite
       visit recipe_path(recipe)
-      expect(page).to have_selector '.fas'
-      expect(page).to have_selector '.fa-heart'
-      expect(recipe.favorites.length).to eq(1)
-
-      expect{ destroy_favorite }.to change { Favorite.count }.by(-1)
-
+      find('.fas').click
+      expect(page).to have_css '.far'
+      expect(page).to have_css "div#recipe_#{recipe.id}", text: '0'
     end
   end
 

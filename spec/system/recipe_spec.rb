@@ -210,12 +210,15 @@ RSpec.describe "レシピ機能", type: :system do
   describe '削除機能' do
     it '編集ページから削除ボタンを押せばレシピの削除が可能' do
       visit edit_recipe_path(posted_recipe)
+      expect(Recipe.count).to eq 1
+
       click_link 'レシピを削除'
       expect(page.driver.browser.switch_to.alert.text).to eq "削除してよろしいですか？"
       page.driver.browser.switch_to.alert.accept
-      
       expect(current_path).to eq user_path(user)
       expect(page).to have_content("「#{posted_recipe.title}」のレシピを削除しました。")
+
+      expect(Recipe.count).to eq 0
     end
 
     it "編集ページからレシピの画像削除が可能" do

@@ -24,7 +24,6 @@ RSpec.describe "レシピ相談機能", type: :system do
         expect(page).to have_content(user.name)
         expect(page).to have_content(consultation.title)
         expect(page).to have_content(consultation.content)
-        expect(page).to have_content(consultation.created_at)
       end
     end
 
@@ -105,12 +104,17 @@ RSpec.describe "レシピ相談機能", type: :system do
   describe '削除機能' do
     it '編集ページから削除ボタンを押せば相談の削除が可能' do
       visit edit_consultation_path(posted_consultation)
+
+      expect(Consultation.count).to eq 1
+
       click_link '相談を削除'
       expect(page.driver.browser.switch_to.alert.text).to eq "削除してよろしいですか？"
       page.driver.browser.switch_to.alert.accept
 
       expect(current_path).to eq consultations_user_path(user.id)
       expect(page).to have_content("「#{posted_consultation.title}」の相談を削除しました。")
+
+      expect(Consultation.count).to eq 0
     end
   end
 

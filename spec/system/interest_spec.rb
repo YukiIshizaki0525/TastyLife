@@ -48,6 +48,7 @@ RSpec.describe "相談気になる機能", type: :system do
       interest
       visit consultation_path(consultation)
       find(".interest__delete-link").find(".fa-star").click
+
       visit interests_user_path(user)
       expect(page).to have_content("Interest")
       expect(page).to have_content("#{user.name}さんが気になっている相談はありません。")
