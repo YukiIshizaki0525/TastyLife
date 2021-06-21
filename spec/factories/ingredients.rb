@@ -13,6 +13,10 @@
 #
 #  index_ingredients_on_recipe_id  (recipe_id)
 #
+# Foreign Keys
+#
+#  fk_rails_...  (recipe_id => recipes.id)
+#
 FactoryBot.define do
   factory :ingredients, class: Ingredient do
     content { "材料1" }
