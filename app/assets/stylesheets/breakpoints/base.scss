@@ -166,6 +166,7 @@ img {
 .notthing {
   @extend .content-width;
   @extend .font-md;
+  @extend .mb-sm;
   color: $--c-brown;
 }
 

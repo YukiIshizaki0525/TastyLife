@@ -1,7 +1,6 @@
 // ログイン時のフラッシュメッセージここから
 .notice,
 .success {
-  @extend .content-width;
   @extend .mb-sm;
   @extend .font-sm;
   font-weight: bold;
@@ -14,7 +13,6 @@
 
 // deviseはalert属性を返す
 .alert {
-  @extend .content-width;
   @extend .mb-sm;
   @extend .font-sm;
   font-weight: bold;
