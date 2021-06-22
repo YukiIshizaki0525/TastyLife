@@ -116,8 +116,8 @@ GEM
       responders
       warden (~> 1.2.3)
     devise-bootstrap-views (1.1.0)
-    devise-i18n (1.9.4)
-      devise (>= 4.7.1)
+    devise-i18n (1.10.0)
+      devise (>= 4.8.0)
     diff-lcs (1.4.4)
     erubi (1.10.0)
     factory_bot (6.2.0)
@@ -378,7 +378,6 @@ DEPENDENCIES
   spring-commands-rspec
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
-  tzinfo-data
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)

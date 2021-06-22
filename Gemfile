@@ -57,5 +57,3 @@ group :test do
     git: 'https://github.com/thoughtbot/shoulda-matchers.git',
     branch: 'rails-5'
 end
-
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

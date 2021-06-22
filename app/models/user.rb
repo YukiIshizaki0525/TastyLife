@@ -144,8 +144,6 @@ class User < ApplicationRecord
     find_or_create_by!(email: 'guest@example.com', name: 'ゲストユーザー') do |user|
       user.password = SecureRandom.urlsafe_base64(12)
       user.password_confirmation = user.password
-      user.skip_confirmation!
-      user.save
     end
   end
 
