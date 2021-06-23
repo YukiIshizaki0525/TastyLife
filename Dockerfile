@@ -17,5 +17,3 @@ ADD Gemfile.lock /RecipeApp/Gemfile.lock
 
 RUN gem install bundler
 RUN bundle install
-
-RUN mkdir -p tmp/sockets
