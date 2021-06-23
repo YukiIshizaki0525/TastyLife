@@ -42,6 +42,11 @@
     padding: 30px;
     margin: 40px;
     background: rgba(255, 255, 255, 0.9);
+
+    & > .notice,
+    & > .alert {
+      width: 100%;
+    }
   }
 
   &__inputBx {

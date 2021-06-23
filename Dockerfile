@@ -8,14 +8,14 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
   && apt-get update -qq \
   && apt-get install -y nodejs yarn
 
-RUN mkdir /myproject
+RUN mkdir /project
 
-WORKDIR /myproject
+WORKDIR /project
 
-ADD Gemfile /myproject/Gemfile
-ADD Gemfile.lock /myproject/Gemfile.lock
+ADD Gemfile /project/Gemfile
+ADD Gemfile.lock /project/Gemfile.lock
 
 RUN gem install bundler
 RUN bundle install
 
-ADD . /myproject
+RUN mkdir -p tmp/sockets

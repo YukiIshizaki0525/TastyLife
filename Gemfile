@@ -24,8 +24,8 @@ gem 'font-awesome-sass'
 gem 'bullet'
 gem 'carrierwave'
 gem 'rmagick'
-gem 'image_processing',           '1.9.3'
-gem 'mini_magick',                '4.9.5'
+gem 'image_processing'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

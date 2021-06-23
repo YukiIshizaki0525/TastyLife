@@ -2,7 +2,7 @@ Devise.setup do |config|
   # config.mailer = 'Devise::Mailer'
   config.mailer = 'Users::Mailer'
 
-  config.mailer_sender = '認証メール<noreply@example.com>'
+  config.mailer_sender = '認証メール<recipeapp6@gmail.com>'
 
   require 'devise/orm/active_record'
 

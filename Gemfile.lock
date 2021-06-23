@@ -354,13 +354,13 @@ DEPENDENCIES
   factory_bot_rails
   faker
   font-awesome-sass
-  image_processing (= 1.9.3)
+  image_processing
   impressionist
   jbuilder (~> 2.7)
   kaminari
   launchy
   listen (~> 3.2)
-  mini_magick (= 4.9.5)
+  mini_magick
   mysql2 (>= 0.4.4)
   pry-byebug
   pry-rails
