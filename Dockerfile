@@ -8,12 +8,12 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
   && apt-get update -qq \
   && apt-get install -y nodejs yarn
 
-RUN mkdir /project
+RUN mkdir /RecipeApp
 
-WORKDIR /project
+WORKDIR /RecipeApp
 
-ADD Gemfile /project/Gemfile
-ADD Gemfile.lock /project/Gemfile.lock
+ADD Gemfile /RecipeApp/Gemfile
+ADD Gemfile.lock /RecipeApp/Gemfile.lock
 
 RUN gem install bundler
 RUN bundle install
