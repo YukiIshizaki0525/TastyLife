@@ -29,6 +29,7 @@
 # Indexes
 #
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
+#  index_users_on_email                 (email) UNIQUE
 #  index_users_on_name                  (name) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_users_on_unlock_token          (unlock_token) UNIQUE
@@ -141,8 +142,7 @@ class User < ApplicationRecord
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com', name: 'ゲストユーザー') do |user|
-      user.avatar.attach(io: File.open("app/assets/images/default_user.png"), filename: "default_user.png")
-      user.password = SecureRandom.urlsafe_base64
+      user.password = SecureRandom.urlsafe_base64(12)
       user.password_confirmation = user.password
     end
   end

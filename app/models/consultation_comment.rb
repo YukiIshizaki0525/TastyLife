@@ -15,6 +15,11 @@
 #  index_consultation_comments_on_consultation_id  (consultation_id)
 #  index_consultation_comments_on_user_id          (user_id)
 #
+# Foreign Keys
+#
+#  fk_rails_...  (consultation_id => consultations.id)
+#  fk_rails_...  (user_id => users.id)
+#
 class ConsultationComment < ApplicationRecord
   belongs_to :user
   belongs_to :consultation

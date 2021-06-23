@@ -10,20 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_05_050521) do
+ActiveRecord::Schema.define(version: 2021_06_22_071711) do
 
-  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.bigint "recipe_id", null: false
     t.text "content", null: false
+    t.integer "comments"
+    t.integer "reply_comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
-    t.integer "reply_comment"
     t.index ["recipe_id"], name: "index_comments_on_recipe_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "consultation_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "consultation_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.text "content", null: false
     t.bigint "user_id", null: false
     t.bigint "consultation_id", null: false
@@ -34,7 +35,7 @@ ActiveRecord::Schema.define(version: 2021_06_05_050521) do
     t.index ["user_id"], name: "index_consultation_comments_on_user_id"
   end
 
-  create_table "consultations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "consultations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "title"
     t.text "content"
     t.bigint "user_id", null: false
@@ -44,16 +45,14 @@ ActiveRecord::Schema.define(version: 2021_06_05_050521) do
     t.index ["user_id"], name: "index_consultations_on_user_id"
   end
 
-  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "recipe_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
-    t.bigint "recipe_id", null: false
-    t.index ["recipe_id"], name: "index_favorites_on_recipe_id"
-    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "impressions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "impressions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "impressionable_type"
     t.integer "impressionable_id"
     t.integer "user_id"
@@ -79,7 +78,7 @@ ActiveRecord::Schema.define(version: 2021_06_05_050521) do
     t.index ["user_id"], name: "index_impressions_on_user_id"
   end
 
-  create_table "ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.bigint "recipe_id", null: false
     t.string "content", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -88,7 +87,7 @@ ActiveRecord::Schema.define(version: 2021_06_05_050521) do
     t.index ["recipe_id"], name: "index_ingredients_on_recipe_id"
   end
 
-  create_table "interests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "interests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "consultation_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -97,7 +96,7 @@ ActiveRecord::Schema.define(version: 2021_06_05_050521) do
     t.index ["user_id"], name: "index_interests_on_user_id"
   end
 
-  create_table "inventories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "inventories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "name", null: false
     t.string "quantity", null: false
     t.date "expiration_date", null: false
@@ -109,7 +108,7 @@ ActiveRecord::Schema.define(version: 2021_06_05_050521) do
     t.index ["user_id"], name: "index_inventories_on_user_id"
   end
 
-  create_table "recipe_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "recipe_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.bigint "recipe_id", null: false
     t.bigint "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -118,18 +117,17 @@ ActiveRecord::Schema.define(version: 2021_06_05_050521) do
     t.index ["tag_id"], name: "index_recipe_tag_relations_on_tag_id"
   end
 
-  create_table "recipes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "recipes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
     t.string "image"
-    t.index ["user_id", "created_at"], name: "index_recipes_on_user_id_and_created_at"
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
-  create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
     t.datetime "created_at", precision: 6, null: false
@@ -139,7 +137,7 @@ ActiveRecord::Schema.define(version: 2021_06_05_050521) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
-  create_table "steps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "steps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.bigint "recipe_id", null: false
     t.text "direction", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -148,13 +146,13 @@ ActiveRecord::Schema.define(version: 2021_06_05_050521) do
     t.index ["recipe_id"], name: "index_steps_on_recipe_id"
   end
 
-  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -178,12 +176,23 @@ ActiveRecord::Schema.define(version: 2021_06_05_050521) do
     t.boolean "is_deleted", default: false, null: false
     t.string "avatar"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "comments", "recipes"
+  add_foreign_key "comments", "users"
+  add_foreign_key "consultation_comments", "consultations"
+  add_foreign_key "consultation_comments", "users"
+  add_foreign_key "consultations", "users"
+  add_foreign_key "ingredients", "recipes"
   add_foreign_key "interests", "consultations"
   add_foreign_key "interests", "users"
+  add_foreign_key "inventories", "users"
+  add_foreign_key "recipe_tag_relations", "recipes"
+  add_foreign_key "recipe_tag_relations", "tags"
+  add_foreign_key "recipes", "users"
   add_foreign_key "steps", "recipes"
 end
