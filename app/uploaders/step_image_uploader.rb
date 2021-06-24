@@ -5,7 +5,7 @@ class StepImageUploader < CarrierWave::Uploader::Base
   # process resize_to_fit: [400, 200]
 
   def size_range
-    1..3.megabytes
+    3.megabytes
   end
 
   # Choose what kind of storage to use for this uploader:
