@@ -5,7 +5,7 @@ class RecipeImageUploader < CarrierWave::Uploader::Base
   # process resize_to_fit: [300, 300]
 
   def size_range
-    3.megabytes
+    1..3.megabytes
   end
 
   # Choose what kind of storage to use for this uploader:

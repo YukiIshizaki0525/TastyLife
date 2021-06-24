@@ -34,7 +34,6 @@ RSpec.describe Recipe, type: :model do
 
   describe "正常系" do
     it "正しく投稿できること" do
-      recipe.image = fixture_file_upload("salad.jpg")
       ingredient = Ingredient.new(content: "材料1", quantity: "分量1")
       step = Step.new(direction: "ステップ1")
       recipe.save
@@ -82,11 +81,10 @@ RSpec.describe Recipe, type: :model do
       end
 
       it "レシピ画像サイズが3MB以上だと登録不可" do
-        recipe.image = fixture_file_upload("pasta_8MB.jpg")
         ingredient = Ingredient.new(content: "材料1", quantity: "分量1")
         step = Step.new(direction: "ステップ1")
+        recipe.image = File.open("#{Rails.root}/spec/fixtures/pasta_8MB.jpg")
         recipe.save
-
         recipe.valid?
         expect(recipe.errors.full_messages.first).to eq("レシピ画像は3MB以下のサイズにしてください")
       end
