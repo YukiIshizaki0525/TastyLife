@@ -4,7 +4,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   
   def size_range
-    3.megabytes
+    1..3.megabytes
   end
 
   # Choose what kind of storage to use for this uploader:

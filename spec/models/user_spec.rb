@@ -66,6 +66,13 @@ RSpec.describe User, type: :model do
         user.valid?
         expect(user.errors[:password]).to include('は半角6~20文字英大文字・小文字・数字それぞれ1文字以上含む必要があります')
       end
+
+      it 'プロフィール画像サイズが3MB以上だと登録不可' do
+        user.avatar = File.open("#{Rails.root}/spec/fixtures/pasta_8MB.jpg")
+        user.save
+        user.valid?
+        expect(user.errors.full_messages.first).to eq("プロフィール画像は3MB以下のサイズにしてください")
+      end
     end
   end
 
