@@ -73,4 +73,6 @@ RSpec.describe "ユーザー編集", type: :system do
       end
     end
   end
+
+  it 'ゲストユーザーの編集及び退会処理不可'
 end
