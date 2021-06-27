@@ -101,7 +101,7 @@ RSpec.describe "レシピ相談機能", type: :system do
     end
   end
 
-  describe '削除機能' do
+  describe '削除機能', js: true do
     it '編集ページから削除ボタンを押せば相談の削除が可能' do
       visit edit_consultation_path(posted_consultation)
 
@@ -116,7 +116,7 @@ RSpec.describe "レシピ相談機能", type: :system do
     end
   end
 
-  describe 'ソート機能' do
+  describe 'ソート機能', js: true do
     it 'デフォルトは投稿が新しい順で表示される' do
       posted_consultation
       other_consultation
