@@ -83,7 +83,7 @@ RSpec.describe Comment, type: :system do
       expect(page.driver.browser.switch_to.alert.text).to eq "削除してよろしいですか？"
       page.driver.browser.switch_to.alert.accept
 
-      expect(page).to have_content 'コメントが削除されました'
+      expect(page).to have_content 'コメントを削除しました。'
       expect(page).to_not have_content( posted_comment.content )
     end
   end

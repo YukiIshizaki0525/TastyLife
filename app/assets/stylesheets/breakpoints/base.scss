@@ -54,6 +54,11 @@ img {
 
 .main-top {
   padding-top: $navHeight;
+  .notice,
+  .success,
+  .alert {
+    @extend .content-width;
+  }
 }
 
 .content-width {

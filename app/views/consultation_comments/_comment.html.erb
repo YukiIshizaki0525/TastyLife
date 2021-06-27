@@ -1,4 +1,4 @@
-<% comments.each do |comment| %>
+<% @comments.each do |comment| %>
   <% if comment.reply_comment.present? || comment.id.blank? %>
     <% next %>
   <% end %>

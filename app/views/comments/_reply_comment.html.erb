@@ -7,7 +7,7 @@
     <div class="comment__reply-content">
       <%= reply.content %>
       <% if user_signed_in? && reply.user == current_user %>
-        <%= link_to image_tag("delete"), recipe_comment_path(reply.recipe.id, reply.id), class: 'comment__delete', method: :delete, data: { confirm: '削除してよろしいですか？' } %>
+        <%= link_to image_tag("delete"), recipe_comment_path(@recipe.id, reply.id), class: 'comment__delete', method: :delete, data: { confirm: '削除してよろしいですか？' } %>
       <% end %>
     </div>
   </div>

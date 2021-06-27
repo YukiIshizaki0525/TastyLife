@@ -1,6 +1,6 @@
 class ConsultationCommentsController < ApplicationController
   def create
-    comment = ConsultationComment.create(comment_params)
+    comment = ConsultationComment.new(comment_params)
     if comment.save
       if comment.reply_comment.nil?
         flash[:notice] = '相談へのコメントを投稿しました。'
