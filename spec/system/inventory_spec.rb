@@ -147,7 +147,7 @@ RSpec.describe "食材管理機能", type: :system do
     end
   end
 
-  describe '削除機能' do
+  describe '削除機能', js: true do
     it '食材管理ページからゴミ箱ボタンを押せば食材の削除が可能' do
       visit inventories_user_path(posted_inventory.user)
       click_on 'Delete'
