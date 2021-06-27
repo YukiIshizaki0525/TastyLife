@@ -31,6 +31,8 @@
       @extend .font-sm;
       color: $--c-brown;
     }
+
+    margin-top: 10px;
   }
 
   &__number {
@@ -96,7 +98,7 @@
 
   &__input {
     @extend .recipe-input;
-    height: 30px;
+    height: 60px;
     width: 100%;
     color: $--c-dark-gray;
     margin: 10px 0;
