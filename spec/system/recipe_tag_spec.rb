@@ -1,7 +1,7 @@
 
 require 'rails_helper'
 
-RSpec.describe "レシピタグ付け機能", type: :system do
+RSpec.describe "レシピタグ付け機能", type: :system, js: true do
   let(:user) { create(:user) }
   let(:other_user) { create(:other_user) }
   let(:recipe) { build(:recipe) }
