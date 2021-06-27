@@ -28,24 +28,19 @@ class Recipe < ApplicationRecord
   has_many :steps, dependent: :destroy
   accepts_nested_attributes_for :steps, allow_destroy: true
 
-  # コメント関連
   has_many :comments, dependent: :destroy
 
-  # タグ付け関連
   has_many :recipe_tag_relations, dependent: :delete_all, validate: false
   has_many :tags, through: :recipe_tag_relations
 
-  # いいね機能関連
   has_many :favorites, dependent: :destroy
 
   mount_uploader :image, RecipeImageUploader
 
-  # レシピ投稿に関するバリデーション
   validates :user_id, presence: true
   validates :title, presence: true, length: { maximum: 50}
   validates :description, presence: true, length: { maximum: 140}
 
-  # 材料・分量・手順についてのバリデーション
   validate :require_any_ingredients
   validate :require_any_steps
 

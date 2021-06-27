@@ -10,6 +10,8 @@
   border-color: $--bg-notice;
   color: $--c-notice;
   padding: 12px 20px;
+  border-radius: 0.25rem;
+  width: 100%;
 }
 
 // deviseはalert属性を返す
@@ -23,6 +25,8 @@
   border-color: $--bg-alert;
   color: $--c-alert;
   padding: 12px 20px;
+  border-radius: 0.25rem;
+  width: 100%;
 
   & ul > li {
     list-style: none !important;

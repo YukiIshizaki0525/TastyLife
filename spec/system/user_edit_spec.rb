@@ -2,14 +2,15 @@ require 'rails_helper'
 
 RSpec.describe "ユーザー編集", type: :system do
   let(:user) { create(:user) }
-
-  before do
-    sign_in user
-    visit user_path(user)
-    click_link 'ユーザー編集'
-  end
+  let(:guest_user) { User.guest }
 
   describe 'ユーザー編集' do
+    before do
+      sign_in user
+      visit user_path(user)
+      click_link 'ユーザー編集'
+    end
+
     context 'フォームの入力値が正常' do
       it 'ユーザー名・プロフィール画像・パスワードを変更する場合' do
         expect(page).to have_content('アカウント編集')
@@ -72,5 +73,14 @@ RSpec.describe "ユーザー編集", type: :system do
         expect(page).to have_content("プロフィール画像は3MB以下のサイズにしてください")
       end
     end
+  end
+
+  it 'ゲストユーザーの編集不可' do
+    visit new_user_session_path
+    click_link 'ゲストログイン'
+    expect(current_path).to eq root_path
+    visit user_path(guest_user)
+    click_link 'ユーザー編集'
+    expect(page).to have_content('ゲストユーザーの編集・退会はできません。')
   end
 end

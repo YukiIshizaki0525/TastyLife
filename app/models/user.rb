@@ -104,8 +104,8 @@ class User < ApplicationRecord
 
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :confirmable, :lockable, :timeoutable, :trackable
+          :recoverable, :rememberable, :validatable,
+          :confirmable, :lockable, :timeoutable, :trackable
 
   def validate_name
     errors.add(:name, :invalid) if User.where(email: name).exists?
@@ -142,7 +142,8 @@ class User < ApplicationRecord
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com', name: 'ゲストユーザー') do |user|
-      user.password = SecureRandom.urlsafe_base64(12)
+      o = [('a'..'z'), ('A'..'Z'), ('0'..'9')].map { |i| i.to_a }.flatten
+      user.password = (0...12).map { o[rand(o.length)] }.join
       user.password_confirmation = user.password
     end
   end

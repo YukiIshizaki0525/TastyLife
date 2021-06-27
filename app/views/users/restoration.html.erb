@@ -5,7 +5,7 @@
   <div class="login__contentBx">
     <div class="login__formBx">
       <div class="login__title">アカウント復旧</div>
-      <%= render 'layouts/notifications' %>
+      <%= render 'shared/flash' %>
       
       <%= form_with url: restore_mail_user_path do |f| %>
         <div class="login__inputBx">

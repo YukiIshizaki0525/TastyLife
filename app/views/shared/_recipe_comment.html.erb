@@ -2,7 +2,7 @@
   <div class="comment__inner">
     <div class="comment__texts">
       <div class="comment__count">コメント<%= comments.where(reply_comment: nil).length %>件</div>
-      <%= render "comments/comment" %>
+      <%= render "comments/comment", comments: comments %>
     </div>
     <% if user_signed_in? %>
       <div class="comment__form">

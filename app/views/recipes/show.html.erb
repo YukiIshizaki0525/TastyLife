@@ -1,11 +1,6 @@
+<%= render 'shared/flash' %>
 <main>
   <section class="description">
-  <!-- 投稿完了後のフラッシュメッセージ -->
-    <% unless flash[:error_messages] %>
-      <%= render 'layouts/notifications' %>
-    <% else %>
-      <%= render 'shared/error_messages' %>
-    <% end %>
     <div class="description__inner">
       <div class="description__img-field">
         <div class="description__img">
@@ -80,5 +75,5 @@
       </div>
     <% end %>
   </section>
-  <%= render partial: 'shared/recipe_comment', locals: { comments: @comments } %>
+  <%= render 'shared/recipe_comment', comments: @comments %>
 </main>

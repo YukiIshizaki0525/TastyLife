@@ -20,7 +20,12 @@ class CommentsController < ApplicationController
 
   def destroy
     comment = Comment.find_by(id: params[:id], recipe_id: params[:recipe_id]).destroy
-    redirect_to comment.recipe, flash: { notice: 'コメントが削除されました' }
+    redirect_to comment.recipe
+    if comment.reply_comment.nil?
+      flash[:notice] = 'コメントを削除しました。'
+    else
+      flash[:notice] = '返信したコメントを削除しました。'
+    end
   end
 
   private

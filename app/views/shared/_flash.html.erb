@@ -1,0 +1,6 @@
+<!-- 投稿完了後のフラッシュメッセージ -->
+<% if flash[:error_messages] %>
+  <%= render 'shared/error_messages' %>
+<% else %>
+  <%= render 'layouts/notifications' %>
+<% end %>
