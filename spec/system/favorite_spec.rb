@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "レシピいいね機能", type: :system do
+RSpec.describe "レシピいいね機能", type: :system, js:true do
   let(:user) { create(:user) }
   let(:other_user) { create(:other_user) }
   let!(:recipe) { create(:recipe, :with_ingredients, :with_steps, user_id: other_user.id) }
@@ -11,7 +11,7 @@ RSpec.describe "レシピいいね機能", type: :system do
     sign_in user
   end
 
-  context ' レシピ一覧ページからのいいね機能について', js:true do
+  context ' レシピ一覧ページからのいいね機能について' do
     it 'いいねする' do
       visit recipes_path
       find('.far').click
@@ -28,7 +28,7 @@ RSpec.describe "レシピいいね機能", type: :system do
     end
   end
 
-  context 'レシピ詳細ページからのいいね機能について', js:true do
+  context 'レシピ詳細ページからのいいね機能について' do
     it 'いいねする' do
       visit recipe_path(recipe)
       find('.far').click
