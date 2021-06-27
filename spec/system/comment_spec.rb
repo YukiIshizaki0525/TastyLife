@@ -76,7 +76,7 @@ RSpec.describe Comment, type: :system do
   end
 
   describe 'コメント削除機能' do
-    it 'コメントした本人であれば削除ボタンからコメントの削除が可能' do
+    it 'コメントした本人であれば削除ボタンからコメントの削除が可能', js: true do
       posted_comment
       visit recipe_path(recipe)
       click_link 'delete'

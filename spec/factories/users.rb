@@ -39,7 +39,7 @@ FactoryBot.define do
   factory :user do
     name { "Alice" }
     email { "Alice@example.com" }
-    avatar { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/avatar.jpg')) }
+    avatar { File.open("#{Rails.root}/spec/fixtures/avatar.jpg") }
     password {"v4xqUvAXhK"}
     password_confirmation {"v4xqUvAXhK"}
     confirmed_at { Date.today }
@@ -47,7 +47,7 @@ FactoryBot.define do
     factory :other_user do
       name { Faker::Internet.username }
       email { Faker::Internet.email }
-      avatar { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/other_user_avatar.jpg')) }
+      avatar { File.open("#{Rails.root}/spec/fixtures/other_user_avatar.jpg") }
       password { "C2e6aNEY" }
       password_confirmation { "C2e6aNEY" }
       confirmed_at { Date.today }

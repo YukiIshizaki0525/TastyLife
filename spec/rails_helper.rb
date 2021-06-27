@@ -6,9 +6,7 @@ require File.expand_path('../config/environment', __dir__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 
-# shoulda-matchersの読み込み
 require 'shoulda/matchers'
-
 
   # supportディレクトリを利用
   Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
@@ -18,6 +16,21 @@ begin
 rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
+end
+
+Capybara.register_driver :remote_chrome do |app|
+  url = "http://chrome:4444/wd/hub"
+  caps = ::Selenium::WebDriver::Remote::Capabilities.chrome(
+    "goog:chromeOptions" => {
+      "args" => [
+        "no-sandbox",
+        "headless",
+        "disable-gpu",
+        "window-size=768, 654"
+      ]
+    }
+  )
+  Capybara::Selenium::Driver.new(app, browser: :remote, url: url, timeout: 600, desired_capabilities: caps)
 end
 
 RSpec.configure do |config|
@@ -32,14 +45,16 @@ RSpec.configure do |config|
   #FactoryBotもinclude
   config.include FactoryBot::Syntax::Methods
 
-  # ヘッドレスモードのChromeで実行する
-  config.before(:each) do |example|
-    if example.metadata[:type] == :system
-      driven_by :selenium, using: :headless_chrome, screen_size: [768, 654]
-      # driven_by :selenium, using: :headless_chrome, screen_size: [1680, 1050] #=> フルサイズ
-    end
+  config.before(:each, type: :system) do
+    driven_by :rack_test
   end
 
+  config.before(:each, type: :system, js: true) do
+    driven_by :remote_chrome
+    Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
+    Capybara.server_port = 3000
+    Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
+  end
 end
 
 Shoulda::Matchers.configure do |config|

@@ -11,7 +11,7 @@ RSpec.describe "ユーザー退会及び復旧", type: :system do
   end
 
   describe 'ユーザー退会' do
-    it '退会処理を実施。アカウント復旧をしないとログイン不可' do
+    it '退会処理を実施。アカウント復旧をしないとログイン不可', js: true do
         expect(page).to have_content('退会お手続き')
         click_link '退会する'
         expect(page.driver.browser.switch_to.alert.text).to eq "本当に退会しますか？"

@@ -4,14 +4,14 @@ RSpec.describe "レシピ機能", type: :system do
   let(:user) { create(:user) }
   let(:other_user) { create(:other_user) }
   let(:recipe) { build(:recipe) }
-  let(:posted_recipe) { create(:recipe, :with_ingredients, :with_steps, :with_images, user_id: user.id) }
+  let(:posted_recipe) { create(:recipe, :with_ingredients, :with_steps, user_id: user.id) }
 
   before do
     sign_in user #=> サインイン状態になる
   end
 
-  describe '新規作成機能' do
-    context 'フォームの入力値が正常'do
+  describe '新規作成機能', js: true do
+    context 'フォームの入力値が正常' do
       it '正常に登録される' do
         visit new_recipe_path
         attach_file "recipe[image]", "#{Rails.root}/spec/fixtures/salad.jpg", make_visible: true
@@ -136,7 +136,7 @@ RSpec.describe "レシピ機能", type: :system do
 
   describe '編集機能' do
     context '変更反映可能' do
-      it '項目追加をした場合、正常な値入力ができていれば反映可能' do
+      it '項目追加をした場合、正常な値入力ができていれば反映可能', js: true do
         visit edit_recipe_path(posted_recipe)
         expect(page).to have_field 'recipe_title', with: recipe.title
         expect(page).to have_field 'recipe_description', with: recipe.description
@@ -208,14 +208,13 @@ RSpec.describe "レシピ機能", type: :system do
   end
 
   describe '削除機能' do
-    it '編集ページから削除ボタンを押せばレシピの削除が可能' do
+    it '編集ページから削除ボタンを押せばレシピの削除が可能', js: true do
       visit edit_recipe_path(posted_recipe)
       expect(Recipe.count).to eq 1
 
       click_link 'レシピを削除'
       expect(page.driver.browser.switch_to.alert.text).to eq "削除してよろしいですか？"
       page.driver.browser.switch_to.alert.accept
-      expect(current_path).to eq user_path(user)
       expect(page).to have_content("「#{posted_recipe.title}」のレシピを削除しました。")
       expect(Recipe.count).to eq 0
 
@@ -230,7 +229,7 @@ RSpec.describe "レシピ機能", type: :system do
     end
   end
 
-  describe '検索機能' do
+  describe '検索機能' , js: true do
     context "レシピタイトルでの検索可能" do
       it "全一致で検索可能"do
         posted_recipe

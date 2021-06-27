@@ -22,6 +22,7 @@ FactoryBot.define do
   factory :recipe, class: Recipe do
     title { 'テストタイトル' }
     description { 'テストディスクリプション' }
+    image { File.open("#{Rails.root}/spec/fixtures/salad.jpg") }
 
     trait :with_ingredients do
       after(:build) do |recipe|
@@ -37,10 +38,6 @@ FactoryBot.define do
       end
     end
 
-    trait :with_images do
-      image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/salad.jpg')) }
-    end
-    
     factory :other_recipe do
       title { 'テストタイトル2' }
       description { 'テストディスクリプション2' }

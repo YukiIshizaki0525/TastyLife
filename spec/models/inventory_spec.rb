@@ -35,7 +35,8 @@ RSpec.describe Inventory, type: :model do
     end
 
     it '画像とメモは設定されていなくても登録可能' do
-      inventory = build(:inventory, memo: nil)
+      inventory.memo = nil
+      inventory.image = nil
       expect(inventory).to be_valid
     end
   end
@@ -68,9 +69,8 @@ RSpec.describe Inventory, type: :model do
     end
 
     it "食材画像サイズが3MB以上だと登録不可" do
-      inventory.image = fixture_file_upload("pasta_8MB.jpg")
+      inventory.image = File.open("#{Rails.root}/spec/fixtures/pasta_8MB.jpg")
       inventory.save
-
       inventory.valid?
       expect(inventory.errors.full_messages.first).to eq("食材画像は3MB以下のサイズにしてください")
     end
