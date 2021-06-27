@@ -75,7 +75,7 @@ RSpec.describe ConsultationComment, type: :system do
   end
 
   describe 'コメント削除機能' do
-    it 'コメントした本人であれば削除ボタンからコメントの削除が可能' do
+    it 'コメントした本人であれば削除ボタンからコメントの削除が可能', js: true do
       posted_comment
       visit consultation_path(consultation)
       click_link 'delete'
