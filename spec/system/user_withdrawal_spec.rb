@@ -28,9 +28,13 @@ RSpec.describe "ユーザー退会及び復旧", type: :system do
     end
 
     it '退会処理を実施しない場合は、マイページに戻る' do
-        expect(page).to have_content('退会お手続き')
-        click_link '退会しない'
-        expect(current_path).to eq user_path(user)
+      expect(page).to have_content('退会お手続き')
+      click_link '退会しない'
+      expect(current_path).to eq user_path(user)
+    end
+
+    it 'ゲストユーザーは退会処理不可' do
+      
     end
   end
 end

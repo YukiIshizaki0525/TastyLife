@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :forbid_test_user, {only: [:edit,:update,:destroy]}
+  before_action :forbid_guest_user, {only: [:edit, :update, :destroy]}
 
   def new
     super
@@ -29,13 +29,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
-    # ゲストユーザーの更新・削除不可
-    # def forbid_test_user
-    #   if @user.email == "guest@example.com"
-    #     flash[:alert] = "ゲストユーザーの編集・退会はできません。"
-    #     redirect_to root_path
-    #   end
-    # end
+
+    def forbid_guest_user
+      if @user.email == "guest@example.com"
+        flash[:alert] = "ゲストユーザーの編集・退会はできません。"
+        redirect_to root_path
+      end
+    end
 
     def update_resource(resource, params)
       resource.update_without_current_password(params)
