@@ -1,4 +1,5 @@
 # MySQL. Versions 5.5.8 and up are supported.
+#
 
 default: &default
   adapter: mysql2

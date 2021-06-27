@@ -4,7 +4,7 @@ services:
     image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: root
+      MYSQL_DATABASE: ShareRecipe_development
     command: --default-authentication-plugin=mysql_native_password
     volumes:
       - mysql-data:/var/lib/mysql
@@ -12,13 +12,13 @@ services:
       - "4306:3306"
 
   web:
+    build: .
     tty: true
     stdin_open: true
-    build: .
     command: /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails db:migrate && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
-      - .:/RecipeApp:cached
-      - bundle:/usr/local/bundle:cached
+      - .:/RecipeApp
+      - bundle:/usr/local/bundle
       # 1. exclude volumes
       - /RecipeApp/vendor
       - /RecipeApp/tmp
@@ -28,6 +28,13 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      - chrome
+
+  chrome:
+    image: selenium/standalone-chrome:latest
+    shm_size: 256m
+    ports:
+      - 4444:4444
 
 volumes:
   mysql-data:

@@ -1,13 +1,14 @@
 require_relative 'boot'
 
-require "rails"
-require "active_model/railtie"
-require "active_job/railtie"
-require "active_record/railtie"
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "action_view/railtie"
-require "rails/test_unit/railtie"
+require 'rails/all'
+# require "rails"
+# require "active_model/railtie"
+# require "active_job/railtie"
+# require "active_record/railtie"
+# require "action_controller/railtie"
+# require "action_mailer/railtie"
+# require "action_view/railtie"
+# require "rails/test_unit/railtie"
 
 Bundler.require(*Rails.groups)
 
@@ -27,7 +28,9 @@ module ShareRecipe
       g.test_framework :rspec,
                         view_specs: false,
                         helper_specs: false,
-                        routing_specs: false
+                        controller_specs: false,
+                        routing_specs: false,
+                        request_specs: false
     end
     config.action_view.embed_authenticity_token_in_remote_forms = true
   end
