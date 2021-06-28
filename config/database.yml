@@ -19,6 +19,7 @@ test:
 
 production:
   <<: *default
+  host: <%= ENV['APP_DATABASE_HOST'] %>
   database: ShareRecipe_production
   username: ShareRecipe
   password: <%= ENV['SHARERECIPE_DATABASE_PASSWORD'] %>
