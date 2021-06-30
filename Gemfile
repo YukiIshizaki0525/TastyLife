@@ -26,6 +26,7 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'image_processing'
 gem 'mini_magick'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

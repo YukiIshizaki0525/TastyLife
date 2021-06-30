@@ -1,33 +1,21 @@
 version: "3"
 services:
-  db:
-    image: mysql:8.0
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: ShareRecipe_development
-    command: --default-authentication-plugin=mysql_native_password
-    volumes:
-      - mysql-data:/var/lib/mysql
-    ports:
-      - "4306:3306"
-
-  web:
-    build: .
-    tty: true
-    stdin_open: true
-    command: /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails db:migrate && bundle exec rails s -p 3000 -b '0.0.0.0'"
+  app:
+    build:
+      context: .
+    command: bundle exec puma -C config/puma.rb -e production
+    # command: bundle exec puma -C config/puma.rb
     volumes:
       - .:/RecipeApp
       - bundle:/usr/local/bundle
-      # 1. exclude volumes
-      - /RecipeApp/vendor
-      - /RecipeApp/tmp
-      - /RecipeApp/log
+      - public-data:/RecipeApp/public
+      - tmp-data:/RecipeApp/tmp
+      - log-data:/RecipeApp/log
       - /RecipeApp/.git
-    ports:
-      - "3000:3000"
+    networks:
+      - RecipeApp-network
     depends_on:
-      - db
+      # - db
       - chrome
 
   chrome:
@@ -35,7 +23,42 @@ services:
     shm_size: 256m
     ports:
       - 4444:4444
+    networks:
+      - RecipeApp-network
+
+  # db:
+  #   image: mysql:8.0
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: password
+  #     MYSQL_USER: user
+  #     MYSQL_PASSWORD: password
+  #     MYSQL_DATABASE: ShareRecipe_development
+  #   command: --default-authentication-plugin=mysql_native_password
+  #   volumes:
+  #     - mysql-data:/var/lib/mysql
+  #   networks:
+  #     - RecipeApp-network
+
+  web:
+    build:
+      context: ./nginx_docker
+    volumes:
+      - public-data:/RecipeApp/public
+      - tmp-data:/RecipeApp/tmp
+    ports:
+      - 80:80
+    depends_on:
+      - app
+    networks:
+      - RecipeApp-network
 
 volumes:
-  mysql-data:
   bundle:
+  mysql-data:
+  public-data:
+  log-data:
+  tmp-data:
+
+networks:
+  RecipeApp-network:
+    external: true

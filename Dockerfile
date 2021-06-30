@@ -12,8 +12,14 @@ RUN mkdir /RecipeApp
 
 WORKDIR /RecipeApp
 
-ADD Gemfile /RecipeApp/Gemfile
-ADD Gemfile.lock /RecipeApp/Gemfile.lock
+COPY Gemfile /RecipeApp/Gemfile
+COPY Gemfile.lock /RecipeApp/Gemfile.lock
 
 RUN gem install bundler
 RUN bundle install
+
+RUN mkdir -p tmp/sockets
+
+COPY start.sh /start.sh
+RUN chmod 744 /start.sh
+CMD ["sh", "/start.sh"]
