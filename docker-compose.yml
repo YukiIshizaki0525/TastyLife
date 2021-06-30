@@ -3,19 +3,19 @@ services:
   app:
     build:
       context: .
-    command: bundle exec puma -C config/puma.rb
+    command: bundle exec puma -C config/puma.rb -e production
+    # command: bundle exec puma -C config/puma.rb
     volumes:
       - .:/RecipeApp
       - bundle:/usr/local/bundle
       - public-data:/RecipeApp/public
       - tmp-data:/RecipeApp/tmp
-      - log-data:/fitO2/log
+      - log-data:/RecipeApp/log
+      - /RecipeApp/.git
     networks:
       - RecipeApp-network
-    ports:
-      - 3000:3000
     depends_on:
-      - db
+      # - db
       - chrome
 
   chrome:
@@ -26,18 +26,18 @@ services:
     networks:
       - RecipeApp-network
 
-  db:
-    image: mysql:8.0
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
-      MYSQL_DATABASE: ShareRecipe_development
-    command: --default-authentication-plugin=mysql_native_password
-    volumes:
-      - mysql-data:/var/lib/mysql
-    networks:
-      - RecipeApp-network
+  # db:
+  #   image: mysql:8.0
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: password
+  #     MYSQL_USER: user
+  #     MYSQL_PASSWORD: password
+  #     MYSQL_DATABASE: ShareRecipe_development
+  #   command: --default-authentication-plugin=mysql_native_password
+  #   volumes:
+  #     - mysql-data:/var/lib/mysql
+  #   networks:
+  #     - RecipeApp-network
 
   web:
     build:
