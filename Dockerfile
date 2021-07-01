@@ -19,7 +19,3 @@ RUN gem install bundler
 RUN bundle install
 
 RUN mkdir -p tmp/sockets
-
-COPY start.sh /start.sh
-RUN chmod 744 /start.sh
-CMD ["sh", "/start.sh"]
