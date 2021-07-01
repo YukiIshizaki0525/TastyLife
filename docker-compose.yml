@@ -13,7 +13,7 @@ services:
       - log-data:/RecipeApp/log
       - /RecipeApp/.git
     networks:
-      - RecipeApp-network
+      - recipeapp-network
     depends_on:
       # - db
       - chrome
@@ -24,7 +24,7 @@ services:
     ports:
       - 4444:4444
     networks:
-      - RecipeApp-network
+      - recipeapp-network
 
   # db:
   #   image: mysql:8.0
@@ -37,7 +37,7 @@ services:
   #   volumes:
   #     - mysql-data:/var/lib/mysql
   #   networks:
-  #     - RecipeApp-network
+  #     - recipeapp-network
 
   web:
     build:
@@ -50,7 +50,7 @@ services:
     depends_on:
       - app
     networks:
-      - RecipeApp-network
+      - recipeapp-network
 
 volumes:
   bundle:
@@ -60,5 +60,5 @@ volumes:
   tmp-data:
 
 networks:
-  RecipeApp-network:
+  recipeapp-network:
     external: true
