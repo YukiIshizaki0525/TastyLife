@@ -3,6 +3,7 @@
 
 default: &default
   adapter: mysql2
+  charset: utf8mb4
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
@@ -11,12 +12,11 @@ default: &default
 
 development:
   <<: *default
-  database: ShareRecipe_development
+  database: RecipApp_development
 
 test:
   <<: *default
-  database: ShareRecipe_test
-
+  database: RecipApp_test
 production:
   <<: *default
   database: <%= ENV['DB_DATABASE'] %>
