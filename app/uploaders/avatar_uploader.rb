@@ -7,9 +7,11 @@ class AvatarUploader < CarrierWave::Uploader::Base
     1..3.megabytes
   end
 
-  # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+  if Rails.env.production?
+    storage :fog
+  else
+    storage :file
+  end
 
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
