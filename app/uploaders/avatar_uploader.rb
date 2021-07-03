@@ -16,7 +16,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "uploads/#{model.class.to_s.underscore}/#{model.id}/#{mounted_as}"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
