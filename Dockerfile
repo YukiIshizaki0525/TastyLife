@@ -15,8 +15,4 @@ COPY Gemfile.lock /RecipeApp/Gemfile.lock
 RUN gem install bundler
 RUN bundle install
 
-COPY start.sh /start.sh
-RUN chmod 744 /start.sh
-CMD ["sh", "/start.sh"]
-
 RUN mkdir -p tmp/sockets
