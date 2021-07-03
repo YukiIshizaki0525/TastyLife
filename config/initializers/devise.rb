@@ -27,7 +27,6 @@ Devise.setup do |config|
 
   config.timeout_in = 1.day
 
-  # 認証メールの有効期限を24時間以内に設定
   config.confirm_within = 1.days
 
   config.reset_password_within = 6.hours
@@ -35,7 +34,4 @@ Devise.setup do |config|
   config.scoped_views = true
 
   config.sign_out_via = :delete
-
-  config.confirm_within = 1.days
-
 end
