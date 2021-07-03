@@ -8,10 +8,12 @@ class RecipeImageUploader < CarrierWave::Uploader::Base
     1..3.megabytes
   end
 
-  if Rails.env.production?
-    storage :fog
-  else
+  if Rails.env.development?
     storage :file
+  elsif Rails.env.test?
+    storage :file
+  else
+    storage :fog
   end
 
   # Override the directory where uploaded files will be stored.
