@@ -17,9 +17,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  host = ENV['IP'],
-
-  config.action_mailer.default_url_options = { host: host}
+  config.action_mailer.default_url_options = { host: '13.112.122.137'}
 
   config.action_mailer.perform_deliveries = true
 
