@@ -143,7 +143,7 @@ class User < ApplicationRecord
   def self.guest
     find_or_create_by!(email: 'guest@example.com', name: 'ゲストユーザー') do |user|
       o = [('a'..'z'), ('A'..'Z'), ('0'..'9')].map { |i| i.to_a }.flatten
-      user.password = (0...20).map { o[rand(o.length)] }.join
+      user.password = (0..19).map { o[rand(o.length)] }.join
       user.password_confirmation = user.password
     end
   end
