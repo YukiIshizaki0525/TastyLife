@@ -16,19 +16,19 @@ services:
       - log-data:/RecipeApp/log
     networks:
       - recipeapp-network
-    depends_on:
-      # - db
-      - chrome
-    ports:
-      - 3000:3000
+    # depends_on:
+    # - db
+    # - chrome
 
-  chrome:
-    image: selenium/standalone-chrome:latest
-    shm_size: 256m
-    ports:
-      - 4444:4444
-    networks:
-      - recipeapp-network
+  # =========ローカルと本番切り替え===========
+  # chrome:
+  #   image: selenium/standalone-chrome:latest
+  #   shm_size: 256m
+  #   ports:
+  #     - 4444:4444
+  #   networks:
+  #     - recipeapp-network
+  # ======================================
 
   # =========ローカルと本番切り替え===========
   # db:
