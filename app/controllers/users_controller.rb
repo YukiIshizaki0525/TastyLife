@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @title = "#{@user.name}さんのRecipe"
     if user_signed_in?
       @recipes = @user.recipes.includes([:favorites]).page(params[:page]).per(6)
     else
@@ -22,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def following
-    @title = "さんがフォロー中"
+    @title = "#{@user.name}さんがフォロー中"
     @message = "まだ誰もフォローしていません。"
     @users = @user.following.includes(:recipes).page(params[:page]).per(6)
     render 'show_follow'
@@ -30,33 +31,33 @@ class UsersController < ApplicationController
 
 
   def followers
-    @title = "さんのフォロワー"
+    @title = "#{@user.name}さんのフォロワー"
     @message = "まだ誰からもフォローされていません。"
     @users = @user.followers.includes(:recipes).page(params[:page]).per(6)
     render 'show_follow'
   end
 
   def consultations
-    @title = "Consultation"
+    @title = "#{@user.name}さんの相談"
     @consultations = @user.consultations.includes(:interests).page(params[:page]).per(3)
     render 'show_consultation'
   end
 
   def favorites
-    @title = "Favorite"
+    @title = "#{@user.name}さんがいいねしたレシピ"
     @recipes = @user.favorite_recipes.includes([:user], [:favorites]).page(params[:page]).per(6)
     render 'show_favorite'
   end
 
   def interests
-    @title = "Interest"
+    @title = "#{@user.name}さんの気になる相談"
     @consultations = @user.interest_consultations.includes([:user], [:interests]).page(params[:page]).per(6)
     render 'show_interest'
   end
 
   def inventories
     if user_signed_in? && @user.id == current_user.id
-      @title = "Inventory"
+      @title = "食材管理"
       @inventories = @user.inventories.page(params[:page]).order(expiration_date: 'ASC').per(6)
       render 'show_inventory'
     else
