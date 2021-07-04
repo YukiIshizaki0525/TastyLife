@@ -4,6 +4,7 @@ class RecipesController < ApplicationController
   before_action :set_q, only: [:index, :search]
 
   def index
+    @title = "レシピ一覧"
     @recipes = params[:tag_id].present? ? Tag.find(params[:tag_id]).recipes : Recipe
 
     if user_signed_in?

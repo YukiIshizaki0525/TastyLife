@@ -1,5 +1,5 @@
 module ApplicationHelper
-  APP_NAME = 'RecipeApp'.freeze
+  APP_NAME = 'TastyLife'.freeze
   def page_title
     base_title = APP_NAME
     return base_title if @title.blank?
