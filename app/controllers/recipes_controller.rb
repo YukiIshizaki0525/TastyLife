@@ -15,6 +15,7 @@ class RecipesController < ApplicationController
   end
 
   def show
+    @title = "#{@recipe.title}"
     @comments = Comment.includes([:user]).where(recipe_id: @recipe.id)
 
     if user_signed_in?
@@ -28,6 +29,7 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    @title = "#{@recipe.title}の編集"
     if @recipe.user == current_user
       render "edit"
     else

@@ -3,6 +3,8 @@ class ConsultationsController < ApplicationController
   before_action :set_consultation, only: [:show, :edit, :update, :destroy]
 
   def index
+    @title = "相談一覧"
+
     unless params[:q].present?
       params[:q] = { sorts: 'created_at desc' }
     end
