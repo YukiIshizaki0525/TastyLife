@@ -14,6 +14,7 @@ class ConsultationsController < ApplicationController
   end
 
   def show
+    @title = "#{@consultation.title}"
     @comments = ConsultationComment.includes([:user]).where(consultation_id: @consultation.id)
 
     if user_signed_in?
@@ -23,10 +24,12 @@ class ConsultationsController < ApplicationController
   end
 
   def new
+    @title = "相談投稿"
     @consultation = Consultation.new(flash[:consultation])
   end
 
   def edit
+    @title = "相談の編集"
     if @consultation.user == current_user
       render "edit"
     else
