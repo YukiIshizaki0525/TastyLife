@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @title = "#{@user.name}さんのRecipe"
+    @title = "#{@user.name}さんのページ"
     if user_signed_in?
       @recipes = @user.recipes.includes([:favorites]).page(params[:page]).per(6)
     else
