@@ -8,7 +8,7 @@
     <% if @user.confirmed_at != nil %>
       <div>会員登録が完了済みです。</div>
       <div>下記リンクからログインをお願いいたします。</div>
-      <p>http://13.112.122.137</p>
+      <p>https://tasty-life.site/</p>
     <% else %>
       <div>以下のリンクからユーザの認証を行ってユーザ登録を完了してください。</div>
       <div><%= link_to 'ユーザ認証を実行する', confirmation_url(@user,confirmation_token: @token) %></div>
