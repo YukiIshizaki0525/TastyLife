@@ -3,6 +3,8 @@ class ConsultationsController < ApplicationController
   before_action :set_consultation, only: [:show, :edit, :update, :destroy]
 
   def index
+    @title = "相談一覧"
+
     unless params[:q].present?
       params[:q] = { sorts: 'created_at desc' }
     end
@@ -12,6 +14,7 @@ class ConsultationsController < ApplicationController
   end
 
   def show
+    @title = "#{@consultation.title}"
     @comments = ConsultationComment.includes([:user]).where(consultation_id: @consultation.id)
 
     if user_signed_in?
@@ -21,10 +24,12 @@ class ConsultationsController < ApplicationController
   end
 
   def new
+    @title = "相談投稿"
     @consultation = Consultation.new(flash[:consultation])
   end
 
   def edit
+    @title = "相談の編集"
     if @consultation.user == current_user
       render "edit"
     else

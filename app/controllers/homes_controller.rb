@@ -11,6 +11,7 @@ class HomesController < ApplicationController
   end
 
   def tweet_index
+    @title = "タイムライン"
     @tweet = current_user.feed.includes([:user], [:favorites], [:comments], [:tags]).page(params[:page]).per(6)
   end
 end
