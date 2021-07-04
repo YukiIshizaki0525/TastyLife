@@ -4,10 +4,11 @@ services:
     build:
       context: .
     # =========ローカルと本番切り替え===========
-    command: bundle exec puma -C config/puma.rb -e production
-    # command: bundle exec puma -C config/puma.rb
+    # command: bundle exec puma -C config/puma.rb -e production
+    command: bundle exec puma -C config/puma.rb
     # ==========================================
-
+    ports:
+      - 3000:3000
     volumes:
       - .:/RecipeApp
       - bundle:/usr/local/bundle
@@ -16,8 +17,8 @@ services:
       - log-data:/RecipeApp/log
     networks:
       - recipeapp-network
-    # depends_on:
-    # - db
+    depends_on:
+      - db
     # - chrome
 
   # =========ローカルと本番切り替え===========
@@ -31,21 +32,21 @@ services:
   # ======================================
 
   # =========ローカルと本番切り替え===========
-  # db:
-  #   image: mysql:5.7
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: password
-  #     MYSQL_USER: user
-  #     MYSQL_PASSWORD: password
-  #     MYSQL_DATABASE: RecipApp_development
-  #   volumes:
-  #     - mysql-data:/var/lib/mysql
-  #     - ./db/my.cnf:/etc/mysql/conf.d/my.cnf
-  #   command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-  #   ports:
-  #     - "3307:3306"
-  #   networks:
-  #     - recipeapp-network
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: RecipApp_development
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./db/my.cnf:/etc/mysql/conf.d/my.cnf
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+      - "3307:3306"
+    networks:
+      - recipeapp-network
   # ======================================
 
   web:
