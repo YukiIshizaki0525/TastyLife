@@ -3,11 +3,19 @@ services:
   app:
     build:
       context: .
-    # =========ローカルと本番切り替え===========
+    # ===============本番====================
     command: bundle exec puma -C config/puma.rb -e production
-    # command: bundle exec puma -C config/puma.rb
     # ==========================================
 
+    # ===============ローカル==================
+    # command: bundle exec puma -C config/puma.rb
+
+    # depends_on:
+    #   - db
+    #   - chrome
+    # ports:
+    #   - 3000:3000
+    # ==========================================
     volumes:
       - .:/RecipeApp
       - bundle:/usr/local/bundle
@@ -16,11 +24,8 @@ services:
       - log-data:/RecipeApp/log
     networks:
       - recipeapp-network
-    # depends_on:
-    # - db
-    # - chrome
 
-  # =========ローカルと本番切り替え===========
+  # =========ローカル===========
   # chrome:
   #   image: selenium/standalone-chrome:latest
   #   shm_size: 256m
@@ -30,7 +35,7 @@ services:
   #     - recipeapp-network
   # ======================================
 
-  # =========ローカルと本番切り替え===========
+  # =========ローカル===========
   # db:
   #   image: mysql:5.7
   #   environment:
