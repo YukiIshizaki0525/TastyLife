@@ -37,7 +37,6 @@ Yuki.Ishizaki
 
 AWS構成図
 ---
-<img src="https://github.com/YukiIshizaki0525/TastyLife/blob/master/app/assets/images/TastyLife_AWS.svg" alt="AWS構成図" title="AWS構成図">
 
 ER図
 ---
