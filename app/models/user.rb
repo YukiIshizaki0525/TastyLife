@@ -110,7 +110,7 @@ class User < ApplicationRecord
   def validate_name
     errors.add(:name, :invalid) if User.where(email: name).exists?
   end
-  
+
   def follow(other_user)
     self.following << other_user
   end
