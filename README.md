@@ -41,4 +41,4 @@ AWS構成図
 
 ER図
 ---
-<img src="https://github.com/YukiIshizaki0525/TastyLife/blob/master/app/assets/images/ER_TastyLife.svg" alt="ER図" >
+
