@@ -36,7 +36,7 @@
 
 AWS構成図
 ---
-<img src="https://github.com/YukiIshizaki0525/TastyLife/blob/master/app/assets/images/TastyLife.jpg" alt="AWS構成図" >
+<img src="https://github.com/YukiIshizaki0525/TastyLife/blob/master/app/assets/images/TastyLife_AWS.jpg" alt="AWS構成図" >
 
 ER図
 ---
