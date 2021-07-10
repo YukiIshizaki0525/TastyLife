@@ -68,6 +68,13 @@ ER図
 ***テスト***
 - バリデーションやデザインに不備なく、ユーザーが安心してご利用いただけるようモデルスペック及びシステムスペックを十分に実施
 
+- ModelSpec結果
+<img src="https://github.com/YukiIshizaki0525/TastyLife/blob/master/app/assets/images/modelspec_result_0710.png" alt="ModelSpec結果" >
+
+- SystemSpec結果
+<img src="https://github.com/YukiIshizaki0525/TastyLife/blob/master/app/assets/images/systemspec_result_0710.png" alt=" SystemSpec結果" >
+
+
 
 機能一覧
 ---
