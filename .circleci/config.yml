@@ -31,6 +31,9 @@ jobs:
           path: ~/TastyLife
       - ruby/install-deps
       - run:
+          name: Database setup
+          command: bundle exec rails db:migrate
+      - run:
           name: test
           command: bundle exec rspec
 
