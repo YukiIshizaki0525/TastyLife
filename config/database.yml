@@ -17,6 +17,8 @@ development:
 test:
   <<: *default
   database: RecipApp_test
+  host: <%= ENV.fetch("APP_DATABASE_HOST") { 'db' } %>
+
 production:
   <<: *default
   database: <%= ENV['DB_DATABASE'] %>

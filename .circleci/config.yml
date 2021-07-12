@@ -1,0 +1,44 @@
+version: 2.1
+orbs:
+  ruby: circleci/ruby@1.1.2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.6.5
+    working_directory: ~/TastyLife
+    steps:
+      - checkout:
+          path: ~/TastyLife
+      - ruby/install-deps
+
+  test:
+    docker:
+      - image: circleci/ruby:2.6.5
+      - image: circleci/mysql:5.5
+        environment:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: RecipApp_test
+          MYSQL_USER: root
+    environment:
+      BUNDLE_JOBS: "3"
+      BUNDLE_RETRY: "3"
+      APP_DATABASE_HOST: "127.0.0.1"
+      RAILS_ENV: test
+    working_directory: ~/TastyLife/
+    steps:
+      - checkout:
+          path: ~/TastyLife
+      - ruby/install-deps
+      - run:
+          name: test
+          command: bundle exec rspec
+
+workflows:
+  version: 2
+  build_test_and_deploy:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
