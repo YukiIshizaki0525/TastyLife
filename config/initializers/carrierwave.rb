@@ -20,6 +20,7 @@ CarrierWave.configure do |config|
   else
     config.storage :file
     config.enable_processing = false if Rails.env.test?
+    config.asset_host = 'd32nvik5ha78dd.cloudfront.net'
   end
   
 end
