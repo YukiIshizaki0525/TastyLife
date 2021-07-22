@@ -50,4 +50,6 @@ Rails.application.configure do
   end
 
   config.active_record.dump_schema_after_migration = false
+
+  config.action_controller.asset_host = "http:/recipeapp-s3.s3.amazonaws.com"
 end
