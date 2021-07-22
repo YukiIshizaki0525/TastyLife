@@ -17,10 +17,10 @@ CarrierWave.configure do |config|
       region: ENV['S3_REGION'],
       path_style: true
     }
+    config.asset_host = 'd32nvik5ha78dd.cloudfront.net'
   else
     config.storage :file
     config.enable_processing = false if Rails.env.test?
-    config.asset_host = 'd32nvik5ha78dd.cloudfront.net'
   end
   
 end
