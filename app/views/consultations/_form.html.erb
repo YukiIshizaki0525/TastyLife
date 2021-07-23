@@ -5,12 +5,12 @@
   <section class="consultation">
     <div class="consultation__inputBx">
       <%= f.label :title %>
-      <%= f.text_field :title, placeholder: "50文字まで入力可能" %>
+      <%= f.text_field :title, placeholder: "例)栄養満点で簡単に作れるおすすめレシピについて" %>
     </div>
 
     <div class="consultation__inputBx">
       <%= f.label :content %>
-      <%= f.text_area :content, placeholder: "200文字まで入力可能" %>
+      <%= f.text_area :content, placeholder: "例)自炊継続できていますが、栄養が偏っているような気がしています。時間をあまりかけたくないので、栄養満点で簡単に作れるおすすめレシピはありますか。" %>
     </div>
     <div class="submit"><%= f.button "送信する" , class:"btn slide-bg" %></div>
   </section>
