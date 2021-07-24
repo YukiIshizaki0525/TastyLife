@@ -44,11 +44,23 @@ ER図
 
 使用技術
 ---
-|     フロントエンド      |     バックエンド     |     インフラ     |
-|    -----------     |    -----------   |    --------    |
-|    HTML5/CSS3      |    Ruby 2.6.5    |    Docker      |
-|    SCSS            |    Rails6.0.3   　　|    AWS         |
-|    JavaScript(ES6) |    RSpec         |                |
+- フロントエンド
+ - HTML/CSS/Sass
+ - JavaScript(ES6)
+
+- バックエンド
+ - Ruby 2.6.5
+ - Rails 6.0.3
+
+- テスト基盤
+ - RSpec 3.9
+ - FactoryBot 4.10.0
+
+- インフラ
+ - Docker 20.10.7
+ - Docker Compose 1.29.2
+ - AWS(VPC, EC2, IAM, RDS, InternetGataway, SecurityGroup, Subnet, Route53, ALB, ACM, S3, CloudFront)
+ - Nginx 1.15.8
                      
 工夫した点
 ---
