@@ -4,7 +4,7 @@ services:
     build:
       context: .
     # ===============本番====================
-    command: bundle exec puma -C config/puma.rb -e production
+    # command: bundle exec puma -C config/puma.rb -e production
     # ==========================================
 
     # ===============ローカル==================
