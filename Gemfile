@@ -28,8 +28,6 @@ gem 'image_processing'
 gem 'mini_magick'
 gem 'dotenv-rails'
 gem 'fog-aws'
-gem 'asset_sync'
-gem 'rack-cors'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
