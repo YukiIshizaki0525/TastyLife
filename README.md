@@ -80,12 +80,12 @@ AWS構成図
 
 ER図
 ---
-![ER_TastyLife](https://user-images.githubusercontent.com/60068515/128622461-7d13a4ea-0ece-4a4b-ab17-dcecdd75419f.png)
+![ER_TastyLife](https://user-images.githubusercontent.com/60068515/128622884-4da868f4-ed01-4fe3-812e-ffc36dd6f1c4.png)
 
 
 機能一覧
 ---
-全３4機能があり、自炊でのモチベーションアップ、悩み解決に貢献できます。
+全34機能があり、自炊でのモチベーションアップ、悩み解決に貢献できます。
 今後も、オリジナリティあふれる機能を増やしていきます。
 <img width="1155" alt="ポートフォリオ機能一覧" src="https://user-images.githubusercontent.com/60068515/128622434-2ab6a4e3-c793-4455-95ba-1c16efbdd5c0.png">
 
@@ -106,6 +106,7 @@ UI/UX
 　　✔︎直感的な操作  
 　　✔︎多彩なアクションで動きのあるサイト  
 　　✔︎導線設計  
+
 
 機能面
 ---
