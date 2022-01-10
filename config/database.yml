@@ -17,13 +17,14 @@ development:
 test:
   <<: *default
   database: RecipApp_test
+
 production:
   <<: *default
-  database: <%= ENV['DB_DATABASE'] %>
+  database: <%= ENV['APP_DATABASE'] %>
   adapter: mysql2
   encoding: utf8mb4
   charset: utf8mb4
   collation: utf8mb4_general_ci
-  host: <%= ENV['DB_HOST'] %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['APP_DATABASE_HOST'] %>
+  username: <%= ENV['APP_DATABASE_USERNAME'] %>
+  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
