@@ -3,12 +3,10 @@ class InventoryImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
-  if Rails.env.development?
-    storage :file
-  elsif Rails.env.test?
-    storage :file
-  else
+  if Rails.env.production?
     storage :fog
+  else
+    storage :file
   end
 
   def size_range
