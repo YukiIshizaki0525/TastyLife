@@ -7,12 +7,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
     1..3.megabytes
   end
 
-  if Rails.env.development?
-    storage :file
-  elsif Rails.env.test?
-    storage :file
-  else
+  if Rails.env.production?
     storage :fog
+  else
+    storage :file
   end
 
   def store_dir
