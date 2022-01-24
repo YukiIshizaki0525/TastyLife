@@ -4,17 +4,17 @@ services:
     build:
       context: .
     # ===============本番====================
-    # command: bundle exec puma -C config/puma.rb -e production
+    command: bundle exec puma -C config/puma.rb -e production
     # ==========================================
 
     # ===============ローカル==================
-    command: bundle exec puma -C config/puma.rb
+    # command: bundle exec puma -C config/puma.rb
 
-    depends_on:
-      - db
-      - chrome
-    ports:
-      - 3000:3000
+    # depends_on:
+    #   - db
+    #   - chrome
+    # ports:
+    #   - 3000:3000
     # ==========================================
     volumes:
       - .:/RecipeApp
@@ -26,31 +26,31 @@ services:
       - recipeapp-network
 
   # =========ローカル===========
-  chrome:
-    image: selenium/standalone-chrome:latest
-    shm_size: 256m
-    ports:
-      - 4444:4444
-    networks:
-      - recipeapp-network
+  # chrome:
+  #   image: selenium/standalone-chrome:latest
+  #   shm_size: 256m
+  #   ports:
+  #     - 4444:4444
+  #   networks:
+  #     - recipeapp-network
   # =============================
 
   # =========ローカル===========
-  db:
-    image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
-      MYSQL_DATABASE: RecipApp_development
-    volumes:
-      - mysql-data:/var/lib/mysql
-      - ./db/my.cnf:/etc/mysql/conf.d/my.cnf
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-    ports:
-      - "3307:3306"
-    networks:
-      - recipeapp-network
+  # db:
+  #   image: mysql:5.7
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: password
+  #     MYSQL_USER: user
+  #     MYSQL_PASSWORD: password
+  #     MYSQL_DATABASE: RecipApp_development
+  #   volumes:
+  #     - mysql-data:/var/lib/mysql
+  #     - ./db/my.cnf:/etc/mysql/conf.d/my.cnf
+  #   command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+  #   ports:
+  #     - "3307:3306"
+  #   networks:
+  #     - recipeapp-network
   # ============================
 
   web:
